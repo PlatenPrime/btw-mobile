@@ -1,17 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Button, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 
-const baseURL = 'https://btw-server-2.up.railway.app/api';
+const baseURL = 'https://btw-server-1.up.railway.app/api';
 
 
 
+
+
+const Item = ({ title }) => (
+	<View style={styles.item}>
+		<Text style={styles.title}>{title}</Text>
+	</View>
+);
 
 
 
 const RowsPage = () => {
 
 	const [rows, setRows] = useState([])
+
+	const [array, setArray] = useState([
+
+		{ "name": "Vasia", "number": 1 },
+		{ "name": "Kolia", "number": 2 },
+		{ "name": "Petia", "number": 3 },
+
+
+	])
 
 
 	const fetchRows = async () => {
@@ -51,12 +67,16 @@ const RowsPage = () => {
 				{rows.length && rows[0]["title"]}
 			</Text>
 
-			{/* {rows.length && <FlatList
 
-				data={rows}
-				renderItem={({ row }) =>   <Text style={styles.row}>{row["title"]}</Text>}
-				keyExtractor={(row) => row._id}
-			/>} */}
+
+
+
+			<FlatList
+
+				data={array}
+				renderItem={({ item }) => <Item title={item["name"]} />}
+				keyExtractor={(item) => item["number"]}
+			/>
 
 		</View>
 
@@ -71,43 +91,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 
 	},
-	text: {
-		color: 'rgb(59,108,212)',
-		fontSize: 42,
-		fontWeight: '100',
-		textAlign: 'center',
-	},
-	box: {
-		width: 150,
-		height: 150,
-		backgroundColor: '#3B6CD4',
-		borderWidth: 1,
-		borderColor: 'black',
-		borderRadius: 4,
-	},
-	image: {
-		width: 200,
-		height: 200,
-	},
-	small: {
-		width: 200,
-		height: 200,
-		marginBottom: 10,
-		marginRight: 10,
-		backgroundColor: 'skyblue',
-	},
-	large: {
-		width: 300,
-		height: 300,
-		marginBottom: 10,
-		marginRight: 10,
-		backgroundColor: 'steelblue',
-	},
-	row: {
-		padding: 15,
-		marginBottom: 5,
-		backgroundColor: 'skyblue',
-	},
+	
 })
 
 

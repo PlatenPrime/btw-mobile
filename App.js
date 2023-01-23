@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {  SafeAreaView, StyleSheet, Text } from 'react-native';
+import RowsPage from './pages/RowsPage';
+
 
 
 
@@ -11,20 +13,22 @@ import { Button, FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View 
 
 export default function App() {
 
-	const [text, setText] = useState('')
+
 
 
 
 	return (
 
+		<SafeAreaView style={styles.container}>
 
-		<View style={styles.container}>
+
 
 			<Text style={styles.text} >Hello world!</Text>
+		
 
-		</View>
 
 
+		</SafeAreaView>
 	);
 }
 
@@ -34,6 +38,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#25292e',
 		alignItems: 'center',
 		justifyContent: 'center',
+		
 	},
 	text: {
 		color: "whitesmoke",
