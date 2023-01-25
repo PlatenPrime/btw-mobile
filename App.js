@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import {  SafeAreaView, StyleSheet, Text } from 'react-native';
-import RowsPage from './pages/RowsPage';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
+
 
 
 
@@ -22,26 +22,27 @@ export default function App() {
 		<SafeAreaView style={styles.container}>
 
 
-
 			<Text style={styles.text} >Hello world!</Text>
-		
-
 
 
 		</SafeAreaView>
 	);
 }
 
+
+
+
+
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#25292e',
+		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
-		
+
 	},
 	text: {
-		color: "whitesmoke",
+		color: "black",
 		fontSize: 32,
 	}
 
