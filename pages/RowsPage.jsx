@@ -39,9 +39,6 @@ const RowsPage = () => {
 			console.log(json.rows)
 
 
-
-
-
 		}
 
 		catch (error) {

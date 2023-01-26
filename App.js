@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { ArtPage } from './pages/ArtPage';
 
 
 
@@ -22,7 +23,7 @@ export default function App() {
 		<SafeAreaView style={styles.container}>
 
 
-			<Text style={styles.text} >Hello world!</Text>
+			<ArtPage />
 
 
 		</SafeAreaView>
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
+		marginVertical: 50,
 
 	},
 	text: {
