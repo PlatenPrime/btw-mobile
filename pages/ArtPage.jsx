@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
@@ -66,15 +66,20 @@ export const ArtPage = () => {
 			</View>
 
 
-
-
-
 			<Image source={{ uri: photoLink }}
 				style={styles.image} />
 
-			<Text style={styles.text} >{item && item["name"]}</Text>
-			<Text style={styles.text} >{item && item["title"]}</Text>
-			<Text style={styles.text} >{item && item["zone"]}</Text>
+			{item && <View
+				style={styles.infoContainer}
+			>
+				<Text style={styles.text} >{item && item["title"]}</Text>
+				<Text style={styles.text} >{item && item["name"]}</Text>
+				<Text style={styles.text} >{item && item["zone"]}</Text>
+
+			</View>}
+
+
+
 
 
 		</View>
@@ -85,27 +90,40 @@ export const ArtPage = () => {
 
 const styles = StyleSheet.create({
 	containerArtPage: {
-		flex: 1,
+		shadowColor: "black",
+		shadowOffset: 2,
 		backgroundColor: '#fff',
 		alignItems: 'center',
-		justifyContent: 'space-between',
+		justifyContent: 'space-around',
 	},
 	text: {
-		color: "black",
+		color: "whitesmoke",
 		fontSize: 32,
+		textAlign: "center",
 	},
 	inputContainer: {
-		backgroundColor: "#ccc",
+		borderRadius: 20,
+
 		borderColor: '#000000',
 		borderBottomWidth: 1,
 	},
 	input: {
 		padding: 10,
-		color: "red",
-		fontSize: 32,
+		color: "#111",
+		fontSize: 48,
+		textAlign: "center",
+
 	},
 	image: {
+		marginVertical: 32,
 		width: 200,
 		height: 200,
+	},
+	infoContainer: {
+		width: "100%",
+		padding: 20,
+		backgroundColor: "royalblue",
+		borderRadius: 20,
+
 	}
 });
