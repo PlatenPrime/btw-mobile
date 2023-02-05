@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
 	infoContainer: {
 		width: "100%",
 		padding: 20,
-		backgroundColor: "royalblue",
+		backgroundColor: "coral",
 		borderRadius: 20,
 
 	}

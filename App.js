@@ -1,5 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { ArtPage } from './pages/ArtPage';
 
