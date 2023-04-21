@@ -4,7 +4,7 @@ import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 
 
-const baseURL = 'https://btw-server.onrender.com/api';
+const baseURL = 'https://btw-server.up.railway.app/api';
 
 
 
