@@ -1,7 +1,7 @@
 
 import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 
-import useFetch from '../../../hook/useHook'
+import useFetch from '../../../hook/useFetch'
 import { useRouter } from "expo-router";
 
 import styles from './nearbyjobs.style'
@@ -48,7 +48,7 @@ const Nearbyjobs = () => {
 						<NearbyJobsCard
 							job={job}
 							key={`nearby-job-${job?.job_id}`}
-							handlerNavigate={() => router.push(`/job-details/${job.job_id}`)}
+							handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
 
 
 						/>

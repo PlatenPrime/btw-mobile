@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'expo-router';
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native'
-import useFetch from '../../../hook/useHook'
+import useFetch from '../../../hook/useFetch'
 
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from "../../../constants";
@@ -17,7 +17,7 @@ const Popularjobs = () => {
 		num_pages: "1",
 	});
 
-console.log(data)
+
 
 
 
