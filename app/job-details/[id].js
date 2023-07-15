@@ -11,19 +11,24 @@ import { useFetch } from "../../hook/useFetch";
 
 const JobDetails = () => {
 
-const params = useSearchParams();
-const router = useRouter();
+	const params = useSearchParams();
+	const router = useRouter();
 
-const {data, isLoading, error, refetch} = useFetch("job-details", {
-	job_id: params.id
-})
+	// const { data, isLoading, error, refetch } = useFetch("job-details", {
+	// 	job_id: params.id,
+	// });
 
-
+	
 
 	return (
-		<Text>
-			JobDetails
-		</Text>
+		<SafeAreaView
+			style={{ flex: 1, backgroundColor: COLORS.lightWhite }}
+
+		>
+			<Stack.Screen>
+
+			</Stack.Screen>
+		</SafeAreaView>
 	);
 };
 
