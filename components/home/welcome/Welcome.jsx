@@ -5,10 +5,12 @@ import {
 	TextInput,
 	Image,
 	FlatList,
-	TouchableOpacity
+	TouchableOpacity,
+	ActivityIndicator
 } from 'react-native';
 
 import { useRouter } from 'expo-router';
+import useFetchArts from '../../../hook/useFetchArts'
 
 import styles from './welcome.style';
 import { icons, SIZES } from "../../../constants";
@@ -24,8 +26,12 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 	const router = useRouter();
 	const [activeJobType, setActiveJobType] = useState("Full-time")
 
+	const { artsDB, loadingArtsDB, errorArtsDB } = useFetchArts()
+	console.log(artsDB)
 
-	
+	const renderArts = artsDB.slice(0, 10);
+	console.log(renderArts)
+
 
 	return (
 		<View>
@@ -37,6 +43,30 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 					Find your perfect articul
 				</Text>
 			</View>
+
+
+			<View style={styles.container} >
+				<Text style={styles.userName} >Here will be the articles</Text>
+
+				{loadingArtsDB ? <ActivityIndicator /> : <FlatList
+					data={renderArts}
+					renderItem={(item) => (<Text>{item.name}</Text>)}
+					keyExtractor={item => item.name}
+
+
+
+				/>
+				}
+
+				{renderArts.map((item) => (
+					<Text key={item.name} >
+						{item.name}
+					</Text>))}
+
+
+			</View>
+
+
 
 			<View style={styles.searchContainer}>
 
