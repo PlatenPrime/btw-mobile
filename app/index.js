@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { View, ScrollView, SafeAreaView } from "react-native";
+import { View, ScrollView, SafeAreaView, Button } from "react-native";
 import { Stack, useRouter } from "expo-router"
 
 
@@ -23,9 +23,14 @@ const Home = () => {
 					headerLeft: () => (
 						<ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
 					),
-					headerRight: () => (
-						<ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
-					),
+					// headerRight: () => (
+					// 	<ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+					// ),
+
+
+
+
+
 					headerTitle: "",
 				}}
 			/>
@@ -39,15 +44,15 @@ const Home = () => {
 						padding: SIZES.medium
 					}}
 				>
-					<Welcome 
-					searchTerm={searchTerm}
-					setSearchTerm={setSearchTerm}
-					handleClick={() => {
-						if (searchTerm) {
-							router.push(`/search/${searchTerm}`)
-						}
-					}}
-					
+					<Welcome
+						searchTerm={searchTerm}
+						setSearchTerm={setSearchTerm}
+						handleClick={() => {
+							if (searchTerm) {
+								router.push(`/search/${searchTerm}`)
+							}
+						}}
+
 					/>
 					<Popularjobs />
 					<Nearbyjobs />
