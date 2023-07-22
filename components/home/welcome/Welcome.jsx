@@ -55,13 +55,10 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
 
 
 
-				/>
-				}
+				/>}
 
-				{renderArts.map((item) => (
-					<Text key={item.name} >
-						{item.name}
-					</Text>))}
+
+
 
 
 			</View>
