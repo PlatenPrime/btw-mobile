@@ -4,7 +4,7 @@ import React from 'react'
 export default function Page() {
 	return (
 		<View>
-			<Text>This is a tab two</Text>
+			<Text>This is a login modal</Text>
 		</View>
 	)
 }

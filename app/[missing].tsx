@@ -4,7 +4,7 @@ import React from 'react'
 export default function Page() {
 	return (
 		<View>
-			<Text>This is a tab two</Text>
+			<Text style={{ fontSize: 20 }}>Not found</Text>
 		</View>
 	)
 }
