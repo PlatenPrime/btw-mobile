@@ -4,6 +4,7 @@ import { Stack, useRouter } from 'expo-router'
 import { Tabs } from 'expo-router'
 import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function _layout() {
 
@@ -28,6 +29,7 @@ export default function _layout() {
 				name="btw"
 				options={
 					{
+						headerShown: false,
 						headerTitle: "BTW",
 						tabBarLabel: "BTW",
 						tabBarIcon: () => <SimpleLineIcons name="menu" size={24} color="black" />
@@ -36,12 +38,12 @@ export default function _layout() {
 			/>
 
 			<Tabs.Screen
-				name="settings"
+				name="profile"
 				options={
 					{
-						headerTitle: "Налаштування",
+						headerTitle: "Профіль",
 						tabBarLabel: "Профіль",
-						tabBarIcon: () => <AntDesign name="setting" size={24} color="black" />
+						tabBarIcon: () => <Ionicons name="person-outline" size={24} color="black" />
 					}
 				}
 			/>
