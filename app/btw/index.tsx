@@ -5,23 +5,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function Page() {
 	return (
-		<View style={{ flex: 1, justifyContent: "space-around", alignItems: "center" }} >
+		<View className="bg-sky-500/40 h-full" >
 
 			<Link
-				style={{
-					alignItems: 'center',
-					backgroundColor: 'orange',
-					padding: 30,
-					width: "100%"
-				}}
+				
 				href="/btw/stocks" asChild >
 				<TouchableOpacity
-					style={{
-						alignItems: 'center',
-						backgroundColor: 'orange',
-						padding: 30,
-						width: "100%"
-					}}
+					className="border border-orange-500 p-4 rounded"
 				>
 					<Text>Запаси</Text>
 				</TouchableOpacity>
@@ -29,6 +19,11 @@ export default function Page() {
 			<Link href="/btw/arts" asChild >
 				<Button title="Arts" />
 			</Link>
+			<Text
+				className="text-3xl text-red-600"
+			>
+				Ljsouihggsrg
+			</Text>
 			<Link href="/btw/asks" asChild >
 				<Button title="Asks" />
 			</Link>

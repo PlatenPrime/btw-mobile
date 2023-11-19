@@ -13,7 +13,12 @@ export default function _layout() {
 
 
 	return (
-		<Tabs>
+		<Tabs
+		screenOptions={{
+			tabBarStyle: { backgroundColor: 'blue' },
+		  }}
+		>
+
 			<Tabs.Screen
 				name="index"
 				options={
