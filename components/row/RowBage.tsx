@@ -16,7 +16,7 @@ const RowBage = ({ row }: { row: RowType }) => {
 	return (
 		<View className='w-full' >
 			<Link
-				// href={`btw/stocks/rows/${row?._id}`}
+				// href={`/btw/stocks/${row?._id}/`}
 				href="/"
 				className=' 
           flex justify-center

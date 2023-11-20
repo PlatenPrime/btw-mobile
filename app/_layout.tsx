@@ -71,17 +71,6 @@ export default function _layout() {
 
 		
 
-
-			{/* <Tabs.Screen
-				name="posts"
-				options={
-					{
-						headerShown: false,
-						headerTitle: "Posts",
-						tabBarLabel: "Posts"
-					}
-				}
-			/> */}
 			<Tabs.Screen
 				name="[missing]"
 				options={{

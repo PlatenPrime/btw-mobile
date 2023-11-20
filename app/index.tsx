@@ -7,8 +7,12 @@ export default function Page() {
 	return (
 		<ScreenContainer>
 			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
-				
-				
+				<Text
+				className="text-5xl text-white"
+				>
+					BTW
+				</Text>
+
 			</View>
 		</ScreenContainer>
 	)

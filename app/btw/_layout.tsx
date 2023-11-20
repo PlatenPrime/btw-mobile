@@ -14,12 +14,10 @@ export default function Layout() {
 				}
 			/>
 			<Stack.Screen
-				name="stocks/index"
-				options={
-					{
-						title: "Запаси",
-					}
-				}
+				name="stocks"
+				options={{
+					headerShown: false
+				}}
 			/>
 			<Stack.Screen
 				name="arts"
@@ -34,6 +32,14 @@ export default function Layout() {
 				options={
 					{
 						title: "Запити",
+					}
+				}
+			/>
+			<Stack.Screen
+				name="pallets"
+				options={
+					{
+						title: "Палети",
 					}
 				}
 			/>

@@ -8,7 +8,7 @@ export default function Page() {
 	return (
 		<ScreenContainer>
 			<View
-			className="flex justify-center h-full space-y-8 p-2"
+				className="flex justify-center h-full space-y-8 p-2"
 			>
 
 				<Link
@@ -26,7 +26,7 @@ export default function Page() {
 				</Link>
 
 				<Link
-					href="/btw/arts"
+					href="/btw/arts/"
 					asChild
 					className=" flex justify-center py-8 bg-sky-500 rounded "
 				>
@@ -42,7 +42,7 @@ export default function Page() {
 				</Link>
 
 				<Link
-					href="/btw/asks"
+					href="/btw/asks/"
 					asChild
 					className=" flex justify-center py-8 bg-yellow-500 rounded "
 				>
@@ -53,6 +53,22 @@ export default function Page() {
 							className="text-center text-3xl text-white"
 						>
 							Запити
+						</Text>
+					</TouchableOpacity>
+				</Link>
+
+				<Link
+					href="/btw/pallets/"
+					asChild
+					className=" flex justify-center py-8 bg-amber-500 rounded "
+				>
+					<TouchableOpacity
+						className="  "
+					>
+						<Text
+							className="text-center text-3xl text-white"
+						>
+							Палети
 						</Text>
 					</TouchableOpacity>
 				</Link>
