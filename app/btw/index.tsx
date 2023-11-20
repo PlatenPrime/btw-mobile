@@ -1,32 +1,64 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, ImageBackground } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import ScreenContainer from '../../components/ScreenContainer'
 
 export default function Page() {
 	return (
-		<View className="bg-sky-500/40 h-full" >
-
-			<Link
-				
-				href="/btw/stocks" asChild >
-				<TouchableOpacity
-					className="border border-orange-500 p-4 rounded"
-				>
-					<Text>Запаси</Text>
-				</TouchableOpacity>
-			</Link>
-			<Link href="/btw/arts" asChild >
-				<Button title="Arts" />
-			</Link>
-			<Text
-				className="text-3xl text-red-600"
+		<ScreenContainer>
+			<View
+			className="flex justify-center h-full space-y-8 p-2"
 			>
-				Ljsouihggsrg
-			</Text>
-			<Link href="/btw/asks" asChild >
-				<Button title="Asks" />
-			</Link>
-		</View>
+
+				<Link
+					href="/btw/stocks"
+					asChild
+					className=" flex justify-center py-8 bg-orange-500 rounded"
+				>
+
+					<Text
+						className="text-center text-3xl text-white"
+					>
+						Запаси
+					</Text>
+
+				</Link>
+
+				<Link
+					href="/btw/arts"
+					asChild
+					className=" flex justify-center py-8 bg-sky-500 rounded "
+				>
+					<TouchableOpacity
+						className="  "
+					>
+						<Text
+							className="text-center text-3xl text-white"
+						>
+							Артикули
+						</Text>
+					</TouchableOpacity>
+				</Link>
+
+				<Link
+					href="/btw/asks"
+					asChild
+					className=" flex justify-center py-8 bg-yellow-500 rounded "
+				>
+					<TouchableOpacity
+						className="  "
+					>
+						<Text
+							className="text-center text-3xl text-white"
+						>
+							Запити
+						</Text>
+					</TouchableOpacity>
+				</Link>
+			</View>
+		</ScreenContainer >
+
+
 	)
 }

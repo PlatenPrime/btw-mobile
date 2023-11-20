@@ -15,7 +15,7 @@ export default function _layout() {
 	return (
 		<Tabs
 		screenOptions={{
-			tabBarStyle: { backgroundColor: 'blue' },
+			tabBarStyle: { backgroundColor: '#fff' },
 		  }}
 		>
 
@@ -74,14 +74,7 @@ export default function _layout() {
 				}
 				}
 			/>
-			<Tabs.Screen
-				name="register/index"
-				options={{
-					// This tab will no longer show up in the tab bar.
-					href: null,
-				}
-				}
-			/>
+		
 
 
 			{/* <Tabs.Screen
