@@ -27,7 +27,7 @@ export default function _layout() {
 				name="posts"
 				options={
 					{
-						headerShown: false,
+						// headerShown: false,
 						headerTitle: "Posts",
 						tabBarLabel: "Posts"
 					}

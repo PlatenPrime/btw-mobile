@@ -16,6 +16,8 @@ export default function _layout() {
 		<Tabs
 		screenOptions={{
 			tabBarStyle: { backgroundColor: '#fff' },
+			tabBarActiveBackgroundColor: "#999",
+			tabBarActiveTintColor: "#bbb"
 		  }}
 		>
 
@@ -62,18 +64,11 @@ export default function _layout() {
 				name="(tabs)"
 				options={{
 					// This tab will no longer show up in the tab bar.
-					href: null,
+					 href: null,
 				}
 				}
 			/>
-			<Tabs.Screen
-				name="login"
-				options={{
-					// This tab will no longer show up in the tab bar.
-					href: null,
-				}
-				}
-			/>
+
 		
 
 

@@ -12,7 +12,7 @@ export default function Page() {
 			>
 
 				<Link
-					href="/btw/stocks"
+					href="/btw/stocks/"
 					asChild
 					className=" flex justify-center py-8 bg-orange-500 rounded"
 				>

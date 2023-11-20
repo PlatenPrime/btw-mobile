@@ -1,15 +1,20 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import ScreenContainer from '../components/ScreenContainer'
 
 export default function Profile() {
 	return (
-		<View>
-			<Text>Profile</Text>
-			<Text
-				className="text-3xl text-red-600"
+		<ScreenContainer>
+			<View
+			className="flex justify-center items-center h-full"
 			>
-				Ljsouihggsrg
-			</Text>
-		</View>
+
+				<Text
+					className="text-3xl text-sky-300"
+				>
+					Prime
+				</Text>
+			</View>
+		</ScreenContainer>
 	)
 }

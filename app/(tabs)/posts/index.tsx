@@ -14,8 +14,8 @@ export default function index() {
 			<Link style={{ fontSize: 20 }} href="/posts/2">
 				Open post 2
 			</Link>
-			<Link style={{ fontSize: 20 }} href="/posts/3">
-				Open post 3
+			<Link style={{ fontSize: 20 }} href={`/posts/${3+85}`}>
+				Open post 88
 			</Link>
 		</View>
 	)

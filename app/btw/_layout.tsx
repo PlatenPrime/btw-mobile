@@ -14,7 +14,7 @@ export default function Layout() {
 				}
 			/>
 			<Stack.Screen
-				name="stocks"
+				name="stocks/index"
 				options={
 					{
 						title: "Запаси",
