@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import axios from "../../../utils/axios"
+import axios from "../utils/axios";
 
 export const useRowStore = create((set) => ({
 	rows: [],
@@ -23,6 +23,8 @@ export const useRowStore = create((set) => ({
 			set({ rows: response.data.rows });
 			return response.data.rows
 		} catch (error) {
+			console.log(error);
+			
 			throw error;
 		}
 	},
