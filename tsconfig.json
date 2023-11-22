@@ -9,5 +9,5 @@
 		"**/*.tsx",
 		".expo/types/**/*.ts",
 		"expo-env.d.ts"
-, "app/profile.jsx", "app/btw/stocks/index.jsx", "app/btw/stocks/_layout.jsx", "app/btw/stocks/[id].jsx", "app/btw/_layout.jsx", "app/btw/index.jsx", "app/_layout.jsx", "app/[missing].jsx", "app/index.jsx"	]
+, "app/profile.jsx", "app/btw/stocks/index.jsx", "app/btw/stocks/_layout.jsx", "app/btw/stocks/[id].jsx", "app/btw/_layout.jsx", "app/btw/index.jsx", "app/_layout.jsx", "app/[missing].jsx", "app/index.jsx", "components/common/ScreenContainer.jsx"	]
 }

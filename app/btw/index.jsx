@@ -2,7 +2,7 @@ import { View, Text, Button, ImageBackground } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import ScreenContainer from '../../components/ScreenContainer'
+import { ScreenContainer } from '../../components'
 
 export default function Page() {
 	return (
