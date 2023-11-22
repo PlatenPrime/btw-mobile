@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import ScreenContainer from '../components'
+import {ScreenContainer }from '../components'
 
 export default function Profile() {
 	return (
