@@ -11,43 +11,6 @@ export default function Stocks() {
 	const rows = useRowStore((state) => state.rows);
 	const getAllRows = useRowStore((state) => state.getAllRows);
 
-	const [isRowLoading, setIsRowLoading] = useState(true);
-	const [rowsData, setRowsData] = useState([]);
-
-
-	useEffect(() => {
-		async function fetchRows() {
-			try {
-				setIsRowLoading(true);
-				await getAllRows();
-			} catch (error) {
-				console.log(error);
-			} finally {
-				setIsRowLoading(false);
-			}
-		}
-
-		fetchRows();
-	}, []);
-
-	useEffect(() => {
-		async function fetchRowsData() {
-			try {
-				setIsRowLoading(true);
-				const res = await axios.get('https://btw-server.up.railway.app/api/rows');
-				setRowsData(res?.data?.rows)
-				console.log(res?.data?.rows);
-
-			} catch (error) {
-				console.log(error);
-			} finally {
-				setIsRowLoading(false);
-			}
-		}
-
-		fetchRowsData();
-	}, []);
-
 
 
 
@@ -82,19 +45,7 @@ export default function Stocks() {
 			</Link>
 
 
-			<Text className="text-white text-2xl">{rows?.length}</Text>
-			<Text className="text-white text-2xl">{rowsData?.length}</Text>
 
-			<View style={{ marginTop: 10 }}>
-				<FlatList
-					data={rowsData}
-					keyExtractor={(item) => item._id}
-					renderItem={({ item }) => (
-						<Text style={{ fontSize: 16, color: 'white' }}>{item.title}</Text>
-					)}
-					extraData={rows}
-				/>
-			</View>
 
 
 
