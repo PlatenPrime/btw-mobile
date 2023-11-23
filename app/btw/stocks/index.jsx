@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, } from 'react-native';
+import { View, Text, Button, Pressable, Modal, } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScreenContainer } from '../../../components';
 
-import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { FlatList, ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useRowStore } from '.././../../stores/rowsStore';
 import { Link } from 'expo-router';
 
@@ -13,52 +13,128 @@ import { useGlobalStore } from "../../../stores/globalStore";
 
 export default function Stocks() {
 
-	const rows = useRowStore((state) => state.rows);
-	const getAllRows = useRowStore((state) => state.getAllRows);
-
-	const { showButtonModal, toggleShowButtonModal } = useGlobalStore()
+	const { createRow, rows, getAllRows } = useRowStore();
+	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
 
 
-	const [isRowLoading, setIsRowLoading] = useState(false)
 
+	const [isRowsLoading, setIsRowsLoading] = useState(false)
+	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
+	const [newRowTitle, setNewRowTitle] = useState("")
 
 
 	useEffect(() => {
 		// При монтировании компонента получите все Row
 		async function fetchRows() {
 			try {
-				setIsRowLoading(true)
+				setIsRowsLoading(true)
 				await getAllRows();
 
 
 			} catch (error) {
 				console.log(error)
 			} finally {
-				setIsRowLoading(false)
+				setIsRowsLoading(false)
 			}
 		}
 
 
 		fetchRows()
+
+		setShowButtonGroup(false)
+
+
+
+
 	}, []);
 
 
-	console.log(rows)
+
+	async function handleCreateRow(rowTitle) {
+
+		try {
+			await createRow(rowTitle);
+
+
+		} catch (error) {
+			alert('Ошибка при создании ряда:', error);
+		} finally {
+			setShowModalCreateRow(false)
+
+		}
+
+	}
+
+
 
 
 	return (
 		<ScreenContainer>
 
-			<View>
-				<Text className="text-white">
-					Buttons
-				</Text>
-			</View>
+			{showButtonGroup && <View
+				className="p-4"
+
+			>
 
 
-			{isRowLoading ? <Text className="text-3xl text-white text-center" >Загрузка...</Text> :
+				<Pressable
+					className=" justify-center items-center 
+					py-2 rounded-lg
+					border border-emerald-500"
+
+					onPress={() => { setShowModalCreateRow(true) }}>
+					<Text className="text-white" >Створити ряд</Text>
+				</Pressable>
+
+
+			</View>}
+
+
+
+			<Modal
+				animationType="slide"
+
+				visible={showModalCreateRow}
+				onRequestClose={() => {
+					Alert.alert('Modal has been closed.');
+					setShowModalCreateRow(!showModalCreateRow);
+				}}
+				className="justify-center items-center"
+				
+				>
+
+
+				<TextInput
+					onChangeText={(text => setNewRowTitle(text))}
+					value={newRowTitle}
+					className="h-16 bg-gray-700 text-center text-2xl text-white"
+					autoFocus={true}
+				/>
+
+
+				<View className="flex flex-row justify-between" >
+					<Pressable
+						className="p-8 bg-green-500/50"
+						onPress={() => { setShowModalCreateRow(false) }}>
+						<Text  >CREATE ROW</Text>
+					</Pressable>
+					<Pressable
+						className="p-8 bg-red-500/50"
+						onPress={() => { setShowModalCreateRow(false) }}>
+						<Text  >CLOSE MODAL</Text>
+					</Pressable>
+				</View>
+
+
+
+			</Modal>
+
+
+
+
+			{isRowsLoading ? <Text className="text-3xl text-white text-center" >Загрузка...</Text> :
 
 
 				<ScrollView>

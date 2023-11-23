@@ -2,13 +2,20 @@ import { create } from 'zustand';
 
 export const useGlobalStore = create((set) => ({
 
-	showButtonModal: false,
+	showButtonGroup: false,
 
-	toggleShowButtonModal: () => {
+	toggleShowButtonGroup: () => {
 		set((state) => ({
-			showButtonModal: !state.showButtonModal
+			showButtonGroup: !state.showButtonGroup
+		}));
+	},
+
+	setShowButtonGroup: (value) => {
+		set((state) => ({
+			showButtonGroup: value
 		}));
 	}
+
 
 
 }));

@@ -10,7 +10,7 @@ export default function Layout() {
 
 	const router = useRouter()
 
-	const { showButtonModal, toggleShowButtonModal } = useGlobalStore()
+	const { showButtonGroup, toggleShowButtonGroup } = useGlobalStore()
 
 
 	return (
@@ -20,7 +20,7 @@ export default function Layout() {
 				options={{
 					title: "Ряди",
 					headerRight: () => <TouchableOpacity
-						onPress={toggleShowButtonModal}>
+						onPress={toggleShowButtonGroup}>
 						<Entypo name="dots-three-horizontal" size={24} color="white" />
 					</TouchableOpacity>,
 					headerTintColor: "white",

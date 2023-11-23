@@ -10,6 +10,7 @@ export default function ScreenContainer({ children }) {
 
 		<ImageBackground source={require("../../assets/images/background.jpg")} style={{
 			flex: 1,
+			color: "white",
 		}}>
 
 			{children}
