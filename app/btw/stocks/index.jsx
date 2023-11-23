@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScreenContainer } from '../../../components';
 
@@ -7,12 +7,20 @@ import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-han
 import { useRowStore } from '.././../../stores/rowsStore';
 import { Link } from 'expo-router';
 
+import { useGlobalStore } from "../../../stores/globalStore";
+
 
 
 export default function Stocks() {
 
 	const rows = useRowStore((state) => state.rows);
 	const getAllRows = useRowStore((state) => state.getAllRows);
+
+	const { showButtonModal, toggleShowButtonModal } = useGlobalStore()
+
+
+
+
 	const [isRowLoading, setIsRowLoading] = useState(false)
 
 
@@ -42,50 +50,54 @@ export default function Stocks() {
 
 	return (
 		<ScreenContainer>
+
 			<View>
-				<Text
-					className="text-3xl text-white text-center"
-				>
-					Ряди
+				<Text className="text-white">
+					Buttons
 				</Text>
-
-				{isRowLoading ? <Text className="text-3xl text-white text-center" >Загрузка...</Text> :
-
-
-					<View>
-						{rows?.length > 0 ?
-
-
-							<FlatList
-								data={rows}
-								renderItem={({ item }) => <Link
-									href={`/btw/stocks/${item._id}`}
-									className="border border-orange-500 rounded text-center text-xl text-white my-2 p-4 "
-								>
-									<Text >
-										{item.title}
-									</Text>
-								</Link>}
-							/>
-
-							:
-							<Text className="text-xl text-white">
-								Рядів немає
-							</Text>
-
-						}
-					</View>
-
-				}
-
-
-
-
-
 			</View>
 
 
+			{isRowLoading ? <Text className="text-3xl text-white text-center" >Загрузка...</Text> :
 
+
+				<ScrollView>
+					{rows?.length > 0 ?
+
+
+						<View
+							className="space-y-4 p-2"
+						>
+
+							{rows?.map(item => <Link
+								key={item._id}
+								href={`/btw/stocks/${item._id}`}
+								className="border-4 border-orange-500 rounded 
+				bg-orange-500/70
+				text-center 
+				 text-2xl text-white font-bold
+				my-2 p-2 
+				shadow-2xl shadow-orange-500
+				"
+							>
+								<Text >
+									{item.title}
+								</Text>
+							</Link>)}
+
+
+						</View>
+
+
+						:
+						<Text className="text-xl text-white">
+							Рядів немає
+						</Text>
+
+					}
+				</ScrollView>
+
+			}
 
 
 

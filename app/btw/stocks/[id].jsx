@@ -4,7 +4,7 @@ import { Link, useLocalSearchParams } from 'expo-router'
 import { useRowStore } from '../../../stores/rowsStore'
 import { usePalletStore } from '../../../stores/palletsStore'
 import { ScreenContainer } from '../../../components'
-import { FlatList } from 'react-native-gesture-handler'
+import { FlatList, ScrollView } from 'react-native-gesture-handler'
 
 export default function RowPage() {
 
@@ -66,17 +66,17 @@ export default function RowPage() {
 			>
 				Ряд	{row?.title}
 			</Text>
-		
+
 
 
 			{isRowLoading ? <Text>Загрузка...</Text> :
 
-				<View>
+				<ScrollView>
 					{pallets?.length > 0 ?
 
-						<FlatList
-							data={pallets}
-							renderItem={({ item }) => <Link
+						<View>
+							{pallets?.map((item) => <Link
+								key={item._id}
 								href={`/btw/pallets/${item._id}`}
 								className="border border-amber-500 rounded 
 					bg-amber-500/10
@@ -86,15 +86,23 @@ export default function RowPage() {
 								<Text >
 									{item.title}
 								</Text>
-							</Link>}
-						/>
+							</Link>)}
+
+
+						</View>
+
+
 						:
 						<Text className="text-xl text-white text-center">
 							Палет немає
 						</Text>
 
 					}
-				</View>
+
+
+
+
+				</ScrollView>
 			}
 
 
