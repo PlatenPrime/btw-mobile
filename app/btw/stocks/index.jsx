@@ -49,7 +49,9 @@ export default function Stocks() {
 					Ряди
 				</Text>
 
-				{isRowLoading ? <Text>Загрузка...</Text> :
+				{isRowLoading ? <Text className="text-3xl text-white text-center" >Загрузка...</Text> :
+
+
 					<View>
 						{rows?.length > 0 ?
 

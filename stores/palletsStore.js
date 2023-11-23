@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import axios from '../../../utils/axios';
+import axios from '../utils/axios';
 
-const usePalletStore = create((set) => ({
+export const usePalletStore = create((set) => ({
 	pallets: [],
 
 
