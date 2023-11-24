@@ -25,6 +25,7 @@ export default function _layout() {
 				name="index"
 				options={
 					{
+						headerShown: false,
 						headerTitle: "Головна",
 						tabBarLabel: "Головна",
 						tabBarIcon: () => <AntDesign name="home" size={24} color="black" />
@@ -38,7 +39,7 @@ export default function _layout() {
 					{
 						headerShown: false,
 						headerTitle: "BTW",
-						tabBarLabel: "BTW",
+						tabBarLabel: "",
 						tabBarIcon: () => <SimpleLineIcons name="menu" size={24} color="black" />
 					}
 				}

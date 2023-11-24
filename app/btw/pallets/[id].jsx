@@ -97,13 +97,14 @@ export default function PalletPage() {
 								key={item._id}
 								className="border-4 border-amber-500 rounded 
 	bg-amber-500/70
-	text-center text-2xl text-white  font-bold
+	 font-bold
 	 p-2
+	 justify-center items-center
 	 shadow-2xl shadow-amber-500
 	 "
 							>
 								<Text
-									className="text-white"
+									className="text-white  text-2xl justify-center items-center"
 								>
 									{item.artikul}
 								</Text>
@@ -115,7 +116,7 @@ export default function PalletPage() {
 
 						:
 						<Text className="text-xl text-white text-center">
-							Палет немає
+							Позицій немає
 						</Text>
 
 					}

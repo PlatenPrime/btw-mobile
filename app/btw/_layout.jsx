@@ -39,6 +39,7 @@ export default function Layout() {
 				name="pallets"
 				options={
 					{
+						headerShown: false,
 						title: "Палети",
 					}
 				}

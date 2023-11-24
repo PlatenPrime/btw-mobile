@@ -6,6 +6,7 @@ import { usePalletStore } from '../../../stores/palletsStore'
 import { ScreenContainer } from '../../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useGlobalStore } from '../../../stores/globalStore'
+import { colors500 } from '../../../constants/Colors'
 
 export default function RowPage() {
 
@@ -20,7 +21,7 @@ export default function RowPage() {
 
 
 	const [row, setRow] = useState(null)
-	const [rowTitle, setRowTitle] = useState(row?.title)
+	const [rowTitle, setRowTitle] = useState("")
 
 	const [isRowLoading, setIsRowLoading] = useState(false)
 	const [isUpdatingRowById, setIsUpdatingRowById] = useState(false)
@@ -46,6 +47,7 @@ export default function RowPage() {
 				const row = await getRowById(id)
 				setRow(row)
 				setRowTitle(row?.title)
+				setNewRowTitle(row?.title)
 			}
 
 			async function fetchRowPallets() {
@@ -234,14 +236,14 @@ export default function RowPage() {
 					/>
 
 
-					{isCreatingPallet && <ActivityIndicator size="large" color="#10b981" />}
+					{isCreatingPallet && <ActivityIndicator size="large" color={colors500.emerald} />}
 
 
 
-					<View className="flex flex-row justify-around text-white text-xl" >
+					<View className="flex flex-row justify-around  space-x-4" >
 
 						<Pressable
-							className="p-4 border border-red-500 flex items-center justify-center rounded-2xl"
+							className=" w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl"
 							onPress={() => { setShowModalCreatePallet(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -251,7 +253,7 @@ export default function RowPage() {
 
 						<Pressable
 
-							className={`p-4 flex items-center justify-center rounded-2xl border ${newPalletTitle ? "border-green-500" : "border-gray-500"}`}
+							className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newPalletTitle ? "border-green-500" : "border-gray-500"}`}
 							onPress={() => {
 								handleCreatePallet(newPalletTitle)
 							}}
@@ -292,11 +294,11 @@ export default function RowPage() {
 					/>
 
 
-					{isUpdatingRowById && <ActivityIndicator size="large" color="#84cc16" />}
+					{isUpdatingRowById && <ActivityIndicator size="large" color={colors500.lime} />}
 
 
 
-					<View className="flex flex-row justify-around text-white text-xl space-x-4" >
+					<View className="flex flex-row justify-around  space-x-4" >
 
 						<Pressable
 							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
@@ -346,11 +348,11 @@ export default function RowPage() {
 
 
 
-					{isDeletingRowById && <ActivityIndicator size="large" color="#ef4444" />}
+					{isDeletingRowById && <ActivityIndicator size="large" color={colors500.red} />}
 
 
 
-					<View className="flex flex-row justify-around text-white text-xl space-x-4" >
+					<View className="flex flex-row justify-around space-x-4" >
 
 						<Pressable
 							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "

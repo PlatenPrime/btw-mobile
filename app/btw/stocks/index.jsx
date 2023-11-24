@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList, ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useRowStore } from '.././../../stores/rowsStore';
 import { Link } from 'expo-router';
-
+import { colors500 } from '../../../constants/Colors'
 import { useGlobalStore } from "../../../stores/globalStore";
 
 
@@ -133,7 +133,7 @@ export default function Stocks() {
 						autoFocus={true}
 					/>
 
-					{isCreatingRow && <ActivityIndicator size="large" color="#10b981" />}
+					{isCreatingRow && <ActivityIndicator size="large" color={colors500.emerald} />}
 
 
 					<View className="flex flex-row justify-around text-white text-xl" >
@@ -164,7 +164,7 @@ export default function Stocks() {
 			</Modal>
 
 
-	
+
 
 
 			{/* ROW LIST */}

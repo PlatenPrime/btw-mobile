@@ -4,6 +4,7 @@ import { Stack } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Entypo } from '@expo/vector-icons'
 import { useGlobalStore } from '../../../stores/globalStore'
+import { colors500 } from "../../../constants/Colors"
 
 export default function Layout() {
 
@@ -39,7 +40,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerStyle: {
-						backgroundColor: "#f59e0b"
+						backgroundColor: colors500?.amber
 					}
 				}}
 			/>

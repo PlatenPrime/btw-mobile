@@ -5,12 +5,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../stores/globalStore";
+import { colors500 } from "../../../constants/Colors"
 
 export default function Layout() {
 
 	const router = useRouter()
 
 	const { showButtonGroup, toggleShowButtonGroup } = useGlobalStore()
+
 
 
 	return (
@@ -31,7 +33,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerStyle: {
-						backgroundColor: "#f97516"
+						backgroundColor: colors500?.orange
 					}
 				}}
 			/>
@@ -51,7 +53,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerStyle: {
-						backgroundColor: "#f97516"
+						backgroundColor: colors500?.orange
 					}
 				}}
 			/>
