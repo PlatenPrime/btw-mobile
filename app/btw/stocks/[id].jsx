@@ -20,6 +20,7 @@ export default function RowPage() {
 
 
 	const [row, setRow] = useState(null)
+	const [rowTitle, setRowTitle] = useState(row?.title)
 
 	const [isRowLoading, setIsRowLoading] = useState(false)
 	const [isUpdatingRowById, setIsUpdatingRowById] = useState(false)
@@ -31,6 +32,7 @@ export default function RowPage() {
 	const [showModalCreatePallet, setShowModalCreatePallet] = useState(false);
 
 	const [newPalletTitle, setNewPalletTitle] = useState("")
+	const [newRowTitle, setNewRowTitle] = useState("")
 
 
 	// EFFECTS
@@ -43,6 +45,7 @@ export default function RowPage() {
 			async function fetchRow() {
 				const row = await getRowById(id)
 				setRow(row)
+				setRowTitle(row?.title)
 			}
 
 			async function fetchRowPallets() {
@@ -94,6 +97,38 @@ export default function RowPage() {
 
 	}
 
+	async function handleUpdateRowById(newTitle) {
+
+		try {
+			setIsUpdatingRowById(true)
+			await updateRowById(row._id, newTitle);
+			setRowTitle(newTitle)
+		} catch (error) {
+			console.error('Ошибка при изменении ряда:', error);
+		} finally {
+			setIsUpdatingRowById(false)
+			setShowModalUpdateRow(false)
+
+		}
+
+	}
+
+
+
+	async function handleDeleteRowById() {
+		try {
+			setIsDeletingRowById(true)
+			await deleteRowById(row?._id);
+
+		} catch (error) {
+			alert.error('Ошибка при удалении ряда:', error);
+		} finally {
+			setIsDeletingRowById(false)
+			setShowModalDeleteRow(false)
+
+			router.back()
+		}
+	};
 
 
 
@@ -105,7 +140,7 @@ export default function RowPage() {
 		<ScreenContainer>
 			<Stack.Screen
 				options={{
-					headerTitle: () => <Text className="text-center text-2xl text-white p-3" >Ряд {row?.title}</Text>
+					headerTitle: () => <Text className="text-center text-2xl text-white p-3" >Ряд {rowTitle}</Text>
 				}}
 			/>
 
@@ -180,10 +215,8 @@ export default function RowPage() {
 
 			<Modal
 				animationType="slide"
-
 				visible={showModalCreatePallet}
 
-				className="bg-black "
 
 			>
 				<View
@@ -236,6 +269,117 @@ export default function RowPage() {
 
 			</Modal>
 
+			{/* MODAL UPDATE ROW */}
+
+			<Modal
+				animationType="slide"
+				visible={showModalUpdateRow}
+
+
+			>
+				<View
+					className="bg-black h-full justify-between p-4 "
+				>
+					<Text className="text-white text-3xl  text-center" >
+						Перейменування ряду {rowTitle}
+					</Text>
+
+					<TextInput
+						onChangeText={(text => setNewRowTitle(text))}
+						value={newRowTitle}
+						className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+						autoFocus={true}
+					/>
+
+
+					{isUpdatingRowById && <ActivityIndicator size="large" color="#84cc16" />}
+
+
+
+					<View className="flex flex-row justify-around text-white text-xl space-x-4" >
+
+						<Pressable
+							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							onPress={() => { setShowModalUpdateRow(false) }}>
+							<Text className=" text-white text-xl"   >
+								СКАСУВАТИ
+							</Text>
+						</Pressable>
+
+
+						<Pressable
+
+							className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
+							onPress={() => {
+								handleUpdateRowById(newRowTitle)
+							}}
+							disabled={!newRowTitle}
+						>
+							<Text className=" text-white text-xl" >
+								ЗМІНИТИ
+							</Text>
+						</Pressable>
+
+					</View>
+
+				</View>
+
+
+			</Modal>
+
+			{/* MODAL DELETE ROW */}
+
+
+			<Modal
+				animationType="slide"
+				visible={showModalDeleteRow}
+
+
+			>
+				<View
+					className="bg-black h-full justify-between p-4 "
+				>
+					<Text className="text-white text-3xl  text-center" >
+						Видалення ряду {rowTitle}
+					</Text>
+
+
+
+
+					{isDeletingRowById && <ActivityIndicator size="large" color="#ef4444" />}
+
+
+
+					<View className="flex flex-row justify-around text-white text-xl space-x-4" >
+
+						<Pressable
+							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							onPress={() => { setShowModalDeleteRow(false) }}>
+							<Text className=" text-white text-xl"   >
+								СКАСУВАТИ
+							</Text>
+						</Pressable>
+
+
+						<Pressable
+
+							className="w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500"
+							onPress={() => {
+								handleDeleteRowById()
+							}}
+
+						>
+							<Text className=" text-white text-xl" >
+								ВИДАЛИТИ
+							</Text>
+						</Pressable>
+
+					</View>
+
+				</View>
+
+
+			</Modal>
 
 
 
@@ -247,14 +391,18 @@ export default function RowPage() {
 				<ScrollView>
 					{pallets?.length > 0 ?
 
-						<View>
+						<View
+							className="space-y-4 p-2"
+						>
 							{pallets?.map((item) => <Link
 								key={item._id}
 								href={`/btw/pallets/${item._id}`}
-								className="border border-amber-500 rounded 
-					bg-amber-500/10
-					text-center text-xl text-white 
-					my-2 p-4 "
+								className="border-4 border-amber-500 rounded 
+					bg-amber-500/70
+					text-center text-2xl text-white  font-bold
+					 p-2
+					 shadow-2xl shadow-amber-500
+					 "
 							>
 								<Text >
 									{item.title}

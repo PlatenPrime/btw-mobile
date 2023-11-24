@@ -164,6 +164,7 @@ export default function Stocks() {
 			</Modal>
 
 
+	
 
 
 			{/* ROW LIST */}
@@ -193,7 +194,7 @@ export default function Stocks() {
 				bg-orange-500/70
 				text-center 
 				 text-2xl text-white font-bold
-				my-2 p-2 
+				 p-2 
 				shadow-2xl shadow-orange-500
 				"
 							>
