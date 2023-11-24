@@ -33,14 +33,26 @@ export default function Layout() {
 					headerStyle: {
 						backgroundColor: "#f97516"
 					}
-
-
 				}}
 			/>
 			<Stack.Screen
 				name="[id]"
 				options={{
-					headerTitle: "Ряд"
+					title: "Ряд",
+					headerRight: () => <TouchableOpacity
+						onPress={toggleShowButtonGroup}>
+						<Entypo name="dots-three-horizontal" size={24} color="white" />
+					</TouchableOpacity>,
+					headerTintColor: "white",
+					headerTitleAlign: "center",
+					headerTitleStyle: {
+						fontWeight: "bold",
+						fontSize: 36,
+						color: "white"
+					},
+					headerStyle: {
+						backgroundColor: "#f97516"
+					}
 				}}
 			/>
 

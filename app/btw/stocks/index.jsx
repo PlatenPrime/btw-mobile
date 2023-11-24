@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, Pressable, Modal, } from 'react-native';
+import { View, Text, Button, Pressable, Modal, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScreenContainer } from '../../../components';
-
+import { MaterialIcons } from '@expo/vector-icons';
 import { FlatList, ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import { useRowStore } from '.././../../stores/rowsStore';
 import { Link } from 'expo-router';
@@ -21,6 +21,7 @@ export default function Stocks() {
 
 
 	const [isRowsLoading, setIsRowsLoading] = useState(false)
+	const [isCreatingRow, setIsCreatingRow] = useState(false)
 	const [showModalCreateRow, setShowModalCreateRow] = useState(false)
 	const [newRowTitle, setNewRowTitle] = useState("")
 
@@ -45,7 +46,9 @@ export default function Stocks() {
 
 		setShowButtonGroup(false)
 
-
+		return () => {
+			setShowButtonGroup(false)
+		}
 
 
 	}, []);
@@ -55,12 +58,14 @@ export default function Stocks() {
 	async function handleCreateRow(rowTitle) {
 
 		try {
+			setIsCreatingRow(true)
 			await createRow(rowTitle);
 
 
 		} catch (error) {
 			alert('Ошибка при создании ряда:', error);
 		} finally {
+			setIsCreatingRow(false)
 			setShowModalCreateRow(false)
 
 		}
@@ -74,18 +79,25 @@ export default function Stocks() {
 		<ScreenContainer>
 
 			{showButtonGroup && <View
-				className="p-4"
+				className="p-4 space-y-2 bg-black/50"
 
 			>
 
 
 				<Pressable
-					className=" justify-center items-center 
+					className="flex  justify-between items-center 
 					py-2 rounded-lg
-					border border-emerald-500"
+					border border-emerald-500
+				
+					"
 
 					onPress={() => { setShowModalCreateRow(true) }}>
-					<Text className="text-white" >Створити ряд</Text>
+
+					<Text className="text-2xl text-emerald-300 items-center justify-center " >
+
+						Створити ряд
+
+					</Text>
 				</Pressable>
 
 
@@ -93,48 +105,77 @@ export default function Stocks() {
 
 
 
+			{/* MODAL CREATE ROW */}
+
+
 			<Modal
 				animationType="slide"
 
 				visible={showModalCreateRow}
-				onRequestClose={() => {
-					Alert.alert('Modal has been closed.');
-					setShowModalCreateRow(!showModalCreateRow);
-				}}
-				className="justify-center items-center"
-				
+
+				className="bg-black "
+
+			>
+
+				<View
+					className="bg-black h-full justify-between p-4 "
 				>
 
 
-				<TextInput
-					onChangeText={(text => setNewRowTitle(text))}
-					value={newRowTitle}
-					className="h-16 bg-gray-700 text-center text-2xl text-white"
-					autoFocus={true}
-				/>
+					<Text className="text-white text-3xl  text-center" >Створення ряду</Text>
 
 
-				<View className="flex flex-row justify-between" >
-					<Pressable
-						className="p-8 bg-green-500/50"
-						onPress={() => { setShowModalCreateRow(false) }}>
-						<Text  >CREATE ROW</Text>
-					</Pressable>
-					<Pressable
-						className="p-8 bg-red-500/50"
-						onPress={() => { setShowModalCreateRow(false) }}>
-						<Text  >CLOSE MODAL</Text>
-					</Pressable>
+
+					<TextInput
+						onChangeText={(text => setNewRowTitle(text))}
+						value={newRowTitle}
+						className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+						autoFocus={true}
+					/>
+
+					{isCreatingRow && <ActivityIndicator size="large" color="#10b981" />}
+
+
+					<View className="flex flex-row justify-around text-white text-xl" >
+						<Pressable
+							className="p-4 border border-red-500 flex items-center justify-center rounded-2xl"
+							onPress={() => { setShowModalCreateRow(false) }}>
+							<Text className=" text-white text-xl"   >СКАСУВАТИ</Text>
+						</Pressable>
+						<Pressable
+
+							className={`p-4 flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
+
+
+							onPress={() => {
+								handleCreateRow(newRowTitle)
+
+							}}
+							disabled={!newRowTitle}
+						>
+
+							<Text className=" text-white text-xl" >СТВОРИТИ</Text>
+						</Pressable>
+
+					</View>
+
 				</View>
-
-
 
 			</Modal>
 
 
 
 
-			{isRowsLoading ? <Text className="text-3xl text-white text-center" >Загрузка...</Text> :
+			{/* ROW LIST */}
+
+
+
+
+
+
+			{isRowsLoading ? <Text className="text-3xl text-white text-center" >
+				<ActivityIndicator size="large" color="#f97316" />
+			</Text> :
 
 
 				<ScrollView>
