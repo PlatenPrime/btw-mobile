@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import axios from '../../../utils/axios';
+import axios from '../utils/axios';
 
-const usePosesStore = create((set) => ({
+export const usePosesStore = create((set) => ({
 	poses: [],
 
 	posesWithArtikul: [],
@@ -130,4 +130,4 @@ const usePosesStore = create((set) => ({
 
 }));
 
-export default usePosesStore;
+

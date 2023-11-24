@@ -147,4 +147,4 @@ export const usePalletStore = create((set) => ({
 
 
 
-export default usePalletStore;
+

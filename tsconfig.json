@@ -8,6 +8,18 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".expo/types/**/*.ts",
-		"expo-env.d.ts"
-, "app/profile.jsx", "app/btw/stocks/index.jsx", "app/btw/stocks/_layout.jsx", "app/btw/stocks/[id].jsx", "app/btw/_layout.jsx", "app/btw/index.jsx", "app/_layout.jsx", "app/[missing].jsx", "app/index.jsx", "components/common/ScreenContainer.jsx"	]
+		"expo-env.d.ts",
+		"app/profile.jsx",
+		"app/btw/stocks/index.jsx",
+		"app/btw/stocks/_layout.jsx",
+		"app/btw/stocks/[id].jsx",
+		"app/btw/_layout.jsx",
+		"app/btw/index.jsx",
+		"app/_layout.jsx",
+		"app/[missing].jsx",
+		"app/index.jsx",
+		"components/common/ScreenContainer.jsx",
+		"app/btw/pallets/[id].jsx",
+		"app/btw/pallets/index.jsx"
+, "app/btw/pallets/_layout.jsx"	]
 }
