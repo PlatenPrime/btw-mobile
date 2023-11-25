@@ -7,6 +7,10 @@ import { ScreenContainer } from '../../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useGlobalStore } from '../../../stores/globalStore'
 import { colors500 } from '../../../constants/Colors'
+import ModalCreatePallet from "./components/modals/modalCreatePallet"
+
+
+
 
 export default function RowPage() {
 
@@ -215,61 +219,18 @@ export default function RowPage() {
 			{/* MODAL CREATE PALLET */}
 
 
-			<Modal
-				animationType="slide"
-				visible={showModalCreatePallet}
+			<ModalCreatePallet
+				showModalCreatePallet={showModalCreatePallet}
+				setShowModalCreatePallet={setShowModalCreatePallet}
+				row={row}
+				newPalletTitle={newPalletTitle}
+				setNewPalletTitle={setNewPalletTitle}
+				isCreatingPallet={isCreatingPallet}
+				handleCreatePallet={handleCreatePallet}
 
 
-			>
-				<View
-					className="bg-black h-full justify-between p-4 "
-				>
-					<Text className="text-white text-3xl  text-center" >
-						Створення палети для ряду {row?.title}
-					</Text>
+			/>
 
-					<TextInput
-						onChangeText={(text => setNewPalletTitle(text))}
-						value={newPalletTitle}
-						className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-						autoFocus={true}
-					/>
-
-
-					{isCreatingPallet && <ActivityIndicator size="large" color={colors500.emerald} />}
-
-
-
-					<View className="flex flex-row justify-around  space-x-4" >
-
-						<Pressable
-							className=" w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl"
-							onPress={() => { setShowModalCreatePallet(false) }}>
-							<Text className=" text-white text-xl"   >
-								СКАСУВАТИ
-							</Text>
-						</Pressable>
-
-
-						<Pressable
-
-							className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newPalletTitle ? "border-green-500" : "border-gray-500"}`}
-							onPress={() => {
-								handleCreatePallet(newPalletTitle)
-							}}
-							disabled={!newPalletTitle}
-						>
-							<Text className=" text-white text-xl" >
-								СТВОРИТИ
-							</Text>
-						</Pressable>
-
-					</View>
-
-				</View>
-
-
-			</Modal>
 
 			{/* MODAL UPDATE ROW */}
 

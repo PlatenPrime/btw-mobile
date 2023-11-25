@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, Pressable, Modal, ActivityIndicator } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, Pressable, Modal, ActivityIndicator } from 'react-native';
 import { ScreenContainer } from '../../../components';
-import { MaterialIcons } from '@expo/vector-icons';
-import { FlatList, ScrollView, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { useRowStore } from '.././../../stores/rowsStore';
 import { Link } from 'expo-router';
 import { colors500 } from '../../../constants/Colors'
 import { useGlobalStore } from "../../../stores/globalStore";
+import ModalCreateRow from "./components/modals/modalCreateRow"
 
 
 
@@ -108,68 +107,18 @@ export default function Stocks() {
 			{/* MODAL CREATE ROW */}
 
 
-			<Modal
-				animationType="slide"
+			<ModalCreateRow
 
-				visible={showModalCreateRow}
-
-				className="bg-black "
-
-			>
-
-				<View
-					className="bg-black h-full justify-between p-4 "
-				>
-
-
-					<Text className="text-white text-3xl  text-center" >Створення ряду</Text>
-
-
-
-					<TextInput
-						onChangeText={(text => setNewRowTitle(text))}
-						value={newRowTitle}
-						className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-						autoFocus={true}
-					/>
-
-					{isCreatingRow && <ActivityIndicator size="large" color={colors500.emerald} />}
-
-
-					<View className="flex flex-row justify-around text-white text-xl" >
-						<Pressable
-							className="p-4 border border-red-500 flex items-center justify-center rounded-2xl"
-							onPress={() => { setShowModalCreateRow(false) }}>
-							<Text className=" text-white text-xl"   >СКАСУВАТИ</Text>
-						</Pressable>
-						<Pressable
-
-							className={`p-4 flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
-
-
-							onPress={() => {
-								handleCreateRow(newRowTitle)
-
-							}}
-							disabled={!newRowTitle}
-						>
-
-							<Text className=" text-white text-xl" >СТВОРИТИ</Text>
-						</Pressable>
-
-					</View>
-
-				</View>
-
-			</Modal>
-
-
-
+				showModalCreateRow={showModalCreateRow}
+				setShowModalCreateRow={setShowModalCreateRow}
+				newRowTitle={newRowTitle}
+				setNewRowTitle={setNewRowTitle}
+				isCreatingRow={isCreatingRow}
+				handleCreateRow={handleCreateRow}
+			/>
 
 
 			{/* ROW LIST */}
-
-
 
 
 
