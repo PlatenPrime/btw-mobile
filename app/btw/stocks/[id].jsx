@@ -8,6 +8,8 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { useGlobalStore } from '../../../stores/globalStore'
 import { colors500 } from '../../../constants/Colors'
 import ModalCreatePallet from "./components/modals/modalCreatePallet"
+import ModalUpdateRow from "./components/modals/modalUpdateRow"
+import ModalDeleteRow from "./components/modals/modalDeleteRow";
 
 
 
@@ -204,11 +206,8 @@ export default function RowPage() {
 					<Text className="text-2xl text-red-300 items-center justify-center " >
 
 						Видалити ряд
-
 					</Text>
 				</Pressable>
-
-
 			</View>
 			}
 
@@ -227,126 +226,32 @@ export default function RowPage() {
 				setNewPalletTitle={setNewPalletTitle}
 				isCreatingPallet={isCreatingPallet}
 				handleCreatePallet={handleCreatePallet}
-
-
 			/>
-
 
 			{/* MODAL UPDATE ROW */}
 
-			<Modal
-				animationType="slide"
-				visible={showModalUpdateRow}
-
-
-			>
-				<View
-					className="bg-black h-full justify-between p-4 "
-				>
-					<Text className="text-white text-3xl  text-center" >
-						Перейменування ряду {rowTitle}
-					</Text>
-
-					<TextInput
-						onChangeText={(text => setNewRowTitle(text))}
-						value={newRowTitle}
-						className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-						autoFocus={true}
-					/>
-
-
-					{isUpdatingRowById && <ActivityIndicator size="large" color={colors500.lime} />}
-
-
-
-					<View className="flex flex-row justify-around  space-x-4" >
-
-						<Pressable
-							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
-							onPress={() => { setShowModalUpdateRow(false) }}>
-							<Text className=" text-white text-xl"   >
-								СКАСУВАТИ
-							</Text>
-						</Pressable>
-
-
-						<Pressable
-
-							className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
-							onPress={() => {
-								handleUpdateRowById(newRowTitle)
-							}}
-							disabled={!newRowTitle}
-						>
-							<Text className=" text-white text-xl" >
-								ЗМІНИТИ
-							</Text>
-						</Pressable>
-
-					</View>
-
-				</View>
-
-
-			</Modal>
+			<ModalUpdateRow
+				showModalUpdateRow={showModalUpdateRow}
+				setShowModalUpdateRow={setShowModalUpdateRow}
+				rowTitle={rowTitle}
+				newRowTitle={newRowTitle}
+				setNewRowTitle={setNewRowTitle}
+				isUpdatingRowById={isUpdatingRowById}
+				handleUpdateRowById={handleUpdateRowById}
+			/>
 
 			{/* MODAL DELETE ROW */}
 
 
-			<Modal
-				animationType="slide"
-				visible={showModalDeleteRow}
+			<ModalDeleteRow
+				showModalDeleteRow={showModalDeleteRow}
+				setShowModalDeleteRow={setShowModalDeleteRow}
+				rowTitle={rowTitle}
+				isDeletingRowById={isDeletingRowById}
+				handleDeleteRowById={handleDeleteRowById}
+			/>
 
-
-			>
-				<View
-					className="bg-black h-full justify-between p-4 "
-				>
-					<Text className="text-white text-3xl  text-center" >
-						Видалення ряду {rowTitle}
-					</Text>
-
-
-
-
-					{isDeletingRowById && <ActivityIndicator size="large" color={colors500.red} />}
-
-
-
-					<View className="flex flex-row justify-around space-x-4" >
-
-						<Pressable
-							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
-							onPress={() => { setShowModalDeleteRow(false) }}>
-							<Text className=" text-white text-xl"   >
-								СКАСУВАТИ
-							</Text>
-						</Pressable>
-
-
-						<Pressable
-
-							className="w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500"
-							onPress={() => {
-								handleDeleteRowById()
-							}}
-
-						>
-							<Text className=" text-white text-xl" >
-								ВИДАЛИТИ
-							</Text>
-						</Pressable>
-
-					</View>
-
-				</View>
-
-
-			</Modal>
-
-
-
-
+			
 			{/* PALLETS */}
 
 			{isRowLoading ? <ActivityIndicator size="large" color="#f59e0b" /> :
