@@ -87,7 +87,7 @@ export default function PalletPage() {
 			/>
 
 
-			{isLoadingArtsCurrent ? <ActivityIndicator /> : <Text className="text-white text-3xl">{artsCurrent?.length}</Text>}
+			
 
 
 
