@@ -2,16 +2,17 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { Stack, useRouter } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-
 import { Entypo } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../stores/globalStore";
 import { colors500 } from "../../../constants/Colors"
 
 export default function Layout() {
 
+
 	const router = useRouter()
 
 	const { showButtonGroup, toggleShowButtonGroup } = useGlobalStore()
+
 
 
 
@@ -20,7 +21,7 @@ export default function Layout() {
 			<Stack.Screen
 				name="index"
 				options={{
-					title: "Ряди",
+					title: "Артикули",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
 						<Entypo name="dots-three-horizontal" size={24} color="white" />
@@ -33,14 +34,14 @@ export default function Layout() {
 						color: "white"
 					},
 					headerStyle: {
-						backgroundColor: colors500?.orange
+						backgroundColor: colors500?.sky
 					}
 				}}
 			/>
 			<Stack.Screen
 				name="[id]"
 				options={{
-					title: "Ряд",
+					title: "Артикул",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
 						<Entypo name="dots-three-horizontal" size={24} color="white" />
@@ -53,16 +54,10 @@ export default function Layout() {
 						color: "white"
 					},
 					headerStyle: {
-						backgroundColor: colors500?.orange
+						backgroundColor: colors500?.sky
 					}
 				}}
 			/>
-
-
-
-
-
-
 		</Stack>
 	)
 }

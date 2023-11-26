@@ -57,21 +57,7 @@ export default function Page() {
 					</TouchableOpacity>
 				</Link>
 
-				<Link
-					href="/btw/pallets/"
-					asChild
-					className=" flex justify-center py-8 bg-amber-500 rounded "
-				>
-					<TouchableOpacity
-						className="  "
-					>
-						<Text
-							className="text-center text-3xl text-white"
-						>
-							Палети
-						</Text>
-					</TouchableOpacity>
-				</Link>
+
 			</View>
 		</ScreenContainer >
 

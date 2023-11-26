@@ -24,6 +24,7 @@ export default function Layout() {
 				options={
 					{
 						title: "Артикули",
+						headerShown: false,
 					}
 				}
 			/>
@@ -32,6 +33,7 @@ export default function Layout() {
 				options={
 					{
 						title: "Запити",
+						headerShown: false,
 					}
 				}
 			/>
