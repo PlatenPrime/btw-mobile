@@ -30,7 +30,9 @@ export default function Stocks() {
 		async function fetchRows() {
 			try {
 				setIsRowsLoading(true)
-				await getAllRows();
+				const allRows = await getAllRows();
+				console.log(allRows);
+
 
 
 			} catch (error) {

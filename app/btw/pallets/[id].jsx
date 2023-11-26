@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Link, Stack, useLocalSearchParams } from 'expo-router'
 import { ScreenContainer } from '../../../components'
@@ -6,10 +6,15 @@ import { usePalletStore } from '../../../stores/palletsStore'
 import { usePosesStore } from '../../../stores/posesStore'
 import { useGlobalStore } from '../../../stores/globalStore'
 import { ScrollView } from 'react-native-gesture-handler'
+import { useGetArtsCurrent } from "../../../hooks/useGetArtsCurrent"
 
 export default function PalletPage() {
 
 	const { id } = useLocalSearchParams()
+
+	const { artsCurrent, isLoadingArtsCurrent, errorLoadingArts } = useGetArtsCurrent()
+	
+
 
 
 	const { getPalletById } = usePalletStore();
@@ -80,6 +85,11 @@ export default function PalletPage() {
 					</Text>
 				}}
 			/>
+
+
+			{isLoadingArtsCurrent ? <ActivityIndicator /> : <Text className="text-white text-3xl">{artsCurrent?.length}</Text>}
+
+
 
 
 			{/* POSES */}
