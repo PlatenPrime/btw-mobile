@@ -15,8 +15,8 @@ export default function _layout() {
 	return (
 		<Tabs
 		screenOptions={{
-			tabBarStyle: { backgroundColor: '#fff' },
-			tabBarActiveBackgroundColor: "#999",
+			tabBarStyle: { backgroundColor: 'black' },
+			tabBarActiveBackgroundColor: "#222",
 			tabBarActiveTintColor: "#bbb"
 		  }}
 		>
@@ -28,7 +28,8 @@ export default function _layout() {
 						headerShown: false,
 						headerTitle: "Головна",
 						tabBarLabel: "Головна",
-						tabBarIcon: () => <AntDesign name="home" size={24} color="black" />
+						tabBarShowLabel: false,
+						tabBarIcon: () => <AntDesign name="home" size={24} color="white" />
 					}
 				}
 			/>
@@ -39,8 +40,9 @@ export default function _layout() {
 					{
 						headerShown: false,
 						headerTitle: "BTW",
+						tabBarShowLabel: false,
 						tabBarLabel: "",
-						tabBarIcon: () => <SimpleLineIcons name="menu" size={24} color="black" />
+						tabBarIcon: () => <SimpleLineIcons name="menu" size={24} color="white" />
 					}
 				}
 			/>
@@ -49,9 +51,11 @@ export default function _layout() {
 				name="profile"
 				options={
 					{
+						headerShown: false,
 						headerTitle: "Профіль",
 						tabBarLabel: "Профіль",
-						tabBarIcon: () => <Ionicons name="person-outline" size={24} color="black" />
+						tabBarShowLabel: false,
+						tabBarIcon: () => <Ionicons name="person-outline" size={24} color="white" />
 					}
 				}
 			/>

@@ -8,13 +8,13 @@ export default function Page() {
 	return (
 		<ScreenContainer>
 			<View
-				className="flex justify-center h-full space-y-8 p-2"
+				className="flex justify-start h-full space-y-4 p-4"
 			>
 
 				<Link
 					href="/btw/stocks/"
 					asChild
-					className=" flex justify-center py-8 bg-orange-500 rounded"
+					className=" flex justify-center py-8 bg-orange-500 rounded shadow-2xl shadow-orange-500"
 				>
 
 					<Text
@@ -44,7 +44,7 @@ export default function Page() {
 				<Link
 					href="/btw/asks/"
 					asChild
-					className=" flex justify-center py-8 bg-yellow-500 rounded "
+					className=" flex justify-center py-8 bg-indigo-500 rounded "
 				>
 					<TouchableOpacity
 						className="  "
