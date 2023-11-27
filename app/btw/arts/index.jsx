@@ -1,15 +1,26 @@
-import { View, Text, ActivityIndicator, Pressable, Alert } from 'react-native'
+import { View, Text, ActivityIndicator, Pressable, Alert, Image, TouchableOpacity } from 'react-native'
+import { styled } from 'nativewind';
 import React, { useState } from 'react'
 import { ScreenContainer } from '../../../components'
-import { Link } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { useGetArtsCurrent } from '../../../hooks/useGetArtsCurrent'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
+import { MagnifyingGlassIcon } from "react-native-heroicons/outline"
+
 
 export default function ArtsPage() {
 
+	const StyledView = styled(View)
+	const StyledText = styled(Text)
+	const StyledImage = styled(Image)
+
+
+	const router = useRouter()
+
+
 	const { artsCurrent, isLoadingArtsCurrent, errorLoadingArts } = useGetArtsCurrent()
 
-	const step = 10
+	const step = 30
 
 	const [searchValue, setSearchValue] = useState("")
 	const [filteredArts, setFilteredArts] = useState([]);
@@ -41,106 +52,103 @@ export default function ArtsPage() {
 	return (
 		<ScreenContainer>
 
-			<View
-				className="space-y-2"
+			<ScrollView
+				// style={{ height: "7%" }}
+				className="mx-4 space-y-4 "
 			>
+				{/* {isLoadingArtsCurrent ? <ActivityIndicator /> : <Text className="text-white text-xl text-center"> {artsCurrent?.length}</Text>} */}
 
-				{isLoadingArtsCurrent ? <ActivityIndicator /> : <Text className="text-white text-xl text-center"> Артикулів: {artsCurrent?.length}</Text>}
+
 
 
 
 
 				<View
-					className="flex space-y-2"
+					className="flex-row justify-end items-center rounded-full bg-gray-500 mt-4 "
 				>
 
-					<View
-						className=""
+
+
+
+					<TextInput
+						placeholder='Введи артикул або назву'
+						placeholderTextColor={"lightgray"}
+						className="pl-6 h-10 flex-1 text-base text-white  "
+						onChangeText={(text => setSearchValue(text))}
+						value={searchValue}
+
+						autoFocus={true}
+					/>
+
+
+
+					<Pressable
+						className="rounded-full p-3 m-1 bg-sky-400"
+						onPress={handleFilterArts}
 					>
-
-						<TextInput
-							onChangeText={(text => setSearchValue(text))}
-							value={searchValue}
-							className="h-16 min-w-min  bg-sky-900/60 focus:bg-sky-900/90 text-center font-bold text-2xl text-white rounded-full italic border focus:border-white"
-							autoFocus={true}
-						/>
-					</View>
-
-					<View
-						className="flex items-center"
-					>
-
-						<Pressable
-							className="w-1/2 "
-							onPress={handleFilterArts}
-						>
-							<Text className="text-2xl text-white text-center p-2 border border-sky-500 rounded-3xl " >Пошук</Text>
-						</Pressable>
-					</View>
-
+						<Text  ><MagnifyingGlassIcon size={25} color="white" /></Text>
+					</Pressable>
 				</View>
 
 
 
 
-				<ScrollView>
+				<ScrollView
+					className="space-y-4"
+				>
 
 
 					{filteredArts?.length === 0 || filteredArts?.length === artsCurrent?.length ?
 						<View
-							className="flex flex-wrap justify-between p-2 border  border-sky-500 rounded"
+							className="flex-1 flex justify-between p-2 border  border-sky-500 rounded"
+
 						>
 
-							<Text className="text-white">
-								Всього: {artsCurrent?.length}
-							</Text>
-
-							<Text
-								className="text-xl text-white"
+							<View
+								className="flex-row justify-between items-center"
 							>
-								{step * page - step + 1} - {step * page < artsCurrent?.length ? step * page : artsCurrent?.length}
-							</Text>
 
+								<Text className="text-white">
+									Всього: {artsCurrent?.length}
+								</Text>
 
-
-
-
-
-
-
-							<ScrollView
-								horizontal={true}
-
-							>
-								<View
-									className="space-x-3 flex flex-row flex-wrap items-center justify-center"
+								<Text
+									className="text-xl text-white"
 								>
-
-									<Pressable onPress={() => setPage(1)} className="border border-sky-500 rounded-full p-1" disabled={page === 1}>
-										<Text className="text-white text-xl text-center">Початок</Text>
-									</Pressable>
-
-									<Pressable onPress={() => setPage((prev) => prev - 1)} className="border border-sky-500 rounded-full p-1" disabled={page === 1}>
-										<Text className="text-white text-xl ">Назад</Text>
-									</Pressable>
-
-									<Text className="text-white text-xl " >
-										Сторінка: {page}
-									</Text>
-
-									<Pressable onPress={() => setPage((prev) => prev + 1)} className="border border-sky-500 rounded-full p-1" disabled={artsCurrent?.length / step / page < 1}>
-										<Text className="text-white text-xl ">Далі</Text>
-
-									</Pressable>
-
-									<Pressable onPress={() => setPage(Math.ceil(artsCurrent?.length / step))} className="border border-sky-500 rounded-full p-1" disabled={artsCurrent?.length / step / page < 1}>
-										<Text className="text-white text-xl ">Кінець</Text>
-
-									</Pressable>
+									{step * page - step + 1} - {step * page < artsCurrent?.length ? step * page : artsCurrent?.length}
+								</Text>
+							</View>
 
 
-								</View>
-							</ScrollView>
+							<View
+								className="space-x-3 flex flex-row items-center justify-center overflow-auto "
+							>
+
+								<Pressable onPress={() => setPage(1)} className="border border-sky-500 rounded-full p-1" disabled={page === 1}>
+									<Text className="text-white text-base text-center">Початок</Text>
+								</Pressable>
+
+								<Pressable onPress={() => setPage((prev) => prev - 1)} className="border border-sky-500 rounded-full p-1" disabled={page === 1}>
+									<Text className="text-white text-base ">Назад</Text>
+								</Pressable>
+
+								<Text className="text-white text-base " >
+									Сторінка: {page}
+								</Text>
+
+								<Pressable onPress={() => setPage((prev) => prev + 1)} className="border border-sky-500 rounded-full p-1" disabled={artsCurrent?.length / step / page < 1}>
+									<Text className="text-white text-base ">Далі</Text>
+
+								</Pressable>
+
+								<Pressable onPress={() => setPage(Math.ceil(artsCurrent?.length / step))} className="border border-sky-500 rounded-full p-1" disabled={artsCurrent?.length / step / page < 1}>
+									<Text className="text-white text-base ">Кінець</Text>
+
+								</Pressable>
+
+
+							</View>
+
 
 						</View>
 
@@ -213,22 +221,67 @@ export default function ArtsPage() {
 					{isLoadingArtsCurrent ?
 						<ActivityIndicator />
 						:
-						<View className="space-y-1">
+						<StyledView className="space-y-2 flex-1  justify-center">
 							{filteredArts?.length === 0
 								?
-								artsCurrent?.slice(step * page - step, step * page).map((art) => <View key={art._id}>
-									<Text className="text-white">{art.nameukr}</Text>
+								artsCurrent?.slice(step * page - step, step * page).map((art) =>
+
+									<View
+										key={art._id}
+										className="flex-row space-x-2 bg-sky-500/20 w-full"
+									>
 
 
-								</View>)
+										<StyledImage
+											style={{
+												height: 50,
+												width: 50,
+												resizeMode: "cover"
+											}}
+											className=""
+											source={{ uri: "https://sharik.ua/images/elements_big/1101-0001_m1.jpg" }}
+										/>
+
+
+
+
+
+										<TouchableOpacity
+											className="flex-1"
+											onPress={() => router.push(`/btw/arts/${art._id}/`)}
+										>
+											<Text
+												className="text-white text-xl  "
+
+
+												numberOfLines={2}
+											>
+												{art.nameukr}
+											</Text>
+										</TouchableOpacity>
+
+
+									</View>
+
+
+								)
 
 								:
-								filteredArts?.slice(step * page - step, step * page).map((art) => <View key={art._id}>
-									<Text className="text-white">{art.nameukr}</Text>
+								filteredArts?.slice(step * page - step, step * page).map((art) =>
+									<Link
+										key={art._id}
+										href={`/btw/arts/${art._id}/`}
+									>
 
-								</View>)}
+										<Text className="text-white text-xl bg-green-500">
+											{art.nameukr}
+										</Text>
 
-						</View>
+
+									</Link>
+								)}
+
+						</StyledView>
 
 					}
 
@@ -238,7 +291,7 @@ export default function ArtsPage() {
 
 
 
-			</View>
-		</ScreenContainer>
+			</ScrollView>
+		</ScreenContainer >
 	)
 }
