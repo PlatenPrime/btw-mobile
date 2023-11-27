@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, Pressable, Alert, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ActivityIndicator, Pressable, Alert, Image, TouchableOpacity, RefreshControl } from 'react-native'
 import { styled } from 'nativewind';
 import React, { useState } from 'react'
 import { ScreenContainer } from '../../../components'
@@ -21,11 +21,22 @@ export default function ArtsPage() {
 
 	const { artsCurrent, isLoadingArtsCurrent, errorLoadingArts } = useGetArtsCurrent()
 
-	const step = 30
+	const step = 10
 
 	const [searchValue, setSearchValue] = useState("")
 	const [filteredArts, setFilteredArts] = useState([]);
 	const [page, setPage] = useState(1);
+
+
+
+	const [refreshing, setRefreshing] = useState(false);
+
+	const onRefresh = React.useCallback(() => {
+		setRefreshing(true);
+		setTimeout(() => {
+			setRefreshing(false);
+		}, 2000);
+	}, []);
 
 
 
@@ -55,10 +66,10 @@ export default function ArtsPage() {
 
 			<ScrollView
 				className=" space-y-4 px-4"
+				refreshControl={
+					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+				}
 			>
-				{/* {isLoadingArtsCurrent ? <ActivityIndicator /> : <Text className="text-white text-xl text-center"> {artsCurrent?.length}</Text>} */}
-
-
 
 
 
@@ -108,12 +119,12 @@ export default function ArtsPage() {
 									className="flex-row justify-between items-center"
 								>
 
-									<Text className="text-white text-base">
+									<Text className="text-white text-xl">
 										Всього: {artsCurrent?.length}
 									</Text>
 
 									<Text
-										className="text-xl text-white"
+										className="text-xl text-white bg-sky-500 p-1 rounded-xl"
 									>
 										{step * page - step + 1} - {step * page < artsCurrent?.length ? step * page : artsCurrent?.length}
 									</Text>
@@ -124,27 +135,44 @@ export default function ArtsPage() {
 									className="space-x-3 flex flex-row items-center justify-between overflow-auto "
 								>
 
-									<Pressable onPress={() => setPage(1)} className=" rounded-full p-1" disabled={page === 1}>
-										<Text  ><ChevronDoubleLeftIcon size={25} color="white" /></Text>
-									</Pressable>
+									<TouchableOpacity onPress={() => setPage(1)} className=" rounded-full p-1" disabled={page === 1}>
+										<Text  >
+											<ChevronDoubleLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+										</Text>
+									</TouchableOpacity>
 
-									<Pressable onPress={() => setPage((prev) => prev - 1)} className=" rounded-full p-1" disabled={page === 1}>
-										<Text  ><ChevronLeftIcon size={25} color="white" /></Text>
-									</Pressable>
+									<TouchableOpacity
+										onPress={() => setPage((prev) => prev - 1)}
+										className=" rounded-full p-1"
+										disabled={page === 1}>
+										<Text  >
+											<ChevronLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+										</Text>
+									</TouchableOpacity>
 
 									<Text className="text-white text-base " >
 										Сторінка: {page}
 									</Text>
 
-									<Pressable onPress={() => setPage((prev) => prev + 1)} className=" rounded-full p-1" disabled={artsCurrent?.length / step / page < 1}>
-										<Text  ><ChevronRightIcon size={25} color="white" /></Text>
+									<TouchableOpacity
+										onPress={() => setPage((prev) => prev + 1)}
+										className=" rounded-full p-1"
+										disabled={artsCurrent?.length / step / page < 1}>
+										<Text  >
+											<ChevronRightIcon size={25} color={`${artsCurrent?.length / step / page < 1 ? "gray" : "white"}`} />
+										</Text>
 
-									</Pressable>
+									</TouchableOpacity>
 
-									<Pressable onPress={() => setPage(Math.ceil(artsCurrent?.length / step))} className=" rounded-full p-1" disabled={artsCurrent?.length / step / page < 1}>
-										<Text  ><ChevronDoubleRightIcon size={25} color="white" /></Text>
+									<TouchableOpacity
+										onPress={() => setPage(Math.ceil(artsCurrent?.length / step))}
+										className=" rounded-full p-1"
+										disabled={artsCurrent?.length / step / page < 1}>
+										<Text  >
+											<ChevronDoubleRightIcon size={25} color={`${artsCurrent?.length / step / page < 1 ? "gray" : "white"}`} />
+										</Text>
 
-									</Pressable>
+									</TouchableOpacity>
 
 
 								</View>
@@ -155,55 +183,74 @@ export default function ArtsPage() {
 							:
 
 							<View
-								className="flex flex-wrap justify-between p-2 border  border-sky-500 rounded bg-sky-500/20"
+								className="flex-1 flex justify-between p-2 space-y-4 rounded"
 							>
 
 
 
-
-								<Text
-									className="text-white">
-
-									Знайдено: {filteredArts?.length}
-								</Text>
-
-
-
-								<Text
-									className="text-xl text-white"
-
+								<View
+									className="flex-row justify-between items-center"
 								>
-									{step * page - step + 1} - {step * page < filteredArts?.length ? step * page : filteredArts?.length}
-								</Text>
 
+									<Text className="text-white text-xl">
+										Знайдено: {filteredArts?.length}
+									</Text>
+
+									<Text
+										className="text-xl text-white bg-sky-500 p-1 rounded-xl"
+									>
+										{step * page - step + 1} - {step * page < filteredArts?.length ? step * page : filteredArts?.length}
+									</Text>
+								</View>
 
 
 								<View
-									className="space-x-3 flex flex-wrap"
+									className="space-x-3 flex flex-row items-center justify-between overflow-auto "
 								>
 
-									<Pressable onPress={() => setPage(1)} className="indigo-b " disabled={page === 1}>
-										<Text className="text-white">Початок</Text>
-									</Pressable >
+									<TouchableOpacity
+										onPress={() => setPage(1)}
+										className=" rounded-full p-1"
+										disabled={page === 1}>
+										<Text  >
+											<ChevronDoubleLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+										</Text>
+									</TouchableOpacity>
 
-									<Pressable onPress={() => setPage((prev) => prev - 1)} className="indigo-b" disabled={page === 1}>
-										<Text className="text-white">Назад</Text>
-									</Pressable >
+									<TouchableOpacity
+										onPress={() => setPage((prev) => prev - 1)}
+										className=" rounded-full p-1"
+										disabled={page === 1}>
+										<Text  >
+											<ChevronLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+										</Text>
+									</TouchableOpacity>
 
-									<Text className="text-white" >
+									<Text
+										className="text-white text-base " >
 										Сторінка: {page}
 									</Text>
 
+									<TouchableOpacity
+										onPress={() => setPage((prev) => prev + 1)}
+										className=" rounded-full p-1"
+										disabled={filteredArts?.length / step / page < 1}>
+										<Text  >
+											<ChevronRightIcon size={25} color={`${filteredArts?.length / step / page < 1 ? "gray" : "white"}`} />
+										</Text>
 
+									</TouchableOpacity>
 
-									<Pressable onPress={() => setPage((prev) => prev + 1)} className="indigo-b" disabled={filteredArts?.length / step / page < 1}>
-										<Text className="text-white">Далі</Text>
-									</Pressable >
+									<TouchableOpacity
+										onPress={() => setPage(Math.ceil(filteredArts?.length / step))}
+										className=" rounded-full p-1"
+										disabled={filteredArts?.length / step / page < 1}>
+										<Text  >
+											<ChevronDoubleRightIcon size={25} color={`${filteredArts?.length / step / page < 1 ? "gray" : "white"}`} />
+										</Text>
 
-									<Pressable onPress={() => setPage(Math.ceil(filteredArts?.length / step))} className="indigo-b" disabled={filteredArts?.length / step / page < 1}>
-										<Text className="text-white">Кінець</Text>
+									</TouchableOpacity>
 
-									</Pressable>
 
 								</View>
 
@@ -228,20 +275,20 @@ export default function ArtsPage() {
 
 										<View
 											key={art._id}
-											className="flex-row space-x-2 bg-sky-500/20 border border-sky-500 w-full"
+											className="flex-row space-x-2 bg-sky-500/20 border border-sky-500 w-full rounded-xl"
 										>
 
 
 											<View
-												className="justify-center bg-white"
+												className="justify-center bg-white rounded-xl"
 											>
 												<StyledImage
 													style={{
-														height: 50,
-														width: 50,
+														height: 100,
+														width: 100,
 														resizeMode: "contain"
 													}}
-
+													className="rounded-xl"
 													source={{ uri: `https://sharik.ua/images/elements_big/${art.artikul}_m1.jpg` }}
 												/>
 
@@ -250,14 +297,12 @@ export default function ArtsPage() {
 
 
 											<TouchableOpacity
-												className="flex-1"
+												className="flex-1 justify-center"
 												onPress={() => router.push(`/btw/arts/${art._id}/`)}
 											>
 												<Text
-													className="text-white text-base  "
-
-
-													numberOfLines={2}
+													className="text-white text-xl p-1  "
+													numberOfLines={3}
 												>
 													{art.nameukr}
 												</Text>
@@ -271,17 +316,44 @@ export default function ArtsPage() {
 
 									:
 									filteredArts?.slice(step * page - step, step * page).map((art) =>
-										<Link
+										<View
 											key={art._id}
-											href={`/btw/arts/${art._id}/`}
+											className="flex-row space-x-2 bg-sky-500/40 border border-sky-500 w-full rounded-xl"
 										>
 
-											<Text className="text-white text-xl bg-green-500">
-												{art.nameukr}
-											</Text>
+
+											<View
+												className="justify-center bg-white rounded-xl"
+											>
+												<StyledImage
+													style={{
+														height: 100,
+														width: 100,
+														resizeMode: "contain"
+													}}
+													className="rounded-xl"
+													source={{ uri: `https://sharik.ua/images/elements_big/${art.artikul}_m1.jpg` }}
+												/>
+
+											</View>
 
 
-										</Link>
+
+											<TouchableOpacity
+												className="flex-1 justify-center"
+												onPress={() => router.push(`/btw/arts/${art._id}/`)}
+											>
+												<Text
+													className="text-white text-xl p-1 "
+													numberOfLines={3}
+												>
+													{art.nameukr}
+												</Text>
+											</TouchableOpacity>
+
+
+										</View>
+
 									)}
 
 							</StyledView>
