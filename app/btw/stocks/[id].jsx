@@ -148,7 +148,7 @@ export default function RowPage() {
 		<ScreenContainer>
 			<Stack.Screen
 				options={{
-					headerTitle: () => <Text className="text-center text-2xl text-white p-3" >Ряд {rowTitle}</Text>
+					headerTitle: () => <Text className="text-center font-bold text-3xl text-white p-3" >Ряд {rowTitle}</Text>
 				}}
 			/>
 
@@ -251,7 +251,7 @@ export default function RowPage() {
 				handleDeleteRowById={handleDeleteRowById}
 			/>
 
-			
+
 			{/* PALLETS */}
 
 			{isRowLoading ? <ActivityIndicator size="large" color="#f59e0b" /> :

@@ -16,7 +16,7 @@ export const usePosesStore = create((set) => ({
 		try {
 
 			const response = await axios.post('poses', { palletId, ...posData });
-			console.log(response)
+			// console.log(response)
 
 			if (response.status === 201) {
 				const newPos = response.data
@@ -105,7 +105,7 @@ export const usePosesStore = create((set) => ({
 				const bArtikul = Number(b.artikul.replace(/-/g, ''));
 				return aArtikul - bArtikul;
 			});
-			console.log(fetchedPoses)
+			// console.log(fetchedPoses)
 
 			set((state) => ({
 				poses: [...fetchedPoses],

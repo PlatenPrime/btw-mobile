@@ -44,6 +44,8 @@ export const usePalletStore = create((set) => ({
 	getPalletById: async (id) => {
 		try {
 			const response = await axios.get(`pallets/${id}`);
+			console.log(response);
+
 
 			if (response.status === 200) {
 				const pallet = response.data;

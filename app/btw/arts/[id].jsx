@@ -263,80 +263,87 @@ export default function AskPage() {
 
 							:
 
+							posesWithArtikul?.length > 0
 
-							<View
-								className=" p-2 space-y-4"
-							>
+								?
 
-								{posesWithArtikul?.map((pos) =>
 
-									<TouchableOpacity
-										key={pos._id}
-										className="p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl"
-										onPress={() => router.push(`/btw/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
+								<View
+									className=" p-2 space-y-4"
+								>
 
-									>
+									{posesWithArtikul?.map((pos) =>
 
-										<View
-											className="w-1/2 flex-1 flex-row justify-start items-center "
-										>
+										<TouchableOpacity
+											key={pos._id}
+											className="p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl"
+											onPress={() => router.push(`/btw/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
 
-											<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
-											<Text
-												className="text-amber-100 text-2xl"
-											>
-												{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-											</Text>
-										</View>
-
-										<View
-											className="w-1/2 flex-1 flex-row"
 										>
 
 											<View
-												className="  flex-1 flex-row justify-start items-center"
+												className="w-1/2 flex-1 flex-row justify-start items-center "
 											>
-												<Feather name="box" size={24} color="#fde047" />
-												<Text
-													className="text-yellow-300 font-bold text-2xl rounded"
-												>
-													{pos?.boxes}
-												</Text>
 
+												<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
+												<Text
+													className="text-amber-100 text-2xl"
+												>
+													{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+												</Text>
 											</View>
 
 											<View
-												className=" flex-2 flex-row justify-start items-center"
+												className="w-1/2 flex-1 flex-row"
 											>
-												<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
-												<Text
-													className="text-sky-300 font-bold text-2xl rounded"
+
+												<View
+													className="  flex-1 flex-row justify-start items-center"
 												>
-													{pos?.quant}
-												</Text>
+													<Feather name="box" size={24} color="#fde047" />
+													<Text
+														className="text-yellow-300 font-bold text-2xl rounded"
+													>
+														{pos?.boxes}
+													</Text>
+
+												</View>
+
+												<View
+													className=" flex-2 flex-row justify-start items-center"
+												>
+													<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
+													<Text
+														className="text-sky-300 font-bold text-2xl rounded"
+													>
+														{pos?.quant}
+													</Text>
+
+												</View>
+
 
 											</View>
 
 
 
-
-
-
-										</View>
-
-
-
-									</TouchableOpacity>
+										</TouchableOpacity>
 
 
 
 
-								)}
+									)}
 
 
-							</View>
+								</View>
 
+								:
 
+								<Text
+									className="  text-amber-100 text-xl text-center"
+								>
+									Артикула на запасах немає
+
+								</Text>
 
 						}
 
