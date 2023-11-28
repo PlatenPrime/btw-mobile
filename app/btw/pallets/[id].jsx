@@ -28,7 +28,7 @@ export default function PalletPage() {
 	// STATES
 
 	const [pallet, setPallet] = useState(null)
-	const [row, setRow] = useState(null);
+
 	const [palletTitle, setPalletTitle] = useState(pallet?.title)
 
 
@@ -102,48 +102,29 @@ export default function PalletPage() {
 
 
 	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				setIsPalletLoading(true);
+				setIsPosesLoading(true);
+				console.log(id);
 
-		try {
-			setIsPalletLoading(true)
-			setIsPosesLoading(true)
+				if (id) {
+					const pallet = await getPalletById(id);
+					setPallet(pallet);
+					setPalletTitle(pallet?.title);
 
-			if (id) {
-				async function fetchPallet() {
-
-					const pallet = await getPalletById(id)
-
-					setPallet(pallet)
-					setPalletTitle(pallet?.title)
-
-					if (pallet) {
-						const fetchedRow = await getRowById(pallet?.row)
-						setRow(fetchedRow)
-					}
-
+					await getPalletPoses(id);
 				}
-
-				async function fetchPalletPoses() {
-					await getPalletPoses(id)
-				}
-
-
-
-				fetchPallet()
-				fetchPalletPoses()
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setIsPalletLoading(false);
+				setIsPosesLoading(false);
 			}
+		};
 
-
-
-		} catch (error) {
-			console.log(error);
-
-		} finally {
-			setIsPalletLoading(false)
-			setIsPosesLoading(false)
-		}
-
-	}, [id])
-
+		fetchData();
+	}, [id]);
 
 
 
@@ -164,44 +145,43 @@ export default function PalletPage() {
 	}, [])
 
 	useEffect(() => {
-
 		const fetchRowPallets = async () => {
 			try {
-				setIsSelectedRowPalletsLoading(true)
+				setIsSelectedRowPalletsLoading(true);
 
-				const pallets = await getRowPallets(selectedRowId)
-				setSelectedRowPallets(pallets)
+				if (selectedRowId) {
+					const pallets = await getRowPallets(selectedRowId);
+					setSelectedRowPallets(pallets);
+				}
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 			} finally {
-				setIsSelectedRowPalletsLoading(false)
+				setIsSelectedRowPalletsLoading(false);
 			}
 		}
 
-
-		fetchRowPallets()
-
-	}, [selectedRowId])
+		fetchRowPallets();
+	}, [selectedRowId]);
 
 
 	useEffect(() => {
-
 		const fetchSelectedPallet = async () => {
 			try {
+				setIsSelectedPalletLoading(true);
 
-				setIsSelectedPalletLoading(true)
-				const selectedPallet = await getPalletById(selectedPalletId)
-				setSelectedPallet(selectedPallet)
+				if (selectedPalletId) {
+					const selectedPallet = await getPalletById(selectedPalletId);
+					setSelectedPallet(selectedPallet);
+				}
 			} catch (error) {
-				console.log(error)
+				console.log(error);
 			} finally {
-				setIsSelectedPalletLoading(false)
+				setIsSelectedPalletLoading(false);
 			}
 		}
 
-		fetchSelectedPallet()
-
-	}, [selectedPalletId])
+		fetchSelectedPallet();
+	}, [selectedPalletId]);
 
 
 
@@ -396,7 +376,7 @@ export default function PalletPage() {
 			/>
 
 
-
+			<Text className="text-red-500 text-base">{id}</Text>
 
 			{/* POSES */}
 

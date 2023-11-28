@@ -31,7 +31,7 @@ export default function Stocks() {
 			try {
 				setIsRowsLoading(true)
 				const allRows = await getAllRows();
-				// console.log(allRows);
+				console.log(allRows);
 
 
 

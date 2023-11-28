@@ -43,8 +43,11 @@ export const usePalletStore = create((set) => ({
 
 	getPalletById: async (id) => {
 		try {
+
+			console.log("Axios", id);
+
 			const response = await axios.get(`pallets/${id}`);
-			console.log(response);
+
 
 
 			if (response.status === 200) {
@@ -57,6 +60,9 @@ export const usePalletStore = create((set) => ({
 			console.error('Ошибка получения Pallet по ID:', error);
 		}
 	},
+
+
+
 	updatePalletById: async (id, updatedData) => {
 		try {
 			const response = await axios.put(`pallets/${id}`, updatedData);
