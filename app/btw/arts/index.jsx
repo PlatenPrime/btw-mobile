@@ -93,12 +93,12 @@ export default function ArtsPage() {
 
 
 
-					<Pressable
+					<TouchableOpacity
 						className="rounded-full p-3 m-1 bg-sky-400"
 						onPress={handleFilterArts}
 					>
 						<Text  ><MagnifyingGlassIcon size={25} color="white" /></Text>
-					</Pressable>
+					</TouchableOpacity>
 				</View>
 
 
@@ -280,7 +280,7 @@ export default function ArtsPage() {
 
 
 											<View
-												className="justify-center bg-white rounded-xl"
+												className="justify-center bg-white rounded-l-xl p-1"
 											>
 												<StyledImage
 													style={{
@@ -323,7 +323,7 @@ export default function ArtsPage() {
 
 
 											<View
-												className="justify-center bg-white rounded-xl"
+												className="justify-center bg-white rounded-l-xl p-1"
 											>
 												<StyledImage
 													style={{

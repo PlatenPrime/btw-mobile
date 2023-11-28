@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { getAllArtikuls } from "../stores/artsStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from '../utils/axios';
 

@@ -9,7 +9,7 @@ import { ScreenContainer } from '../../../components';
 import { ScrollView } from 'react-native-gesture-handler';
 import { colors500 } from '../../../constants/Colors';
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, Feather } from '@expo/vector-icons';
-
+import { useGetRemains } from "../../../hooks/useGetRemains"
 
 
 
@@ -26,6 +26,7 @@ export default function AskPage() {
 
 	const { id } = useLocalSearchParams()
 	const router = useRouter()
+	const { remains, isLoadingRemains, errorRemains } = useGetRemains()
 
 	const { getArtikulById } = useArtikulStore();
 	const { getPosesByArtikul, posesWithArtikul } = usePosesStore();
@@ -135,12 +136,12 @@ export default function AskPage() {
 					{/* ARTIKUL CARD */}
 
 					<View
-						className=" flex-1  flex-row mt-1 p-1 space-x-1 bg-sky-500/5  border border-sky-500 rounded-xl items-center"
+						className=" flex-1  flex-row mt-1  space-x-1 bg-sky-500/5  border border-sky-500 rounded-xl items-center"
 					>
 
 
 						<View
-							className="bg-white h-full items-center justify-center rounded-xl"
+							className="bg-white h-full items-center justify-center rounded-l-xl p-1"
 						>
 							<Image
 								style={{
@@ -189,11 +190,19 @@ export default function AskPage() {
 
 								<MaterialCommunityIcons name="balloon" size={36} color="#fde047" />
 
-								<Text
-									className="text-3xl text-yellow-300 py-1"
-								>
-									Утро
-								</Text>
+
+								{isLoadingRemains
+									?
+									<ActivityIndicator size="large" color={colors500.amber} />
+									:
+									<Text
+										className="text-3xl text-yellow-300 py-1"
+									>{remains ? remains[title] : ""}</Text>
+
+								}
+
+
+
 
 							</View>
 
