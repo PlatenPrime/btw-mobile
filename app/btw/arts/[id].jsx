@@ -1,6 +1,6 @@
-import { View, Text, ActivityIndicator, Image } from 'react-native'
+import { View, Text, ActivityIndicator, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Stack, useLocalSearchParams } from 'expo-router'
+import { Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import useArtikulStore from '../../../stores/artsStore';
 import { usePosesStore } from '../../../stores/posesStore';
 import { usePalletStore } from '../../../stores/palletsStore';
@@ -8,7 +8,7 @@ import { getArtDataBtrade } from "../../../utils/getArtDataBtrade"
 import { ScreenContainer } from '../../../components';
 import { ScrollView } from 'react-native-gesture-handler';
 import { colors500 } from '../../../constants/Colors';
-import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, FontAwesome5, Feather } from '@expo/vector-icons';
 
 
 
@@ -25,6 +25,7 @@ import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-ico
 export default function AskPage() {
 
 	const { id } = useLocalSearchParams()
+	const router = useRouter()
 
 	const { getArtikulById } = useArtikulStore();
 	const { getPosesByArtikul, posesWithArtikul } = usePosesStore();
@@ -115,18 +116,26 @@ export default function AskPage() {
 		<ScreenContainer>
 			<Stack.Screen
 				options={{
-					headerTitle: () => <Text className="text-center text-2xl text-white p-3" >
+					headerTitle: () => <Text className="text-center font-bold text-3xl text-white p-3" >
 						{title}
-					</Text>
+					</Text>,
+
 				}}
 			/>
 			{isLoadingArtikul ?
 				<ActivityIndicator size="large" color={colors500.sky} />
 				:
-				<ScrollView>
+
+
+				<ScrollView
+					className="flex-1 space-y-2 py-1"
+				>
+
+
+					{/* ARTIKUL CARD */}
 
 					<View
-						className=" flex-row p-1 space-x-1 bg-sky-500/20 rounded-xl items-center"
+						className=" flex-1  flex-row mt-1 p-1 space-x-1 bg-sky-500/5  border border-sky-500 rounded-xl items-center"
 					>
 
 
@@ -149,15 +158,19 @@ export default function AskPage() {
 							"
 						>
 
-							<Text
-								className="text-2xl text-white "
-								numberOfLines={2}
-							>
-								{artikul?.nameukr.slice(9)}
-							</Text>
+
 
 							<Text
-								className="text-3xl text-orange-300 p-2"
+								className="text-2xl text-white "
+								numberOfLines={4}
+							>
+								{artikul?.nameukr.slice(10)}
+							</Text>
+
+
+
+							<Text
+								className="text-3xl text-orange-300 py-2"
 								numberOfLines={5}
 							>
 								<Ionicons name="location-outline" size={36} color="#fdba74" />
@@ -165,14 +178,24 @@ export default function AskPage() {
 							</Text>
 
 
-							<Text
-								className="text-3xl text-rose-300 p-1"
 
+
+
+
+							<View
+								className="space-x-1 flex-row items-center justify-center"
 							>
 
-								<MaterialCommunityIcons name="balloon" size={36} color="#fda4af" />
-								Утро
-							</Text>
+
+								<MaterialCommunityIcons name="balloon" size={36} color="#fde047" />
+
+								<Text
+									className="text-3xl text-yellow-300 py-1"
+								>
+									Утро
+								</Text>
+
+							</View>
 
 
 
@@ -183,8 +206,7 @@ export default function AskPage() {
 								<MaterialCommunityIcons name="balloon" size={36} color="#86efac" />
 
 								<Text
-									className="text-3xl text-green-300 p-1"
-
+									className="text-3xl text-green-300 py-1"
 								>
 									{ostatok}
 								</Text>
@@ -193,12 +215,15 @@ export default function AskPage() {
 
 
 
+
+
+
 							<View
-								className="space-x-1 flex-row items-center justify-center"
+								className="space-x-2 ml-1 flex-row items-center justify-center"
 							>
 								<FontAwesome5 name="warehouse" size={24} color="#7dd3fc" />
 								<Text
-									className="text-3xl text-sky-300 p-1 "
+									className="text-3xl text-sky-300 py-1 "
 								>
 									{posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
 								</Text>
@@ -210,17 +235,104 @@ export default function AskPage() {
 					</View>
 
 
+					{/* PALLETS WITH ARTIKULS LIST */}
+
+
+					<View
+						className="flex-1 space-y-2 p-1 bg-amber-100/5  border border-amber-100 rounded-xl "
+					>
+
+						<Text
+							className="mt-2  text-amber-100 text-3xl text-center"
+						>
+							Палети
+						</Text>
+
+						{isLoadingPoses ?
+
+							<ActivityIndicator size="large" color={colors500.amber} />
+
+							:
+
+
+							<View
+								className=" p-2 space-y-4"
+							>
+
+								{posesWithArtikul?.map((pos) =>
+
+									<TouchableOpacity
+										key={pos._id}
+										className="p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl"
+										onPress={() => router.push(`/btw/pallets/${pallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
+
+									>
+
+										<View
+											className="w-1/2 flex-1 flex-row justify-start items-center "
+										>
+
+											<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
+											<Text
+												className="text-amber-100 text-2xl"
+											>
+												{pallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+											</Text>
+										</View>
+
+										<View
+											className="w-1/2 flex-1 flex-row"
+										>
+
+											<View
+												className="  flex-1 flex-row justify-start items-center"
+											>
+												<Feather name="box" size={24} color="#fde047" />
+												<Text
+													className="text-yellow-300 font-bold text-2xl rounded"
+												>
+													{pos?.boxes}
+												</Text>
+
+											</View>
+
+											<View
+												className=" flex-2 flex-row justify-start items-center"
+											>
+												<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
+												<Text
+													className="text-sky-300 font-bold text-2xl rounded"
+												>
+													{pos?.quant}
+												</Text>
+
+											</View>
 
 
 
 
 
 
+										</View>
+
+
+
+									</TouchableOpacity>
 
 
 
 
+								)}
 
+
+							</View>
+
+
+
+						}
+
+
+					</View>
 
 
 

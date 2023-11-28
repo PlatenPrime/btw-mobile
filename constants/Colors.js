@@ -2,7 +2,7 @@ export const colors500 = {
 	red: "#ef4444",
 	orange: "#f97316",
 	amber: "#f59e0b",
-	yelllow: "#eab308",
+	yellow: "#eab308",
 	lime: "#84cc16",
 	green: "#22c55e",
 	emerald: "#10b981",
