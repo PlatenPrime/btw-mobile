@@ -129,7 +129,7 @@ export default function AskPage() {
 
 
 				<ScrollView
-					className="flex-1 space-y-2 py-1"
+					className="flex-1 space-y-2 py-1 bg-sky-500/5"
 				>
 
 

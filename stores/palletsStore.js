@@ -44,7 +44,7 @@ export const usePalletStore = create((set) => ({
 	getPalletById: async (id) => {
 		try {
 
-			console.log("Axios", id);
+		
 
 			const response = await axios.get(`pallets/${id}`);
 
@@ -103,7 +103,7 @@ export const usePalletStore = create((set) => ({
 	getRowPallets: async (id) => {
 		try {
 			const response = await axios.get(`rows/pallets/${id}`);
-			console.log(response)
+	
 			set((state) => ({
 				pallets: [...response.data],
 			}));

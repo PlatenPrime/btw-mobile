@@ -65,7 +65,7 @@ export default function ArtsPage() {
 		<ScreenContainer>
 
 			<ScrollView
-				className=" space-y-4 px-4"
+				className=" space-y-4 px-4 bg-sky-500/5"
 				refreshControl={
 					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 				}

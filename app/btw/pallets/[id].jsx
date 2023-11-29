@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../../components'
@@ -8,6 +8,15 @@ import { useRowStore } from '../../../stores/rowsStore';
 import { useGlobalStore } from '../../../stores/globalStore'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useGetArtsCurrent } from "../../../hooks/useGetArtsCurrent"
+import { colors500 } from '../../../constants/Colors'
+import { Octicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import PositionBage from "./components/PositionBage"
+
+
+
+
+
+
 
 export default function PalletPage() {
 
@@ -106,7 +115,7 @@ export default function PalletPage() {
 			try {
 				setIsPalletLoading(true);
 				setIsPosesLoading(true);
-				console.log(id);
+
 
 				if (id) {
 					const pallet = await getPalletById(id);
@@ -370,17 +379,120 @@ export default function PalletPage() {
 			<Stack.Screen
 				options={{
 					headerTitle: () => <Text className="text-center font-bold text-3xl text-white p-3" >
-						{pallet?.title}
+						{palletTitle}
 					</Text>
 				}}
 			/>
 
+			{isPalletLoading
+				?
+				<ActivityIndicator size="large" color={colors500.amber} />
+				:
+				<ScrollView
+					className="p-1 space-y-2 "
+				>
 
-			<Text className="text-red-500 text-base">{id}</Text>
-
-			{/* POSES */}
 
 
+					<View
+						className=" flex-1 p-1 mt-2  rounded-xl "
+					>
+
+						{isPosesLoading
+							?
+							<ActivityIndicator size="large" color={colors500.sky} />
+							:
+							poses?.length > 0
+								?
+								<View
+									className="space-y-2 flex-1"
+								>
+									<View
+										className="flex-1 p-1 flex-row justify-between border-b border-amber-500"
+									>
+
+										<View
+											className="flex-1 flex-row items-center justify-center space-x-2"
+										>
+											<Octicons name="note" size={24} color="#99f6e4" />
+											<Text
+												className="text-teal-200 text-3xl"
+											>
+												{poses?.length}
+											</Text>
+										</View>
+
+										<View
+											className="flex-1 flex-row items-center justify-center space-x-2"
+										>
+											<Feather name="box" size={24} color="#fde047" />
+											<Text
+												className="text-yellow-300 text-3xl"
+											>
+												{poses?.reduce((a, b) => a + b.boxes, 0)}
+											</Text>
+										</View>
+
+
+									</View>
+
+
+									<View
+										className="flex-1 p-2
+										"
+									>
+										<TouchableOpacity
+											className="flex-1 p-2 flex-row items-center justify-center 
+											border border-dashed border-teal-500 rounded-xl "
+										>
+											<Text
+												className="text-blue-100 text-xl"
+											>
+												Додати позицію
+											</Text>
+										</TouchableOpacity>
+
+									</View>
+
+
+
+									<View
+										className="flex-1 space-y-8 p-2"
+									>
+										{poses.map((pos) =>
+											<PositionBage
+												pos={pos}
+												artsCurrent={artsCurrent}
+												onUpdate={() => setShowModalUpdatePos(true)}
+												onDelete={() => setShowModalDeletePos(true)}
+											/>
+
+										)}
+
+									</View>
+
+								</View>
+
+
+								:
+
+								<Text
+									className="text-xl text-teal-100 text-center "
+								>
+									На цій палеті позицій немає
+								</Text>
+
+						}
+
+					</View>
+
+
+
+
+
+
+				</ScrollView>
+			}
 
 
 		</ScreenContainer>
