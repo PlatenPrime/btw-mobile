@@ -87,7 +87,7 @@ export default function PositionBage({
 
 
 			<View
-				className="flex-1 flex-row items-center justify-around border-t border-slate-50 bg-teal-900 rounded-b-xl p-2"
+				className="flex-1 flex-row items-center justify-around border-t border-slate-50 rounded-b-xl p-2"
 			>
 
 				<TouchableOpacity
@@ -95,7 +95,7 @@ export default function PositionBage({
 					onPress={() => onUpdate()}
 				>
 					<Text
-						className="text-blue-100 text-xl"
+						className="text-blue-400 text-xl"
 					>
 						Редагувати
 					</Text>
@@ -105,7 +105,7 @@ export default function PositionBage({
 					onPress={() => onDelete()}
 				>
 					<Text
-						className="text-red-300 text-xl"
+						className="text-red-400 text-xl"
 					>
 						Видалити
 					</Text>

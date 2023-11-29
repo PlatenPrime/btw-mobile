@@ -1,16 +1,22 @@
 import { View, Text, ActivityIndicator, Image, TouchableOpacity } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 import React, { useEffect, useState } from 'react'
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router'
-import { ScreenContainer } from '../../../components'
+
 import { usePalletStore } from '../../../stores/palletsStore'
 import { usePosesStore } from '../../../stores/posesStore'
 import { useRowStore } from '../../../stores/rowsStore';
 import { useGlobalStore } from '../../../stores/globalStore'
-import { ScrollView } from 'react-native-gesture-handler'
+
 import { useGetArtsCurrent } from "../../../hooks/useGetArtsCurrent"
 import { colors500 } from '../../../constants/Colors'
-import { Octicons, Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import PositionBage from "./components/PositionBage"
+import { Octicons, Feather } from '@expo/vector-icons';
+
+import { ScreenContainer } from '../../../components';
+import PositionBage from "./components/PositionBage";
+import { ModalClearPallet, ModalCreatePos, ModalDeletePallet, ModalDeletePos, ModalMovePalletContent, ModalUpdatePallet, ModalUpdatePos } from "./components/modals"
+
+
 
 
 
@@ -91,7 +97,7 @@ export default function PalletPage() {
 	// MODALS
 
 	const [showModalDeletePallet, setShowModalDeletePallet] = useState(false);
-	const [showModalRenamePallet, setShowModalRenamePallet] = useState(false);
+	const [showModalUpdatePallet, setShowModalUpdatePallet] = useState(false);
 	const [showModalCreatePos, setShowModalCreatePos] = useState(false);
 	const [showModalDeletePos, setShowModalDeletePos] = useState(false);
 	const [showModalUpdatePos, setShowModalUpdatePos] = useState(false);
@@ -244,7 +250,7 @@ export default function PalletPage() {
 			console.error('Ошибка при изменении  названия паллеты:', error);
 		} finally {
 			setIsUpdatingPalletById(false)
-			setShowModalRenamePallet(false)
+			setShowModalUpdatePallet(false)
 		}
 	}
 
@@ -394,6 +400,89 @@ export default function PalletPage() {
 
 
 
+					{showButtonGroup
+						?
+
+						<View
+							className="py-2 space-y-2 border-b-2 border-amber-500 bg-amber-500/10"
+						>
+
+							<TouchableOpacity
+								className="flex-1 flex-row justify-center items-center"
+								onPress={() => setShowModalUpdatePallet(true)}
+							>
+								<Text
+									className="text-2xl text-lime-400"
+								>
+									Перейменувати
+								</Text>
+							</TouchableOpacity>
+
+							<TouchableOpacity
+								className="flex-1 flex-row justify-center items-center"
+								onPress={() => setShowModalMovePalletContent(true)}
+							>
+								<Text
+									className="text-2xl text-indigo-400"
+								>
+									Переставити
+								</Text>
+							</TouchableOpacity>
+
+							<TouchableOpacity
+								className="flex-1 flex-row justify-center items-center"
+								onPress={() => setShowModalClearPallet(true)}
+							>
+								<Text
+									className="text-2xl text-rose-100"
+								>
+									Очистити
+								</Text>
+							</TouchableOpacity>
+
+
+							<TouchableOpacity
+								className="flex-1 flex-row justify-center items-center"
+								onPress={() => setShowModalDeletePallet(true)}
+							>
+								<Text
+									className="text-2xl text-red-400"
+								>
+									Видалити
+								</Text>
+							</TouchableOpacity>
+
+
+
+
+
+						</View>
+						:
+						null
+					}
+
+
+
+					<View
+						className="flex-1 p-2
+										"
+					>
+						<TouchableOpacity
+							className="flex-1 p-2 flex-row items-center justify-center 
+											 "
+						>
+							<Text
+								className="text-teal-100 text-2xl"
+							>
+								Додати позицію
+							</Text>
+						</TouchableOpacity>
+
+					</View>
+
+
+
+
 					<View
 						className=" flex-1 p-1 mt-2  rounded-xl "
 					>
@@ -408,7 +497,7 @@ export default function PalletPage() {
 									className="space-y-2 flex-1"
 								>
 									<View
-										className="flex-1 p-1 flex-row justify-between border-b border-amber-500"
+										className="flex-1  flex-row justify-between border-b border-teal-500"
 									>
 
 										<View
@@ -437,22 +526,7 @@ export default function PalletPage() {
 									</View>
 
 
-									<View
-										className="flex-1 p-2
-										"
-									>
-										<TouchableOpacity
-											className="flex-1 p-2 flex-row items-center justify-center 
-											border border-dashed border-teal-500 rounded-xl "
-										>
-											<Text
-												className="text-blue-100 text-xl"
-											>
-												Додати позицію
-											</Text>
-										</TouchableOpacity>
 
-									</View>
 
 
 
@@ -461,6 +535,7 @@ export default function PalletPage() {
 									>
 										{poses.map((pos) =>
 											<PositionBage
+												key={pos._id}
 												pos={pos}
 												artsCurrent={artsCurrent}
 												onUpdate={() => setShowModalUpdatePos(true)}
@@ -477,7 +552,7 @@ export default function PalletPage() {
 								:
 
 								<Text
-									className="text-xl text-teal-100 text-center "
+									className="text-xl text-teal-100 text-center italic "
 								>
 									На цій палеті позицій немає
 								</Text>
