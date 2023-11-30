@@ -34,7 +34,7 @@ export default function PalletPage() {
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
-	const { getPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getRowPallets } = usePalletStore();
+	const { getPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getSelectedRowPallets } = usePalletStore();
 	const { getRowById, getAllRows, rows } = useRowStore();
 	const { getPalletPoses, clearPosesStore, createPos, deletePosById, poses, updatePosById } = usePosesStore()
 
@@ -165,7 +165,7 @@ export default function PalletPage() {
 				setIsSelectedRowPalletsLoading(true);
 
 				if (selectedRowId) {
-					const pallets = await getRowPallets(selectedRowId);
+					const pallets = await getSelectedRowPallets(selectedRowId);
 					setSelectedRowPallets(pallets);
 				}
 			} catch (error) {
@@ -461,6 +461,28 @@ export default function PalletPage() {
 						null
 					}
 
+
+
+
+					{/* MODALS */}
+
+					<ModalDeletePallet
+						showModalDeletePallet={showModalDeletePallet}
+						setShowModalDeletePallet={setShowModalDeletePallet}
+						palletTitle={palletTitle}
+						isDeletingPalletById={isDeletingPalletById}
+						handleDeletePalletById={handleDeletePalletById}
+
+					/>
+
+
+
+
+
+
+
+
+					{/* CONTENT */}
 
 
 					<View

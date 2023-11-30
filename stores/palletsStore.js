@@ -44,7 +44,7 @@ export const usePalletStore = create((set) => ({
 	getPalletById: async (id) => {
 		try {
 
-		
+
 
 			const response = await axios.get(`pallets/${id}`);
 
@@ -103,7 +103,7 @@ export const usePalletStore = create((set) => ({
 	getRowPallets: async (id) => {
 		try {
 			const response = await axios.get(`rows/pallets/${id}`);
-	
+
 			set((state) => ({
 				pallets: [...response.data],
 			}));
@@ -113,6 +113,26 @@ export const usePalletStore = create((set) => ({
 			throw error;
 		}
 	},
+
+
+	// Функция для получения Pallets для конкретного Row по ID
+	getSelectedRowPallets: async (id) => {
+		try {
+			const response = await axios.get(`rows/pallets/${id}`);
+
+			// set((state) => ({
+			// 	pallets: [...response.data],
+			// }));
+
+			return response.data;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+
+
+
 
 	clearPalletById: async (id) => {
 		try {
