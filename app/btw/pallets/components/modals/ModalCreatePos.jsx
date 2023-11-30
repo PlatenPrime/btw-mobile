@@ -2,6 +2,7 @@ import { View, Text, ActivityIndicator, TextInput, Modal, TouchableOpacity, Imag
 import React, { useState } from 'react'
 import { colors500 } from '../../../../../constants/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
+import { Picker } from '@react-native-picker/picker';
 
 
 
@@ -24,6 +25,18 @@ export default function ModalCreatePos(
 		handleCreatePos
 	}
 ) {
+
+
+	const [selectedValue, setSelectedValue] = useState('option1');
+
+
+
+
+
+
+
+
+
 	return (
 		<Modal
 			animationType="slide"
@@ -40,6 +53,8 @@ export default function ModalCreatePos(
 				<Text className="text-white text-3xl  text-center" >
 					Створення позиції
 				</Text>
+
+
 
 
 
@@ -97,6 +112,26 @@ export default function ModalCreatePos(
 							inputMode="numeric"
 
 						/>
+
+						<Text className="text-white text-center text-xl">Склад: </Text>
+						<Picker
+							selectedValue={selectedValue}
+							style={{ width: "100%", color: 'white', backgroundColor: "red" }}
+							className="bg-red-500"
+							onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+						>
+
+							{["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7",]
+
+
+
+								.map(el => <Picker.Item
+									label={el} value="option1"
+								/>)}
+
+
+						</Picker>
+
 
 
 
