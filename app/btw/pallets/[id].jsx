@@ -260,7 +260,7 @@ export default function PalletPage() {
 		try {
 			setIsCreatingPos(true)
 
-			const existingPos = posesInStore.find(pos => pos.artikul === newPosArtikul);
+			const existingPos = poses.find(pos => pos.artikul === newPosArtikul);
 
 			if (existingPos) {
 
@@ -273,6 +273,7 @@ export default function PalletPage() {
 
 			} else {
 				await createPos(pallet._id, {
+					artikul: newPosArtikul.trim(),
 					quant: newPosQuant,
 					boxes: newPosBoxes,
 					date: newPosDate,
@@ -477,6 +478,33 @@ export default function PalletPage() {
 
 
 
+					<ModalUpdatePallet
+						showModalUpdatePallet={showModalUpdatePallet}
+						setShowModalUpdatePallet={setShowModalUpdatePallet}
+						palletTitle={palletTitle}
+						isUpdatingPalletById={isUpdatingPalletById}
+						handleUpdatePalletById={handleUpdatePalletById}
+					/>
+
+					<ModalCreatePos
+						showModalCreatePos={showModalCreatePos}
+						setShowModalCreatePos={setShowModalCreatePos}
+						isCreatingPos={isCreatingPos}
+						newPosArtikul={newPosArtikul}
+						setNewPosArtikul={setNewPosArtikul}
+						newPosQuant={newPosQuant}
+						setNewPosQuant={setNewPosQuant}
+						newPosBoxes={newPosBoxes}
+						setNewPosBoxes={setNewPosBoxes}
+						newPosDate={newPosDate}
+						setNewPosDate={setNewPosDate}
+						newPosSklad={setNewPosSklad}
+						setNewPosSklad={setNewPosSklad}
+						artsCurrent={artsCurrent}
+						handleCreatePos={handleCreatePos}
+
+					/>
+
 
 
 
@@ -490,6 +518,7 @@ export default function PalletPage() {
 										"
 					>
 						<TouchableOpacity
+							onPress={() => setShowModalCreatePos(true)}
 							className="flex-1 p-2 flex-row items-center justify-center 
 											 "
 						>

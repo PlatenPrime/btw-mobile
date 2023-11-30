@@ -7,14 +7,18 @@ import { Image } from 'react-native'
 
 
 
+
 export default function ScreenContainer({ children }) {
 	return (
+
+
+
 		<View className='flex-1 relative' >
 			<StatusBar style="light" />
-			<Image source={require("../../assets/images/background.jpg")} 
-			className="w-full h-full absolute"
-			blurRadius={70}
-			
+			<Image source={require("../../assets/images/background.jpg")}
+				className="w-full h-full absolute"
+				blurRadius={70}
+
 			/>
 
 
@@ -22,6 +26,7 @@ export default function ScreenContainer({ children }) {
 
 
 		</View>
+
 
 	)
 }

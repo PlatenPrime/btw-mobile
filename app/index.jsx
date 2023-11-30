@@ -3,6 +3,8 @@ import React from 'react'
 import { Link, Stack } from 'expo-router'
 import { ScreenContainer } from '../components'
 
+
+
 export default function Page() {
 	return (
 		<ScreenContainer>
@@ -14,6 +16,7 @@ export default function Page() {
 				>
 					BTW
 				</Text>
+			
 
 			</View>
 		</ScreenContainer>

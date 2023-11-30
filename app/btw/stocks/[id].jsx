@@ -251,7 +251,6 @@ export default function RowPage() {
 				handleDeleteRowById={handleDeleteRowById}
 			/>
 
-			<Text className="text-red-500 text-base">{id}</Text>
 
 
 			{/* PALLETS */}

@@ -1,4 +1,4 @@
-import { View, Text, Modal, Pressable, ActivityIndicator } from 'react-native'
+import { View, Text, Modal, ActivityIndicator, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import { colors500 } from '../../../../../constants/Colors'
@@ -40,16 +40,16 @@ export default function ModalUpdateRow({
 
 				<View className="flex flex-row justify-around  space-x-4" >
 
-					<Pressable
+					<TouchableOpacity
 						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
 						onPress={() => { setShowModalUpdateRow(false) }}>
 						<Text className=" text-white text-xl"   >
 							СКАСУВАТИ
 						</Text>
-					</Pressable>
+					</TouchableOpacity>
 
 
-					<Pressable
+					<TouchableOpacity
 
 						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
 						onPress={() => {
@@ -60,7 +60,7 @@ export default function ModalUpdateRow({
 						<Text className=" text-white text-xl" >
 							ЗМІНИТИ
 						</Text>
-					</Pressable>
+					</TouchableOpacity>
 
 				</View>
 
