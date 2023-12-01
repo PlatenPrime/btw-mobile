@@ -60,6 +60,7 @@ export default function PalletPage() {
 	const [isCreatingPos, setIsCreatingPos] = useState(false)
 	const [isDeletingPosById, setIsDeletingPosById] = useState(false)
 	const [isUpdatingPosById, setIsUpdatingPosById] = useState(false)
+	const [isClearingPalletById, setIsClearingPalletById] = useState(false)
 
 
 
@@ -325,16 +326,18 @@ export default function PalletPage() {
 	}
 
 
-	async function handleClearPalletById(id) {
+	async function handleClearPalletById() {
 		try {
+			setIsClearingPalletById(true)
 
-			const resClear = await clearPalletById(id)
+			const resClear = await clearPalletById(pallet._id)
 			console.log(resClear)
 			clearPosesStore()
 
 		} catch (error) {
 			console.log(error)
 		} finally {
+			setIsClearingPalletById(false)
 			setShowModalClearPallet(false)
 		}
 	}
@@ -500,6 +503,14 @@ export default function PalletPage() {
 						handleUpdatePosById={handleUpdatePosById}
 					/>
 
+
+					<ModalClearPallet
+						showModalClearPallet={showModalClearPallet}
+						setShowModalClearPallet={setShowModalClearPallet}
+						palletTitle={palletTitle}
+						isClearingPalletById={isClearingPalletById}
+						handleClearPalletById={handleClearPalletById}
+					/>
 
 
 

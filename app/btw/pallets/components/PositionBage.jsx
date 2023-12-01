@@ -42,7 +42,11 @@ export default function PositionBage({
 						className="text-white text-xl text-center italic"
 						numberOfLines={4}
 					>
-						{artsCurrent?.find((art) => art.artikul === pos.artikul)?.nameukr}
+						{
+							artsCurrent?.find((art) => art.artikul === pos.artikul)?.nameukr
+							|| pos.artikul
+							|| null
+						}
 					</Text>
 				</View>
 
