@@ -295,7 +295,7 @@ export default function PalletPage() {
 			setIsCreatingPos(false)
 			setShowModalCreatePos(false)
 
-		
+
 
 		}
 	};
@@ -497,6 +497,19 @@ export default function PalletPage() {
 
 					/>
 
+					<ModalDeletePos
+						showModalDeletePos={showModalDeletePos}
+						setShowModalDeletePos={setShowModalDeletePos}
+						selectedPos={selectedPos}
+						isDeletingPosById={isDeletingPosById}
+						handleDeletePosById={handleDeletePosById}
+
+
+					/>
+
+
+
+
 
 
 
@@ -582,7 +595,10 @@ export default function PalletPage() {
 												pos={pos}
 												artsCurrent={artsCurrent}
 												onUpdate={() => setShowModalUpdatePos(true)}
-												onDelete={() => setShowModalDeletePos(true)}
+												onDelete={() => {
+													setShowModalDeletePos(true)
+													setSelectedPos(pos)
+												}}
 											/>
 
 										)}
