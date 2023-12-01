@@ -2,7 +2,10 @@ import { View, Text, ActivityIndicator, TextInput, Modal, TouchableOpacity, Imag
 import React, { useState } from 'react'
 import { colors500 } from '../../../../../constants/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Picker } from '@react-native-picker/picker';
+import { SelectList } from 'react-native-dropdown-select-list'
+import { FontAwesome } from '@expo/vector-icons'
+
+
 
 
 
@@ -11,23 +14,36 @@ export default function ModalCreatePos(
 		showModalCreatePos,
 		setShowModalCreatePos,
 		isCreatingPos,
-		newPosArtikul,
-		setNewPosArtikul,
-		newPosQuant,
-		setNewPosQuant,
-		newPosBoxes,
-		setNewPosBoxes,
-		newPosDate,
-		setNewPosDate,
-		newPosSklad,
-		setNewPosSklad,
 		artsCurrent,
 		handleCreatePos
 	}
 ) {
 
 
-	const [selectedValue, setSelectedValue] = useState('option1');
+
+	const [newPosArtikul, setNewPosArtikul] = useState("")
+	const [newPosQuant, setNewPosQuant] = useState("")
+	const [newPosBoxes, setNewPosBoxes] = useState("")
+	const [newPosDate, setNewPosDate] = useState("")
+	const [newPosSklad, setNewPosSklad] = useState("")
+
+
+
+
+
+	const listSklad = [{
+		key: "pogrebi",
+		value: "Погреби",
+	},
+	{
+		key: "merezhi",
+		value: "Мережі",
+	},]
+
+
+
+
+
 
 
 
@@ -58,7 +74,10 @@ export default function ModalCreatePos(
 
 
 
-				<ScrollView>
+				<ScrollView
+					className="space-y-2 flex-1"
+
+				>
 
 					<View
 						className=" flex-1 flex-row  rounded-l-xl"
@@ -69,8 +88,8 @@ export default function ModalCreatePos(
 						>
 							<Image
 								style={{
-									height: 80,
-									width: 80,
+									height: 100,
+									width: 100,
 									resizeMode: "contain"
 								}}
 								className="rounded-xl"
@@ -79,7 +98,7 @@ export default function ModalCreatePos(
 						</View>
 
 						<View
-							className="flex-1  p-1 justify-center bg-sky-950 rounded-r-xl"
+							className="flex-1  p-1 justify-center border border-sky-500 bg-sky-500/10 rounded-r-xl"
 						>
 							<Text
 								className="text-white text-xl text-center italic"
@@ -92,45 +111,85 @@ export default function ModalCreatePos(
 					</View>
 
 
-					<View>
+					<View
+						className="space-y-2"
+					>
 
-
-						<Text className="text-white text-center text-xl">Артикул:</Text>
-						<TextInput
-							onChangeText={(text => setNewPosArtikul(text))}
-							value={newPosArtikul}
-							className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-							autoFocus={true}
-						/>
-
-
-						<Text className="text-white text-center text-xl">Кількість:</Text>
-						<TextInput
-							onChangeText={(text => setNewPosQuant(text))}
-							value={newPosQuant}
-							className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-							inputMode="numeric"
-
-						/>
-
-						<Text className="text-white text-center text-xl">Склад: </Text>
-						<Picker
-							selectedValue={selectedValue}
-							style={{ width: "100%", color: 'white', backgroundColor: "red" }}
-							className="bg-red-500"
-							onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+						<View
+							className="flex-1 flex-row items-center justify-start space-x-1"
 						>
+							<Text className="text-white text-center text-xl">Артикул:</Text>
+							<TextInput
+								onChangeText={(text => setNewPosArtikul(text))}
+								value={newPosArtikul}
+								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								autoFocus={true}
+							/>
+						</View>
 
-							{["Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7", "Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4", "Вариант 5", "Вариант 6", "Вариант 7",]
+						<View
+							className="flex-1 flex-row items-center justify-start space-x-1"
+						>
+							<Text className="text-white text-center text-xl">Кількість:</Text>
+							<TextInput
+								onChangeText={(text => setNewPosQuant(text))}
+								value={newPosQuant}
+								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								inputMode="numeric"
+
+							/>
+						</View>
+
+						<View
+							className="flex-1 flex-row items-center justify-start space-x-1"
+						>
+							<Text className="text-white text-center text-xl">Коробок:</Text>
+							<TextInput
+								onChangeText={(text => setNewPosBoxes(text))}
+								value={newPosBoxes}
+								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								inputMode="numeric"
+
+							/>
+						</View>
+
+						<View
+							className="flex-1 flex-row items-center justify-start space-x-1"
+						>
+							<Text className="text-white text-center text-xl">Дата:</Text>
+							<TextInput
+								onChangeText={(text => setNewPosDate(text))}
+								value={newPosDate}
+								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								placeholder="MM-РРРР"
+								placeholderTextColor="gray"
+
+							/>
+						</View>
 
 
 
-								.map(el => <Picker.Item
-									label={el} value="option1"
-								/>)}
 
 
-						</Picker>
+						<View>
+
+							<SelectList
+								placeholder="Вибери склад"
+								setSelected={(val) => setNewPosSklad(val)}
+								data={listSklad}
+								save="key"
+								inputStyles={{ color: "white", fontSize: 24, }}
+								arrowicon={<FontAwesome name="chevron-down" size={16} color={'white'} />}
+								boxStyles={{
+
+									backgroundColor: "",
+								}}
+								search={false}
+								dropdownItemStyles={{}}
+								dropdownTextStyles={{ color: "white", fontSize: 24, }}
+								defaultOption={{ key: 'pogrebi', value: 'Погреби' }}
+							/>
+						</View>
 
 
 
@@ -149,7 +208,7 @@ export default function ModalCreatePos(
 
 
 
-				<View className="flex-1 px-2 flex-row justify-around  space-x-2" >
+				<View className=" px-2 flex-row justify-around  space-x-2" >
 
 					<TouchableOpacity
 						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
@@ -164,7 +223,20 @@ export default function ModalCreatePos(
 
 						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newPosArtikul ? "border-green-500" : "border-gray-500"}`}
 						onPress={() => {
-							handleCreatePos()
+							handleCreatePos({
+								newPosArtikul,
+								newPosQuant,
+								newPosBoxes,
+								newPosDate,
+								newPosSklad
+							})
+							setNewPosArtikul("")
+							setNewPosQuant("")
+							setNewPosBoxes("")
+							setNewPosDate("")
+							setNewPosSklad({ key: 'pogrebi', value: 'Погреби' })
+
+
 						}}
 						disabled={!newPosArtikul}
 					>

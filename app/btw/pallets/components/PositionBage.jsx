@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather, MaterialCommunityIcons, Fontisto, FontAwesome5 } from '@expo/vector-icons';
 
 
 
@@ -36,7 +36,7 @@ export default function PositionBage({
 				</View>
 
 				<View
-					className="flex-1  p-1 justify-center bg-sky-950 rounded-tr-xl"
+					className="flex-1  p-1 justify-center bg-sky-500 rounded-tr-xl"
 				>
 					<Text
 						className="text-white text-xl text-center italic"
@@ -87,6 +87,52 @@ export default function PositionBage({
 
 
 			<View
+				className="flex-1 flex-row justify-between items-center px-2 border-t border-slate-50"
+			>
+
+				<View
+					className="flex-row items-center space-x-1"
+				>
+
+					<FontAwesome5 name="warehouse" size={24} color="#86efac" />
+					<Text
+						className="text-green-300  font-bold text-xl "
+					>
+						{pos.sklad === "merezhi" ?
+							"Мережі"
+							:
+							pos.sklad === "pogrebi" ?
+								"Погреби"
+								:
+								null
+						}
+					</Text>
+				</View>
+
+
+				<View
+					className="flex-row items-center space-x-1"
+				>
+
+
+					<Fontisto name="date" size={24} color="white" />
+					<Text
+						className="text-red-300  font-bold text-xl "
+					>
+						{pos.date}
+					</Text>
+				</View>
+
+
+			</View>
+
+
+
+
+
+
+
+			<View
 				className="flex-1 flex-row items-center justify-around border-t border-slate-50 rounded-b-xl p-2"
 			>
 
@@ -115,6 +161,6 @@ export default function PositionBage({
 			</View>
 
 
-		</View>
+		</View >
 	)
 }

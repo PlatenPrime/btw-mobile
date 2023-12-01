@@ -255,7 +255,13 @@ export default function PalletPage() {
 	}
 
 
-	const handleCreatePos = async () => {
+	const handleCreatePos = async ({
+		newPosArtikul,
+		newPosQuant,
+		newPosBoxes,
+		newPosDate,
+		newPosSklad
+	}) => {
 
 		try {
 			setIsCreatingPos(true)
@@ -289,11 +295,7 @@ export default function PalletPage() {
 			setIsCreatingPos(false)
 			setShowModalCreatePos(false)
 
-			setNewPosArtikul("")
-			setNewPosQuant("")
-			setNewPosBoxes("")
-			setNewPosDate("")
-			setNewPosSklad("")
+		
 
 		}
 	};
@@ -490,16 +492,6 @@ export default function PalletPage() {
 						showModalCreatePos={showModalCreatePos}
 						setShowModalCreatePos={setShowModalCreatePos}
 						isCreatingPos={isCreatingPos}
-						newPosArtikul={newPosArtikul}
-						setNewPosArtikul={setNewPosArtikul}
-						newPosQuant={newPosQuant}
-						setNewPosQuant={setNewPosQuant}
-						newPosBoxes={newPosBoxes}
-						setNewPosBoxes={setNewPosBoxes}
-						newPosDate={newPosDate}
-						setNewPosDate={setNewPosDate}
-						newPosSklad={setNewPosSklad}
-						setNewPosSklad={setNewPosSklad}
 						artsCurrent={artsCurrent}
 						handleCreatePos={handleCreatePos}
 
