@@ -86,14 +86,6 @@ export default function PalletPage() {
 
 
 
-
-	const [newPosArtikul, setNewPosArtikul] = useState("")
-	const [newPosQuant, setNewPosQuant] = useState("")
-	const [newPosBoxes, setNewPosBoxes] = useState("")
-	const [newPosDate, setNewPosDate] = useState("")
-	const [newPosSklad, setNewPosSklad] = useState("")
-
-
 	// MODALS
 
 	const [showModalDeletePallet, setShowModalDeletePallet] = useState(false);
@@ -317,17 +309,9 @@ export default function PalletPage() {
 	}
 
 
-	async function handleUpdatePosById(id) {
+	async function handleUpdatePosById(id, updatedData) {
 		try {
 			setIsUpdatingPosById(true)
-
-
-			const updatedData = {
-				quant: updatePosQuantValue,
-				boxes: updatePosBoxesValue,
-				date: updatePosDateValue,
-				sklad: updatePosSkladValue,
-			}
 
 
 			const resUpdatePos = await updatePosById(id, updatedData)
@@ -504,8 +488,18 @@ export default function PalletPage() {
 						isDeletingPosById={isDeletingPosById}
 						handleDeletePosById={handleDeletePosById}
 
-
 					/>
+
+
+					<ModalUpdatePos
+						showModalUpdatePos={showModalUpdatePos}
+						setShowModalUpdatePos={setShowModalUpdatePos}
+						selectedPos={selectedPos}
+						artsCurrent={artsCurrent}
+						isUpdatingPosById={isUpdatingPosById}
+						handleUpdatePosById={handleUpdatePosById}
+					/>
+
 
 
 
@@ -594,7 +588,10 @@ export default function PalletPage() {
 												key={pos._id}
 												pos={pos}
 												artsCurrent={artsCurrent}
-												onUpdate={() => setShowModalUpdatePos(true)}
+												onUpdate={() => {
+													setShowModalUpdatePos(true)
+													setSelectedPos(pos)
+												}}
 												onDelete={() => {
 													setShowModalDeletePos(true)
 													setSelectedPos(pos)
