@@ -34,7 +34,7 @@ export default function PalletPage() {
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
-	const { getPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getSelectedRowPallets } = usePalletStore();
+	const { getPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getSelectedRowPallets, allPallets, getAllPallets } = usePalletStore();
 	const { getRowById, getAllRows, rows } = useRowStore();
 	const { getPalletPoses, clearPosesStore, createPos, deletePosById, poses, updatePosById } = usePosesStore()
 
@@ -46,13 +46,9 @@ export default function PalletPage() {
 
 	const [palletTitle, setPalletTitle] = useState(pallet?.title)
 
-
 	const [isPalletLoading, setIsPalletLoading] = useState(false)
 	const [isPosesLoading, setIsPosesLoading] = useState(false);
-	const [isSelectedRowPalletsLoading, setIsSelectedRowPalletsLoading] = useState(false);
 	const [isSelectedPalletLoading, setIsSelectedPalletLoading] = useState(false);
-
-
 
 
 	const [isDeletingPalletById, setIsDeletingPalletById] = useState(false)
@@ -61,30 +57,13 @@ export default function PalletPage() {
 	const [isDeletingPosById, setIsDeletingPosById] = useState(false)
 	const [isUpdatingPosById, setIsUpdatingPosById] = useState(false)
 	const [isClearingPalletById, setIsClearingPalletById] = useState(false)
-
-
-
-
-
+	const [isMovingPalletContent, setIsMovingPalletContent] = useState(false)
 
 
 
 	const [selectedPos, setSelectedPos] = useState(null)
-	const [selectedRowId, setSelectedRowId] = useState(null)
-	const [selectedRowPallets, setSelectedRowPallets] = useState(null)
 	const [selectedPalletId, setSelectedPalletId] = useState(null)
 	const [selectedPallet, setSelectedPallet] = useState(null)
-
-
-
-
-
-	const [updatePosQuantValue, setUpdatePosQuantValue] = useState(0)
-	const [updatePosBoxesValue, setUpdatePosBoxesValue] = useState(0)
-	const [updatePosDateValue, setUpdatePosDateValue] = useState("")
-	const [updatePosSkladValue, setUpdatePosSkladValue] = useState("")
-
-
 
 
 	// MODALS
@@ -139,37 +118,20 @@ export default function PalletPage() {
 	useEffect(() => {
 
 
-		const fetchAllRows = async () => {
+		const fetchAllPallets = async () => {
 			try {
-				const rows = await getAllRows()
-				setSelectedRowId(rows[0]._id)
+				const pallets = await getAllPallets()
+
 			} catch (error) {
 				console.log(error)
 			}
 		}
 
-		fetchAllRows()
+		fetchAllPallets()
 
 	}, [])
 
-	useEffect(() => {
-		const fetchRowPallets = async () => {
-			try {
-				setIsSelectedRowPalletsLoading(true);
 
-				if (selectedRowId) {
-					const pallets = await getSelectedRowPallets(selectedRowId);
-					setSelectedRowPallets(pallets);
-				}
-			} catch (error) {
-				console.log(error);
-			} finally {
-				setIsSelectedRowPalletsLoading(false);
-			}
-		}
-
-		fetchRowPallets();
-	}, [selectedRowId]);
 
 
 	useEffect(() => {
@@ -348,6 +310,7 @@ export default function PalletPage() {
 	async function handleMovePalletContent(currentPalletId, targetPalletId) {
 
 		try {
+			setIsMovingPalletContent(true)
 			const message = await movePalletContent(currentPalletId, targetPalletId);
 			console.log(message); // Выводим сообщение об успешном перемещении
 			clearPosesStore()
@@ -356,6 +319,7 @@ export default function PalletPage() {
 			console.error('Ошибка при перемещении содержимого Pallet:', error);
 			// Обработка ошибки, если что-то пошло не так
 		} finally {
+			setIsMovingPalletContent(false)
 			setShowModalMovePalletContent(false)
 		}
 
@@ -513,8 +477,17 @@ export default function PalletPage() {
 					/>
 
 
-
-
+					<ModalMovePalletContent
+						showModalMovePalletContent={showModalMovePalletContent}
+						setShowModalMovePalletContent={setShowModalMovePalletContent}
+						pallet={pallet}
+						palletTitle={palletTitle}
+						allPallets={allPallets}
+						setSelectedPalletId={setSelectedPalletId}
+						selectedPalletId={selectedPalletId}
+						isMovingPalletContent={isMovingPalletContent}
+						handleMovePalletContent={handleMovePalletContent}
+					/>
 
 
 

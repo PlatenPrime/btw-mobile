@@ -3,6 +3,8 @@ import axios from '../utils/axios';
 
 export const usePalletStore = create((set) => ({
 	pallets: [],
+	allPallets: [],
+
 
 
 	createPallet: async (title, rowId) => {
@@ -30,7 +32,7 @@ export const usePalletStore = create((set) => ({
 
 			if (response.status === 200) {
 				const data = response.data;
-				set({ pallets: data.pallets });
+				set({ allPallets: data.pallets });
 				return data.pallets
 			} else {
 				throw new Error('Ошибка получения Pallets');
