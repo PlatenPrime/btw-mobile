@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Pressable, Modal, ActivityIndicator } from 'react-native';
+import { View, Text, Pressable, Modal, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { ScreenContainer } from '../../../components';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { useRowStore } from '.././../../stores/rowsStore';
@@ -85,10 +85,10 @@ export default function Stocks() {
 			>
 
 
-				<Pressable
+				<TouchableOpacity
 					className="flex  justify-between items-center 
 					py-2 rounded-lg
-					border border-emerald-500
+				
 				
 					"
 
@@ -99,7 +99,7 @@ export default function Stocks() {
 						Створити ряд
 
 					</Text>
-				</Pressable>
+				</TouchableOpacity>
 
 
 			</View>}
@@ -125,11 +125,10 @@ export default function Stocks() {
 
 
 
-			{isRowsLoading ? <Text className="text-3xl text-white text-center" >
+			{isRowsLoading
+				?
 				<ActivityIndicator size="large" color="#f97316" />
-			</Text> :
-
-
+				:
 				<ScrollView>
 					{rows?.length > 0 ?
 

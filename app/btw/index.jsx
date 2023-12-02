@@ -1,61 +1,74 @@
-import { View, Text, Button, ImageBackground } from 'react-native'
+import { View, Text, Button, ImageBackground, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { Link } from 'expo-router'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { Link, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../components'
 
 export default function Page() {
+
+
+	const router = useRouter()
+
+
+
+
+
 	return (
 		<ScreenContainer>
 			<View
-				className="flex justify-start h-full space-y-4 p-4"
+				className="flex-1 justify-start h-full space-y-4 p-4"
 			>
 
-				<Link
-					href="/btw/stocks/"
-					asChild
-					className=" flex justify-center py-8 bg-orange-500 rounded shadow-2xl shadow-orange-500"
+
+
+				<TouchableOpacity
+					onPress={() => router.push("/btw/stocks/")}
+					className="h-1/3 flex-1 justify-center 
+					border-2 border-orange-400
+					bg-orange-400/20 rounded-xl "
 				>
 
 					<Text
-						className="text-center text-3xl text-white"
+						className="text-center text-5xl text-orange-100"
 					>
 						Запаси
 					</Text>
 
-				</Link>
+				</TouchableOpacity>
 
-				<Link
-					href="/btw/arts/"
-					asChild
-					className=" flex justify-center py-8 bg-sky-500 rounded "
-				>
-					<TouchableOpacity
-						className="  "
-					>
-						<Text
-							className="text-center text-3xl text-white"
-						>
-							Артикули
-						</Text>
-					</TouchableOpacity>
-				</Link>
 
-				<Link
-					href="/btw/asks/"
-					asChild
-					className=" flex justify-center py-8 bg-indigo-500 rounded "
+
+
+
+				<TouchableOpacity
+					onPress={() => router.push("/btw/arts/")}
+					className=" h-1/3 flex-1 justify-center 
+					border-2 border-sky-500
+					bg-sky-500/20 rounded-xl "
 				>
-					<TouchableOpacity
-						className="  "
+					<Text
+						className="text-center text-5xl text-sky-100"
 					>
-						<Text
-							className="text-center text-3xl text-white"
-						>
-							Запити
-						</Text>
-					</TouchableOpacity>
-				</Link>
+						Артикули
+					</Text>
+				</TouchableOpacity>
+
+
+
+
+				<TouchableOpacity
+					onPress={() => router.push("/btw/asks/")}
+					className="h-1/3 flex-1 justify-center  
+					border-2 border-indigo-500
+					bg-indigo-500/20 rounded-xl "
+				>
+
+					<Text
+						className="text-center text-indigo-100 text-5xl "
+					>
+						Запити
+					</Text>
+
+				</TouchableOpacity>
 
 
 			</View>

@@ -1,4 +1,4 @@
-import { View, Text, Modal, Pressable, ActivityIndicator } from 'react-native'
+import { View, Text, Modal, Pressable, ActivityIndicator, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import { colors500 } from '../../../../../constants/Colors'
@@ -23,7 +23,7 @@ export default function ModalCreateRow({
 			>
 
 
-				<Text className="text-white text-3xl  text-center" >Створення ряду</Text>
+				<Text className="text-white text-4xl  text-center" >Створення ряду</Text>
 
 
 
@@ -37,26 +37,25 @@ export default function ModalCreateRow({
 				{isCreatingRow && <ActivityIndicator size="large" color={colors500.emerald} />}
 
 
-				<View className="flex flex-row justify-around text-white text-xl" >
-					<Pressable
-						className="p-4 border border-red-500 flex items-center justify-center rounded-2xl"
+				<View className="flex flex-row justify-around text-white text-xl space-x-2" >
+					<TouchableOpacity
+						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl"
 						onPress={() => { setShowModalCreateRow(false) }}>
 						<Text className=" text-white text-xl"   >СКАСУВАТИ</Text>
-					</Pressable>
-					<Pressable
-
-						className={`p-4 flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
+					</TouchableOpacity>
 
 
+
+					<TouchableOpacity
+
+						className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
 						onPress={() => {
 							handleCreateRow(newRowTitle)
-
 						}}
 						disabled={!newRowTitle}
 					>
-
 						<Text className=" text-white text-xl" >СТВОРИТИ</Text>
-					</Pressable>
+					</TouchableOpacity>
 
 				</View>
 

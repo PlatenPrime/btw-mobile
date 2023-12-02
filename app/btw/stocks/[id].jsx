@@ -1,4 +1,4 @@
-import { View, Text, Modal, ActivityIndicator, Pressable, TextInput } from 'react-native'
+import { View, Text, Modal, ActivityIndicator, Pressable, TextInput, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { useRowStore } from '../../../stores/rowsStore'
@@ -47,32 +47,40 @@ export default function RowPage() {
 
 	useEffect(() => {
 
-		try {
-			setIsRowLoading(true)
-			async function fetchRow() {
+
+
+		async function fetchData() {
+
+			try {
+				setIsRowLoading(true)
+
+
+
 				const row = await getRowById(id)
 				setRow(row)
 				setRowTitle(row?.title)
 				setNewRowTitle(row?.title)
-			}
 
-			async function fetchRowPallets() {
 				await getRowPallets(id)
+
+
+
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setIsRowLoading(false)
 			}
 
-			fetchRow()
-			fetchRowPallets()
-
-		} catch (error) {
-			console.log(error);
-
-		} finally {
-			setIsRowLoading(false)
 		}
 
+		fetchData()
 
 
 	}, [id])
+
+
+
+
 
 
 	useEffect(() => {
@@ -148,7 +156,12 @@ export default function RowPage() {
 		<ScreenContainer>
 			<Stack.Screen
 				options={{
-					headerTitle: () => <Text className="text-center font-bold text-3xl text-white p-3" >Ряд {rowTitle}</Text>
+					headerTitle: () =>
+						<Text className="text-center font-bold text-3xl text-white p-3" >
+
+							Ряд {rowTitle}
+
+						</Text>
 				}}
 			/>
 
@@ -156,7 +169,7 @@ export default function RowPage() {
 			{showButtonGroup && <View
 				className="p-4 space-y-2 bg-black/80"
 			>
-				<Pressable
+				<TouchableOpacity
 					className="flex  justify-between items-center 
 					py-2 rounded-lg
 					border border-emerald-500
@@ -170,7 +183,7 @@ export default function RowPage() {
 						Створити палету
 
 					</Text>
-				</Pressable>
+				</TouchableOpacity>
 
 
 
@@ -255,7 +268,11 @@ export default function RowPage() {
 
 			{/* PALLETS */}
 
-			{isRowLoading ? <ActivityIndicator size="large" color="#f59e0b" /> :
+			{isRowLoading
+				?
+				<ActivityIndicator size="large" color="#f59e0b" />
+
+				:
 
 				<ScrollView>
 					{pallets?.length > 0 ?
