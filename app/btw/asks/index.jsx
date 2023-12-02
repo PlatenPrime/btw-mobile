@@ -1,22 +1,30 @@
-import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { View, Text, ActivityIndicator, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { ScreenContainer } from '../../../components'
 import useAskStore from "../../../stores/asksStore"
 import { useGlobalStore } from "../../../stores/globalStore";
 import { ScrollView } from 'react-native-gesture-handler';
 import { useRouter } from 'expo-router';
+import { useGetArtsCurrent } from "../../../hooks/useGetArtsCurrent"
+import AskBage from "./components/AskBage"
+
 
 export default function AsksPage() {
 
 	const router = useRouter()
-
+	const { artsCurrent, isLoadingArtsCurrent, errorLoadingArts } = useGetArtsCurrent()
 
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
-	const { asks, getAllAsks, } = useAskStore()
+	const { asks, getAllAsks, createAsk } = useAskStore()
 
 	const [isAsksLoading, setIsAsksLoading] = useState(false)
+	const [isAsksCreating, setIsAsksCreating] = useState(false)
+
+	const [newAskArtikul, setNewAskArtikul] = useState('')
+	const [newAskQuant, setNewAskQuant] = useState('')
 
 
+	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
 
 
 	useEffect(() => {
@@ -49,6 +57,34 @@ export default function AsksPage() {
 
 
 
+	async function handleCreateAsk() {
+		try {
+			setIsAsksCreating(true)
+			const newAskData = {
+				artikul: newAskArtikul,
+				quant: newAskQuant,
+				status: "new"
+			}
+
+			await createAsk(newAskData)
+
+
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setIsAsksCreating(true)
+			setShowModalCreateAsk(false)
+		}
+
+
+
+	}
+
+
+
+
+
 
 
 
@@ -62,44 +98,22 @@ export default function AsksPage() {
 
 			{isAsksLoading
 				?
-				<ActivityIndicator size="large" color="#f97316" />
+				<ActivityIndicator size="large" color="#6366f1" />
 				:
 
 				<ScrollView
 					className="space-y-2 p-2"
 
 				>
-					<Text className="text-white text-3xl text-center">{asks?.length}</Text>
+					<Text className="text-indigo-500 text-3xl text-center">{asks?.length}</Text>
 
 
-					{asks?.map(ask => <TouchableOpacity
+					{asks?.map(ask => <AskBage
 						key={ask._id}
-						onPress={() => router.push(`btw/asks/${ask._id}/`)}
-						className="border border-indigo-500 rounded-xl "
-					>
-						<Text
-							className="text-center text-2xl text-white"
-						>
-							{ask.artikul}
-
-						</Text>
-						<Text
-							className="text-center text-xl text-white"
-						>
-							{ask.createdAt}
-						</Text>
-
-						<Text
-							className="text-center text-xl text-white"
-						>
-							{ask.updatedAt}
-
-						</Text>
-
-
-
-
-					</TouchableOpacity>)}
+						ask={ask}
+						artsCurrent={artsCurrent}
+					/>
+					)}
 
 
 
