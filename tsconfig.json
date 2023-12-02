@@ -21,5 +21,5 @@
 		"components/common/ScreenContainer.jsx",
 		"app/btw/pallets/[id].jsx",
 		"app/btw/pallets/index.jsx"
-, "app/btw/pallets/_layout.jsx", "app/btw/arts/_layout.jsx", "app/btw/arts/[id].jsx", "app/btw/arts/index.jsx"	]
+, "app/btw/pallets/_layout.jsx", "app/btw/arts/_layout.jsx", "app/btw/arts/[id].jsx", "app/btw/arts/index.jsx", "app/btw/asks/index.jsx", "app/btw/asks/[id].jsx", "app/btw/asks/_layout.jsx"	]
 }
