@@ -66,9 +66,7 @@ export default function ArtsPage() {
 
 			<ScrollView
 				className=" space-y-4 px-4 bg-sky-500/5"
-				refreshControl={
-					<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-				}
+				
 			>
 
 
@@ -268,7 +266,7 @@ export default function ArtsPage() {
 						{isLoadingArtsCurrent ?
 							<ActivityIndicator />
 							:
-							<StyledView className="space-y-2 flex-1  justify-center">
+							<View className="space-y-2 flex-1  justify-center">
 								{filteredArts?.length === 0
 									?
 									artsCurrent?.slice(step * page - step, step * page).map((art) =>
@@ -356,7 +354,7 @@ export default function ArtsPage() {
 
 									)}
 
-							</StyledView>
+							</View>
 
 						}
 

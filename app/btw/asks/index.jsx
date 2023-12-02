@@ -7,6 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { useRouter } from 'expo-router';
 import { useGetArtsCurrent } from "../../../hooks/useGetArtsCurrent"
 import AskBage from "./components/AskBage"
+import { ModalCreateAsk } from "./components/modals"
 
 
 export default function AsksPage() {
@@ -18,10 +19,9 @@ export default function AsksPage() {
 	const { asks, getAllAsks, createAsk } = useAskStore()
 
 	const [isAsksLoading, setIsAsksLoading] = useState(false)
-	const [isAsksCreating, setIsAsksCreating] = useState(false)
+	const [isAskCreating, setIsAskCreating] = useState(false)
 
-	const [newAskArtikul, setNewAskArtikul] = useState('')
-	const [newAskQuant, setNewAskQuant] = useState('')
+
 
 
 	const [showModalCreateAsk, setShowModalCreateAsk] = useState(false)
@@ -57,23 +57,16 @@ export default function AsksPage() {
 
 
 
-	async function handleCreateAsk() {
+	async function handleCreateAsk(newAskData) {
 		try {
-			setIsAsksCreating(true)
-			const newAskData = {
-				artikul: newAskArtikul,
-				quant: newAskQuant,
-				status: "new"
-			}
+			setIsAskCreating(true)
 
 			await createAsk(newAskData)
-
-
 
 		} catch (error) {
 			console.log(error)
 		} finally {
-			setIsAsksCreating(true)
+			setIsAskCreating(true)
 			setShowModalCreateAsk(false)
 		}
 
@@ -94,6 +87,40 @@ export default function AsksPage() {
 
 
 
+			{showButtonGroup && <View
+				className="p-4 space-y-2 "
+			>
+				<TouchableOpacity
+					className="flex  justify-between items-center 
+					py-2 rounded-lg 
+					"
+					onPress={() => { setShowModalCreateAsk(true) }}>
+
+					<Text className="text-2xl text-emerald-300 items-center justify-center " >
+
+						Створити запит
+
+					</Text>
+				</TouchableOpacity>
+
+
+
+			</View>
+			}
+
+
+
+
+			<ModalCreateAsk
+				showModalCreateAsk={showModalCreateAsk}
+				setShowModalCreateAsk={setShowModalCreateAsk}
+				isAskCreating={isAskCreating}
+				artsCurrent={artsCurrent}
+				handleCreateAsk={handleCreateAsk}
+			/>
+
+
+
 
 
 			{isAsksLoading
@@ -102,23 +129,28 @@ export default function AsksPage() {
 				:
 
 				<ScrollView
-					className="space-y-2 p-2"
 
 				>
-					<Text className="text-indigo-500 text-3xl text-center">{asks?.length}</Text>
 
+					<View
+						className="space-y-4 p-2">
 
-					{asks?.map(ask => <AskBage
-						key={ask._id}
-						ask={ask}
-						artsCurrent={artsCurrent}
-					/>
-					)}
+						{asks?.map(ask =>
+							<View
+								className="flex-1"
+								key={ask._id}
+							>
+								<AskBage
+									ask={ask}
+									artsCurrent={artsCurrent}
+								/>
+							</View>
+						)}
 
-
-
+					</View>
 
 				</ScrollView>}
+
 
 		</ScreenContainer>
 	)

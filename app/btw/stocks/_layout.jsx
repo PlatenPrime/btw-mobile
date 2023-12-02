@@ -23,7 +23,7 @@ export default function Layout() {
 					title: "Ряди",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-horizontal" size={24} color="white" />
+						<Entypo name="dots-three-vertical" size={24} color="white" />
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",
@@ -43,7 +43,7 @@ export default function Layout() {
 					title: "Ряд",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-horizontal" size={24} color="white" />
+						<Entypo name="dots-three-vertical" size={24} color="white" />
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",

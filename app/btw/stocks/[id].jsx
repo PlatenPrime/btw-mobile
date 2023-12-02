@@ -172,9 +172,6 @@ export default function RowPage() {
 				<TouchableOpacity
 					className="flex  justify-between items-center 
 					py-2 rounded-lg
-					border border-emerald-500
-					
-				
 					"
 					onPress={() => { setShowModalCreatePallet(true) }}>
 
@@ -188,12 +185,9 @@ export default function RowPage() {
 
 
 
-				<Pressable
+				<TouchableOpacity
 					className="flex  justify-between items-center 
 					py-2 rounded-lg
-					border border-lime-500
-					
-					
 					"
 
 					onPress={() => { setShowModalUpdateRow(true) }}>
@@ -203,15 +197,15 @@ export default function RowPage() {
 						Перейменувати ряд
 
 					</Text>
-				</Pressable>
+				</TouchableOpacity>
 
 
 
 
-				<Pressable
+				<TouchableOpacity
 					className="flex  justify-between items-center 
 					py-2 rounded-lg
-					border border-red-500
+				
 					"
 
 					onPress={() => { setShowModalDeleteRow(true) }}>
@@ -220,7 +214,7 @@ export default function RowPage() {
 
 						Видалити ряд
 					</Text>
-				</Pressable>
+				</TouchableOpacity>
 			</View>
 			}
 
