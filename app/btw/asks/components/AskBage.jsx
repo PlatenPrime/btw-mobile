@@ -128,7 +128,7 @@ export default function AskBage({
 				<Text
 					className="text-white text-xl p-2"
 				>
-					Комментарий
+					Комментарий: {ask.comment}
 				</Text>
 			</View>
 

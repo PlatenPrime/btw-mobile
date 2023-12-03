@@ -22,6 +22,7 @@ export default function ModalCreateAsk({
 
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [newAskQuant, setNewAskQuant] = useState('')
+	const [newAskComment, setNewAskComment] = useState('')
 
 
 
@@ -120,6 +121,19 @@ export default function ModalCreateAsk({
 							/>
 						</View>
 
+						<View
+							className="flex-1 flex-row items-center justify-start space-x-1"
+						>
+							<Text className="text-white text-center text-xl">Комент:</Text>
+							<TextInput
+								onChangeText={(text => setNewAskComment(text))}
+								value={newAskComment}
+								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+
+
+							/>
+						</View>
+
 
 
 					</View>
@@ -154,10 +168,12 @@ export default function ModalCreateAsk({
 							handleCreateAsk({
 								artikul: newAskArtikul,
 								quant: +newAskQuant,
+								comment: newAskComment,
 								status: "new"
 							})
 							setNewAskArtikul("")
 							setNewAskQuant("")
+							setNewAskComment("")
 
 						}}
 						disabled={!newAskArtikul}
