@@ -85,7 +85,7 @@ export default function AskBage({
 
 
 			<View
-				className="flex-row items-center justify-center 2 p-1"
+				className="flex-row items-center justify-center 2 p-1 border-b border-white "
 			>
 				<Text
 					className="text-white text-xl "
@@ -96,60 +96,81 @@ export default function AskBage({
 			</View>
 
 
+			<View
+				className="flex-row items-center justify-center 2 p-1 border-b border-white "
+			>
+				<Text
+					className="text-center text-xl text-white p-1"
+					numberOfLines={4}
+				>
+					{createdAtDateObject.toLocaleString()}
+				</Text>
 
-
-
-
+			</View>
 
 
 			<View
-				className="flex-row "
+				className="flex-row items-center justify-center 2 p-1 border-b border-white "
 			>
-				<View
-					className="w-1/2 flex-row items-center space-x-2 p-1"
+				<FontAwesome5 name="pray" size={24} color="white" />
+				<Text
+					className="text-white text-xl p-2"
 				>
-					<FontAwesome5 name="pray" size={24} color="white" />
+					Имя пользователя wfwfw wfwwfwf
+				</Text>
+			</View>
+
+
+			<View
+				className="flex-row items-center justify-center 2 p-1 "
+			>
+
+				<Text
+					className="text-white text-xl p-2"
+				>
+					Комментарий
+				</Text>
+			</View>
+
+
+
+
+
+
+			{/* <View
+				className="flex-1 flex-row "
+			>
+
+
+
+				<View
+					className="flex-1 flex-row items-center p-1"
+				>
+					<MaterialCommunityIcons name="account-arrow-down-outline" size={24} color="white" />
 					<Text
-						className="text-white text-xl"
+						className="text-white text-xl p-2"
 					>
-						Имя пользователя wfwfw wfwwfwf
+						Имя пользователя
 					</Text>
 				</View>
 
+
 				<View
-					className="w-1/2 bg-yellow-500 flex-row items-center justify-center"
+					className="flex-1 bg-yellow-500 flex-row items-center justify-center"
 				>
 					<Text
 						className="text-center text-xl text-white p-1"
-						numberOfLines={4}
 					>
-						{createdAtDateObject.toLocaleString()}
+						{updatedAtDateObject.toLocaleString()}
+
 					</Text>
 				</View>
 
 
-			</View>
 
 
 
-
-
-			<View
-				className="flex-row items-center space-x-2 p-1"
-			>
-				<MaterialCommunityIcons name="account-arrow-down-outline" size={24} color="white" />
-				<Text
-					className="text-white text-xl"
-				>
-					Имя пользователя
-				</Text>
-				<Text
-					className="text-center text-xl text-white"
-				>
-					{updatedAtDateObject.toLocaleString()}
-
-				</Text>
-			</View>
+			</View> */}
 
 
 
