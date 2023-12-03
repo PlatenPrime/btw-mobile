@@ -25,7 +25,7 @@ export default function AskBage({
 
 		<TouchableOpacity
 			onPress={() => router.push(`btw/asks/${ask._id}/`)}
-			className="border-2 border-indigo-500 bg-indigo-500/50 rounded-xl "
+			className="border-2 border-indigo-500 bg-indigo-500/20 rounded-xl "
 		>
 
 			<View
@@ -47,7 +47,7 @@ export default function AskBage({
 				</View>
 
 				<View
-					className="flex-1  justify-center bg-sky-500 rounded-tr-xl"
+					className="flex-1  justify-center bg-indigo-500 rounded-tr-xl"
 				>
 					<Text
 						className="text-white text-2xl text-center italic p-1"

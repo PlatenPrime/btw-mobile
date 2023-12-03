@@ -11,6 +11,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useGetArtsCurrent } from '../../../hooks/useGetArtsCurrent'
 import { colors500 } from '../../../constants/Colors';
+import { ModalUpdateAskPos } from "./components/modals"
 
 
 
@@ -46,6 +47,16 @@ export default function AskPage() {
 
 
 	const [showModalUpdateAskPos, setShowModalUpdateAskPos] = useState(false)
+
+	const [selectedPos, setSelectedPos] = useState(null)
+	const [selectedPosPalletTitle, setSelectedPosPalletTitle] = useState(null)
+	const [askPosBoxesFinalValue, setAskPosBoxesFinalValue] = useState("")
+	const [askPosQuantFinalValue, setAskPosQuantFinalValue] = useState("")
+	const [askPosBoxesValue, setAskPosBoxesValue] = useState("")
+	const [askPosQuantValue, setAskPosQuantValue] = useState("")
+
+
+
 
 
 
@@ -131,7 +142,48 @@ export default function AskPage() {
 	}, [])
 
 
+	// HANDLERS 
 
+	async function handleUpdateAskPos() {
+
+		try {
+			setIsUpdatingAskPos(true)
+
+			const posUpdateData = {
+				boxes: askPosBoxesFinalValue,
+				quant: askPosQuantFinalValue,
+
+			}
+
+			const askUpdateData = {
+				...ask,
+				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} було знято: кульок  ${askPosQuantValue}, коробок ${askPosBoxesValue}`]
+			}
+
+			console.log(askUpdateData);
+
+			const updatedPos = await updatePosWithArtikulById(selectedPos._id, posUpdateData)
+
+
+			console.log(updatedPos)
+
+
+			const updatedAsk = await updateAskById(id, askUpdateData)
+			console.log(updatedAsk)
+
+			if (updatedAsk) setAsk(updatedAsk)
+
+
+
+
+		} catch (error) {
+			console.log(error)
+		} finally {
+			setIsUpdatingAskPos(false)
+			setShowModalUpdateAskPos(false)
+		}
+
+	}
 
 
 
@@ -146,6 +198,34 @@ export default function AskPage() {
 
 				}}
 			/>
+
+
+
+
+			<ModalUpdateAskPos
+				showModalUpdateAskPos={showModalUpdateAskPos}
+				setShowModalUpdateAskPos={setShowModalUpdateAskPos}
+				selectedPos={selectedPos}
+				selectedPosPalletTitle={selectedPosPalletTitle}
+				askPosBoxesFinalValue={askPosBoxesFinalValue}
+				setAskPosBoxesFinalValue={setAskPosBoxesFinalValue}
+				askPosQuantFinalValue={askPosQuantFinalValue}
+				setAskPosQuantFinalValue={setAskPosQuantFinalValue}
+				askPosBoxesValue={askPosBoxesValue}
+				setAskPosBoxesValue={setAskPosBoxesValue}
+				askPosQuantValue={askPosQuantValue}
+				setAskPosQuantValue={setAskPosQuantValue}
+				isUpdatingAskPos={isUpdatingAskPos}
+				handleUpdateAskPos={handleUpdateAskPos}
+			/>
+
+
+
+
+
+
+
+
 
 			{isLoadingAsk
 				?
@@ -257,6 +337,34 @@ export default function AskPage() {
 						</View>
 
 
+						{/* ACTIONS LIST */}
+
+
+
+						{ask?.actions?.length > 0
+							?
+							<View
+								className="border border-green-700 rounded-xl"
+							>
+
+								{ask?.actions?.map((action, i) => <Text
+									key={i}
+									className=" p-2 text-xl text-green-200  italic"
+
+								>
+									{action}
+								</Text>)}
+							</View>
+							:
+							null
+						}
+
+
+
+
+
+
+
 						{/* POSES LIST */}
 
 
@@ -325,10 +433,24 @@ export default function AskPage() {
 											<View
 												className="bg-indigo-700 rounded-b-xl"
 											>
-												<TouchableOpacity>
+												<TouchableOpacity
+													onPress={() => {
+														setShowModalUpdateAskPos(true);
+														setSelectedPos(pos)
+														setAskPosBoxesFinalValue(pos?.boxes)
+														setAskPosQuantFinalValue(pos?.quant)
+														setAskPosBoxesValue("");
+														setAskPosQuantValue("");
+														setSelectedPosPalletTitle(allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+													}}
+
+
+												>
 													<Text
 														className="text-3xl text-center text-indigo-100"
-													>Зняти</Text>
+													>
+														Зняти
+													</Text>
 												</TouchableOpacity>
 											</View>
 
