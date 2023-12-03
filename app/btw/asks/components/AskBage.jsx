@@ -25,7 +25,7 @@ export default function AskBage({
 
 		<TouchableOpacity
 			onPress={() => router.push(`btw/asks/${ask._id}/`)}
-			className="border border-indigo-500 rounded-xl "
+			className="border-2 border-indigo-500 bg-indigo-500/50 rounded-xl "
 		>
 
 			<View
@@ -55,7 +55,7 @@ export default function AskBage({
 					>
 						{
 							artsCurrent?.find((art) => art.artikul === ask.artikul)?.nameukr
-							|| ask.artikul
+							|| ask?.artikul
 							|| null
 						}
 					</Text>

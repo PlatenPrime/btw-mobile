@@ -120,7 +120,6 @@ export const usePosesStore = create((set) => ({
 	getPosesByArtikul: async (artikul) => {
 		try {
 			const response = await axios.get(`poses/artikul/${artikul}`);
-			console.log(response)
 			set({ posesWithArtikul: response.data.positions });
 			return response.data.positions
 		} catch (error) {
