@@ -12,7 +12,7 @@ import useCheckAuth from '../../hooks/useCheckAuth'
 export default function Page() {
 
 
-
+	const { userAS, isLoading } = useCheckAuth()
 
 
 	const router = useRouter()
@@ -30,7 +30,7 @@ export default function Page() {
 
 			await logout()
 
-			router.replace("login")
+			router.replace("/")
 
 
 		} catch (error) {
@@ -68,47 +68,57 @@ export default function Page() {
 			/>
 
 
-			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
-				<Text
-					className="text-5xl text-white"
-				>
-					BTW
-				</Text>
 
-
-				<TouchableOpacity
-					onPress={() => router.replace("login")}
-				>
+			{userAS
+				?
+				<Text className="text-white">Війти</Text>
+				:
+				<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
 					<Text
-						className="text-3xl text-green-500"
+						className="text-5xl text-white"
 					>
-						ВХІД
+						BTW
 					</Text>
-				</TouchableOpacity>
 
 
-				<TouchableOpacity
-					onPress={handleLogout}
-				>
-
-					{isLogouting
-						?
-						<ActivityIndicator size="large" color="#ef4444" />
-						:
+					<TouchableOpacity
+						onPress={() => router.replace("/")}
+					>
 						<Text
-							className="text-3xl text-red-500"
+							className="text-3xl text-green-500"
 						>
-							ВИХІД
+							ВХІД
 						</Text>
-
-					}
-
-
-				</TouchableOpacity>
+					</TouchableOpacity>
 
 
+					<TouchableOpacity
+						onPress={handleLogout}
+					>
 
-			</View>
+						{isLogouting
+							?
+							<ActivityIndicator size="large" color="#ef4444" />
+							:
+							<Text
+								className="text-3xl text-red-500"
+							>
+								ВИХІД
+							</Text>
+
+						}
+
+
+					</TouchableOpacity>
+
+
+
+				</View>
+
+			}
+
+
+
 		</ScreenContainer>
 	)
 }

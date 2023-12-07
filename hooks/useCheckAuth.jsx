@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router';
 import useAuthStore from '../stores/authStore';
 import React, { useEffect, useState } from 'react';
 
-const useCheckAuth = () => {
+export default  useCheckAuth = () => {
 
 	const router = useRouter()
 
@@ -28,14 +28,16 @@ const useCheckAuth = () => {
 				setIsLoading(true)
 
 				const user = JSON.parse(await AsyncStorage.getItem('user'));
-				console.log("CHECK", user);
 
+				if (!user) {
+					router.replace("index")
+				}
 
-				setUser(user);
-				setUserAS(user);
+				;
+
 				await getMe();
 
-
+				setUser(user)
 				setUserAS(user)
 
 
@@ -63,7 +65,5 @@ const useCheckAuth = () => {
 
 	}, [getMe, setUser]);
 
-	return { userAS, isLoading }; // Возвращаем null, так как это не рендерящий компонент
-};
-
-export default useCheckAuth;
+	return { userAS, isLoading };
+}

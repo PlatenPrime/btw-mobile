@@ -1,6 +1,6 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
-import { Stack, useRouter } from 'expo-router'
+import { Redirect, Stack, useRouter } from 'expo-router'
 import { Tabs } from 'expo-router'
 import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -15,9 +15,20 @@ export default function _layout() {
 
 
 
-	useCheckAuth()
+	// const { userAS, isLoading } = useCheckAuth()
 
 
+
+	// if (isLoading) {
+	// 	return <Text>Loading...</Text>;
+	// }
+
+
+	// if (!userAS) {
+	// 	// On web, static rendering will stop here as the user is not authenticated
+	// 	// in the headless Node process that the pages are rendered in.
+	// 	return <Redirect href="login" />;
+	// }
 
 
 	return (
