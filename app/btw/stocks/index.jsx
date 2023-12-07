@@ -7,10 +7,16 @@ import { Link } from 'expo-router';
 import { colors500 } from '../../../constants/Colors'
 import { useGlobalStore } from "../../../stores/globalStore";
 import ModalCreateRow from "./components/modals/modalCreateRow"
+import useCheckAuth from '../../../hooks/useCheckAuth';
 
 
 
 export default function Stocks() {
+
+	useCheckAuth()
+
+
+
 
 	const { createRow, rows, getAllRows } = useRowStore();
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()

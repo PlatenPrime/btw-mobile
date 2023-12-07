@@ -1,16 +1,45 @@
-import { StyleSheet, Text, View, Button, StatusBar } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator } from 'react-native'
+import React, { useState } from 'react'
 import { Link, Stack, useRouter } from 'expo-router'
 import { ScreenContainer } from '../components'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { colors500 } from '../constants/Colors'
+import useAuthStore from '../stores/authStore'
+import useCheckAuth from '../hooks/useCheckAuth'
 
 
 
 export default function Page() {
 
 
+
+
+
 	const router = useRouter()
+
+	const { logout } = useAuthStore()
+
+	const [isLogouting, setIsLogouting] = useState(false);
+
+
+
+
+	const handleLogout = async () => {
+		try {
+			setIsLogouting(true)
+
+			await logout()
+
+			router.push("/login")
+
+
+		} catch (error) {
+			console.error('Login error:', error);
+		} finally {
+			setIsLogouting(false)
+		}
+	};
+
 
 
 
@@ -22,9 +51,9 @@ export default function Page() {
 
 
 			<Stack.Screen
-				
+
 				options={{
-				
+
 					headerTintColor: "white",
 					headerTitleAlign: "center",
 					headerTitleStyle: {
@@ -56,6 +85,27 @@ export default function Page() {
 						ВХІД
 					</Text>
 				</TouchableOpacity>
+
+
+				<TouchableOpacity
+					onPress={handleLogout}
+				>
+
+					{isLogouting
+						?
+						<ActivityIndicator size="large" color="#ef4444" />
+						:
+						<Text
+							className="text-3xl text-red-500"
+						>
+							ВИХІД
+						</Text>
+
+					}
+
+
+				</TouchableOpacity>
+
 
 
 			</View>

@@ -5,13 +5,15 @@ import { Tabs } from 'expo-router'
 import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import useCheckAuth from '../hooks/useCheckAuth';
 
 export default function _layout() {
 
-	const router = useRouter()
+
+	useCheckAuth()
 
 
-	const isAuthenticated = true;
+
 
 
 	return (

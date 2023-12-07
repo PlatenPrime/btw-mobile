@@ -6,8 +6,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Entypo } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../stores/globalStore";
 import { colors500 } from "../../../constants/Colors"
+import useCheckAuth from '../../../hooks/useCheckAuth';
 
 export default function Layout() {
+
+	useCheckAuth()
+
 
 	const router = useRouter()
 

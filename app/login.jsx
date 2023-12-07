@@ -1,10 +1,11 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native'
 import React from 'react'
 import { ScreenContainer } from '../components'
 import { Stack, useRouter } from 'expo-router'
 import { colors500 } from "../constants/Colors"
 import useAuthStore from '../stores/authStore'
 import { useState } from 'react'
+import { ScrollView } from 'react-native-gesture-handler'
 
 
 export default function Login() {
@@ -19,9 +20,44 @@ export default function Login() {
 		password: '',
 	});
 
+
+	const [username, setUsername] = useState("")
+	const [password, setPassword] = useState("")
+
 	const [isLogining, setIsLogining] = useState(false);
-	const [error, setError] = useState(null);
-	const [showPassword, setShowPassword] = useState(false);
+	const [error, setError] = useState("");
+
+
+
+
+
+
+
+
+	const handleLogin = async () => {
+		try {
+			setIsLogining(true)
+
+			const user = await login({ username, password })
+
+			if (!user) {
+				setError("Невдала спроба авторизації")
+			}
+
+			if (user) { router.replace("/") }
+
+
+
+
+		} catch (error) {
+			console.error('Login error:', error);
+		} finally {
+			setIsLogining(false)
+		}
+	};
+
+
+
 
 
 
@@ -49,14 +85,104 @@ export default function Login() {
 			/>
 
 
-			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
+			<ScrollView
+				className="p-4 space-y-4"
+			>
+
+
+				<View
+					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+				>
+
+					<Text className="text-gray-200 text-center text-xl">Логін:</Text>
+
+
+					<TextInput
+
+						onChangeText={(text => setUsername(text))}
+						value={username}
+						className="pl-6 h-10 flex-1 text-xl text-white italic "
+						autoFocus={true}
+					/>
+
+
+
+				</View>
+
+
+
+				<View
+					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+				>
+
+					<Text className="text-gray-200 text-center text-xl">Пароль:</Text>
+
+
+
+					<TextInput
+
+						className="pl-6 h-10 flex-1 text-xl text-white italic  "
+						onChangeText={(text => setPassword(text))}
+						value={password}
+						type="password"
+						autoFocus={true}
+					/>
+
+
+
+				</View>
+
+
+
+
+				<TouchableOpacity
+					className={` p-4 border ${username ? "border-green-500" : "border-gray-500"}  flex items-center justify-center rounded-2xl `}
+					onPress={handleLogin}
+					disabled={!username}
+				>
+
+					{isLogining
+						?
+						<ActivityIndicator size="large" color="#22c55e" />
+						:
+						<Text
+							className="text-3xl  text-white"
+						>
+							ВХІД
+						</Text>
+
+					}
+
+
+
+				</TouchableOpacity>
+
+
+
+
+				{isLogining
+					?
+					<ActivityIndicator size="large" color="#22c55e" />
+					:
+					<Text className="text-rose-500 text-xl italic text-center">
+						{error}
+					</Text>
+
+
+				}
 
 
 
 
 
 
-			</View>
+
+			</ScrollView>
+
+
+
+
+
 		</ScreenContainer>
 	)
 }

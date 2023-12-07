@@ -10,11 +10,16 @@ import { colors500 } from '../../../constants/Colors'
 import ModalCreatePallet from "./components/modals/modalCreatePallet"
 import ModalUpdateRow from "./components/modals/modalUpdateRow"
 import ModalDeleteRow from "./components/modals/modalDeleteRow";
+import useCheckAuth from '../../../hooks/useCheckAuth'
 
 
 
 
 export default function RowPage() {
+
+
+
+	useCheckAuth()
 
 	const { id } = useLocalSearchParams()
 	const router = useRouter()
