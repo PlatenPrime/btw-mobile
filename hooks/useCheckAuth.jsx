@@ -1,7 +1,7 @@
 // Импортируем хук для навигации
 import { useRouter } from 'expo-router';
 import useAuthStore from '../stores/authStore';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const useCheckAuth = () => {
 
@@ -9,33 +9,61 @@ const useCheckAuth = () => {
 
 	const { getMe, setUser } = useAuthStore();
 
+
+	const [isLoading, setIsLoading] = useState(false)
+	const [userAS, setUserAS] = useState(null)
+
+
+
+
+
 	useEffect(() => {
 
-		
-		const checkAuth = async () => {
-			try {
-				const user = JSON.parse(await AsyncStorage.getItem('user'));
 
-				if (!user) {
-					router.replace('login'); // Используем метод навигации для перехода на страницу входа
-				}
+		const checkAuth = async () => {
+
+
+
+			try {
+				setIsLoading(true)
+
+				const user = JSON.parse(await AsyncStorage.getItem('user'));
+				console.log("CHECK", user);
+
 
 				setUser(user);
-
+				setUserAS(user);
 				await getMe();
+
+
+				setUserAS(user)
+
+
+
 
 			} catch (error) {
 				// Если произошла ошибка или пользователь не аутентифицирован,
 				// перенаправляем на страницу входа
-				router.replace('login');
+
+			} finally {
+				setIsLoading(false)
 			}
+
+
+
 		};
+
+
+
 
 		checkAuth();
 
+
+
+
 	}, [getMe, setUser]);
 
-	return null; // Возвращаем null, так как это не рендерящий компонент
+	return { userAS, isLoading }; // Возвращаем null, так как это не рендерящий компонент
 };
 
 export default useCheckAuth;

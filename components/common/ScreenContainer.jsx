@@ -15,9 +15,9 @@ export default function ScreenContainer({ children }) {
 
 		<View className='flex-1 relative' >
 			<StatusBar style="light" />
-			<Image source={require("../../assets/images/background.jpg")}
+			<Image source={require("../../assets/images/btw.jpg")}
 				className="w-full h-full absolute"
-				blurRadius={70}
+				blurRadius={10}
 
 			/>
 

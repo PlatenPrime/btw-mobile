@@ -1,44 +1,70 @@
-import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator } from 'react-native'
-import React, { useState } from 'react'
-import { Link, Stack, useRouter } from 'expo-router'
+import { View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native'
+import React, { useEffect, useLayoutEffect } from 'react'
 import { ScreenContainer } from '../components'
-import { TouchableOpacity } from 'react-native-gesture-handler'
-import { colors500 } from '../constants/Colors'
+import { Stack, useRouter } from 'expo-router'
+import { colors500 } from "../constants/Colors"
 import useAuthStore from '../stores/authStore'
-import useCheckAuth from '../hooks/useCheckAuth'
-
-
-
-export default function Page() {
+import { useState } from 'react'
+import { ScrollView } from 'react-native-gesture-handler'
 
 
 
 
+export default function Login() {
 
 	const router = useRouter()
 
-	const { logout } = useAuthStore()
-
-	const [isLogouting, setIsLogouting] = useState(false);
+	const { getMe, setUser, user } = useAuthStore();
 
 
+	const [isLoading, setIsLoading] = useState(false)
+	const [count, setCount] = useState(0)
 
 
-	const handleLogout = async () => {
-		try {
-			setIsLogouting(true)
 
-			await logout()
+	useLayoutEffect(() => {
 
-			router.push("/login")
+		const checkAuthFunc = async () => {
+
+			try {
+				setIsLoading(true)
+
+				const user = JSON.parse(await AsyncStorage.getItem('user'));
 
 
-		} catch (error) {
-			console.error('Login error:', error);
-		} finally {
-			setIsLogouting(false)
+
+				if (!user) {
+					router.replace("login")
+				}
+
+				setUser(user);
+
+				await getMe();
+
+
+				if (user) {
+					router.replace("/(app)/")
+				}
+
+
+				setCount(prev => prev + 1)
+
+			} catch (error) {
+				// Если произошла ошибка или пользователь не аутентифицирован,
+				// перенаправляем на страницу входа
+
+			} finally {
+				setIsLoading(false)
+			}
+
 		}
-	};
+
+
+		checkAuthFunc()
+
+
+
+	}, [])
 
 
 
@@ -53,64 +79,46 @@ export default function Page() {
 			<Stack.Screen
 
 				options={{
-
+					title: "BTW",
 					headerTintColor: "white",
 					headerTitleAlign: "center",
+					headerBackTitleVisible: false,
 					headerTitleStyle: {
 						fontWeight: "bold",
 						fontSize: 36,
 						color: "white"
 					},
 					headerStyle: {
-						backgroundColor: colors500?.cyan
+						backgroundColor: colors500?.violet
 					}
 				}}
 			/>
 
 
-			<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
-				<Text
-					className="text-5xl text-white"
-				>
-					BTW
-				</Text>
-
-
-				<TouchableOpacity
-					onPress={() => router.push("/login")}
-				>
-					<Text
-						className="text-3xl text-green-500"
-					>
-						ВХІД
-					</Text>
-				</TouchableOpacity>
-
-
-				<TouchableOpacity
-					onPress={handleLogout}
-				>
-
-					{isLogouting
-						?
-						<ActivityIndicator size="large" color="#ef4444" />
-						:
-						<Text
-							className="text-3xl text-red-500"
-						>
-							ВИХІД
-						</Text>
-
-					}
-
-
-				</TouchableOpacity>
+			<ScrollView
+				className="p-4 space-y-4"
+			>
 
 
 
-			</View>
+
+				{isLoading ?
+					<Text className="text-3xl text-center text-red-500 ">ЗАУШААШУА</Text>
+					:
+					<Text className="text-3xl text-center text-green-500 ">ЗАУШААШУА</Text>
+				}
+
+
+				<Text className="text-3xl text-center text-green-500 ">{user?.fullname}</Text>
+				<Text className="text-3xl text-center text-green-500 ">{count}</Text>
+
+
+			</ScrollView>
+
+
+
+
+
 		</ScreenContainer>
 	)
 }
-
-const styles = StyleSheet.create({})

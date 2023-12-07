@@ -6,9 +6,14 @@ import { colors500 } from "../constants/Colors"
 import useAuthStore from '../stores/authStore'
 import { useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
+import useCheckAuth from "../hooks/useCheckAuth"
 
 
 export default function Login() {
+
+
+
+	useCheckAuth()
 
 
 	const { login } = useAuthStore();
@@ -44,7 +49,7 @@ export default function Login() {
 				setError("Невдала спроба авторизації")
 			}
 
-			if (user) { router.replace("/") }
+			if (user) { router.replace("/(app)/") }
 
 
 
@@ -70,9 +75,10 @@ export default function Login() {
 			<Stack.Screen
 
 				options={{
-
+					title: "Авторизація",
 					headerTintColor: "white",
 					headerTitleAlign: "center",
+					headerBackTitleVisible: false,
 					headerTitleStyle: {
 						fontWeight: "bold",
 						fontSize: 36,
@@ -125,7 +131,7 @@ export default function Login() {
 						onChangeText={(text => setPassword(text))}
 						value={password}
 						type="password"
-						autoFocus={true}
+
 					/>
 
 
