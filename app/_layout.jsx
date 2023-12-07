@@ -11,28 +11,31 @@ export default function _layout() {
 	const router = useRouter()
 
 
+	const isAuthenticated = true;
+
 
 	return (
 		<Tabs
-		screenOptions={{
-			tabBarStyle: { backgroundColor: 'black' },
-			tabBarActiveBackgroundColor: "#222",
-			tabBarActiveTintColor: "#bbb"
-		  }}
+			screenOptions={{
+				tabBarStyle: { backgroundColor: 'black' },
+				tabBarActiveBackgroundColor: "#222",
+				tabBarActiveTintColor: "#bbb"
+			}}
 		>
 
 			<Tabs.Screen
 				name="index"
 				options={
 					{
-						headerShown: false,
+
 						headerTitle: "Головна",
 						tabBarLabel: "Головна",
-						tabBarShowLabel: false,
+						// tabBarShowLabel: false,
 						tabBarIcon: () => <AntDesign name="home" size={24} color="white" />
 					}
 				}
 			/>
+
 
 			<Tabs.Screen
 				name="btw"
@@ -40,8 +43,8 @@ export default function _layout() {
 					{
 						headerShown: false,
 						headerTitle: "BTW",
-						tabBarShowLabel: false,
-						tabBarLabel: "",
+						// tabBarShowLabel: false,
+						tabBarLabel: "Погреби",
 						tabBarIcon: () => <SimpleLineIcons name="menu" size={24} color="white" />
 					}
 				}
@@ -51,10 +54,10 @@ export default function _layout() {
 				name="profile"
 				options={
 					{
-						headerShown: false,
+
 						headerTitle: "Профіль",
 						tabBarLabel: "Профіль",
-						tabBarShowLabel: false,
+						// tabBarShowLabel: false,
 						tabBarIcon: () => <Ionicons name="person-outline" size={24} color="white" />
 					}
 				}
@@ -62,19 +65,29 @@ export default function _layout() {
 
 
 
-
+			<Tabs.Screen
+				name="login"
+				options={
+					{
+						href: null,
+						headerTitle: "Авторизація",
+						// tabBarLabel: "Профіль",
+						// tabBarShowLabel: false,
+						tabBarIcon: () => <Ionicons name="person-outline" size={24} color="white" />
+					}
+				}
+			/>
 
 
 			<Tabs.Screen
 				name="(tabs)"
 				options={{
 					// This tab will no longer show up in the tab bar.
-					 href: null,
+					href: null,
 				}
 				}
 			/>
 
-		
 
 			<Tabs.Screen
 				name="[missing]"
@@ -84,8 +97,6 @@ export default function _layout() {
 				}
 				}
 			/>
-
-
 
 
 		</Tabs>
