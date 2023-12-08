@@ -277,7 +277,7 @@ export default function AskPage() {
 										<TouchableOpacity
 											key={pos._id}
 											className="p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl"
-											onPress={() => router.push(`/btw/pallets/${allPallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
+											onPress={() => router.push(`/(app)/btw/pallets/${allPallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
 
 										>
 

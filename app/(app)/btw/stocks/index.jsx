@@ -145,7 +145,7 @@ export default function Stocks() {
 
 							{rows?.map(item => <Link
 								key={item._id}
-								href={`/btw/stocks/${item._id}`}
+								href={`/(app)/btw/stocks/${item._id}`}
 								className="border-4 border-orange-500 rounded 
 				bg-orange-500/70
 				text-center 

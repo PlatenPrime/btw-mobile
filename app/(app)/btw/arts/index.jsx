@@ -66,7 +66,7 @@ export default function ArtsPage() {
 
 			<ScrollView
 				className=" space-y-4 px-4 bg-sky-500/5"
-				
+
 			>
 
 
@@ -296,7 +296,7 @@ export default function ArtsPage() {
 
 											<TouchableOpacity
 												className="flex-1 justify-center"
-												onPress={() => router.push(`/btw/arts/${art._id}/`)}
+												onPress={() => router.push(`/(app)/btw/arts/${art._id}/`)}
 											>
 												<Text
 													className="text-white text-xl p-1  "
@@ -339,7 +339,7 @@ export default function ArtsPage() {
 
 											<TouchableOpacity
 												className="flex-1 justify-center"
-												onPress={() => router.push(`/btw/arts/${art._id}/`)}
+												onPress={() => router.push(`/(app)/btw/arts/${art._id}/`)}
 											>
 												<Text
 													className="text-white text-xl p-1 "

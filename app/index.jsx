@@ -98,15 +98,21 @@ export default function Login() {
 
 
 				<View
-					className="flex-1 h-full justify-center p-6"
+					className="flex-1 h-full justify-center p-6 space-y-8"
 				>
 
+					<View>
+
+						<Text className="text-sky-100 text-center text-8xl ">BTW</Text>
+						<Text className="text-sky-100 text-center text-3xl ">Balloon Trade Warehouse App</Text>
+					</View>
+
 					<TouchableOpacity
-						className="border border-green-500 bg-green-500 rounded-xl  p-10"
+						className="border-4 border-sky-500 bg-sky-500/10 rounded-xl  p-10"
 						onPress={() => router.replace("/(app)/")}
 
 					>
-						<Text className="text-white text-center text-5xl ">Вхід</Text>
+						<Text className="text-sky-100 text-center text-5xl ">Погреби</Text>
 					</TouchableOpacity>
 				</View>
 

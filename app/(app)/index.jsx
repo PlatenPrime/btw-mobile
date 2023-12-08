@@ -71,7 +71,15 @@ export default function Page() {
 
 			{userAS
 				?
-				<Text className="text-white">Війти</Text>
+				<TouchableOpacity
+					onPress={() => router.replace("/")}
+				>
+					<Text
+						className="text-3xl text-green-500"
+					>
+						ВХІД
+					</Text>
+				</TouchableOpacity>
 				:
 				<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
 					<Text
@@ -81,15 +89,7 @@ export default function Page() {
 					</Text>
 
 
-					<TouchableOpacity
-						onPress={() => router.replace("/")}
-					>
-						<Text
-							className="text-3xl text-green-500"
-						>
-							ВХІД
-						</Text>
-					</TouchableOpacity>
+		
 
 
 					<TouchableOpacity

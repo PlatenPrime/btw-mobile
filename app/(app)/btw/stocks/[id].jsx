@@ -281,7 +281,7 @@ export default function RowPage() {
 						>
 							{pallets?.map((item) => <Link
 								key={item._id}
-								href={`/btw/pallets/${item._id}`}
+								href={`/(app)/btw/pallets/${item._id}`}
 								className="border-4 border-amber-500 rounded 
 					bg-amber-500/70
 					text-center text-2xl text-white  font-bold
