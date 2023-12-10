@@ -215,7 +215,9 @@ export default function PalletPage() {
 		newPosQuant,
 		newPosBoxes,
 		newPosDate,
-		newPosSklad
+		newPosSklad,
+		newPosCom,
+
 	}) => {
 
 		try {
@@ -223,7 +225,7 @@ export default function PalletPage() {
 
 			const existingPos = poses.find(pos => pos.artikul === newPosArtikul);
 
-			if (existingPos) {
+			if (existingPos && existingPos.sklad === newPosSklad && existingPos.date === newPosDate && existingPos.com === newPosCom ) {
 
 				const updatedData = {
 					quant: +existingPos.quant + +newPosQuant,
@@ -238,7 +240,9 @@ export default function PalletPage() {
 					quant: newPosQuant,
 					boxes: newPosBoxes,
 					date: newPosDate,
-					sklad: newPosSklad
+					sklad: newPosSklad,
+					com: newPosCom,
+
 				})
 			}
 

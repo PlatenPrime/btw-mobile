@@ -3,17 +3,21 @@ import { View, Text, Pressable, Modal, ActivityIndicator, TouchableOpacity } fro
 import { ScreenContainer } from '../../../../components';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import { useRowStore } from '../.././../../stores/rowsStore';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { colors500 } from '../../../../constants/Colors'
 import { useGlobalStore } from "../../../../stores/globalStore";
 import ModalCreateRow from "./components/modals/modalCreateRow"
-import useCheckAuth from '../../../../hooks/useCheckAuth';
+
 
 
 
 export default function Stocks() {
 
-	useCheckAuth()
+
+	const router = useRouter()
+
+
+
 
 
 
@@ -143,21 +147,20 @@ export default function Stocks() {
 							className="space-y-4 p-2"
 						>
 
-							{rows?.map(item => <Link
+							{rows?.map(item => <TouchableOpacity
 								key={item._id}
-								href={`/(app)/btw/stocks/${item._id}`}
-								className="border-4 border-orange-500 rounded 
-				bg-orange-500/70
-				text-center 
-				 text-2xl text-white font-bold
-				 p-2 
-				shadow-2xl shadow-orange-500
-				"
+								onPress={() => router.push(`/(app)/btw/stocks/${item._id}`)}
+
+								className=" flex justify-center
+								border-4 border-orange-500 rounded 
+				bg-orange-500/20 p-2 	"
 							>
-								<Text >
+								<Text
+									className="text-5xl text-white font-bold text-center"
+								>
 									{item.title}
 								</Text>
-							</Link>)}
+							</TouchableOpacity>)}
 
 
 						</View>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { useRowStore } from '../../../../stores/rowsStore'
 import { usePalletStore } from '../../../../stores/palletsStore'
+import { usePosesStore } from '../../../../stores/posesStore'
 import { ScreenContainer } from '../../../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useGlobalStore } from '../../../../stores/globalStore'
@@ -10,7 +11,8 @@ import { colors500 } from '../../../../constants/Colors'
 import ModalCreatePallet from "./components/modals/modalCreatePallet"
 import ModalUpdateRow from "./components/modals/modalUpdateRow"
 import ModalDeleteRow from "./components/modals/modalDeleteRow";
-import useCheckAuth from '../../../../hooks/useCheckAuth'
+import { Feather, Octicons } from '@expo/vector-icons'
+
 
 
 
@@ -19,8 +21,6 @@ export default function RowPage() {
 
 
 
-	useCheckAuth()
-
 	const { id } = useLocalSearchParams()
 	const router = useRouter()
 
@@ -28,6 +28,7 @@ export default function RowPage() {
 	const { getRowById, updateRowById, deleteRowById } = useRowStore()
 	const { pallets, getRowPallets, createPallet } = usePalletStore()
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
+	const { allPoses, getAllPoses } = usePosesStore()
 
 
 
@@ -67,6 +68,7 @@ export default function RowPage() {
 				setNewRowTitle(row?.title)
 
 				await getRowPallets(id)
+				await getAllPoses()
 
 
 
@@ -279,21 +281,74 @@ export default function RowPage() {
 						<View
 							className="space-y-4 p-2"
 						>
-							{pallets?.map((item) => <Link
-								key={item._id}
-								href={`/(app)/btw/pallets/${item._id}`}
-								className="border-4 border-amber-500 rounded 
-					bg-amber-500/70
+							{pallets?.map((pallet) => <TouchableOpacity
+								key={pallet._id}
+								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
+
+								className="border-2 border-amber-500 rounded 
+					bg-amber-500/10
 					text-center text-2xl text-white  font-bold
-					 p-2
-					 shadow-2xl shadow-amber-500
+				
+				
 					 "
 							>
-								<Text >
-									{item.title}
+								<Text
+									className="p-2 text-amber-100 text-4xl text-center "
+								>
+									{pallet.title}
 								</Text>
-							</Link>)}
 
+
+
+
+								<View
+									className="flex-1 p-2  flex-row justify-between bg-teal-500/10 "
+								>
+
+									<View
+										className="flex-1 flex-row items-center justify-center space-x-2"
+									>
+										<Octicons name="note" size={24} color="#99f6e4" />
+										<Text
+											className="text-teal-200 text-3xl"
+										>
+											{allPoses?.filter((pos) => pos.pallet === pallet._id).length}
+										</Text>
+									</View>
+
+									<View
+										className="flex-1 flex-row items-center justify-center space-x-2"
+									>
+										<Feather name="box" size={24} color="#fde047" />
+										<Text
+											className="text-yellow-300 text-3xl"
+										>
+											{allPoses?.filter((pos) => pos.pallet === pallet._id).reduce((a, b) => a + b.boxes, 0)}
+										</Text>
+									</View>
+
+
+								</View>
+
+
+
+
+								{pallet.com
+									?
+									<Text
+										className="text-white text-center italic text-xl p-1"
+									>
+										{pallet.com}
+									</Text>
+									:
+									null
+
+								}
+
+
+
+
+							</TouchableOpacity>)}
 
 						</View>
 

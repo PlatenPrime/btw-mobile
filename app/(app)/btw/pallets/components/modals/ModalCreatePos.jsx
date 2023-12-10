@@ -26,6 +26,7 @@ export default function ModalCreatePos(
 	const [newPosBoxes, setNewPosBoxes] = useState("")
 	const [newPosDate, setNewPosDate] = useState("")
 	const [newPosSklad, setNewPosSklad] = useState("")
+	const [newPosCom, setNewPosCom] = useState("")
 
 
 
@@ -161,7 +162,7 @@ export default function ModalCreatePos(
 								onChangeText={(text => setNewPosDate(text))}
 								value={newPosDate}
 								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-								placeholder="MM-РРРР"
+								placeholder="MM.РР"
 								placeholderTextColor="gray"
 
 							/>
@@ -190,6 +191,22 @@ export default function ModalCreatePos(
 								defaultOption={{ key: 'pogrebi', value: 'Погреби' }}
 							/>
 						</View>
+
+
+						<View
+							className="flex-1 flex-row items-center justify-start space-x-1"
+						>
+							<Text className="text-white text-center text-xl">Комент:</Text>
+							<TextInput
+								onChangeText={(text => setNewPosCom(text))}
+								value={newPosCom}
+								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								placeholder="...."
+								placeholderTextColor="gray"
+
+							/>
+						</View>
+
 
 
 
@@ -228,13 +245,16 @@ export default function ModalCreatePos(
 								newPosQuant,
 								newPosBoxes,
 								newPosDate,
-								newPosSklad
+								newPosSklad,
+								newPosCom,
+
 							})
 							setNewPosArtikul("")
 							setNewPosQuant("")
 							setNewPosBoxes("")
 							setNewPosDate("")
-							setNewPosSklad({ key: 'pogrebi', value: 'Погреби' })
+							setNewPosSklad({ key: 'pogrebi', value: 'Погреби' }),
+								setNewPosCom("")
 
 
 						}}

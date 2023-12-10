@@ -130,6 +130,22 @@ export default function PositionBage({
 
 			</View>
 
+			{pos.com
+				?
+				<View
+					className="flex-1 flex-row items-center justify-around border-t border-slate-50 rounded-b-xl p-2"
+				>
+
+					<Text
+						className="text-2xl italic text-white"
+					>
+						{pos.com}
+					</Text>
+
+				</View>
+
+				:
+				null}
 
 
 
