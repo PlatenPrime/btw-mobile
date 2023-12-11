@@ -117,51 +117,53 @@ export default function ModalCreatePos(
 					>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Артикул:</Text>
 							<TextInput
 								onChangeText={(text => setNewPosArtikul(text))}
 								value={newPosArtikul}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								autoFocus={true}
 							/>
 						</View>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
+
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
 								onChangeText={(text => setNewPosQuant(text))}
 								value={newPosQuant}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
 						</View>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput
 								onChangeText={(text => setNewPosBoxes(text))}
 								value={newPosBoxes}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
 						</View>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
+
 							<Text className="text-white text-center text-xl">Дата:</Text>
 							<TextInput
 								onChangeText={(text => setNewPosDate(text))}
 								value={newPosDate}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								placeholder="MM.РР"
 								placeholderTextColor="gray"
 
@@ -194,13 +196,13 @@ export default function ModalCreatePos(
 
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
-						>
+					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+				>
 							<Text className="text-white text-center text-xl">Комент:</Text>
 							<TextInput
 								onChangeText={(text => setNewPosCom(text))}
 								value={newPosCom}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								placeholder="...."
 								placeholderTextColor="gray"
 

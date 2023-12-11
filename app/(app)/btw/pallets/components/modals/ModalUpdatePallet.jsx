@@ -34,13 +34,18 @@ export default function ModalUpdatePallet(
 					Перейменування палети {palletTitle}
 				</Text>
 
-				<TextInput
-					onChangeText={(text => setNewPalletTitle(text))}
-					value={newPalletTitle}
-					className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-					autoFocus={true}
-				/>
+				<View
+					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+				>
 
+
+					<TextInput
+						onChangeText={(text => setNewPalletTitle(text))}
+						value={newPalletTitle}
+						className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+						autoFocus={true}
+					/>
+				</View>
 
 				{isUpdatingPalletById && <ActivityIndicator size="large" color={colors500.lime} />}
 

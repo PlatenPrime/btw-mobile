@@ -285,7 +285,7 @@ export default function RowPage() {
 								key={pallet._id}
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
-								className="border-2 border-amber-500 rounded 
+								className="border-2 border-amber-500 rounded-xl 
 					bg-amber-500/10
 					text-center text-2xl text-white  font-bold
 				
@@ -293,7 +293,7 @@ export default function RowPage() {
 					 "
 							>
 								<Text
-									className="p-2 text-amber-100 text-4xl text-center "
+									className="p-2 text-white text-4xl text-center bg-amber-600 rounded-t-xl"
 								>
 									{pallet.title}
 								</Text>
@@ -302,11 +302,11 @@ export default function RowPage() {
 
 
 								<View
-									className="flex-1 p-2  flex-row justify-between bg-teal-500/10 "
+									className="flex-1 p-2  flex-row justify-between rounded-xl "
 								>
 
 									<View
-										className="flex-1 flex-row items-center justify-center space-x-2"
+										className="flex-1 flex-row items-center justify-center space-x-2 rounded-xl"
 									>
 										<Octicons name="note" size={24} color="#99f6e4" />
 										<Text

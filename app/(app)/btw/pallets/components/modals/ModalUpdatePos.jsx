@@ -21,6 +21,7 @@ export default function ModalUpdatePos({
 	const [updatePosBoxesValue, setUpdatePosBoxesValue] = useState("")
 	const [updatePosDateValue, setUpdatePosDateValue] = useState("")
 	const [updatePosSkladValue, setUpdatePosSkladValue] = useState("")
+	const [updatePosComValue, setUpdatePosComValue] = useState("")
 
 
 	const listSklad = [{
@@ -40,6 +41,7 @@ export default function ModalUpdatePos({
 		setUpdatePosBoxesValue(selectedPos?.boxes.toString())
 		setUpdatePosDateValue(selectedPos?.date)
 		setUpdatePosSkladValue(selectedPos?.sklad)
+		setUpdatePosComValue(selectedPos?.com)
 
 	}, [selectedPos])
 
@@ -112,40 +114,42 @@ export default function ModalUpdatePos({
 					>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
 								onChangeText={(text => setUpdatePosQuantValue(text))}
 								value={updatePosQuantValue}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
 						</View>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
+
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput
 								onChangeText={(text => setUpdatePosBoxesValue(text))}
 								value={updatePosBoxesValue}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
 						</View>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
+
 							<Text className="text-white text-center text-xl">Дата:</Text>
 							<TextInput
 								onChangeText={(text => setUpdatePosDateValue(text))}
 								value={updatePosDateValue}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-								placeholder="MM-РРРР"
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								placeholder="MM.РР"
 								placeholderTextColor="gray"
 
 							/>
@@ -178,6 +182,24 @@ export default function ModalUpdatePos({
 								}
 							/>
 						</View>
+
+
+						<View
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+						>
+
+							<Text className="text-white text-center text-xl">Комент:</Text>
+							<TextInput
+								onChangeText={(text => setUpdatePosComValue(text))}
+								value={updatePosComValue}
+								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								placeholder="..."
+								placeholderTextColor="gray"
+
+							/>
+						</View>
+
+
 
 
 
@@ -217,11 +239,13 @@ export default function ModalUpdatePos({
 									boxes: updatePosBoxesValue,
 									date: updatePosDateValue,
 									sklad: updatePosSkladValue,
+									com: updatePosComValue,
 								}
 							)
 							setUpdatePosQuantValue("")
 							setUpdatePosBoxesValue("")
 							setUpdatePosDateValue("")
+							setUpdatePosComValue("")
 							setUpdatePosSkladValue({ key: 'pogrebi', value: 'Погреби' })
 						}}
 

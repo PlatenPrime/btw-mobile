@@ -26,12 +26,23 @@ export default function ModalUpdateRow({
 					Перейменування ряду {rowTitle}
 				</Text>
 
-				<TextInput
-					onChangeText={(text => setNewRowTitle(text))}
-					value={newRowTitle}
-					className="h-16 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-					autoFocus={true}
-				/>
+
+
+				<View
+					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+				>
+
+
+					<TextInput
+						onChangeText={(text => setNewRowTitle(text))}
+						value={newRowTitle}
+						className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+						autoFocus={true}
+					/>
+
+
+				</View>
+
 
 
 				{isUpdatingRowById && <ActivityIndicator size="large" color={colors500.lime} />}

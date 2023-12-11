@@ -73,7 +73,7 @@ export default function ArtsPage() {
 
 
 				<View
-					className="flex-row justify-end items-center rounded-full bg-gray-500 mt-4 "
+					className="flex-row justify-end items-center  rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 mt-4 "
 				>
 
 
@@ -82,7 +82,7 @@ export default function ArtsPage() {
 					<TextInput
 						placeholder='Введи артикул або назву'
 						placeholderTextColor={"lightgray"}
-						className="pl-6 h-10 flex-1 text-base text-white  "
+						className="pl-6 h-10 flex-1 text-xl text-white  "
 						onChangeText={(text => setSearchValue(text))}
 						value={searchValue}
 
@@ -95,7 +95,7 @@ export default function ArtsPage() {
 						className="rounded-full p-3 m-1 bg-sky-400"
 						onPress={handleFilterArts}
 					>
-						<Text  ><MagnifyingGlassIcon size={25} color="white" /></Text>
+						<Text  ><MagnifyingGlassIcon size={36} color="white" /></Text>
 					</TouchableOpacity>
 				</View>
 
@@ -117,7 +117,7 @@ export default function ArtsPage() {
 									className="flex-row justify-between items-center"
 								>
 
-									<Text className="text-white text-xl">
+									<Text className="text-white text-xl bg-sky-500 p-1 rounded-xl">
 										Всього: {artsCurrent?.length}
 									</Text>
 
