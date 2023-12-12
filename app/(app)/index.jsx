@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator } from 'react-native'
+import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator, Image } from 'react-native'
 import React, { useState } from 'react'
 import { Link, Stack, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../components'
@@ -63,7 +63,12 @@ export default function Page() {
 					},
 					headerStyle: {
 						backgroundColor: colors500?.cyan
-					}
+					},
+					headerBackground: () => <View className="bg-red-500 h-full"><Image source={require("../../assets/images/cyan-gradient.jpg")}
+						className="w-full h-full absolute"
+						blurRadius={10}
+
+					/></View>
 				}}
 			/>
 
@@ -89,7 +94,7 @@ export default function Page() {
 					</Text>
 
 
-		
+
 
 
 					<TouchableOpacity
