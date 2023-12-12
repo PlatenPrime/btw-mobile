@@ -238,6 +238,17 @@ export default function AskPage() {
 								</Text>
 							</View>
 
+							<View
+								className="space-x-2 ml-1 flex-row items-center justify-center"
+							>
+								<FontAwesome5 name="warehouse" size={24} color="#86efac" />
+								<Text
+									className="text-3xl text-green-300 py-1 "
+								>
+									{posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
+								</Text>
+							</View>
+
 
 						</View>
 
@@ -276,7 +287,7 @@ export default function AskPage() {
 
 										<TouchableOpacity
 											key={pos._id}
-											className="p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl"
+											className={`${pos.sklad === "pogrebi" ? "bg-green-500/50" : ""} p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl`}
 											onPress={() => router.push(`/(app)/btw/pallets/${allPallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
 
 										>

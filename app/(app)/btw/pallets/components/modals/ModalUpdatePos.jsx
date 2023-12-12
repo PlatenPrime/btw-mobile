@@ -37,8 +37,8 @@ export default function ModalUpdatePos({
 
 
 	useEffect(() => {
-		setUpdatePosQuantValue(selectedPos?.quant.toString())
-		setUpdatePosBoxesValue(selectedPos?.boxes.toString())
+		setUpdatePosQuantValue(selectedPos?.quant?.toString())
+		setUpdatePosBoxesValue(selectedPos?.boxes?.toString())
 		setUpdatePosDateValue(selectedPos?.date)
 		setUpdatePosSkladValue(selectedPos?.sklad)
 		setUpdatePosComValue(selectedPos?.com)
@@ -120,7 +120,7 @@ export default function ModalUpdatePos({
 							<TextInput
 								onChangeText={(text => setUpdatePosQuantValue(text))}
 								value={updatePosQuantValue}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
@@ -134,7 +134,7 @@ export default function ModalUpdatePos({
 							<TextInput
 								onChangeText={(text => setUpdatePosBoxesValue(text))}
 								value={updatePosBoxesValue}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
@@ -148,7 +148,7 @@ export default function ModalUpdatePos({
 							<TextInput
 								onChangeText={(text => setUpdatePosDateValue(text))}
 								value={updatePosDateValue}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								placeholder="MM.РР"
 								placeholderTextColor="gray"
 
@@ -192,7 +192,7 @@ export default function ModalUpdatePos({
 							<TextInput
 								onChangeText={(text => setUpdatePosComValue(text))}
 								value={updatePosComValue}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								placeholder="..."
 								placeholderTextColor="gray"
 

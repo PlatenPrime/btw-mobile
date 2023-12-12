@@ -82,7 +82,7 @@ export default function ArtsPage() {
 					<TextInput
 						placeholder='Введи артикул або назву'
 						placeholderTextColor={"lightgray"}
-						className="pl-6 h-10 flex-1 text-xl text-white  "
+						className=" text-center h-10 flex-1 text-xl text-white  "
 						onChangeText={(text => setSearchValue(text))}
 						value={searchValue}
 

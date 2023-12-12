@@ -25,7 +25,9 @@ export default function ModalMovePalletContent({
 
 		>
 			<View
-				className="bg-black h-full justify-between p-4 space-y-8"
+				className=" bg-indigo-900 to-90% 
+				
+				h-full justify-between p-4 space-y-8"
 			>
 				<Text className="text-white text-3xl  text-center" >
 					Переставляння палети {palletTitle}
@@ -49,15 +51,15 @@ export default function ModalMovePalletContent({
 							}
 							)}
 							save="key"
-							inputStyles={{ color: "white", fontSize: 24, height: 50, }}
+							inputStyles={{ color: "white", fontSize: 24, height: 36, }}
 							arrowicon={<FontAwesome name="chevron-down" size={16} color={'white'} />}
 							boxStyles={{
 
-								backgroundColor: "gray",
+								backgroundColor: "", 
 							}}
 
 							dropdownItemStyles={{}}
-							dropdownTextStyles={{ color: "white", fontSize: 24, }}
+							dropdownTextStyles={{ color: "white", fontSize: 36, textAlign: "center" }}
 
 						/>
 					</View>
@@ -95,7 +97,7 @@ export default function ModalMovePalletContent({
 
 					>
 						<Text className=" text-white text-xl" >
-							Переставити
+							ПЕРЕСТАВИТИ
 						</Text>
 					</TouchableOpacity>
 

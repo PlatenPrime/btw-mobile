@@ -30,7 +30,7 @@ export default function Layout() {
 					title: "Палета база",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-horizontal" size={24} color="white" />
+						<Entypo name="dots-three-vertical" size={24} color="white" />
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",

@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { Feather, MaterialCommunityIcons, Fontisto, FontAwesome5 } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 
 
@@ -10,9 +11,19 @@ import { Feather, MaterialCommunityIcons, Fontisto, FontAwesome5 } from '@expo/v
 export default function PositionBage({
 	pos, artsCurrent, onUpdate, onDelete
 }) {
+
+
+	const router = useRouter()
+
+
+
+
+
+
+
 	return (
 		<View
-			className="flex-1 border-2 border-teal-500 rounded-xl space-y-2 mb-4"
+			className="flex-1 bg-teal-500/10 border-2 border-teal-500 rounded-xl space-y-2 mb-4"
 			key={pos._id}
 		>
 
@@ -35,11 +46,12 @@ export default function PositionBage({
 					/>
 				</View>
 
-				<View
+				<TouchableOpacity
 					className="flex-1  p-1 justify-center bg-sky-500 rounded-tr-xl"
+					onPress={() => router.push(`/(app)/btw/arts/${artsCurrent?.find((art) => art.artikul === pos.artikul)?._id}/`)}
 				>
 					<Text
-						className="text-white text-xl text-center italic"
+						className="text-white text-2xl text-center italic"
 						numberOfLines={4}
 					>
 						{
@@ -48,7 +60,7 @@ export default function PositionBage({
 							|| null
 						}
 					</Text>
-				</View>
+				</TouchableOpacity>
 
 			</View>
 
@@ -64,7 +76,7 @@ export default function PositionBage({
 
 					<Feather name="box" size={24} color="#fde047" />
 					<Text
-						className="text-amber-300  font-bold text-2xl "
+						className="text-amber-300  font-bold text-3xl "
 					>
 						{pos.boxes}
 					</Text>
@@ -78,7 +90,7 @@ export default function PositionBage({
 
 					<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
 					<Text
-						className="text-sky-300  font-bold text-2xl "
+						className="text-sky-300  font-bold text-3xl "
 					>
 						{pos.quant}
 					</Text>
@@ -100,7 +112,7 @@ export default function PositionBage({
 
 					<FontAwesome5 name="warehouse" size={24} color="#86efac" />
 					<Text
-						className="text-green-300  font-bold text-xl "
+						className="text-green-300  font-bold text-2xl "
 					>
 						{pos.sklad === "merezhi" ?
 							"Мережі"
@@ -119,9 +131,9 @@ export default function PositionBage({
 				>
 
 
-					<Fontisto name="date" size={24} color="white" />
+					<Fontisto name="date" size={24} color="#fca5a5" />
 					<Text
-						className="text-red-300  font-bold text-xl "
+						className="text-red-300  font-bold text-2xl "
 					>
 						{pos.date}
 					</Text>
@@ -153,25 +165,26 @@ export default function PositionBage({
 
 
 			<View
-				className="flex-1 flex-row items-center justify-around border-t border-slate-50 rounded-b-xl p-2"
+				className="flex-1 flex-row items-center justify-around border-t  border-slate-50 rounded-b-xl "
 			>
 
 				<TouchableOpacity
-					className=""
+					className="bg-blue-700/10 p-3 rounded-bl-xl w-full flex-1"
 					onPress={() => onUpdate()}
 				>
 					<Text
-						className="text-blue-400 text-xl"
+						className="text-blue-500 text-center text-2xl"
 					>
 						Редагувати
 					</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity
+					className="bg-red-700/10 p-3 rounded-br-xl w-full flex-1"
 					onPress={() => onDelete()}
 				>
 					<Text
-						className="text-red-400 text-xl"
+						className="text-red-500 text-center text-2xl"
 					>
 						Видалити
 					</Text>

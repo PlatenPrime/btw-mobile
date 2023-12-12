@@ -33,7 +33,7 @@ export default function ModalCreateRow({
 					<TextInput
 						onChangeText={(text => setNewRowTitle(text))}
 						value={newRowTitle}
-						className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+						className=" h-10 flex-1 text-2xl text-center text-white italic "
 						autoFocus={true}
 					/>
 				</View>

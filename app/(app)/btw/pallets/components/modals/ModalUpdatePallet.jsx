@@ -28,7 +28,7 @@ export default function ModalUpdatePallet(
 
 		>
 			<View
-				className="bg-black h-full justify-between p-4 "
+				className="bg-lime-950 h-full justify-between p-4 "
 			>
 				<Text className="text-white text-3xl  text-center" >
 					Перейменування палети {palletTitle}

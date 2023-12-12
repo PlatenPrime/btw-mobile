@@ -97,38 +97,38 @@ export default function ModalCreateAsk({
 					>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
+
 							<Text className="text-white text-center text-xl">Артикул:</Text>
 							<TextInput
 								onChangeText={(text => setNewAskArtikul(text))}
 								value={newAskArtikul}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								autoFocus={true}
 							/>
 						</View>
 
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
 								onChangeText={(text => setNewAskQuant(text))}
 								value={newAskQuant}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
 						</View>
-
 						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Комент:</Text>
 							<TextInput
 								onChangeText={(text => setNewAskComment(text))}
 								value={newAskComment}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 
 
 							/>

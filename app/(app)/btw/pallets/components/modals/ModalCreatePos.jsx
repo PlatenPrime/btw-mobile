@@ -62,7 +62,7 @@ export default function ModalCreatePos(
 
 
 			<View
-				className="space-y-4 justify-between  bg-black h-full p-2 "
+				className="space-y-4 justify-between  bg-teal-950 h-full p-2 "
 			>
 
 
@@ -123,7 +123,7 @@ export default function ModalCreatePos(
 							<TextInput
 								onChangeText={(text => setNewPosArtikul(text))}
 								value={newPosArtikul}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								autoFocus={true}
 							/>
 						</View>
@@ -136,7 +136,7 @@ export default function ModalCreatePos(
 							<TextInput
 								onChangeText={(text => setNewPosQuant(text))}
 								value={newPosQuant}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
@@ -149,7 +149,7 @@ export default function ModalCreatePos(
 							<TextInput
 								onChangeText={(text => setNewPosBoxes(text))}
 								value={newPosBoxes}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
@@ -163,7 +163,7 @@ export default function ModalCreatePos(
 							<TextInput
 								onChangeText={(text => setNewPosDate(text))}
 								value={newPosDate}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								placeholder="MM.РР"
 								placeholderTextColor="gray"
 
@@ -189,20 +189,20 @@ export default function ModalCreatePos(
 								}}
 								search={false}
 								dropdownItemStyles={{}}
-								dropdownTextStyles={{ color: "white", fontSize: 24, }}
+								dropdownTextStyles={{ color: "white", fontSize: 24, textAlign: "center" }}
 								defaultOption={{ key: 'pogrebi', value: 'Погреби' }}
 							/>
 						</View>
 
 
 						<View
-					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
-				>
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+						>
 							<Text className="text-white text-center text-xl">Комент:</Text>
 							<TextInput
 								onChangeText={(text => setNewPosCom(text))}
 								value={newPosCom}
-								className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								placeholder="...."
 								placeholderTextColor="gray"
 

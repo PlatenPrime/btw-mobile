@@ -18,7 +18,7 @@ export default function ModalDeletePallet({
 
 		>
 			<View
-				className="bg-black h-full justify-between p-4 "
+				className="bg-red-950 h-full justify-between p-4 "
 			>
 				<Text className="text-white text-3xl  text-center" >
 					Видалення палети {palletTitle}

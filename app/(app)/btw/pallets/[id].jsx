@@ -225,7 +225,7 @@ export default function PalletPage() {
 
 			const existingPos = poses.find(pos => pos.artikul === newPosArtikul);
 
-			if (existingPos && existingPos.sklad === newPosSklad && existingPos.date === newPosDate && existingPos.com === newPosCom ) {
+			if (existingPos && existingPos.sklad === newPosSklad && existingPos.date === newPosDate && existingPos.com === newPosCom) {
 
 				const updatedData = {
 					quant: +existingPos.quant + +newPosQuant,
@@ -353,7 +353,7 @@ export default function PalletPage() {
 				<ActivityIndicator size="large" color={colors500.amber} />
 				:
 				<ScrollView
-					className="p-1 space-y-2 "
+					className=" space-y-2 "
 				>
 
 
@@ -362,37 +362,37 @@ export default function PalletPage() {
 						?
 
 						<View
-							className="py-2 space-y-2 border-b-2 border-amber-500 bg-amber-500/10"
+							className="  border-b-2 border-amber-500 bg-amber-500/10"
 						>
 
 							<TouchableOpacity
-								className="flex-1 flex-row justify-center items-center"
+								className="bg-lime-500/20 py-4  flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalUpdatePallet(true)}
 							>
 								<Text
-									className="text-2xl text-lime-400"
+									className="text-3xl text-lime-200"
 								>
 									Перейменувати
 								</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity
-								className="flex-1 flex-row justify-center items-center"
+								className="bg-indigo-500/20 py-4 flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalMovePalletContent(true)}
 							>
 								<Text
-									className="text-2xl text-indigo-400"
+									className="text-3xl text-indigo-200"
 								>
 									Переставити
 								</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity
-								className="flex-1 flex-row justify-center items-center"
+								className="bg-rose-300/50 py-4 flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalClearPallet(true)}
 							>
 								<Text
-									className="text-2xl text-rose-100"
+									className="text-3xl text-rose-100"
 								>
 									Очистити
 								</Text>
@@ -400,11 +400,11 @@ export default function PalletPage() {
 
 
 							<TouchableOpacity
-								className="flex-1 flex-row justify-center items-center"
+								className="bg-red-500/20 py-4 flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalDeletePallet(true)}
 							>
 								<Text
-									className="text-2xl text-red-400"
+									className="text-3xl text-red-400"
 								>
 									Видалити
 								</Text>
@@ -501,16 +501,16 @@ export default function PalletPage() {
 
 
 					<View
-						className="flex-1 p-2
+						className="flex-1 
 										"
 					>
 						<TouchableOpacity
 							onPress={() => setShowModalCreatePos(true)}
-							className="flex-1 p-2 flex-row items-center justify-center 
+							className="bg-teal-500/20 py-4 flex-1 flex-row justify-center items-center 
 											 "
 						>
 							<Text
-								className="text-teal-100 text-2xl"
+								className=" text-teal-100 text-3xl"
 							>
 								Додати позицію
 							</Text>

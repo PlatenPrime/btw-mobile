@@ -20,7 +20,7 @@ export default function ModalClearPallet({
 
 		>
 			<View
-				className="bg-black h-full justify-between p-4 "
+				className="bg-rose-950/50 h-full justify-between p-4 "
 			>
 				<Text className="text-white text-3xl  text-center" >
 					Очищення палети {palletTitle}

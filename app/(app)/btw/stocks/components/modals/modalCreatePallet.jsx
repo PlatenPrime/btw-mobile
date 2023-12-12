@@ -37,7 +37,7 @@ export default function ModalCreatePallet({
 					<TextInput
 						onChangeText={(text => setNewPalletTitle(text))}
 						value={newPalletTitle}
-						className="pl-6 h-10 flex-1 text-2xl text-center text-white italic "
+						className=" h-10 flex-1 text-2xl text-center text-white italic "
 						autoFocus={true}
 					/>
 				</View>
