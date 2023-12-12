@@ -286,14 +286,14 @@ export default function RowPage() {
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
 								className="border-2 border-amber-500 rounded-xl 
-					bg-amber-500/10
+					
 					text-center text-2xl text-white  font-bold
 				
 				
 					 "
 							>
 								<Text
-									className="p-2 text-white text-4xl text-center bg-amber-600 rounded-t-xl"
+									className="p-2 text-white text-4xl text-center bg-amber-500/10  rounded-t-xl"
 								>
 									{pallet.title}
 								</Text>

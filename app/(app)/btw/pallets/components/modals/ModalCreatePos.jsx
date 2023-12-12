@@ -99,7 +99,7 @@ export default function ModalCreatePos(
 						</View>
 
 						<View
-							className="flex-1  p-1 justify-center border border-sky-500 bg-sky-500/10 rounded-r-xl"
+							className={`flex-1  p-1 justify-center border ${artsCurrent?.find((art) => art.artikul === newPosArtikul) ? "border-sky-500 bg-sky-500/20" : "border-red-500 bg-red-500/20"}   rounded-r-xl`}
 						>
 							<Text
 								className="text-white text-xl text-center italic"
@@ -121,12 +121,17 @@ export default function ModalCreatePos(
 						>
 							<Text className="text-white text-center text-xl">Артикул:</Text>
 							<TextInput
-								onChangeText={(text => setNewPosArtikul(text))}
+								onChangeText={(text => setNewPosArtikul(text.trim()))}
 								value={newPosArtikul}
 								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								autoFocus={true}
 							/>
 						</View>
+
+
+
+
+
 
 						<View
 							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
@@ -134,7 +139,7 @@ export default function ModalCreatePos(
 
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
-								onChangeText={(text => setNewPosQuant(text))}
+								onChangeText={(text => setNewPosQuant(text.trim()))}
 								value={newPosQuant}
 								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
@@ -142,18 +147,23 @@ export default function ModalCreatePos(
 							/>
 						</View>
 
+						{!isNaN(newPosQuant) ? null : <Text className="text-red-500 text-xl text-center ">Кількість товару не в форматі числа </Text>}
+
 						<View
 							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput
-								onChangeText={(text => setNewPosBoxes(text))}
+								onChangeText={(text => setNewPosBoxes(text.trim()))}
 								value={newPosBoxes}
 								className=" h-10 flex-1 text-2xl text-center text-white italic "
 								inputMode="numeric"
 
 							/>
 						</View>
+
+
+						{!isNaN(newPosBoxes) ? null : <Text className=" text-red-500 text-xl  text-center ">Кількість коробок не в форматі числа </Text>}
 
 						<View
 							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
@@ -227,7 +237,7 @@ export default function ModalCreatePos(
 
 
 
-				<View className=" px-2 flex-row justify-around  space-x-2" >
+				<View className=" px-2 py-4 flex-row justify-around  space-x-2" >
 
 					<TouchableOpacity
 						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
@@ -240,7 +250,7 @@ export default function ModalCreatePos(
 
 					<TouchableOpacity
 
-						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newPosArtikul ? "border-green-500" : "border-gray-500"}`}
+						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newPosArtikul && newPosQuant && newPosBoxes ? "border-green-500" : "border-gray-500"}`}
 						onPress={() => {
 							handleCreatePos({
 								newPosArtikul,
@@ -260,7 +270,7 @@ export default function ModalCreatePos(
 
 
 						}}
-						disabled={!newPosArtikul}
+						disabled={!newPosArtikul || !newPosQuant || !newPosBoxes}
 					>
 						<Text className=" text-white text-xl" >
 							СТВОРИТИ

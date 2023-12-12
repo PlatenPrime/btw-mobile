@@ -23,7 +23,7 @@ export default function PositionBage({
 
 	return (
 		<View
-			className="flex-1 bg-teal-500/10 border-2 border-teal-500 rounded-xl space-y-2 mb-4"
+			className="flex-1  border-2 border-teal-500 rounded-xl  mb-6"
 			key={pos._id}
 		>
 
@@ -47,11 +47,11 @@ export default function PositionBage({
 				</View>
 
 				<TouchableOpacity
-					className="flex-1  p-1 justify-center bg-sky-500 rounded-tr-xl"
-					onPress={() => router.push(`/(app)/btw/arts/${artsCurrent?.find((art) => art.artikul === pos.artikul)?._id}/`)}
+					className="flex-1  p-1 justify-center bg-sky-900/50 rounded-tr-xl"
+					onPress={() => { if (artsCurrent?.find((art) => art.artikul === pos.artikul)) { router.push(`/(app)/btw/arts/${artsCurrent?.find((art) => art.artikul === pos.artikul)?._id}/`) } }}
 				>
 					<Text
-						className="text-white text-2xl text-center italic"
+						className="text-sky-100 text-2xl text-center italic"
 						numberOfLines={4}
 					>
 						{
@@ -67,21 +67,8 @@ export default function PositionBage({
 
 
 			<View
-				className="flex-1 flex-row justify-between px-2"
+				className="flex-1 flex-row justify-between p-2  bg-teal-500/10 "
 			>
-
-				<View
-					className="flex-row items-center space-x-1"
-				>
-
-					<Feather name="box" size={24} color="#fde047" />
-					<Text
-						className="text-amber-300  font-bold text-3xl "
-					>
-						{pos.boxes}
-					</Text>
-				</View>
-
 
 				<View
 					className="flex-row items-center space-x-1"
@@ -97,27 +84,62 @@ export default function PositionBage({
 				</View>
 
 
+				<View
+					className="flex-row items-center space-x-1"
+				>
+
+					<Feather name="box" size={24} color="#fde047" />
+					<Text
+						className="text-amber-300  font-bold text-3xl "
+					>
+						{pos.boxes}
+					</Text>
+				</View>
+
+
+
+
 			</View>
 
 
 
 
 			<View
-				className="flex-1 flex-row justify-between items-center px-2 border-t border-slate-50"
+				className="flex-1 flex-row justify-between items-center p-2 border-t border-slate-50   bg-teal-500/10"
 			>
 
 				<View
 					className="flex-row items-center space-x-1"
 				>
 
-					<FontAwesome5 name="warehouse" size={24} color="#86efac" />
+					<FontAwesome5 name="warehouse" size={24} color={`${pos.sklad === "merezhi"
+						?
+						"#fef3c7"
+						:
+						pos.sklad === "pogrebi"
+							?
+							"#86efac"
+							:
+							"#ffffff"
+						}`} />
 					<Text
-						className="text-green-300  font-bold text-2xl "
+						className={`${pos.sklad === "merezhi"
+							?
+							"text-amber-100"
+							:
+							pos.sklad === "pogrebi"
+								?
+								"text-green-300"
+								:
+								null
+							}   font-bold text-2xl `}
 					>
-						{pos.sklad === "merezhi" ?
+						{pos.sklad === "merezhi"
+							?
 							"Мережі"
 							:
-							pos.sklad === "pogrebi" ?
+							pos.sklad === "pogrebi"
+								?
 								"Погреби"
 								:
 								null

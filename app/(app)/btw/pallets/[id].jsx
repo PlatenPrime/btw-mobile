@@ -353,7 +353,7 @@ export default function PalletPage() {
 				<ActivityIndicator size="large" color={colors500.amber} />
 				:
 				<ScrollView
-					className=" space-y-2 "
+					className=" "
 				>
 
 
@@ -535,13 +535,13 @@ export default function PalletPage() {
 									className="space-y-2 flex-1"
 								>
 									<View
-										className="flex-1  flex-row justify-between border-b border-teal-500"
+										className="flex-1 p-3  flex-row justify-between border-b border-teal-500"
 									>
 
 										<View
 											className="flex-1 flex-row items-center justify-center space-x-2"
 										>
-											<Octicons name="note" size={24} color="#99f6e4" />
+											<Octicons name="note" size={36} color="#99f6e4" />
 											<Text
 												className="text-teal-200 text-3xl"
 											>
@@ -552,7 +552,7 @@ export default function PalletPage() {
 										<View
 											className="flex-1 flex-row items-center justify-center space-x-2"
 										>
-											<Feather name="box" size={24} color="#fde047" />
+											<Feather name="box" size={36} color="#fde047" />
 											<Text
 												className="text-yellow-300 text-3xl"
 											>
