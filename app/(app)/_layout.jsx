@@ -1,4 +1,4 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, Image } from 'react-native'
 import React from 'react'
 import { Redirect, Stack, useRouter } from 'expo-router'
 import { Tabs } from 'expo-router'
@@ -35,8 +35,16 @@ export default function _layout() {
 		<Tabs
 			screenOptions={{
 				tabBarStyle: { backgroundColor: 'black' },
-				tabBarActiveBackgroundColor: "#222",
-				tabBarActiveTintColor: "#bbb"
+				tabBarActiveBackgroundColor: "#22222270",
+				tabBarActiveTintColor: "#bbb",
+				tabBarBackground: () => (
+					<View className="bg-sky-950   h-full">
+						<Image source={require("../../assets/images/grad2.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+					</View>
+				),
 			}}
 		>
 

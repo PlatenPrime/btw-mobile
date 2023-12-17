@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { colors500 } from '../../../../../../constants/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
 import { SelectList } from 'react-native-dropdown-select-list'
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, Ionicons } from '@expo/vector-icons'
 
 
 
@@ -99,7 +99,7 @@ export default function ModalCreatePos(
 						</View>
 
 						<View
-							className={`flex-1  p-1 justify-center border ${artsCurrent?.find((art) => art.artikul === newPosArtikul) ? "border-sky-500 bg-sky-500/20" : "border-red-500 bg-red-500/20"}   rounded-r-xl`}
+							className={`flex-1 space-y-2 p-1 justify-center border ${artsCurrent?.find((art) => art.artikul === newPosArtikul) ? "border-sky-500 bg-sky-500/20" : "border-red-500 bg-red-500/20"}   rounded-r-xl`}
 						>
 							<Text
 								className="text-white text-xl text-center italic"
@@ -107,6 +107,17 @@ export default function ModalCreatePos(
 							>
 								{artsCurrent?.find((art) => art.artikul === newPosArtikul)?.nameukr}
 							</Text>
+
+							{artsCurrent?.find((art) => art.artikul === newPosArtikul) &&
+								<Text
+									className="text-white text-2xl text-orange-300 font-bold text-center italic p-2 rounded-xl bg-orange-500/10"
+									numberOfLines={4}
+								>
+									<Ionicons name="location-outline" size={24} color="#fdba74" />
+									{artsCurrent?.find((art) => art.artikul === newPosArtikul)?.zone}
+								</Text>}
+
+
 						</View>
 
 					</View>

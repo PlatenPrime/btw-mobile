@@ -279,13 +279,13 @@ export default function RowPage() {
 					{pallets?.length > 0 ?
 
 						<View
-							className="space-y-4 p-2"
+							className="space-y-4 p-4"
 						>
 							{pallets?.map((pallet) => <TouchableOpacity
 								key={pallet._id}
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
-								className="border-2 border-amber-500 rounded-xl 
+								className="border-2 border-amber-200 rounded-xl 
 					
 					text-center text-2xl text-white  font-bold
 				
@@ -293,7 +293,7 @@ export default function RowPage() {
 					 "
 							>
 								<Text
-									className="p-2 text-white text-4xl text-center bg-amber-500/10  rounded-t-xl"
+									className="p-2 text-amber-200 font-bold text-4xl text-center bg-amber-100/10  rounded-t-xl"
 								>
 									{pallet.title}
 								</Text>
@@ -302,7 +302,7 @@ export default function RowPage() {
 
 
 								<View
-									className="flex-1 p-2  flex-row justify-between rounded-xl "
+									className="flex-1 p-2  flex-row justify-between rounded-b-xl bg-sky-500/20 "
 								>
 
 									<View

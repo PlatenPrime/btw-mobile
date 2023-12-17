@@ -7,6 +7,7 @@ import { Entypo } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../../stores/globalStore";
 import { colors500 } from "../../../../constants/Colors"
 import useCheckAuth from '../../../../hooks/useCheckAuth';
+import { Image } from 'react-native';
 
 export default function Layout() {
 
@@ -36,9 +37,14 @@ export default function Layout() {
 						fontSize: 36,
 						color: "white"
 					},
-					headerStyle: {
-						backgroundColor: colors500?.orange
-					}
+				
+					headerBackground: () => <View className="bg-sky-950   h-full">
+						<Image source={require("../../../../assets/images/grad3.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+
+					</View>
 				}}
 			/>
 			<Stack.Screen
@@ -56,9 +62,13 @@ export default function Layout() {
 						fontSize: 36,
 						color: "white"
 					},
-					headerStyle: {
-						backgroundColor: colors500?.orange
-					}
+					
+					headerBackground: () => <View className="bg-sky-950   h-full">
+						<Image source={require("../../../../assets/images/grad4.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+					</View>
 				}}
 			/>
 

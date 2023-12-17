@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
 import { colors500 } from "../../../constants/Colors"
@@ -17,9 +17,14 @@ export default function Layout() {
 						fontSize: 36,
 						color: "white"
 					},
-					headerStyle: {
-						backgroundColor: colors500?.blue
-					}
+				
+					headerBackground: () => <View className="bg-sky-950   h-full">
+						<Image source={require("../../../assets/images/grad2.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+
+					</View>
 				}}
 			/>
 			<Stack.Screen

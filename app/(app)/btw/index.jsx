@@ -16,6 +16,11 @@ export default function Page() {
 
 	return (
 		<ScreenContainer>
+
+
+
+
+			
 			<View
 				className="flex-1 justify-start h-full space-y-4 p-4"
 			>
@@ -25,8 +30,8 @@ export default function Page() {
 				<TouchableOpacity
 					onPress={() => router.push("/btw/stocks/")}
 					className="h-1/3 flex-1 justify-center 
-					border-2 border-orange-400
-					bg-orange-400/20 rounded-xl "
+					border border-orange-400
+					bg-orange-400/10 rounded-xl "
 				>
 
 					<Text
@@ -45,7 +50,7 @@ export default function Page() {
 					onPress={() => router.push("/btw/arts/")}
 					className=" h-1/3 flex-1 justify-center 
 					border-2 border-sky-500
-					bg-sky-500/20 rounded-xl "
+					bg-sky-500/10 rounded-xl "
 				>
 					<Text
 						className="text-center text-5xl text-sky-100"
@@ -61,7 +66,7 @@ export default function Page() {
 					onPress={() => router.push("/btw/asks/")}
 					className="h-1/3 flex-1 justify-center  
 					border-2 border-indigo-500
-					bg-indigo-500/20 rounded-xl "
+					bg-indigo-500/10 rounded-xl "
 				>
 
 					<Text

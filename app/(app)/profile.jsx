@@ -6,6 +6,7 @@ import { colors500 } from '../../constants/Colors'
 import useAuthStore from "../../stores/authStore"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import useCheckAuth from "../../hooks/useCheckAuth"
+import { Image } from 'react-native'
 
 export default function Profile() {
 
@@ -34,9 +35,13 @@ export default function Profile() {
 						fontSize: 36,
 						color: "white"
 					},
-					headerStyle: {
-						backgroundColor: colors500?.pink
-					}
+					headerBackground: () => <View className="bg-sky-950   h-full">
+						<Image source={require("../../assets/images/grad2.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+
+					</View>
 				}}
 			/>
 

@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, ActivityIndicator, Image } from 'react-native'
 import React from 'react'
 import { ScreenContainer } from '../components'
 import { Stack, useRouter } from 'expo-router'
@@ -84,9 +84,14 @@ export default function Login() {
 						fontSize: 36,
 						color: "white"
 					},
-					headerStyle: {
-						backgroundColor: colors500?.green
-					}
+			
+					headerBackground: () => <View className="bg-sky-950   h-full">
+						<Image source={require("../assets/images/grad2.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+
+					</View>
 				}}
 			/>
 

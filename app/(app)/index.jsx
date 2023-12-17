@@ -64,11 +64,13 @@ export default function Page() {
 					headerStyle: {
 						backgroundColor: colors500?.cyan
 					},
-					headerBackground: () => <View className="bg-red-500 h-full"><Image source={require("../../assets/images/cyan-gradient.jpg")}
+					headerBackground: () => <View className="bg-sky-950   h-full">
+					 <Image source={require("../../assets/images/grad2.jpg")}
 						className="w-full h-full absolute"
 						blurRadius={10}
-
-					/></View>
+					/> 
+			
+					</View>
 				}}
 			/>
 

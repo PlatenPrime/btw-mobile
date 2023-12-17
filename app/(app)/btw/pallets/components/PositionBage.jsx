@@ -23,7 +23,7 @@ export default function PositionBage({
 
 	return (
 		<View
-			className="flex-1  border-2 border-teal-500 rounded-xl  mb-6"
+			className="flex-1  border-2 border-teal-500 bg-teal-900/40 rounded-xl  mb-6"
 			key={pos._id}
 		>
 
@@ -47,11 +47,11 @@ export default function PositionBage({
 				</View>
 
 				<TouchableOpacity
-					className="flex-1  p-1 justify-center bg-sky-900/50 rounded-tr-xl"
+					className="flex-1  p-1 justify-center bg-sky-600 rounded-tr-xl"
 					onPress={() => { if (artsCurrent?.find((art) => art.artikul === pos.artikul)) { router.push(`/(app)/btw/arts/${artsCurrent?.find((art) => art.artikul === pos.artikul)?._id}/`) } }}
 				>
 					<Text
-						className="text-sky-100 text-2xl text-center italic"
+						className="text-sky-100 text-2xl font-bold text-center italic"
 						numberOfLines={4}
 					>
 						{
@@ -67,7 +67,7 @@ export default function PositionBage({
 
 
 			<View
-				className="flex-1 flex-row justify-between p-2  bg-teal-500/10 "
+				className="flex-1 flex-row justify-between p-2  "
 			>
 
 				<View
@@ -105,7 +105,7 @@ export default function PositionBage({
 
 
 			<View
-				className="flex-1 flex-row justify-between items-center p-2 border-t border-slate-50   bg-teal-500/10"
+				className="flex-1 flex-row justify-between items-center p-2 border-t border-slate-50"
 			>
 
 				<View
@@ -153,7 +153,7 @@ export default function PositionBage({
 				>
 
 
-					<Fontisto name="date" size={24} color="#fca5a5" />
+					<Fontisto name="date" size={24} color="white" />
 					<Text
 						className="text-red-300  font-bold text-2xl "
 					>
@@ -191,22 +191,22 @@ export default function PositionBage({
 			>
 
 				<TouchableOpacity
-					className="bg-blue-700/10 p-3 rounded-bl-xl w-full flex-1"
+					className="bg-blue-500 p-3 rounded-bl-xl w-full flex-1"
 					onPress={() => onUpdate()}
 				>
 					<Text
-						className="text-blue-500 text-center text-2xl"
+						className="text-blue-100 text-center text-2xl"
 					>
 						Редагувати
 					</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					className="bg-red-700/10 p-3 rounded-br-xl w-full flex-1"
+					className="bg-red-600 p-3 rounded-br-xl w-full flex-1"
 					onPress={() => onDelete()}
 				>
 					<Text
-						className="text-red-500 text-center text-2xl"
+						className="text-red-100 text-center text-2xl"
 					>
 						Видалити
 					</Text>

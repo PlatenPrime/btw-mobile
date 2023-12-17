@@ -144,16 +144,16 @@ export default function Stocks() {
 
 
 						<View
-							className="space-y-4 p-2"
+							className="space-y-4 p-4"
 						>
 
 							{rows?.map(item => <TouchableOpacity
 								key={item._id}
 								onPress={() => router.push(`/(app)/btw/stocks/${item._id}`)}
 
-								className=" flex justify-center
-								border-4 border-orange-500 rounded 
-				bg-orange-500/20 p-2 	"
+								className=" flex-1 justify-center items-center
+								border-2 border-orange-500
+				bg-orange-500/10 py-4 rounded-xl	"
 							>
 								<Text
 									className="text-5xl text-white font-bold text-center"

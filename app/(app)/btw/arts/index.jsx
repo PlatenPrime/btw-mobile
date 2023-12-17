@@ -73,16 +73,16 @@ export default function ArtsPage() {
 
 
 				<View
-					className="flex-row justify-end items-center  rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 mt-4 "
+					className="flex-row justify-end items-center  rounded-full bg-gray-700/50 focus:bg-gray-900/50  mt-4 "
 				>
 
 
 
 
 					<TextInput
-						placeholder='Введи артикул або назву'
+						placeholder='XXXX-XXXX'
 						placeholderTextColor={"lightgray"}
-						className=" text-center h-10 flex-1 text-xl text-white  "
+						className=" text-center h-10 flex-1 text-3xl text-white  "
 						onChangeText={(text => setSearchValue(text))}
 						value={searchValue}
 
@@ -92,7 +92,7 @@ export default function ArtsPage() {
 
 
 					<TouchableOpacity
-						className="rounded-full p-3 m-1 bg-sky-400"
+						className="rounded-full p-3 m-1 bg-sky-400/80"
 						onPress={handleFilterArts}
 					>
 						<Text  ><MagnifyingGlassIcon size={36} color="white" /></Text>
@@ -114,15 +114,15 @@ export default function ArtsPage() {
 							>
 
 								<View
-									className="flex-row justify-between items-center"
+									className="flex-row justify-between items-center border-b border-sky-100"
 								>
 
-									<Text className="text-white text-xl bg-sky-500 p-1 rounded-xl">
+									<Text className="text-white text-2xl  p-1 rounded-xl">
 										Всього: {artsCurrent?.length}
 									</Text>
 
 									<Text
-										className="text-xl text-white bg-sky-500 p-1 rounded-xl"
+										className="text-2xl text-white p-1 rounded-xl"
 									>
 										{step * page - step + 1} - {step * page < artsCurrent?.length ? step * page : artsCurrent?.length}
 									</Text>
@@ -135,7 +135,7 @@ export default function ArtsPage() {
 
 									<TouchableOpacity onPress={() => setPage(1)} className=" rounded-full p-1" disabled={page === 1}>
 										<Text  >
-											<ChevronDoubleLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+											<ChevronDoubleLeftIcon size={36} color={`${page === 1 ? "gray" : "white"}`} />
 										</Text>
 									</TouchableOpacity>
 
@@ -144,11 +144,11 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={page === 1}>
 										<Text  >
-											<ChevronLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+											<ChevronLeftIcon size={36} color={`${page === 1 ? "gray" : "white"}`} />
 										</Text>
 									</TouchableOpacity>
 
-									<Text className="text-white text-base " >
+									<Text className="text-white text-xl " >
 										Сторінка: {page}
 									</Text>
 
@@ -157,7 +157,7 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={artsCurrent?.length / step / page < 1}>
 										<Text  >
-											<ChevronRightIcon size={25} color={`${artsCurrent?.length / step / page < 1 ? "gray" : "white"}`} />
+											<ChevronRightIcon size={36} color={`${artsCurrent?.length / step / page < 1 ? "gray" : "white"}`} />
 										</Text>
 
 									</TouchableOpacity>
@@ -167,7 +167,7 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={artsCurrent?.length / step / page < 1}>
 										<Text  >
-											<ChevronDoubleRightIcon size={25} color={`${artsCurrent?.length / step / page < 1 ? "gray" : "white"}`} />
+											<ChevronDoubleRightIcon size={36} color={`${artsCurrent?.length / step / page < 1 ? "gray" : "white"}`} />
 										</Text>
 
 									</TouchableOpacity>
@@ -187,15 +187,15 @@ export default function ArtsPage() {
 
 
 								<View
-									className="flex-row justify-between items-center"
+									className="flex-row justify-between items-center border-b border-sky-100"
 								>
 
-									<Text className="text-white text-xl">
+									<Text className="text-white text-2xl  p-1 rounded-xl">
 										Знайдено: {filteredArts?.length}
 									</Text>
 
 									<Text
-										className="text-xl text-white bg-sky-500 p-1 rounded-xl"
+										className="text-2xl text-white p-1 rounded-xl"
 									>
 										{step * page - step + 1} - {step * page < filteredArts?.length ? step * page : filteredArts?.length}
 									</Text>
@@ -211,7 +211,7 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={page === 1}>
 										<Text  >
-											<ChevronDoubleLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+											<ChevronDoubleLeftIcon size={36} color={`${page === 1 ? "gray" : "white"}`} />
 										</Text>
 									</TouchableOpacity>
 
@@ -220,12 +220,11 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={page === 1}>
 										<Text  >
-											<ChevronLeftIcon size={25} color={`${page === 1 ? "gray" : "white"}`} />
+											<ChevronLeftIcon size={36} color={`${page === 1 ? "gray" : "white"}`} />
 										</Text>
 									</TouchableOpacity>
 
-									<Text
-										className="text-white text-base " >
+									<Text className="text-white text-xl " >
 										Сторінка: {page}
 									</Text>
 
@@ -234,7 +233,7 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={filteredArts?.length / step / page < 1}>
 										<Text  >
-											<ChevronRightIcon size={25} color={`${filteredArts?.length / step / page < 1 ? "gray" : "white"}`} />
+											<ChevronRightIcon size={36} color={`${filteredArts?.length / step / page < 1 ? "gray" : "white"}`} />
 										</Text>
 
 									</TouchableOpacity>
@@ -244,7 +243,7 @@ export default function ArtsPage() {
 										className=" rounded-full p-1"
 										disabled={filteredArts?.length / step / page < 1}>
 										<Text  >
-											<ChevronDoubleRightIcon size={25} color={`${filteredArts?.length / step / page < 1 ? "gray" : "white"}`} />
+											<ChevronDoubleRightIcon size={36} color={`${filteredArts?.length / step / page < 1 ? "gray" : "white"}`} />
 										</Text>
 
 									</TouchableOpacity>
