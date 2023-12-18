@@ -2,6 +2,7 @@ import { View, Text, ActivityIndicator, TouchableOpacity, Image } from 'react-na
 import React, { useEffect, useState } from 'react'
 import { ScreenContainer } from '../../../../components'
 import useAskStore from "../../../../stores/asksStore"
+import useAuthStore from "../../../../stores/authStore"
 import { useGlobalStore } from "../../../../stores/globalStore";
 import { ScrollView } from 'react-native-gesture-handler';
 import { useRouter } from 'expo-router';
@@ -17,9 +18,11 @@ export default function AsksPage() {
 
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 	const { asks, getAllAsks, createAsk } = useAskStore()
+	const { user, users, getUsers } = useAuthStore()
 
 	const [isAsksLoading, setIsAsksLoading] = useState(false)
 	const [isAskCreating, setIsAskCreating] = useState(false)
+
 
 
 
@@ -32,6 +35,12 @@ export default function AsksPage() {
 			try {
 				setIsAsksLoading(true)
 				const allAsks = await getAllAsks();
+
+
+				await getUsers()
+
+
+
 
 			} catch (error) {
 				console.log(error)
@@ -51,6 +60,14 @@ export default function AsksPage() {
 
 
 	}, []);
+
+
+
+
+
+
+
+
 
 
 
@@ -119,7 +136,8 @@ export default function AsksPage() {
 				handleCreateAsk={handleCreateAsk}
 			/>
 
-
+			{/* <Text className="text-white text-5xl" >{users?.length}</Text> */}
+	
 
 
 
@@ -143,6 +161,7 @@ export default function AsksPage() {
 								<AskBage
 									ask={ask}
 									artsCurrent={artsCurrent}
+									users={users}
 								/>
 							</View>
 						)}

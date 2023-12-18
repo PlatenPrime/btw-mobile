@@ -11,8 +11,8 @@ import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 
 export default function AskBage({
 	ask,
-	artsCurrent
-
+	artsCurrent,
+	users
 }) {
 
 	const router = useRouter()
@@ -47,7 +47,7 @@ export default function AskBage({
 				</View>
 
 				<View
-					className="flex-1  justify-center bg-indigo-500 rounded-tr-xl"
+					className="flex-1  justify-center bg-indigo-500/50 rounded-tr-xl"
 				>
 					<Text
 						className="text-white text-2xl text-center italic p-1"
@@ -116,7 +116,9 @@ export default function AskBage({
 				<Text
 					className="text-white text-xl p-2"
 				>
-					Имя пользователя wfwfw wfwwfwf
+					{users?.find(user => user._id === ask?.asker)?.fullname}
+					{users?.length}
+					{ask.asker}
 				</Text>
 			</View>
 
@@ -128,7 +130,7 @@ export default function AskBage({
 				<Text
 					className="text-white text-xl p-2"
 				>
-					Комментарий: {ask.comment}
+					Коментарій: {ask.comment}
 				</Text>
 			</View>
 

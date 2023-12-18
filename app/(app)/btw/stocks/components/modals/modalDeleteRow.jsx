@@ -1,7 +1,7 @@
-import { View, Text, Modal, Pressable, ActivityIndicator } from 'react-native'
+import { View, Text, Modal, Pressable, ActivityIndicator, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { colors500 } from '../../../../../../constants/Colors'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+
 
 
 export default function ModalDeleteRow({
@@ -32,10 +32,10 @@ export default function ModalDeleteRow({
 
 
 
-				<View className="flex flex-row justify-around space-x-4" >
+				<View className="flex flex-row justify-around space-x-4 mb-4" >
 
 					<TouchableOpacity
-						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+						className="p-4 border border-red-500  items-center justify-center rounded-2xl "
 						onPress={() => { setShowModalDeleteRow(false) }}>
 						<Text className=" text-white text-xl"   >
 							СКАСУВАТИ
@@ -45,7 +45,7 @@ export default function ModalDeleteRow({
 
 					<TouchableOpacity
 
-						className="w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500"
+						className=" p-4   items-center justify-center rounded-2xl border border-green-500"
 						onPress={() => {
 							handleDeleteRowById()
 						}}

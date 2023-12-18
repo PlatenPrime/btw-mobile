@@ -174,15 +174,13 @@ export default function RowPage() {
 
 
 			{showButtonGroup && <View
-				className="p-4 space-y-2 bg-black/80"
+				className="  border-b-2 border-orange-500 bg-orange-500/10"
 			>
 				<TouchableOpacity
-					className="flex  justify-between items-center 
-					py-2 rounded-lg
-					"
+					className="bg-green-500/20 py-4   flex-row justify-center items-center"
 					onPress={() => { setShowModalCreatePallet(true) }}>
 
-					<Text className="text-2xl text-emerald-300 items-center justify-center " >
+					<Text className="text-3xl text-emerald-300 items-center justify-center " >
 
 						Створити палету
 
@@ -193,13 +191,10 @@ export default function RowPage() {
 
 
 				<TouchableOpacity
-					className="flex  justify-between items-center 
-					py-2 rounded-lg
-					"
-
+					className="bg-lime-500/20 py-4   flex-row justify-center items-center"
 					onPress={() => { setShowModalUpdateRow(true) }}>
 
-					<Text className="text-2xl text-lime-300 items-center justify-center " >
+					<Text className="text-3xl text-lime-200">
 
 						Перейменувати ряд
 
@@ -210,14 +205,11 @@ export default function RowPage() {
 
 
 				<TouchableOpacity
-					className="flex  justify-between items-center 
-					py-2 rounded-lg
-				
-					"
+					className="bg-red-500/20 py-4 flex-row justify-center items-center"
 
 					onPress={() => { setShowModalDeleteRow(true) }}>
 
-					<Text className="text-2xl text-red-300 items-center justify-center " >
+					<Text className="text-3xl text-red-400" >
 
 						Видалити ряд
 					</Text>
