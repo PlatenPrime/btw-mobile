@@ -110,15 +110,25 @@ export default function AskBage({
 
 
 			<View
-				className="flex-row items-center justify-center 2 p-1 border-b border-white "
+				className="flex-row items-center justify-between 2 p-1 border-b border-white "
 			>
 				<FontAwesome5 name="pray" size={24} color="white" />
 				<Text
 					className="text-white text-xl p-2"
 				>
 					{users?.find(user => user._id === ask?.asker)?.fullname}
-					{users?.length}
-					{ask.asker}
+				</Text>
+			</View>
+
+			<View
+				className="flex-row items-center justify-between 2 p-1 border-b border-white "
+			>
+				<MaterialCommunityIcons name="emoticon-cool-outline" size={24} color="white" />
+
+				<Text
+					className="text-white text-xl p-2"
+				>
+					{users?.find(user => user._id === ask?.solver)?.fullname}
 				</Text>
 			</View>
 

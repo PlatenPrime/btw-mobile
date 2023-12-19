@@ -34,7 +34,9 @@ export default function AsksPage() {
 		async function fetchAsks() {
 			try {
 				setIsAsksLoading(true)
+
 				const allAsks = await getAllAsks();
+
 
 
 				await getUsers()
@@ -105,11 +107,11 @@ export default function AsksPage() {
 
 
 			{showButtonGroup && <View
-				className="p-4 space-y-2 "
+				className="bg-emerald-500/20"
 			>
 				<TouchableOpacity
 					className="flex  justify-between items-center 
-					py-2 rounded-lg 
+					py-4 rounded-lg 
 					"
 					onPress={() => { setShowModalCreateAsk(true) }}>
 
@@ -134,10 +136,11 @@ export default function AsksPage() {
 				isAskCreating={isAskCreating}
 				artsCurrent={artsCurrent}
 				handleCreateAsk={handleCreateAsk}
+				user={user}
 			/>
 
-			{/* <Text className="text-white text-5xl" >{users?.length}</Text> */}
-	
+
+
 
 
 

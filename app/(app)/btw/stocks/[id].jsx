@@ -177,7 +177,7 @@ export default function RowPage() {
 				className="  border-b-2 border-orange-500 bg-orange-500/10"
 			>
 				<TouchableOpacity
-					className="bg-green-500/20 py-4   flex-row justify-center items-center"
+					className="bg-green-500/10 py-4   flex-row justify-center items-center"
 					onPress={() => { setShowModalCreatePallet(true) }}>
 
 					<Text className="text-3xl text-emerald-300 items-center justify-center " >
@@ -191,7 +191,7 @@ export default function RowPage() {
 
 
 				<TouchableOpacity
-					className="bg-lime-500/20 py-4   flex-row justify-center items-center"
+					className="bg-lime-500/10 py-4   flex-row justify-center items-center"
 					onPress={() => { setShowModalUpdateRow(true) }}>
 
 					<Text className="text-3xl text-lime-200">
@@ -205,7 +205,7 @@ export default function RowPage() {
 
 
 				<TouchableOpacity
-					className="bg-red-500/20 py-4 flex-row justify-center items-center"
+					className="bg-red-500/10 py-4 flex-row justify-center items-center"
 
 					onPress={() => { setShowModalDeleteRow(true) }}>
 
@@ -277,7 +277,7 @@ export default function RowPage() {
 								key={pallet._id}
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
-								className="border-2 border-amber-200 rounded-xl 
+								className="border-2 border-amber-200/50 rounded-xl 
 					
 					text-center text-2xl text-white  font-bold
 				
@@ -285,7 +285,7 @@ export default function RowPage() {
 					 "
 							>
 								<Text
-									className="p-2 text-amber-200 font-bold text-4xl text-center bg-amber-100/10  rounded-t-xl"
+									className="p-2 text-amber-100 font-bold text-4xl text-center bg-amber-900/20  rounded-t-xl"
 								>
 									{pallet.title}
 								</Text>
@@ -294,15 +294,15 @@ export default function RowPage() {
 
 
 								<View
-									className="flex-1 p-2  flex-row justify-between rounded-b-xl bg-sky-500/20 "
+									className="flex-1 p-2  flex-row justify-between rounded-b-xl bg-sky-900/50 "
 								>
 
 									<View
 										className="flex-1 flex-row items-center justify-center space-x-2 rounded-xl"
 									>
-										<Octicons name="note" size={24} color="#99f6e4" />
+										<Octicons name="note" size={24} color="#ccfbf1" />
 										<Text
-											className="text-teal-200 text-3xl"
+											className="text-teal-100 text-3xl"
 										>
 											{allPoses?.filter((pos) => pos.pallet === pallet._id).length}
 										</Text>
@@ -311,9 +311,9 @@ export default function RowPage() {
 									<View
 										className="flex-1 flex-row items-center justify-center space-x-2"
 									>
-										<Feather name="box" size={24} color="#fde047" />
+										<Feather name="box" size={24} color="#ca8a04" />
 										<Text
-											className="text-yellow-300 text-3xl"
+											className="text-yellow-600 text-3xl"
 										>
 											{allPoses?.filter((pos) => pos.pallet === pallet._id).reduce((a, b) => a + b.boxes, 0)}
 										</Text>

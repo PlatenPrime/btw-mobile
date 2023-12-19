@@ -15,14 +15,15 @@ export default function ModalCreateAsk({
 	setShowModalCreateAsk,
 	isAskCreating,
 	artsCurrent,
-	handleCreateAsk
+	handleCreateAsk,
+	
 
 }) {
 
 
 	const [newAskArtikul, setNewAskArtikul] = useState('')
 	const [newAskQuant, setNewAskQuant] = useState('')
-	const [newAskComment, setNewAskComment] = useState('')
+	const [newAskCom, setNewAskCom] = useState('')
 
 
 
@@ -126,8 +127,8 @@ export default function ModalCreateAsk({
 						>
 							<Text className="text-white text-center text-xl">Комент:</Text>
 							<TextInput
-								onChangeText={(text => setNewAskComment(text))}
-								value={newAskComment}
+								onChangeText={(text => setNewAskCom(text))}
+								value={newAskCom}
 								className=" h-10 flex-1 text-2xl text-center text-white italic "
 
 
@@ -168,12 +169,13 @@ export default function ModalCreateAsk({
 							handleCreateAsk({
 								artikul: newAskArtikul,
 								quant: +newAskQuant,
-								comment: newAskComment,
+								com: newAskCom,
+								asker: user?._id,
 								status: "new"
 							})
 							setNewAskArtikul("")
 							setNewAskQuant("")
-							setNewAskComment("")
+							setNewAskCom("")
 
 						}}
 						disabled={!newAskArtikul}

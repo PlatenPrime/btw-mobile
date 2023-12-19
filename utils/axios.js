@@ -1,4 +1,6 @@
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const instance = axios.create({
 	baseURL: 'https://btw-server.up.railway.app/api',
@@ -7,10 +9,12 @@ const instance = axios.create({
 
 })
 
-// instance.interceptors.request.use((config) => {
-// 	config.headers.Authorization = window.localStorage.getItem('token')
+instance.interceptors.request.use(async (config) => {
+	config.headers.Authorization = await AsyncStorage.getItem('token')
 
-// 	return config
-// })
+	return config
+})
+
+
 
 export default instance

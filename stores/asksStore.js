@@ -30,6 +30,8 @@ const useAskStore = create((set) => ({
 			if (response.status === 200) {
 				const data = response.data;
 				set({ asks: data.asks });
+
+				
 				return data.asks;
 			} else {
 				throw new Error('Ошибка получения запросов на снятие');

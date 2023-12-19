@@ -78,16 +78,20 @@ const useAuthStore = create((set) => ({
 
 			set({ user: response.data.user, token: response.data.token, error: null });
 		} catch (error) {
+			console.error("Error in getMe:", error);
 			set({ error: 'GetMe error. User is not authenticated.' });
 		}
 	},
 
 	getUsers: async () => {
 		try {
+		
+
 			const response = await axios.get('/auth/users');
 			set({ users: response.data })
 			return response.data;
 		} catch (error) {
+			console.error("Error in getUsers:", error);
 			set({ error: 'Error while fetching users.' });
 		}
 	},
