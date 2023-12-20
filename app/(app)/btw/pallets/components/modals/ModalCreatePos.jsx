@@ -128,7 +128,7 @@ export default function ModalCreatePos(
 					>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Артикул:</Text>
 							<TextInput
@@ -145,7 +145,7 @@ export default function ModalCreatePos(
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Кількість:</Text>
@@ -161,7 +161,7 @@ export default function ModalCreatePos(
 						{!isNaN(newPosQuant) ? null : <Text className="text-red-500 text-xl text-center ">Кількість товару не в форматі числа </Text>}
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput
@@ -177,7 +177,7 @@ export default function ModalCreatePos(
 						{!isNaN(newPosBoxes) ? null : <Text className=" text-red-500 text-xl  text-center ">Кількість коробок не в форматі числа </Text>}
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Дата:</Text>
@@ -217,7 +217,7 @@ export default function ModalCreatePos(
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Комент:</Text>
 							<TextInput

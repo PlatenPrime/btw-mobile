@@ -11,7 +11,8 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent'
 import { colors500 } from '../../../../constants/Colors';
-import { ModalUpdateAskPos } from "./components/modals"
+import { ModalUpdateAskPos, ModalDeleteAsk } from "./components/modals"
+import { useGlobalStore } from '../../../../stores/globalStore'
 
 
 
@@ -28,10 +29,12 @@ export default function AskPage() {
 	const { remains, isLoadingRemains, errorRemains } = useGetRemains()
 	const { artsCurrent } = useGetArtsCurrent()
 
+	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
 
-	const { getAskById, updateAskById } = useAskStore()
+
+	const { getAskById, updateAskById, deleteAskById } = useAskStore()
 	const { allPallets, getAllPallets } = usePalletStore();
 	const { getPosesByArtikul, posesWithArtikul, updatePosWithArtikulById } = usePosesStore();
 
@@ -44,9 +47,11 @@ export default function AskPage() {
 	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
 	const [isUpdatingAskPos, setIsUpdatingAskPos] = useState(false)
+	const [isDeletingAskById, setIsDeletingAskId] = useState(false)
 
 
 	const [showModalUpdateAskPos, setShowModalUpdateAskPos] = useState(false)
+	const [showModalDeleteAsk, setShowModalDeleteAsk] = useState(false)
 
 	const [selectedPos, setSelectedPos] = useState(null)
 	const [selectedPosPalletTitle, setSelectedPosPalletTitle] = useState(null)
@@ -139,6 +144,18 @@ export default function AskPage() {
 
 		fetchPallets()
 
+
+
+		setShowButtonGroup(false)
+
+		return () => {
+			setShowButtonGroup(false)
+		}
+
+
+
+
+
 	}, [])
 
 
@@ -188,6 +205,39 @@ export default function AskPage() {
 
 
 
+
+	async function handleDeleteAskById() {
+
+		try {
+			setIsDeletingAskId(true)
+
+			await deleteAskById(id)
+			router.back()
+
+
+		} catch (error) {
+			console.log(error);
+
+		} finally {
+			setIsDeletingAskId(false)
+		}
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	return (
 		<ScreenContainer>
 			<Stack.Screen
@@ -218,6 +268,40 @@ export default function AskPage() {
 				isUpdatingAskPos={isUpdatingAskPos}
 				handleUpdateAskPos={handleUpdateAskPos}
 			/>
+
+
+			<ModalDeleteAsk
+				showModalDeleteAsk={showModalDeleteAsk}
+				setShowModalDeleteAsk={setShowModalDeleteAsk}
+				ask={ask}
+				isDeletingAskById={isDeletingAskById}
+				handleDeleteAskById={handleDeleteAskById}
+
+
+			/>
+
+
+
+
+			{showButtonGroup && <View
+				className=" space-y-2 bg-black/50"
+
+			>
+
+				<TouchableOpacity
+					className="bg-red-500/10 py-4 flex-row justify-center items-center"
+
+					onPress={() => { setShowModalDeleteAsk(true) }}>
+
+					<Text className="text-3xl text-red-400" >
+
+						Видалити запит
+					</Text>
+				</TouchableOpacity>
+
+
+			</View>}
+
 
 
 

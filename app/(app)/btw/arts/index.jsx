@@ -43,7 +43,7 @@ export default function ArtsPage() {
 	// HANDLERS
 
 	function handleFilterArts() {
-		const filtered = artsCurrent.filter((art) =>
+		const filtered = artsCurrent?.filter((art) =>
 			art.artikul.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
 			art.nameukr.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
 			art.namerus.toLowerCase().includes(searchValue.toLowerCase().trim())

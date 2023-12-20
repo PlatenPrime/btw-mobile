@@ -101,6 +101,10 @@ export default function AsksPage() {
 
 
 
+
+
+
+
 	return (
 		<ScreenContainer>
 
@@ -138,6 +142,10 @@ export default function AsksPage() {
 				handleCreateAsk={handleCreateAsk}
 				user={user}
 			/>
+
+
+
+
 
 
 

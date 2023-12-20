@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { colors500 } from '../../../../../../constants/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
 import { SelectList } from 'react-native-dropdown-select-list'
-import { FontAwesome } from '@expo/vector-icons'
+import { Feather, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'
 
 export default function ModalUpdateAskPos({
 	showModalUpdateAskPos,
@@ -32,7 +32,7 @@ export default function ModalUpdateAskPos({
 			visible={showModalUpdateAskPos}
 		>
 			<View
-				className="space-y-4 justify-between  bg-black h-full p-2 "
+				className="space-y-8 justify-between  bg-indigo-950 h-full p-2 "
 			>
 
 
@@ -46,108 +46,123 @@ export default function ModalUpdateAskPos({
 
 
 				<ScrollView
-					className="space-y-2 flex-1"
+					className="space-y-4 flex-1"
 				>
 
 
 					<View
-						className="flex-1 flex-row items-center justify-between"
+						className="flex-1 flex-row items-center justify-between px-2"
 					>
+
+
 						<Text className="text-white text-2xl  text-center" >
-							Зараз
+							Зараз:
 						</Text>
 
 
+						<View
+							className="flex-row items-center"
+						>
+							<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
 
-						<Text className="text-yellow-500 text-2xl  text-center" >
-							{selectedPos?.boxes}
-						</Text>
+							<Text className="text-sky-300 text-2xl  text-center" >
+								{selectedPos?.quant}
+							</Text>
+
+						</View>
 
 
 
-						<Text className="text-sky-500 text-2xl  text-center" >
-							{selectedPos?.quant}
-						</Text>
+						<View
+							className="flex-row items-center"
+						>
+							<Feather name="box" size={24} color="#fde047" />
+							<Text className="text-yellow-300 text-2xl  text-center" >
+								{selectedPos?.boxes}
+							</Text>
+						</View>
+
+
+
 
 					</View>
 
 
 					<View
-						className="flex-1 flex-row items-center justify-between"
+						className="flex-1 flex-row items-center justify-between px-2"
 					>
+
 						<Text className="text-white text-2xl  text-center" >
-							Стане
+							Стане:
 						</Text>
 
 
 
-						<Text className="text-yellow-500 text-2xl  text-center" >
-							{askPosBoxesFinalValue}
-						</Text>
+
+						<View
+							className="flex-row items-center"
+						>
+							<MaterialCommunityIcons
+								name="balloon"
+								size={24}
+								color={`${askPosQuantFinalValue < 0
+									?
+									"#ef4444"
+									:
+									"#7dd3fc"
+
+									}`} />
+
+							<Text
+								className={`${askPosQuantFinalValue < 0
+									?
+									"text-red-500 "
+									:
+									"text-sky-300 "
+
+									} text-2xl  text-center`}
+							>
+								{askPosQuantFinalValue}
+							</Text>
+
+						</View>
 
 
+						<View
+							className="flex-row items-center"
+						>
+							<Feather
+								name="box"
+								size={24}
+								color={`${askPosBoxesFinalValue < 0
+									?
+									"#ef4444"
+									:
+									"#fde047"
 
-						<Text className="text-sky-500 text-2xl  text-center" >
-							{askPosQuantFinalValue}
-						</Text>
+									}`} />
+
+
+							<Text
+								className={`${askPosBoxesFinalValue < 0
+									?
+									"text-red-500 "
+									:
+									"text-yellow-300 "
+
+									} text-2xl  text-center`}
+							>
+								{askPosBoxesFinalValue}
+							</Text>
+						</View>
+
+
 
 					</View>
 
 
 
 
-
-
-
-
-
-
-
-
-
-					<View
-						className="space-y-2"
-					>
-
-						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
-						>
-							<Text className="text-white text-center text-xl">Коробок:</Text>
-							<TextInput
-								onChangeText={(text => {
-									setAskPosBoxesValue(text)
-									setAskPosBoxesFinalValue(selectedPos?.boxes - text)
-								}
-
-								)}
-								value={askPosBoxesValue}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-								inputMode="numeric"
-
-							/>
-						</View>
-
-
-						<View
-							className="flex-1 flex-row items-center justify-start space-x-1"
-						>
-							<Text className="text-white text-center text-xl">Кількість:</Text>
-							<TextInput
-								onChangeText={(text => {
-									setAskPosQuantValue(text)
-									setAskPosQuantFinalValue(selectedPos?.quant - text)
-								}
-
-								)}
-								value={askPosQuantValue}
-								className="h-16 w-full flex-1 bg-gray-900 text-center font-bold text-2xl text-white rounded-full italic"
-								inputMode="numeric"
-
-							/>
-						</View>
-
-
-					</View>
 
 
 					{askPosBoxesFinalValue < 0 && <Text
@@ -164,7 +179,63 @@ export default function ModalUpdateAskPos({
 					</Text>}
 
 
-			
+
+
+
+
+
+
+
+					<View
+						className="space-y-4"
+					>
+
+						<View
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
+						>
+							<Text className="text-white text-center text-xl">Кількість:</Text>
+							<TextInput
+								onChangeText={(text => {
+									setAskPosQuantValue(text)
+									setAskPosQuantFinalValue(selectedPos?.quant - text)
+								}
+
+								)}
+								value={askPosQuantValue}
+								className=" w-full flex-1 text-center font-bold text-2xl text-white rounded-full italic"
+								inputMode="numeric"
+
+							/>
+						</View>
+
+
+						<View
+							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
+						>
+							<Text className="text-white text-center text-xl">Коробок:</Text>
+							<TextInput
+								onChangeText={(text => {
+									setAskPosBoxesValue(text)
+									setAskPosBoxesFinalValue(selectedPos?.boxes - text)
+								}
+
+								)}
+								value={askPosBoxesValue}
+								className=" w-full flex-1  text-center font-bold text-2xl text-white rounded-full italic"
+								inputMode="numeric"
+
+							/>
+						</View>
+
+
+
+
+					</View>
+
+
+
+
+
 
 				</ScrollView>
 
@@ -189,9 +260,9 @@ export default function ModalUpdateAskPos({
 						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${!askPosQuantValue ||
 							askPosBoxesFinalValue < 0 ||
 							askPosQuantFinalValue < 0
-							? 
-							"border-gray-500" 
-							: 
+							?
+							"border-gray-500"
+							:
 							"border-green-500"}`}
 						onPress={() => {
 							handleUpdateAskPos()
