@@ -16,7 +16,7 @@ export default function ModalCreateAsk({
 	isAskCreating,
 	artsCurrent,
 	handleCreateAsk,
-	
+	user
 
 }) {
 
