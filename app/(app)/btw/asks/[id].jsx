@@ -276,8 +276,6 @@ export default function AskPage() {
 				ask={ask}
 				isDeletingAskById={isDeletingAskById}
 				handleDeleteAskById={handleDeleteAskById}
-
-
 			/>
 
 
