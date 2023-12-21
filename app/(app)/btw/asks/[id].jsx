@@ -11,8 +11,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent'
 import { colors500 } from '../../../../constants/Colors';
-import { ModalUpdateAskPos, ModalDeleteAsk } from "./components/modals"
+import { ModalUpdateAskPos, ModalDeleteAsk, ModalDoAsk, ModalFailAsk } from "./components/modals"
 import { useGlobalStore } from '../../../../stores/globalStore'
+import useAuthStore from '../../../../stores/authStore'
 
 
 
@@ -28,7 +29,7 @@ export default function AskPage() {
 	const router = useRouter()
 	const { remains, isLoadingRemains, errorRemains } = useGetRemains()
 	const { artsCurrent } = useGetArtsCurrent()
-
+	const { user, users, getUsers } = useAuthStore()
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
@@ -40,6 +41,7 @@ export default function AskPage() {
 
 
 
+
 	const [ask, setAsk] = useState(null)
 	const [ostatok, setOstatok] = useState(null)
 
@@ -48,10 +50,17 @@ export default function AskPage() {
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
 	const [isUpdatingAskPos, setIsUpdatingAskPos] = useState(false)
 	const [isDeletingAskById, setIsDeletingAskId] = useState(false)
+	const [isDoingAsk, setIsDoingAsk] = useState(false)
+	const [isFailingAsk, setIsFailingAsk] = useState(false)
 
 
 	const [showModalUpdateAskPos, setShowModalUpdateAskPos] = useState(false)
 	const [showModalDeleteAsk, setShowModalDeleteAsk] = useState(false)
+	const [showModalDoAsk, setShowModalDoAsk] = useState(false)
+	const [showModalFailAsk, setShowModalFailAsk] = useState(false)
+
+
+
 
 	const [selectedPos, setSelectedPos] = useState(null)
 	const [selectedPosPalletTitle, setSelectedPosPalletTitle] = useState(null)
@@ -226,6 +235,60 @@ export default function AskPage() {
 
 
 
+	async function handleDoAskById() {
+
+		try {
+			setIsDoingAsk(true)
+
+			const askUpdateData = {
+				status: "solved",
+				solver: user?._id
+			}
+
+			const updatedAsk = await updateAskById(id, askUpdateData)
+			setAsk(updatedAsk)
+
+
+
+		} catch (error) {
+			console.log(error);
+
+		} finally {
+			setIsDoingAsk(false)
+			setShowModalDoAsk(false)
+
+		}
+
+	}
+
+
+	async function handleFailAskById() {
+
+		try {
+			setIsFailingAsk(true)
+
+			const askUpdateData = {
+				status: "fail",
+				solver: user?._id
+			}
+
+			const updatedAsk = await updateAskById(id, askUpdateData)
+			setAsk(updatedAsk)
+
+
+
+		} catch (error) {
+			console.log(error);
+
+		} finally {
+			setIsFailingAsk(false)
+			setShowModalFailAsk(false)
+
+		}
+
+	}
+
+
 
 
 
@@ -279,21 +342,71 @@ export default function AskPage() {
 			/>
 
 
+			<ModalDoAsk
+				showModalDoAsk={showModalDoAsk}
+				setShowModalDoAsk={setShowModalDoAsk}
+				ask={ask}
+				isDoingAsk={isDoingAsk}
+				handleDoAskById={handleDoAskById}
+			/>
+
+
+			<ModalFailAsk
+				showModalFailAsk={showModalFailAsk}
+				setShowModalFailAsk={setShowModalFailAsk}
+				ask={ask}
+				isFailingAsk={isFailingAsk}
+				handleFailAskById={handleFailAskById}
+			/>
+
+
+
+
+
+
 
 
 			{showButtonGroup && <View
-				className=" space-y-2 bg-black/50"
+				className=" bg-black/50"
 
 			>
 
+
 				<TouchableOpacity
-					className="bg-red-500/10 py-4 flex-row justify-center items-center"
+					className="bg-green-500/10 py-4 flex-row justify-center items-center"
+
+					onPress={() => { setShowModalDoAsk(true) }}>
+
+					<Text className="text-3xl text-green-300" >
+
+						Виконати
+					</Text>
+				</TouchableOpacity>
+
+
+
+				<TouchableOpacity
+					className="bg-rose-500/10 py-4 flex-row justify-center items-center"
+
+					onPress={() => { setShowModalFailAsk(true) }}>
+
+					<Text className="text-3xl text-rose-200" >
+
+						Відмовити
+					</Text>
+				</TouchableOpacity>
+
+
+
+
+				<TouchableOpacity
+					className="bg-red-500/50 py-4 flex-row justify-center items-center"
 
 					onPress={() => { setShowModalDeleteAsk(true) }}>
 
-					<Text className="text-3xl text-red-400" >
+					<Text className="text-3xl text-red-200" >
 
-						Видалити запит
+						Видалити
 					</Text>
 				</TouchableOpacity>
 

@@ -140,7 +140,7 @@ export default function AskBage({
 				<Text
 					className="text-white text-xl p-2"
 				>
-					Коментарій: {ask.comment}
+					Коментарій: {ask.com}
 				</Text>
 			</View>
 
