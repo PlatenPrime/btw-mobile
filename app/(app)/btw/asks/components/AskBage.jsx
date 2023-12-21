@@ -119,6 +119,21 @@ export default function AskBage({
 			</View>
 
 
+
+			{createdAtDateObject.toLocaleString() !== updatedAtDateObject.toLocaleString() ?
+				<View
+					className="flex-row items-center justify-center 2 p-1 border-b border-white "
+				>
+					<Text
+						className="text-center text-xl text-white p-1"
+						numberOfLines={4}
+					>
+						{updatedAtDateObject.toLocaleString()}
+					</Text>
+
+				</View>
+				: null}
+
 			<View
 				className="flex-row items-center justify-between 2 p-1 border-b border-white "
 			>
