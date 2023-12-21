@@ -429,6 +429,21 @@ export default function AskPage() {
 				<ScrollView
 				>
 
+
+					<Text
+						className="text-white text-center text-3xl"
+					>
+						{ask?.status === "new"
+							?
+							"Новий"
+							: ask?.status === "solved"
+								? "Виконано"
+								: ask?.status === "fail"
+									? "Відмовлено"
+									: null
+						}
+					</Text>
+
 					<View
 						className=" space-y-4  p-2 bg-indigo-500/5"
 					>
@@ -570,91 +585,120 @@ export default function AskPage() {
 								?
 								<View
 									className="space-y-4 ">
-									{posesWithArtikul.map(pos =>
-										<View
-											key={pos._id}
-											className="flex-1 border border-indigo-500 bg-indigo-500/10 rounded-xl "
-										>
+									{posesWithArtikul
+										.sort((a, b) => {
+											if (a.sklad < b.sklad) {
+												return 1;
+											}
+											if (a.sklad > b.sklad) {
+												return -1;
+											}
+
+											// names must be equal
+											return 0;
+										}
+
+										)
 
 
+										.map(pos =>
 											<View
-												className=" flex-1 p-2 flex-row justify-center items-center  rounded-t-xl "
+												key={pos._id}
+												className="flex-1 border border-indigo-500 bg-indigo-500/10 rounded-xl "
 											>
 
-												<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
-												<Text
-													className="text-amber-100 text-3xl"
-												>
-													{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-												</Text>
-											</View>
-
-
-
-
-											<View
-												className=" flex-1 flex-row p-2 border-t border-amber-100"
-											>
 
 												<View
-													className="  flex-1 flex-row justify-start items-center"
+													className={` flex-1 
+												   ${pos.sklad === "pogrebi"
+															?
+															"bg-green-800"
+															:
+															pos.sklad === "merezhi" ?
+																"bg-yellow-800" :
+																null
+														}
+												 p-2 flex-row justify-center items-center  rounded-t-xl 
+												 `}
 												>
-													<Feather name="box" size={24} color="#fde047" />
+
+													<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
 													<Text
-														className="text-yellow-300 font-bold text-2xl rounded"
+														className="text-amber-100 text-3xl"
 													>
-														{pos?.boxes}
+														{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
 													</Text>
-
-												</View>
-
-												<View
-													className=" flex-2 flex-row justify-start items-center"
-												>
-													<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
-													<Text
-														className="text-sky-300 font-bold text-2xl rounded"
-													>
-														{pos?.quant}
-													</Text>
-
 												</View>
 
 
-											</View>
 
 
-
-											<View
-												className="bg-indigo-700 rounded-b-xl"
-											>
-												<TouchableOpacity
-													onPress={() => {
-														setShowModalUpdateAskPos(true);
-														setSelectedPos(pos)
-														setAskPosBoxesFinalValue(pos?.boxes)
-														setAskPosQuantFinalValue(pos?.quant)
-														setAskPosBoxesValue("");
-														setAskPosQuantValue("");
-														setSelectedPosPalletTitle(allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
-													}}
-
-
+												<View
+													className=" flex-1 flex-row p-2 border-t border-amber-100"
 												>
-													<Text
-														className="text-3xl text-center text-indigo-100"
+
+
+													<View
+														className=" flex-1 flex-row justify-start items-center"
 													>
-														Зняти
-													</Text>
-												</TouchableOpacity>
+														<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
+														<Text
+															className="text-sky-300 font-bold text-2xl rounded"
+														>
+															{pos?.quant}
+														</Text>
+
+													</View>
+
+
+													<View
+														className="  flex-1 flex-row justify-end items-center"
+													>
+														<Feather name="box" size={24} color="#fde047" />
+														<Text
+															className="text-yellow-300 font-bold text-2xl rounded"
+														>
+															{pos?.boxes}
+														</Text>
+
+													</View>
+
+
+
+												</View>
+
+
+
+												<View
+													className="bg-indigo-500/10 rounded-b-xl py-2"
+												>
+													<TouchableOpacity
+														onPress={() => {
+															setShowModalUpdateAskPos(true);
+															setSelectedPos(pos)
+															setAskPosBoxesFinalValue(pos?.boxes)
+															setAskPosQuantFinalValue(pos?.quant)
+															setAskPosBoxesValue("");
+															setAskPosQuantValue("");
+															setSelectedPosPalletTitle(allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+														}}
+
+
+													>
+														<Text
+															className="text-3xl text-center text-indigo-100"
+														>
+															Зняти
+														</Text>
+													</TouchableOpacity>
+												</View>
+
+
+
+
+
 											</View>
-
-
-
-
-
-										</View>
-									)}
+										)}
 								</View>
 								:
 								<Text

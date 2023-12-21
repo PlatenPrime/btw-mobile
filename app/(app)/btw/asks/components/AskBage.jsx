@@ -87,10 +87,20 @@ export default function AskBage({
 			<View
 				className="flex-row items-center justify-center 2 p-1 border-b border-white "
 			>
+
+
 				<Text
-					className="text-white text-xl "
+					className="text-white text-center text-2xl"
 				>
-					Статус: {ask.status}
+					{ask?.status === "new"
+						?
+						"Новий"
+						: ask?.status === "solved"
+							? "Виконано"
+							: ask?.status === "fail"
+								? "Відмовлено"
+								: null
+					}
 				</Text>
 
 			</View>
