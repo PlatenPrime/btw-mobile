@@ -183,7 +183,7 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				...ask,
-				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} було знято: кульок  ${askPosQuantValue}, коробок ${askPosBoxesValue}`]
+				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} ${user?.fullname} зняв: кульок  ${askPosQuantValue}, коробок ${askPosBoxesValue}`]
 			}
 
 			console.log(askUpdateData);
