@@ -25,20 +25,49 @@ export default function AskBage({
 
 		<TouchableOpacity
 			onPress={() => router.push(`btw/asks/${ask._id}/`)}
-			className="border-2 border-indigo-500 bg-indigo-500/20 rounded-xl "
+			className={`border-2 border-indigo-500 rounded-xl 
+			
+			
+			${ask?.status === "new"
+					?
+					"bg-indigo-500/50"
+					: ask?.status === "solved"
+						? "border-emerald-500 bg-emerald-500/50"
+						: ask?.status === "fail"
+							? "border-rose-500 bg-rose-500/50"
+							: null
+				}
+			
+			
+			
+			
+			
+			`}
 		>
 
 			<View
-				className="flex-1 flex-row border-b border-white"
+				className={`flex-1 flex-row border-b border-white
+				
+				${ask?.status === "new"
+						?
+						"border-b border-indigo-500"
+						: ask?.status === "solved"
+							? "border-b border-emerald-500 "
+							: ask?.status === "fail"
+								? "border-b border-rose-500 "
+								: null
+					}
+				
+				`}
 			>
 
 				<View
-					className="w-1/4  bg-white h-full items-center justify-center rounded-tl-xl p-1"
+					className=" bg-white h-full items-center justify-center rounded-tl-xl p-1"
 				>
 					<Image
 						style={{
-							height: 80,
-							width: 80,
+							height: 100,
+							width: 100,
 							resizeMode: "contain"
 						}}
 						className="rounded-xl"
@@ -47,7 +76,13 @@ export default function AskBage({
 				</View>
 
 				<View
-					className="flex-1  justify-center bg-indigo-500/50 rounded-tr-xl"
+					className={`
+					flex-1 justify-center rounded-tr-xl
+					bg-sky-500/20
+
+				
+
+					`}
 				>
 					<Text
 						className="text-white text-2xl text-center italic p-1"
@@ -64,9 +99,9 @@ export default function AskBage({
 					{ask.quant ? <View
 						className=" p-1 flex-1 flex-row items-center justify-center"
 					>
-						<MaterialCommunityIcons name="balloon" size={24} color="white" />
+						<MaterialCommunityIcons name="balloon" size={36} color="white" />
 						<Text
-							className="text-center text-2xl text-white font-bold "
+							className="text-center text-3xl text-white font-bold "
 						>
 							{ask.quant}
 						</Text>
@@ -84,88 +119,67 @@ export default function AskBage({
 
 
 
-			<View
-				className="flex-row items-center justify-center 2 p-1 border-b border-white "
-			>
 
 
-				<Text
-					className="text-white text-center text-2xl"
-				>
-					{ask?.status === "new"
-						?
-						"Новий"
-						: ask?.status === "solved"
-							? "Виконано"
-							: ask?.status === "fail"
-								? "Відмовлено"
-								: null
-					}
-				</Text>
-
-			</View>
 
 
 			<View
-				className="flex-row items-center justify-center 2 p-1 border-b border-white "
+				className="flex-row flex-wrap items-center justify-center  p-1  "
 			>
-				<Text
-					className="text-center text-xl text-white p-1"
-					numberOfLines={4}
-				>
-					{createdAtDateObject.toLocaleString()}
-				</Text>
-
-			</View>
-
-
-
-			{createdAtDateObject.toLocaleString() !== updatedAtDateObject.toLocaleString() ?
+				<FontAwesome5 name="pray" size={24} color="#e0e7ff" />
 				<View
-					className="flex-row items-center justify-center 2 p-1 border-b border-white "
+					className="flex-row items-center justify-center  "
 				>
 					<Text
-						className="text-center text-xl text-white p-1"
+						className="text-center text-2xl text-indigo-100 pl-2 "
 						numberOfLines={4}
 					>
-						{updatedAtDateObject.toLocaleString()}
+						{createdAtDateObject.toLocaleString()}
 					</Text>
 
 				</View>
-				: null}
-
-			<View
-				className="flex-row items-center justify-between 2 p-1 border-b border-white "
-			>
-				<FontAwesome5 name="pray" size={24} color="white" />
 				<Text
-					className="text-white text-xl p-2"
+					className="text-indigo-100 text-2xl p-2"
 				>
 					{users?.find(user => user._id === ask?.asker)?.fullname}
 				</Text>
+
 			</View>
 
 			<View
-				className="flex-row items-center justify-between 2 p-1 border-b border-white "
+				className="flex-row flex-wrap items-center justify-center  p-1 "
 			>
-				<MaterialCommunityIcons name="emoticon-cool-outline" size={24} color="white" />
+				<MaterialCommunityIcons name="emoticon-cool-outline" size={24} color="#d1fae5" />
+				{createdAtDateObject.toLocaleString() !== updatedAtDateObject.toLocaleString() ?
+					<View
+						className="flex-row items-center justify-center  pl-2  "
+					>
+						<Text
+							className="text-center text-2xl text-emerald-100 "
+							numberOfLines={4}
+						>
+							{updatedAtDateObject.toLocaleString()}
+						</Text>
 
+					</View>
+					: null}
 				<Text
-					className="text-white text-xl p-2"
+					className="text-emerald-100 text-2xl p-2"
 				>
 					{users?.find(user => user._id === ask?.solver)?.fullname}
 				</Text>
+
 			</View>
 
 
 			<View
-				className="flex-row items-center justify-center 2 p-1 "
+				className="flex-row items-center justify-center space-x-2 p-1 "
 			>
-
+				<FontAwesome5 name="comment" size={24} color="white" />
 				<Text
-					className="text-white text-xl p-2"
+					className="text-white text-center text-xl p-2"
 				>
-					Коментарій: {ask.com}
+					{ask.com}
 				</Text>
 			</View>
 

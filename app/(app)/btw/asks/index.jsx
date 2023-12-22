@@ -85,7 +85,7 @@ export default function AsksPage() {
 		} catch (error) {
 			console.log(error)
 		} finally {
-			setIsAskCreating(true)
+			setIsAskCreating(false)
 			setShowModalCreateAsk(false)
 		}
 
@@ -162,7 +162,7 @@ export default function AsksPage() {
 				>
 
 					<View
-						className="space-y-4 p-2">
+						className="space-y-4 p-4">
 
 						{asks?.map(ask =>
 							<View
