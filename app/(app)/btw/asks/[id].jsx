@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ActivityIndicator, Image, TouchableOpacity, RefreshControl } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router'
 import { useGetRemains } from '../../../../hooks/useGetRemains'
@@ -70,7 +70,13 @@ export default function AskPage() {
 	const [askPosQuantValue, setAskPosQuantValue] = useState("")
 
 
-
+	const [refreshing, setRefreshing] = useState(false);
+	const onRefresh = React.useCallback(() => {
+		setRefreshing(true);
+		setTimeout(() => {
+			setRefreshing(false);
+		}, 2000);
+	}, []);
 
 
 
@@ -242,7 +248,8 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				status: "solved",
-				solver: user?._id
+				solver: user?._id,
+				actions: [...ask?.actions, `${user?.fullname} виконав цей запит`]
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
@@ -269,7 +276,8 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				status: "fail",
-				solver: user?._id
+				solver: user?._id,
+				actions: [...ask?.actions, `${user?.fullname} відмовив на цей запит`]
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
@@ -427,25 +435,18 @@ export default function AskPage() {
 				<ActivityIndicator size="large" color={colors500.indigo} />
 				:
 				<ScrollView
-				>
+					refreshControl={
+						<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+					}>
+				
 
 
-					<Text
-						className="text-white text-center text-3xl"
-					>
-						{ask?.status === "new"
-							?
-							"Новий"
-							: ask?.status === "solved"
-								? "Виконано"
-								: ask?.status === "fail"
-									? "Відмовлено"
-									: null
-						}
-					</Text>
+
+
+
 
 					<View
-						className=" space-y-4  p-2 bg-indigo-500/5"
+						className=" space-y-4  px-4 bg-indigo-500/5"
 					>
 						{/* ARTIKUL CARD */}
 
@@ -544,7 +545,55 @@ export default function AskPage() {
 
 							</View>
 
+
+
+
+
+
 						</View>
+
+
+
+
+
+
+
+						<View
+							className={`flex-1 p-1 flex-row justify-center items-center rounded-xl
+				
+				${ask?.status === "new"
+									?
+									"bg-indigo-500"
+									: ask?.status === "solved"
+										? "bg-emerald-500 "
+										: ask?.status === "fail"
+											? "bg-rose-500 "
+											: null
+								}
+				
+				`}
+						>
+							<Text
+								className="text-white text-center text-3xl"
+							>
+								{ask?.status === "new"
+									?
+									"Новий"
+									: ask?.status === "solved"
+										? "Виконано"
+										: ask?.status === "fail"
+											? "Відмовлено"
+											: null
+								}
+							</Text>
+						</View>
+
+
+
+
+
+
+
 
 
 						{/* ACTIONS LIST */}
@@ -554,15 +603,15 @@ export default function AskPage() {
 						{ask?.actions?.length > 0
 							?
 							<View
-								className="border border-green-700 rounded-xl"
+								className="p-2 border border-sky-500 rounded-xl space-y-2"
 							>
 
 								{ask?.actions?.map((action, i) => <Text
 									key={i}
-									className=" p-2 text-xl text-green-200  italic"
+									className=" p-2 text-xl text-white  italic bg-sky-500/50 rounded-xl"
 
 								>
-									{action}
+									{i + 1}. {action}
 								</Text>)}
 							</View>
 							:
@@ -578,6 +627,7 @@ export default function AskPage() {
 						{/* POSES LIST */}
 
 
+
 						{isLoadingPoses ?
 							<ActivityIndicator size="large" color={colors500.indigo} />
 							:
@@ -585,119 +635,113 @@ export default function AskPage() {
 								?
 								<View
 									className="space-y-4 ">
-									{posesWithArtikul
-										.sort((a, b) => {
-											if (a.sklad < b.sklad) {
-												return 1;
-											}
-											if (a.sklad > b.sklad) {
-												return -1;
-											}
 
-											// names must be equal
-											return 0;
+									<Text
+										className="text-center text-amber-100 text-3xl"
+
+									>
+										Палети з позицією
+									</Text>
+
+									{posesWithArtikul?.sort((a, b) => {
+										if (a.sklad < b.sklad) {
+											return 1;
+										}
+										if (a.sklad > b.sklad) {
+											return -1;
 										}
 
-										)
+										// names must be equal
+										return 0;
+									}
+
+									)
 
 
-										.map(pos =>
-											<View
+										?.map(pos =>
+
+											<TouchableOpacity
+												onPress={() => {
+													setShowModalUpdateAskPos(true);
+													setSelectedPos(pos)
+													setAskPosBoxesFinalValue(pos?.boxes)
+													setAskPosQuantFinalValue(pos?.quant)
+													setAskPosBoxesValue("");
+													setAskPosQuantValue("");
+													setSelectedPosPalletTitle(allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
+												}}
 												key={pos._id}
-												className="flex-1 border border-indigo-500 bg-indigo-500/10 rounded-xl "
 											>
-
-
 												<View
-													className={` flex-1 
+
+													className="flex-1 border border-amber-100 bg-indigo-500/10 rounded-xl "
+												>
+													<View
+														className={` flex-1 
 												   ${pos.sklad === "pogrebi"
-															?
-															"bg-green-800"
-															:
-															pos.sklad === "merezhi" ?
-																"bg-yellow-800" :
-																null
-														}
+																?
+																"bg-emerald-500/50"
+																:
+																pos.sklad === "merezhi" ?
+																	"bg-yellow-200/20" :
+																	null
+															}
 												 p-2 flex-row justify-center items-center  rounded-t-xl 
 												 `}
-												>
-
-													<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
-													<Text
-														className="text-amber-100 text-3xl"
 													>
-														{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-													</Text>
-												</View>
 
-
-
-
-												<View
-													className=" flex-1 flex-row p-2 border-t border-amber-100"
-												>
-
-
-													<View
-														className=" flex-1 flex-row justify-start items-center"
-													>
-														<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
+														<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
 														<Text
-															className="text-sky-300 font-bold text-2xl rounded"
+															className="text-amber-100 text-3xl"
 														>
-															{pos?.quant}
+															{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
 														</Text>
-
-													</View>
-
-
-													<View
-														className="  flex-1 flex-row justify-end items-center"
-													>
-														<Feather name="box" size={24} color="#fde047" />
-														<Text
-															className="text-yellow-300 font-bold text-2xl rounded"
-														>
-															{pos?.boxes}
-														</Text>
-
 													</View>
 
 
 
-												</View>
 
-
-
-												<View
-													className="bg-indigo-500/10 rounded-b-xl py-2"
-												>
-													<TouchableOpacity
-														onPress={() => {
-															setShowModalUpdateAskPos(true);
-															setSelectedPos(pos)
-															setAskPosBoxesFinalValue(pos?.boxes)
-															setAskPosQuantFinalValue(pos?.quant)
-															setAskPosBoxesValue("");
-															setAskPosQuantValue("");
-															setSelectedPosPalletTitle(allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title)
-														}}
-
-
+													<View
+														className=" flex-1 flex-row p-2 border-t border-amber-100"
 													>
-														<Text
-															className="text-3xl text-center text-indigo-100"
+
+
+														<View
+															className=" flex-1 flex-row justify-start items-center"
 														>
-															Зняти
-														</Text>
-													</TouchableOpacity>
+															<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
+															<Text
+																className="text-sky-300 font-bold text-2xl rounded"
+															>
+																{pos?.quant}
+															</Text>
+
+														</View>
+
+
+														<View
+															className="  flex-1 flex-row justify-end items-center"
+														>
+															<Feather name="box" size={24} color="#fde047" />
+															<Text
+																className="text-yellow-300 font-bold text-2xl rounded"
+															>
+																{pos?.boxes}
+															</Text>
+
+														</View>
+
+
+
+													</View>
+
+
 												</View>
 
+											</TouchableOpacity>
 
 
 
-
-											</View>
 										)}
 								</View>
 								:
