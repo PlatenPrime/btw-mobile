@@ -65,11 +65,11 @@ export default function Page() {
 						backgroundColor: colors500?.cyan
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-					 <Image source={require("../../assets/images/grad2.jpg")}
-						className="w-full h-full absolute"
-						blurRadius={10}
-					/> 
-			
+						<Image source={require("../../assets/images/grad2.jpg")}
+							className="w-full h-full absolute"
+							blurRadius={10}
+						/>
+
 					</View>
 				}}
 			/>
@@ -87,18 +87,12 @@ export default function Page() {
 						ВХІД
 					</Text>
 				</TouchableOpacity>
+
+
 				:
-				<View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
-					<Text
-						className="text-5xl text-white"
-					>
-						BTW
-					</Text>
 
 
-
-
-
+				<View className="flex-col justify-center items-center space-y-8 p-4" >
 					<TouchableOpacity
 						onPress={handleLogout}
 					>
@@ -108,7 +102,7 @@ export default function Page() {
 							<ActivityIndicator size="large" color="#ef4444" />
 							:
 							<Text
-								className="text-3xl text-red-500"
+								className="text-3xl bg-red-500 text-white p-4 rounded-2xl"
 							>
 								ВИХІД
 							</Text>
@@ -117,6 +111,20 @@ export default function Page() {
 
 
 					</TouchableOpacity>
+
+					<Text
+						className="text-5xl text-white"
+					>
+						BTW
+					</Text>
+
+					<Text
+						className="text-3xl text-center text-white"
+					>
+						Balloon Trade Warehouse App
+					</Text>
+
+
 
 
 

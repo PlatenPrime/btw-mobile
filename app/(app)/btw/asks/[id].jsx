@@ -122,7 +122,7 @@ export default function AskPage() {
 		const fetchPosesByArtikul = async () => {
 			try {
 				setIsLoadingPoses(true)
-				const posesByArtikul = await getPosesByArtikul(artikul?.artikul)
+				const posesByArtikul = await getPosesByArtikul(ask?.artikul)
 
 			} catch (error) {
 				console.log(error)
@@ -134,7 +134,7 @@ export default function AskPage() {
 
 		fetchPosesByArtikul()
 
-	}, [artikul])
+	}, [ask?.artikul])
 
 
 
@@ -438,7 +438,7 @@ export default function AskPage() {
 					refreshControl={
 						<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
 					}>
-				
+
 
 
 
@@ -534,7 +534,8 @@ export default function AskPage() {
 									<Text
 										className="text-3xl text-sky-300 py-1 "
 									>
-										{isLoadingPoses ?
+										{isLoadingPoses
+											?
 											<ActivityIndicator size="large" color={colors500.indigo} />
 											:
 											posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)
@@ -637,10 +638,13 @@ export default function AskPage() {
 									className="space-y-4 ">
 
 									<Text
-										className="text-center text-amber-100 text-3xl"
+										className="text-center text-teal-100 text-3xl"
 
 									>
-										Палети з позицією
+										Позиції: {" "}
+										
+											{posesWithArtikul.length}
+										
 									</Text>
 
 									{posesWithArtikul?.sort((a, b) => {
