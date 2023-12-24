@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "857061949128",
+    "project_id": "btw-mobile",
+    "storage_bucket": "btw-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857061949128:android:37d21d984655ec544a2ffd",
+        "android_client_info": {
+          "package_name": "com.platenprime.btwmobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCu8MtmhotfH7R7LK1VQPrkM8StIJnDVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
