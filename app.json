@@ -23,6 +23,20 @@
 				"foregroundImage": "./assets/images/icon.png",
 				"backgroundColor": "#ffffff"
 			},
+			"intentFilters": [
+				{
+				  "action": "VIEW",
+				  "autoVerify": true,
+				  "data": [
+					{
+					  "scheme": "https",
+					  "host": "*.myapp.io",
+					  "pathPrefix": "/records"
+					}
+				  ],
+				  "category": ["BROWSABLE", "DEFAULT"]
+				}
+			  ],
 			"package": "com.platenprime.btwmobile",
 			"googleServicesFile" : "./google-services.json"
 		},
