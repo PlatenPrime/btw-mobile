@@ -9,6 +9,12 @@ import { useRouter } from 'expo-router';
 import { useGetArtsCurrent } from "../../../../hooks/useGetArtsCurrent"
 import AskBage from "./components/AskBage"
 import { ModalCreateAsk } from "./components/modals"
+import { sendMessageToTelegram } from '../../../../utils/sendMessagesTelegram'
+
+
+
+
+
 
 
 export default function AsksPage() {
@@ -80,7 +86,24 @@ export default function AsksPage() {
 		try {
 			setIsAskCreating(true)
 
-			await createAsk(newAskData)
+			const createdAsk = await createAsk(newAskData)
+
+			console.log("Created Ask: ", createdAsk);
+
+			const user = users?.find(user => user._id === createdAsk?.asker)
+			const artikul = createdAsk.artikul
+			const quant = createdAsk.quant
+			const com = createdAsk.com
+
+
+			await sendMessageToTelegram(`
+			${user?.fullname}: необхідно зняти ${artikul}.
+			${quant ? `Кількість: ${quant} шт` : ""}
+			${com ? `Коментарій: ${com} шт` : ""}
+			`)
+
+
+
 
 		} catch (error) {
 			console.log(error)

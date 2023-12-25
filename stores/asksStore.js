@@ -6,13 +6,14 @@ const useAskStore = create((set) => ({
 
 	createAsk: async (askData) => {
 		try {
-			console.log(askData)
+
 			const response = await axios.post('asks', askData);
-			console.log(response)
 
 			if (response.status === 201) {
 				const newAsk = response.data;
 				set((state) => ({ asks: [newAsk, ...state.asks] }));
+				console.log(newAsk);
+				return newAsk
 			} else {
 				throw new Error('Ошибка создания запроса на снятие');
 			}
@@ -31,7 +32,7 @@ const useAskStore = create((set) => ({
 				const data = response.data;
 				set({ asks: data.asks });
 
-				
+
 				return data.asks;
 			} else {
 				throw new Error('Ошибка получения запросов на снятие');
