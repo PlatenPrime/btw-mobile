@@ -294,7 +294,7 @@ export default function RowPage() {
 
 
 								<View
-									className="flex-1 p-2  flex-row justify-between rounded-b-xl bg-sky-900/50 "
+									className=" p-2  flex-row justify-between rounded-b-xl bg-sky-900/50 "
 								>
 
 									<View
@@ -304,7 +304,7 @@ export default function RowPage() {
 										<Text
 											className="text-teal-100 text-3xl"
 										>
-											{allPoses?.filter((pos) => pos.pallet === pallet._id).length}
+											{allPoses?.filter((pos) => pos?.pallet === pallet?._id).length}
 										</Text>
 									</View>
 
@@ -315,7 +315,7 @@ export default function RowPage() {
 										<Text
 											className="text-yellow-600 text-3xl"
 										>
-											{allPoses?.filter((pos) => pos.pallet === pallet._id).reduce((a, b) => a + b.boxes, 0)}
+											{allPoses?.filter((pos) => pos?.pallet === pallet?._id).reduce((a, b) => a + b?.boxes, 0)}
 										</Text>
 									</View>
 

@@ -36,7 +36,7 @@ export default function PalletPage() {
 
 	const { getPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getSelectedRowPallets, allPallets, getAllPallets } = usePalletStore();
 	const { getRowById, getAllRows, rows } = useRowStore();
-	const { getPalletPoses, clearPosesStore, createPos, deletePosById, poses, updatePosById } = usePosesStore()
+	const { getPalletPoses, clearPosesStore, createPos, deletePosById, poses, updatePosById, addNewPosToAllPoses } = usePosesStore()
 
 
 
@@ -225,6 +225,8 @@ export default function PalletPage() {
 
 			const existingPos = poses.find(pos => pos.artikul === newPosArtikul);
 
+			let newPos
+
 			if (existingPos && existingPos.sklad === newPosSklad && existingPos.date === newPosDate && existingPos.com === newPosCom) {
 
 				const updatedData = {
@@ -232,10 +234,10 @@ export default function PalletPage() {
 					boxes: +existingPos.boxes + +newPosBoxes
 				}
 
-				await updatePosById(existingPos._id, updatedData)
+				newPos = await updatePosById(existingPos._id, updatedData)
 
 			} else {
-				await createPos(pallet._id, {
+				newPos = await createPos(pallet._id, {
 					artikul: newPosArtikul.trim(),
 					quant: newPosQuant,
 					boxes: newPosBoxes,
@@ -245,6 +247,9 @@ export default function PalletPage() {
 
 				})
 			}
+
+
+			await addNewPosToAllPoses(newPos)
 
 
 

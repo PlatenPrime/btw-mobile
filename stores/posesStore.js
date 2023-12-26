@@ -44,6 +44,19 @@ export const usePosesStore = create((set) => ({
 		}
 	},
 
+
+	addNewPosToAllPoses: async (newPos) => {
+		try {
+			set((state) => ({
+				allPoses: [newPos, ...state.allPoses],
+			}));
+		} catch (error) {
+			console.error('Ошибка при добавлении новой позиции ко всем позициям:', error);
+		}
+	},
+
+
+
 	getPosById: async (id) => {
 		try {
 			const response = await axios.get(`poses/${id}`);

@@ -678,7 +678,7 @@ export default function AskPage() {
 											>
 												<View
 
-													className="flex-1 border border-amber-100 bg-indigo-500/10 rounded-xl "
+													className=" border border-amber-100 bg-indigo-500/10 rounded-xl "
 												>
 													<View
 														className={` flex-1 
