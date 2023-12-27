@@ -131,7 +131,7 @@ export default function AskBage({
 						className="flex-row items-center justify-center  "
 					>
 						<Text
-							className="text-center text-2xl text-indigo-100 pl-2 "
+							className="text-center text-base text-indigo-100 pl-2 "
 							numberOfLines={4}
 						>
 							{createdAtDateObject.toLocaleString()}
@@ -139,7 +139,7 @@ export default function AskBage({
 
 					</View>
 					<Text
-						className="text-indigo-100 text-2xl p-2"
+						className="text-indigo-100 text-lg p-2"
 					>
 						{users?.find(user => user._id === ask?.asker)?.fullname}
 					</Text>
@@ -155,7 +155,7 @@ export default function AskBage({
 							className="flex-row items-center justify-center  pl-2  "
 						>
 							<Text
-								className="text-center text-2xl text-emerald-100 "
+								className="text-center text-base text-emerald-100 "
 								numberOfLines={4}
 							>
 								{updatedAtDateObject.toLocaleString()}
@@ -164,7 +164,7 @@ export default function AskBage({
 						</View>
 						: null}
 					<Text
-						className="text-emerald-100 text-2xl p-2"
+						className="text-emerald-100 text-lg p-2"
 					>
 						{users?.find(user => user._id === ask?.solver)?.fullname}
 					</Text>
@@ -177,7 +177,7 @@ export default function AskBage({
 				>
 					<FontAwesome5 name="comment" size={24} color="white" />
 					<Text
-						className="text-white text-center text-xl p-2"
+						className="text-white text-center text-lg p-2 italic"
 					>
 						{ask.com}
 					</Text>

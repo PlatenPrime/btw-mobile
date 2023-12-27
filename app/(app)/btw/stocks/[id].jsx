@@ -278,6 +278,8 @@ export default function RowPage() {
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
 								className="border-2 border-amber-200/50 rounded-xl 
+
+								bg-amber-900/10
 					
 					text-center text-2xl text-white  font-bold
 				
@@ -285,7 +287,7 @@ export default function RowPage() {
 					 "
 							>
 								<Text
-									className="p-2 text-amber-100 font-bold text-4xl text-center bg-amber-900/20  rounded-t-xl"
+									className="p-2 text-amber-100 font-bold text-4xl text-center  rounded-t-xl"
 								>
 									{pallet.title}
 								</Text>
@@ -294,7 +296,7 @@ export default function RowPage() {
 
 
 								<View
-									className=" p-2  flex-row justify-between rounded-b-xl bg-sky-900/50 "
+									className=" p-2  flex-row justify-between rounded-b-xl 0 "
 								>
 
 									<View
@@ -302,7 +304,7 @@ export default function RowPage() {
 									>
 										<Octicons name="note" size={24} color="#ccfbf1" />
 										<Text
-											className="text-teal-100 text-3xl"
+											className="text-teal-100 text-xl"
 										>
 											{allPoses?.filter((pos) => pos?.pallet === pallet?._id).length}
 										</Text>
@@ -311,9 +313,9 @@ export default function RowPage() {
 									<View
 										className="flex-1 flex-row items-center justify-center space-x-2"
 									>
-										<Feather name="box" size={24} color="#ca8a04" />
+										<Feather name="box" size={24} color="#facc15" />
 										<Text
-											className="text-yellow-600 text-3xl"
+											className="text-yellow-400 text-xl"
 										>
 											{allPoses?.filter((pos) => pos?.pallet === pallet?._id).reduce((a, b) => a + b?.boxes, 0)}
 										</Text>

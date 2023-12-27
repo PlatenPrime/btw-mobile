@@ -19,7 +19,7 @@ export default function RootLayout() {
 			name="index"
 			options={{
 				headerBackTitleVisible: false,
-
+				headerTintColor: "white",
 			}}
 		/>
 

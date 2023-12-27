@@ -104,7 +104,22 @@ export default function Page() {
 				:
 
 
-				<View className="flex-col justify-center items-center space-y-8 p-4" >
+				<View className="flex-col flex-1 justify-between items-center space-y-8 p-4" >
+					
+					<Text
+						className="text-3xl text-center text-white"
+					>
+						Balloon Trade Warehouse App
+					</Text>
+
+					<Text
+						className="text-8xl text-white"
+					>
+						BTW
+					</Text>
+
+
+
 					<TouchableOpacity
 						onPress={handleLogout}
 					>
@@ -114,7 +129,7 @@ export default function Page() {
 							<ActivityIndicator size="large" color="#ef4444" />
 							:
 							<Text
-								className="text-3xl bg-red-500 text-white p-4 rounded-2xl"
+								className="text-3xl border  border-red-500 text-red-500 p-4 rounded-2xl"
 							>
 								ВИХІД
 							</Text>
@@ -123,20 +138,6 @@ export default function Page() {
 
 
 					</TouchableOpacity>
-
-					<Text
-						className="text-5xl text-white"
-					>
-						BTW
-					</Text>
-
-					<Text
-						className="text-3xl text-center text-white"
-					>
-						Balloon Trade Warehouse App
-					</Text>
-
-
 
 
 
