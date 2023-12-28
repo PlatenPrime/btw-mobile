@@ -134,15 +134,15 @@ export default function AsksPage() {
 
 
 			{showButtonGroup && <View
-				className="bg-emerald-500/20"
+				className=" bg-black absolute z-10 w-full"
 			>
 				<TouchableOpacity
 					className="flex  justify-between items-center 
-					py-4 rounded-lg 
+					py-4  bg-indigo-500/20
 					"
 					onPress={() => { setShowModalCreateAsk(true) }}>
 
-					<Text className="text-2xl text-emerald-300 items-center justify-center " >
+					<Text className="text-3xl text-indigo-300 items-center justify-center " >
 
 						Створити запит
 

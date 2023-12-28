@@ -191,22 +191,22 @@ export default function PositionBage({
 			>
 
 				<TouchableOpacity
-					className="bg-blue-500 p-3 rounded-bl-xl w-full flex-1"
+					className="bg-blue-500/20 p-3 rounded-bl-xl w-full flex-1"
 					onPress={() => onUpdate()}
 				>
 					<Text
-						className="text-blue-100 text-center text-2xl"
+						className="text-blue-200 text-center text-2xl"
 					>
 						Редагувати
 					</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					className="bg-red-600 p-3 rounded-br-xl w-full flex-1"
+					className="bg-red-500/10 p-3 rounded-br-xl w-full flex-1"
 					onPress={() => onDelete()}
 				>
 					<Text
-						className="text-red-100 text-center text-2xl"
+						className="text-red-400 text-center text-2xl"
 					>
 						Видалити
 					</Text>

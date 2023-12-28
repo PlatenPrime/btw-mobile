@@ -49,11 +49,11 @@ export default function Profile() {
 
 
 			<View
-				className="flex justify-center items-center h-full"
+				className="flex justify-start items-center h-full"
 			>
 
 				<Text
-					className="text-3xl text-sky-300"
+					className="text-3xl text-white"
 				>
 					{user?.fullname}
 

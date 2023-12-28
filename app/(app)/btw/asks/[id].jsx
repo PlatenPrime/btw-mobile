@@ -375,13 +375,13 @@ export default function AskPage() {
 
 
 			{showButtonGroup && <View
-				className=" bg-black/50"
+				className=" bg-black absolute z-10 w-full"
 
 			>
 
 
 				<TouchableOpacity
-					className="bg-green-500/10 py-4 flex-row justify-center items-center"
+					className="bg-green-500/20 py-4 flex-row justify-center items-center"
 
 					onPress={() => { setShowModalDoAsk(true) }}>
 
@@ -394,7 +394,7 @@ export default function AskPage() {
 
 
 				<TouchableOpacity
-					className="bg-rose-500/10 py-4 flex-row justify-center items-center"
+					className="bg-rose-500/20 py-4 flex-row justify-center items-center"
 
 					onPress={() => { setShowModalFailAsk(true) }}>
 
@@ -408,11 +408,11 @@ export default function AskPage() {
 
 
 				<TouchableOpacity
-					className="bg-red-500/50 py-4 flex-row justify-center items-center"
+					className="bg-red-500/10 py-4 flex-row justify-center items-center"
 
 					onPress={() => { setShowModalDeleteAsk(true) }}>
 
-					<Text className="text-3xl text-red-200" >
+					<Text className="text-3xl text-red-400" >
 
 						Видалити
 					</Text>

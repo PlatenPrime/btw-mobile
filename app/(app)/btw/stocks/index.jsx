@@ -90,21 +90,19 @@ export default function Stocks() {
 		<ScreenContainer>
 
 			{showButtonGroup && <View
-				className="p-4 space-y-2 bg-black/50"
+				className=" bg-black absolute z-10 w-full"
 
 			>
 
 
 				<TouchableOpacity
 					className="flex  justify-between items-center 
-					py-2 rounded-lg
-				
-				
+					py-4  bg-orange-500/20
 					"
 
 					onPress={() => { setShowModalCreateRow(true) }}>
 
-					<Text className="text-2xl text-emerald-300 items-center justify-center " >
+					<Text className="text-3xl text-orange-300 items-center justify-center " >
 
 						Створити ряд
 
@@ -147,20 +145,28 @@ export default function Stocks() {
 							className="space-y-2 p-2"
 						>
 
-							{rows?.map(item => <TouchableOpacity
-								key={item._id}
-								onPress={() => router.push(`/(app)/btw/stocks/${item._id}`)}
-
-								className=" justify-center items-center
-								border-2 border-orange-500
-				bg-orange-500/20  rounded-xl	py-2"
-							>
-								<Text
-									className="text-5xl text-white font-bold text-center"
+							{rows?.map(item =>
+								<View
+									key={item._id}
+									className="border-x-8 border-slate-500 rounded-2xl"
 								>
-									{item.title}
-								</Text>
-							</TouchableOpacity>)}
+									<TouchableOpacity
+
+										onPress={() => router.push(`/(app)/btw/stocks/${item._id}`)}
+										className=" justify-center items-center
+								border-2 border-orange-500 rounded-xl
+				bg-orange-600/90  	py-2"
+									>
+										<Text
+											className="text-5xl text-white font-bold text-center"
+										>
+											{item.title}
+										</Text>
+									</TouchableOpacity>
+								</View>
+
+
+							)}
 
 
 						</View>

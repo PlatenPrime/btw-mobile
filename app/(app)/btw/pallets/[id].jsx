@@ -367,33 +367,33 @@ export default function PalletPage() {
 						?
 
 						<View
-							className="  border-b-2 border-amber-500 bg-amber-500/10"
+							className=" bg-black absolute z-10 w-full"
 						>
 
 							<TouchableOpacity
-								className="bg-lime-500/20 py-4  flex-1 flex-row justify-center items-center"
+								className="bg-blue-500/20 py-4  flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalUpdatePallet(true)}
 							>
 								<Text
-									className="text-3xl text-lime-200"
+									className="text-3xl text-blue-200"
 								>
 									Перейменувати
 								</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity
-								className="bg-indigo-500/20 py-4 flex-1 flex-row justify-center items-center"
+								className="bg-yellow-500 py-4 flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalMovePalletContent(true)}
 							>
 								<Text
-									className="text-3xl text-indigo-200"
+									className="text-3xl text-slate-700"
 								>
 									Переставити
 								</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity
-								className="bg-rose-300/50 py-4 flex-1 flex-row justify-center items-center"
+								className="bg-rose-500/20 py-4 flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalClearPallet(true)}
 							>
 								<Text
@@ -405,7 +405,7 @@ export default function PalletPage() {
 
 
 							<TouchableOpacity
-								className="bg-red-500/20 py-4 flex-1 flex-row justify-center items-center"
+								className="bg-red-500/10 py-4 flex-1 flex-row justify-center items-center"
 								onPress={() => setShowModalDeletePallet(true)}
 							>
 								<Text
