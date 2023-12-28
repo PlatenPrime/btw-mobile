@@ -191,7 +191,7 @@ export default function RowPage() {
 
 
 				<TouchableOpacity
-					className="bg-lime-500/10 py-4   flex-row justify-center items-center"
+					className="bg-lime-500/20 py-4   flex-row justify-center items-center"
 					onPress={() => { setShowModalUpdateRow(true) }}>
 
 					<Text className="text-3xl text-lime-200">

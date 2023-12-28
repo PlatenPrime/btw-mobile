@@ -105,19 +105,6 @@ export default function Page() {
 
 
 				<View className="flex-col flex-1 justify-between items-center space-y-8 p-4" >
-					
-					<Text
-						className="text-3xl text-center text-white"
-					>
-						Balloon Trade Warehouse App
-					</Text>
-
-					<Text
-						className="text-8xl text-white"
-					>
-						BTW
-					</Text>
-
 
 
 					<TouchableOpacity
@@ -128,16 +115,36 @@ export default function Page() {
 							?
 							<ActivityIndicator size="large" color="#ef4444" />
 							:
-							<Text
-								className="text-3xl border  border-red-500 text-red-500 p-4 rounded-2xl"
+							<View
+								className="border  border-red-500 bg-red-500/5 w-full rounded-2xl"
 							>
-								ВИХІД
-							</Text>
-
+								<Text
+									className="text-3xl  text-red-500 p-4   "
+								>
+									ВИХІД
+								</Text>
+							</View>
 						}
 
 
 					</TouchableOpacity>
+
+					<Text
+						className="text-8xl text-white "
+					>
+						BTW
+					</Text>
+
+
+					<Text
+						className="text-3xl text-center text-white"
+					>
+						Balloon Trade Warehouse App
+					</Text>
+
+
+
+
 
 
 
