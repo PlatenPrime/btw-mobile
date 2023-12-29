@@ -10,7 +10,7 @@ import { useGetArtsCurrent } from "../../../../hooks/useGetArtsCurrent"
 import AskBage from "./components/AskBage"
 import { ModalCreateAsk } from "./components/modals"
 import { sendMessageToTelegram } from '../../../../utils/sendMessagesTelegram'
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -134,22 +134,23 @@ export default function AsksPage() {
 
 
 			{showButtonGroup && <View
-				className=" bg-black absolute z-10 w-full"
+				className="  absolute z-10 w-full"
 			>
+				<LinearGradient colors={['#3730a3', '#1e1b4bee',]} >
 				<TouchableOpacity
 					className="flex  justify-between items-center 
-					py-4  bg-indigo-500/20
+					py-4  
 					"
 					onPress={() => { setShowModalCreateAsk(true) }}>
 
-					<Text className="text-3xl text-indigo-300 items-center justify-center " >
+					<Text className="text-3xl text-indigo-100 items-center justify-center " >
 
 						Створити запит
 
 					</Text>
 				</TouchableOpacity>
 
-
+				</LinearGradient>
 
 			</View>
 			}
