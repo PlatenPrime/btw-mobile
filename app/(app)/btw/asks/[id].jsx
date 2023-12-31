@@ -29,7 +29,7 @@ export default function AskPage() {
 	const router = useRouter()
 	const { remains, isLoadingRemains, errorRemains } = useGetRemains()
 	const { artsCurrent } = useGetArtsCurrent()
-	const { user, users, getUsers } = useAuthStore()
+	const { user } = useAuthStore()
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
@@ -253,7 +253,7 @@ export default function AskPage() {
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			setAsk(updatedAsk)
+			if (updatedAsk) setAsk(updatedAsk)
 
 
 
@@ -281,7 +281,7 @@ export default function AskPage() {
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			setAsk(updatedAsk)
+			if (updatedAsk) setAsk(updatedAsk)
 
 
 
@@ -380,29 +380,39 @@ export default function AskPage() {
 			>
 
 
-				<TouchableOpacity
-					className="bg-green-500/20 py-4 flex-row justify-center items-center"
 
-					onPress={() => { setShowModalDoAsk(true) }}>
-
-					<Text className="text-3xl text-green-300" >
-
-						Виконати
-					</Text>
-				</TouchableOpacity>
+				{user?.role === "SKLAD" || user?.role === "PRIME" ?
 
 
+					<>
+						<TouchableOpacity
+							className="bg-green-500/20 py-4 flex-row justify-center items-center"
 
-				<TouchableOpacity
-					className="bg-rose-500/20 py-4 flex-row justify-center items-center"
+							onPress={() => { setShowModalDoAsk(true) }}>
 
-					onPress={() => { setShowModalFailAsk(true) }}>
+							<Text className="text-3xl text-green-300" >
 
-					<Text className="text-3xl text-rose-200" >
+								Виконати
+							</Text>
+						</TouchableOpacity>
 
-						Відмовити
-					</Text>
-				</TouchableOpacity>
+
+
+						<TouchableOpacity
+							className="bg-rose-500/20 py-4 flex-row justify-center items-center"
+
+							onPress={() => { setShowModalFailAsk(true) }}>
+
+							<Text className="text-3xl text-rose-200" >
+
+								Відмовити
+							</Text>
+						</TouchableOpacity>
+
+					</>
+
+					: null}
+
 
 
 
@@ -642,9 +652,9 @@ export default function AskPage() {
 
 									>
 										Позиції: {" "}
-										
-											{posesWithArtikul.length}
-										
+
+										{posesWithArtikul.length}
+
 									</Text>
 
 									{posesWithArtikul?.sort((a, b) => {

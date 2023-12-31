@@ -61,7 +61,9 @@ const useAskStore = create((set) => ({
 		try {
 			const response = await axios.put(`asks/${id}`, updateData);
 
-			if (response.status === 200) {
+			if (response.status === 403) {
+				return null
+			} else if (response.status === 200) {
 				const updatedAsk = response.data;
 				set((state) => ({
 					asks: state.asks.map((a) =>
@@ -69,8 +71,6 @@ const useAskStore = create((set) => ({
 					),
 				}));
 				return updatedAsk;
-			} else {
-				throw new Error('Ошибка обновления запроса на снятие по ID');
 			}
 		} catch (error) {
 			console.error('Ошибка обновления запроса на снятие по ID:', error);

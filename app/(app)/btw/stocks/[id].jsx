@@ -12,6 +12,7 @@ import ModalCreatePallet from "./components/modals/modalCreatePallet"
 import ModalUpdateRow from "./components/modals/modalUpdateRow"
 import ModalDeleteRow from "./components/modals/modalDeleteRow";
 import { Feather, Octicons } from '@expo/vector-icons'
+import useAuthStore from '../../../../stores/authStore'
 
 
 
@@ -29,6 +30,7 @@ export default function RowPage() {
 	const { pallets, getRowPallets, createPallet } = usePalletStore()
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 	const { allPoses, getAllPoses } = usePosesStore()
+	const { user } = useAuthStore()
 
 
 
@@ -173,49 +175,51 @@ export default function RowPage() {
 			/>
 
 
-			{showButtonGroup && <View
-				className=" bg-black absolute z-10 w-full"
+			{showButtonGroup &&
+				(user?.role === "SKLAD" || user?.role === "PRIME") &&
+				<View
+					className=" bg-black absolute z-10 w-full"
 
-			>
-				<TouchableOpacity
-					className="bg-amber-500/20 py-4   flex-row justify-center items-center"
-					onPress={() => { setShowModalCreatePallet(true) }}>
+				>
+					<TouchableOpacity
+						className="bg-amber-500/20 py-4   flex-row justify-center items-center"
+						onPress={() => { setShowModalCreatePallet(true) }}>
 
-					<Text className="text-3xl text-amber-300 items-center justify-center " >
+						<Text className="text-3xl text-amber-300 items-center justify-center " >
 
-						Створити палету
+							Створити палету
 
-					</Text>
-				</TouchableOpacity>
-
-
-
-
-				<TouchableOpacity
-					className="bg-blue-500/20 py-4   flex-row justify-center items-center"
-					onPress={() => { setShowModalUpdateRow(true) }}>
-
-					<Text className="text-3xl text-blue-200">
-
-						Перейменувати ряд
-
-					</Text>
-				</TouchableOpacity>
+						</Text>
+					</TouchableOpacity>
 
 
 
 
-				<TouchableOpacity
-					className="bg-red-500/10 py-4 flex-row justify-center items-center"
+					<TouchableOpacity
+						className="bg-blue-500/20 py-4   flex-row justify-center items-center"
+						onPress={() => { setShowModalUpdateRow(true) }}>
 
-					onPress={() => { setShowModalDeleteRow(true) }}>
+						<Text className="text-3xl text-blue-200">
 
-					<Text className="text-3xl text-red-400" >
+							Перейменувати ряд
 
-						Видалити ряд
-					</Text>
-				</TouchableOpacity>
-			</View>
+						</Text>
+					</TouchableOpacity>
+
+
+
+
+					<TouchableOpacity
+						className="bg-red-500/10 py-4 flex-row justify-center items-center"
+
+						onPress={() => { setShowModalDeleteRow(true) }}>
+
+						<Text className="text-3xl text-red-400" >
+
+							Видалити ряд
+						</Text>
+					</TouchableOpacity>
+				</View>
 			}
 
 

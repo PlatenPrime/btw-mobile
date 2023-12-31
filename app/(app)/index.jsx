@@ -104,7 +104,7 @@ export default function Page() {
 				:
 
 
-				<View className="flex-col flex-1 justify-between items-center space-y-8 p-4" >
+				<View className="flex-col flex-1 justify-stsrt items-center space-y-8 p-4" >
 
 
 					<TouchableOpacity

@@ -15,6 +15,7 @@ import { Octicons, Feather } from '@expo/vector-icons';
 import { ScreenContainer } from '../../../../components';
 import PositionBage from "./components/PositionBage";
 import { ModalClearPallet, ModalCreatePos, ModalDeletePallet, ModalDeletePos, ModalMovePalletContent, ModalUpdatePallet, ModalUpdatePos } from "./components/modals"
+import useAuthStore from '../../../../stores/authStore'
 
 
 
@@ -37,6 +38,9 @@ export default function PalletPage() {
 	const { getPalletById, deletePalletById, updatePalletById, clearPalletById, movePalletContent, getSelectedRowPallets, allPallets, getAllPallets } = usePalletStore();
 	const { getRowById, getAllRows, rows } = useRowStore();
 	const { getPalletPoses, clearPosesStore, createPos, deletePosById, poses, updatePosById, addNewPosToAllPoses } = usePosesStore()
+	const { user } = useAuthStore()
+
+
 
 
 
@@ -363,7 +367,7 @@ export default function PalletPage() {
 
 
 
-					{showButtonGroup
+					{showButtonGroup && (user?.role === "SKLAD" || user?.role === "PRIME" )
 						?
 
 						<View
@@ -380,6 +384,9 @@ export default function PalletPage() {
 									Перейменувати
 								</Text>
 							</TouchableOpacity>
+
+
+							
 
 							<TouchableOpacity
 								className="bg-yellow-500 py-4 flex-1 flex-row justify-center items-center"

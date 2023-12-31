@@ -7,6 +7,7 @@ import { Link, useRouter } from 'expo-router';
 import { colors500 } from '../../../../constants/Colors'
 import { useGlobalStore } from "../../../../stores/globalStore";
 import ModalCreateRow from "./components/modals/modalCreateRow"
+import useAuthStore from '../../../../stores/authStore';
 
 
 
@@ -24,6 +25,7 @@ export default function Stocks() {
 
 	const { createRow, rows, getAllRows } = useRowStore();
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
+	const { user } = useAuthStore()
 
 
 
@@ -89,28 +91,32 @@ export default function Stocks() {
 	return (
 		<ScreenContainer>
 
-			{showButtonGroup && <View
-				className=" bg-black absolute z-10 w-full"
+			{showButtonGroup
+				&&
+				(user?.role === "SKLAD" || user?.role === "PRIME")
+				&&
+				<View
+					className=" bg-black absolute z-10 w-full"
 
-			>
+				>
 
 
-				<TouchableOpacity
-					className="flex  justify-between items-center 
+					<TouchableOpacity
+						className="flex  justify-between items-center 
 					py-4  bg-orange-500/20
 					"
 
-					onPress={() => { setShowModalCreateRow(true) }}>
+						onPress={() => { setShowModalCreateRow(true) }}>
 
-					<Text className="text-3xl text-orange-300 items-center justify-center " >
+						<Text className="text-3xl text-orange-300 items-center justify-center " >
 
-						Створити ряд
+							Створити ряд
 
-					</Text>
-				</TouchableOpacity>
+						</Text>
+					</TouchableOpacity>
 
 
-			</View>}
+				</View>}
 
 
 
