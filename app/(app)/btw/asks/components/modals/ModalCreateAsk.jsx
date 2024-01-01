@@ -35,7 +35,7 @@ export default function ModalCreateAsk({
 		<Modal
 			animationType="slide"
 			visible={showModalCreateAsk}
-			className="bg-indigo-950"
+			className="bg-red-700"
 		>
 			<LinearGradient colors={['#3730a3', '#1e1b4b',]} >
 
@@ -144,6 +144,7 @@ export default function ModalCreateAsk({
 
 
 
+
 						</View>
 
 
@@ -158,7 +159,7 @@ export default function ModalCreateAsk({
 
 
 
-					<View className=" px-2 flex-row justify-around  space-x-2" >
+					<View className=" px-2 flex-row justify-around mb-4  space-x-2" >
 
 						<TouchableOpacity
 							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "

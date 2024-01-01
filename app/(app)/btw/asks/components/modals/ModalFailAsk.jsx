@@ -2,6 +2,8 @@ import { View, Text, ActivityIndicator, Modal, TouchableOpacity } from 'react-na
 import React from 'react'
 import { colors500 } from '../../../../../../constants/Colors'
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 export default function ModalDeleteAsk({
 	showModalFailAsk,
@@ -17,48 +19,50 @@ export default function ModalDeleteAsk({
 
 
 		>
-			<View
-				className="bg-rose-500/80 h-full justify-between p-4 "
-			>
-				<Text className="text-white text-3xl  text-center" >
-					Відмова у виконанні запиту на {ask?.artikul}
-				</Text>
+
+			<LinearGradient colors={['#f43f5e', '#1e1b4b',]} >
+				<View
+					className=" h-full justify-around p-4 "
+				>
+					<Text className="text-white text-3xl  text-center" >
+						Відмовити у виконанні запиту на {ask?.artikul}?
+					</Text>
 
 
 
 
-				{isFailingAsk && <ActivityIndicator size="large" color={colors500.rose} />}
+					{isFailingAsk && <ActivityIndicator size="large" color={colors500.rose} />}
 
 
 
-				<View className="flex flex-row justify-around space-x-4 mb-4" >
+					<View className="flex flex-row justify-around space-x-4 mb-4" >
 
-					<TouchableOpacity
-						className=" p-4 border border-red-500 flex items-center justify-center rounded-2xl "
-						onPress={() => { setShowModalFailAsk(false) }}>
-						<Text className=" text-white text-xl"   >
-							СКАСУВАТИ
-						</Text>
-					</TouchableOpacity>
+						<TouchableOpacity
+							className=" p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							onPress={() => { setShowModalFailAsk(false) }}>
+							<Text className=" text-white text-xl"   >
+								СКАСУВАТИ
+							</Text>
+						</TouchableOpacity>
 
 
-					<TouchableOpacity
+						<TouchableOpacity
 
-						className="p-4   flex items-center justify-center rounded-2xl border border-green-500"
-						onPress={() => {
-							handleFailAskById()
-						}}
+							className="p-4   flex items-center justify-center rounded-2xl border border-green-500"
+							onPress={() => {
+								handleFailAskById()
+							}}
 
-					>
-						<Text className=" text-white text-xl" >
-							ВІДМОВИТИ
-						</Text>
-					</TouchableOpacity>
+						>
+							<Text className=" text-white text-xl" >
+								ВІДМОВИТИ
+							</Text>
+						</TouchableOpacity>
+
+					</View>
 
 				</View>
-
-			</View>
-
+			</LinearGradient>
 
 		</Modal>
 	)

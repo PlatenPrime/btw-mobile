@@ -4,6 +4,12 @@ import { Link, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../../components'
 import useCheckAuth from "../../../hooks/useCheckAuth"
 
+import { LinearGradient } from 'expo-linear-gradient';
+
+
+
+
+
 export default function Page() {
 
 
@@ -20,35 +26,32 @@ export default function Page() {
 
 
 
-			
-			<View
-				className="flex-1 justify-start h-full space-y-4 p-4"
-			>
 
+			<View
+				className=" justify-between h-full space-y-4 p-4"
+			>
 
 
 				<TouchableOpacity
 					onPress={() => router.push("/btw/stocks/")}
-					className="h-1/3 flex-1 justify-center 
-					border border-orange-400
+					className=" flex-1 justify-center 
+					border border-orange-500
 					bg-orange-400/10 rounded-xl "
 				>
 
-					<Text
-						className="text-center text-5xl text-orange-100"
-					>
-						Запаси
-					</Text>
+						<Text
+							className="text-center text-5xl text-white"
+						>
+							Запаси
+						</Text>
 
 				</TouchableOpacity>
 
 
 
-
-
 				<TouchableOpacity
 					onPress={() => router.push("/btw/arts/")}
-					className=" h-1/3 flex-1 justify-center 
+					className="  flex-1 justify-center 
 					border-2 border-sky-500
 					bg-sky-500/10 rounded-xl "
 				>
@@ -64,7 +67,7 @@ export default function Page() {
 
 				<TouchableOpacity
 					onPress={() => router.push("/btw/asks/")}
-					className="h-1/3 flex-1 justify-center  
+					className=" flex-1 justify-center  
 					border-2 border-indigo-500
 					bg-indigo-500/10 rounded-xl "
 				>
@@ -76,6 +79,12 @@ export default function Page() {
 					</Text>
 
 				</TouchableOpacity>
+
+
+
+
+			
+
 
 
 			</View>

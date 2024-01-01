@@ -31,11 +31,11 @@ export default function AskBage({
 			
 			${ask?.status === "new"
 						?
-						"bg-indigo-500/50"
+						"bg-indigo-500/30"
 						: ask?.status === "solved"
-							? "border-emerald-500 bg-emerald-500/50"
+							? "border-emerald-500 bg-emerald-500/30"
 							: ask?.status === "fail"
-								? "border-rose-500 bg-rose-500/50"
+								? "border-rose-500 bg-rose-500/30"
 								: null
 					}
 			
