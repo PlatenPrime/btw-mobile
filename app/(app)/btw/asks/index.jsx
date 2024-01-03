@@ -136,7 +136,7 @@ export default function AsksPage() {
 			{showButtonGroup && <View
 				className="  absolute z-10 w-full"
 			>
-				<LinearGradient colors={['#3730a3', '#1e1b4bee',]} >
+				<LinearGradient colors={['#6366f1', '#1e1b4bee',]} >
 				<TouchableOpacity
 					className="flex  justify-between items-center 
 					py-4  

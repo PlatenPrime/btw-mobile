@@ -8,7 +8,7 @@ import { colors500 } from '../../../../constants/Colors'
 import { useGlobalStore } from "../../../../stores/globalStore";
 import ModalCreateRow from "./components/modals/modalCreateRow"
 import useAuthStore from '../../../../stores/authStore';
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -96,25 +96,25 @@ export default function Stocks() {
 				(user?.role === "SKLAD" || user?.role === "PRIME")
 				&&
 				<View
-					className=" bg-black absolute z-10 w-full"
+					className="  absolute z-10 w-full"
 
 				>
 
-
-					<TouchableOpacity
-						className="flex  justify-between items-center 
-					py-4  bg-orange-500/20
+					<LinearGradient colors={['#64748b', '#020617ee',]} >
+						<TouchableOpacity
+							className="flex  justify-between items-center 
+					py-4  
 					"
 
-						onPress={() => { setShowModalCreateRow(true) }}>
+							onPress={() => { setShowModalCreateRow(true) }}>
 
-						<Text className="text-3xl text-orange-300 items-center justify-center " >
+							<Text className="text-3xl text-orange-400 items-center justify-center " >
 
-							Створити ряд
+								Створити ряд
 
-						</Text>
-					</TouchableOpacity>
-
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 
 				</View>}
 
@@ -161,7 +161,7 @@ export default function Stocks() {
 										onPress={() => router.push(`/(app)/btw/stocks/${item._id}`)}
 										className=" justify-center items-center
 								border-2 border-orange-500 rounded-xl
-				bg-orange-600/90  	py-2"
+				bg-orange-600/50  	py-2"
 									>
 										<Text
 											className="text-5xl text-white font-bold text-center"

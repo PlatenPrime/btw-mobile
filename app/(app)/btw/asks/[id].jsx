@@ -387,14 +387,14 @@ export default function AskPage() {
 
 					<>
 
-						<LinearGradient colors={['#22c55e', '#15803dee',]} >
+						<LinearGradient colors={['#22c55e', '#052e16ee',]} >
 
 							<TouchableOpacity
 								className=" py-4 flex-row justify-center items-center"
 
 								onPress={() => { setShowModalDoAsk(true) }}>
 
-								<Text className="text-3xl text-white" >
+								<Text className="text-3xl text-white " >
 
 									Виконати
 								</Text>
@@ -403,7 +403,7 @@ export default function AskPage() {
 
 
 
-						<LinearGradient colors={['#f43f5e', '#be123cee',]} >
+						<LinearGradient colors={['#f43f5e', '#4c0519ee',]} >
 
 
 							<TouchableOpacity
@@ -425,7 +425,7 @@ export default function AskPage() {
 
 
 
-				<LinearGradient colors={['#991b1b', '#450a0aee',]} >
+				<LinearGradient colors={['#ef4444', '#450a0aee',]} >
 
 					<TouchableOpacity
 						className=" py-4 flex-row justify-center items-center"
