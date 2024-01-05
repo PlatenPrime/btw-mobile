@@ -99,7 +99,7 @@ export default function AsksPage() {
 			if (user?.role !== "PRIME") await sendMessageToTelegram(`
 			${user?.fullname}: необхідно зняти ${artikul}.
 			${quant ? `Кількість: ${quant} шт` : ""}
-			${com ? `Коментарій: ${com} шт` : ""}
+			${com ? `Коментарій: ${com}` : ""}
 			`)
 
 

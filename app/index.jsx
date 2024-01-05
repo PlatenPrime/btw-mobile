@@ -114,7 +114,7 @@ export default function Login() {
 
 					<TouchableOpacity
 						className="border-4 border-sky-500 bg-sky-500/10 rounded-xl  p-10"
-						onPress={() => router.replace("/(app)/")}
+						onPress={() => router.replace("/(app)/btw")}
 
 					>
 						<Text className="text-sky-100 text-center text-5xl ">Погреби</Text>
