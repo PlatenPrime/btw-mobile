@@ -75,7 +75,7 @@ export default function _layout() {
 				}
 			/>
 
-			<Tabs.Screen
+			{/* <Tabs.Screen
 				name="profile"
 				options={
 					{
@@ -86,7 +86,7 @@ export default function _layout() {
 						tabBarIcon: () => <Ionicons name="person-outline" size={24} color="white" />
 					}
 				}
-			/>
+			/> */}
 
 
 

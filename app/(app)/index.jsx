@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator, Image, TextInput } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, Stack, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../components'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -19,7 +19,7 @@ export default function Page() {
 
 	const router = useRouter()
 
-	const { logout } = useAuthStore()
+	const { logout, user, token, roles, getRoles } = useAuthStore()
 
 	const [isLogouting, setIsLogouting] = useState(false);
 
@@ -53,7 +53,23 @@ export default function Page() {
 	};
 
 
+	useEffect(() => {
+		const fetchRoles = async () => {
+			try {
+				const roles = await getRoles()
+				console.log("ROLES: ", roles);
 
+			} catch (error) {
+				console.log(error);
+
+			} finally {
+
+			}
+		}
+
+		fetchRoles()
+
+	}, [])
 
 
 
@@ -104,7 +120,7 @@ export default function Page() {
 				:
 
 
-				<View className="flex-col flex-1 justify-stsrt items-center space-y-8 p-4" >
+				<View className=" justify-start items-stretch space-y-4 p-4" >
 
 
 					<TouchableOpacity
@@ -116,10 +132,10 @@ export default function Page() {
 							<ActivityIndicator size="large" color="#ef4444" />
 							:
 							<View
-								className="border  border-red-500 bg-red-500/5 w-full rounded-2xl"
+								className=" border-2  border-red-500 bg-red-500/20  rounded-2xl"
 							>
 								<Text
-									className="text-3xl  text-red-500 p-4   "
+									className="text-3xl  text-red-100 p-4 text-center  "
 								>
 									ВИХІД
 								</Text>
@@ -129,20 +145,31 @@ export default function Page() {
 
 					</TouchableOpacity>
 
-					<Text
-						className="text-8xl text-white "
+					
+
+					<View
+						className="flex justify-center items-center bg-sky-500/20 p-8 rounded-2xl"
 					>
-						BTW
-					</Text>
+
+						<Text
+							className="text-3xl text-white"
+						>
+							{user?.fullname}
+
+						</Text>
 
 
-					<Text
-						className="text-3xl text-center text-white"
-					>
-						Balloon Trade Warehouse App
-					</Text>
+						<Text
+							className="text-2xl text-sky-100 italic"
+						>
+
+							{roles?.find(role => role.value === user?.role)?.name}
+
+						</Text>
 
 
+
+					</View>
 
 
 
