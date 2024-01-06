@@ -11,8 +11,7 @@ import { colors500 } from '../../../../constants/Colors';
 
 export default function ArtsPage() {
 
-	const StyledView = styled(View)
-	const StyledText = styled(Text)
+
 	const StyledImage = styled(Image)
 
 
@@ -55,8 +54,10 @@ export default function ArtsPage() {
 
 		}
 
-		setFilteredArts(filtered);
-		setPage(1)
+		if (artsCurrent) {
+			setFilteredArts(filtered);
+			setPage(1)
+		}
 	}
 
 
@@ -81,7 +82,7 @@ export default function ArtsPage() {
 
 					<TextInput
 						placeholder='XXXX-XXXX'
-						placeholderTextColor={"lightgray"}
+						placeholderTextColor={"#33333388"}
 						className=" text-center h-10 flex-1 text-3xl text-white  "
 						onChangeText={(text => setSearchValue(text))}
 						value={searchValue}
@@ -92,7 +93,7 @@ export default function ArtsPage() {
 
 
 					<TouchableOpacity
-						className="rounded-full p-3 m-1 bg-sky-400/80"
+						className="rounded-full p-3 m-1 bg-sky-400/20"
 						onPress={handleFilterArts}
 					>
 						<Text  ><MagnifyingGlassIcon size={36} color="white" /></Text>

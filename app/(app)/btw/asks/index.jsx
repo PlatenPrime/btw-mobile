@@ -136,21 +136,7 @@ export default function AsksPage() {
 			{showButtonGroup && <View
 				className="  absolute z-10 w-full"
 			>
-				<LinearGradient colors={['#6366f1', '#1e1b4bee',]} >
-				<TouchableOpacity
-					className="flex  justify-between items-center 
-					py-4  
-					"
-					onPress={() => { setShowModalCreateAsk(true) }}>
-
-					<Text className="text-3xl text-white items-center justify-center " >
-
-						Створити запит
-
-					</Text>
-				</TouchableOpacity>
-
-				</LinearGradient>
+				
 
 			</View>
 			}
@@ -184,6 +170,26 @@ export default function AsksPage() {
 				<ScrollView
 
 				>
+
+
+					<LinearGradient colors={['#6366f1', '#1e1b4bee',]} >
+						<TouchableOpacity
+							className="flex  justify-between items-center 
+					py-4  
+					"
+							onPress={() => { setShowModalCreateAsk(true) }}>
+
+							<Text className="text-3xl text-white items-center justify-center " >
+
+								Створити запит
+
+							</Text>
+						</TouchableOpacity>
+
+					</LinearGradient>
+
+
+
 
 					<View
 						className="space-y-4 p-4">

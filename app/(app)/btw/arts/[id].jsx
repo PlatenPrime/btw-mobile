@@ -129,14 +129,14 @@ export default function AskPage() {
 
 
 				<ScrollView
-					className="flex-1 space-y-2 p-2 bg-sky-500/5"
+					className="flex-1 space-y-2 p-4 bg-sky-500/5"
 				>
 
 
 					{/* ARTIKUL CARD */}
 
 					<View
-						className=" flex-1  flex-row mt-1  space-x-1 bg-sky-500/5  border border-sky-500 rounded-xl items-center"
+						className=" flex-1  flex-row mt-1  space-x-1 bg-sky-500/25   rounded-xl items-center"
 					>
 
 
@@ -162,7 +162,7 @@ export default function AskPage() {
 
 
 							<Text
-								className="text-2xl text-white "
+								className="text-xl text-white italic "
 								numberOfLines={4}
 							>
 								{artikul?.nameukr.slice(10)}
@@ -171,39 +171,29 @@ export default function AskPage() {
 
 
 							<Text
-								className="text-3xl text-orange-300 py-2"
+								className="text-2xl text-orange-300 py-2"
 								numberOfLines={5}
 							>
-								<Ionicons name="location-outline" size={36} color="#fdba74" />
+								<Ionicons name="location-outline" size={24} color="#fdba74" />
 								{artikul?.zone}
 							</Text>
 
 
 
 
-
-
 							<View
 								className="space-x-1 flex-row items-center justify-center"
 							>
-
-
-								<MaterialCommunityIcons name="balloon" size={36} color="#fde047" />
-
-
+								<MaterialCommunityIcons name="balloon" size={24} color="#fde047" />
 								{isLoadingRemains
 									?
 									<ActivityIndicator size="large" color={colors500.amber} />
 									:
 									<Text
-										className="text-3xl text-yellow-300 py-1"
-									>{remains ? remains[title] : ""}</Text>
+										className="text-xl text-yellow-100 py-1"
+									>Ранок: {remains ? remains[title] : ""}</Text>
 
 								}
-
-
-
-
 							</View>
 
 
@@ -212,41 +202,74 @@ export default function AskPage() {
 							<View
 								className="space-x-1 flex-row items-center justify-center"
 							>
-								<MaterialCommunityIcons name="balloon" size={36} color="#86efac" />
+								<MaterialCommunityIcons name="balloon" size={24} color="#86efac" />
 
 								<Text
-									className="text-3xl text-green-300 py-1"
+									className="text-xl text-green-100 py-1"
 								>
-									{ostatok}
+									Зараз: 	{ostatok}
+								</Text>
+
+							</View>
+
+
+							<View
+								className="space-x-2 ml-1 flex-row items-center justify-center"
+							>
+								<FontAwesome5 name="warehouse" size={16} color="#7dd3fc" />
+								<Text
+									className="text-xl text-sky-100 py-1 "
+								>
+									Склад:{` `}
+									{isLoadingPoses
+										?
+										<ActivityIndicator size="large" color={colors500.sky} />
+										:
+										posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)
+									}
 								</Text>
 
 							</View>
 
 
 
-
-
-
 							<View
 								className="space-x-2 ml-1 flex-row items-center justify-center"
 							>
-								<FontAwesome5 name="warehouse" size={24} color="#7dd3fc" />
+								<FontAwesome5 name="warehouse" size={16} color="#d1fae5" />
 								<Text
-									className="text-3xl text-sky-300 py-1 "
+									className="text-xl text-emerald-100 py-1 "
 								>
-									{posesWithArtikul?.reduce((a, b) => a + parseInt(b.quant), 0)}
+									Погреби:{` `}
+									{isLoadingPoses
+										?
+										<ActivityIndicator size="large" color={colors500.sky} />
+										:
+										posesWithArtikul?.filter(pos => pos.sklad === "pogrebi")
+											.reduce((a, b) => a + parseInt(b.quant), 0)
+									}
 								</Text>
+
 							</View>
 
+
 							<View
 								className="space-x-2 ml-1 flex-row items-center justify-center"
 							>
-								<FontAwesome5 name="warehouse" size={24} color="#86efac" />
+								<FontAwesome5 name="warehouse" size={16} color="#fef9c3" />
 								<Text
-									className="text-3xl text-green-300 py-1 "
+									className="text-xl text-yellow-100 py-1 "
 								>
-									{posesWithArtikul?.filter((pos) => pos.sklad === "pogrebi").reduce((a, b) => a + parseInt(b.quant), 0)}
+									Мережі:{` `}
+									{isLoadingPoses
+										?
+										<ActivityIndicator size="large" color={colors500.sky} />
+										:
+										posesWithArtikul?.filter(pos => pos.sklad === "merezhi")
+											.reduce((a, b) => a + parseInt(b.quant), 0)
+									}
 								</Text>
+
 							</View>
 
 
@@ -259,11 +282,11 @@ export default function AskPage() {
 
 
 					<View
-						className="flex-1 space-y-2 p-1 bg-amber-100/5  border border-amber-100 rounded-xl "
+						className="flex-1 space-y-2  py-4  rounded-xl "
 					>
 
 						<Text
-							className="mt-2  text-amber-100 text-3xl text-center"
+							className="  text-amber-100 text-3xl text-center"
 						>
 							Палети
 						</Text>
@@ -280,55 +303,88 @@ export default function AskPage() {
 
 
 								<View
-									className=" p-2 space-y-4"
+									className=" space-y-4"
 								>
 
 									{posesWithArtikul?.map((pos) =>
 
 										<TouchableOpacity
 											key={pos._id}
-											className={`${pos.sklad === "pogrebi" ? "bg-green-500/50" : ""} p-2 flex-1 flex-row items-center justify-between border border-amber-100 rounded-xl`}
+											className={`${pos.sklad === "pogrebi" ? "bg-green-500/20" : "bg-yellow-500/20"}
+											
+											flex-row justify-between
+											p-2 flex-1   rounded-xl`}
 											onPress={() => router.push(`/(app)/btw/pallets/${allPallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
 
 										>
 
+
+
+
 											<View
-												className="w-1/2 flex-1 flex-row justify-start items-center "
+												className=" justify-between"
 											>
 
-												<MaterialCommunityIcons name="shipping-pallet" size={32} color="#fef3c7" />
-												<Text
-													className="text-amber-100 text-2xl"
+
+												<View
+													className=" flex-row justify-start items-center "
 												>
-													{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-												</Text>
+
+													<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
+													<Text
+														className="text-white text-2xl"
+													>
+														{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+													</Text>
+												</View>
+
+
+												<View
+													className="flex-row items-center space-x-2"
+												>
+													<FontAwesome5 name="warehouse" size={16} color="#fff" />
+													<Text
+														className="text-white text-base"
+													>
+														{`${pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}`}
+													</Text>
+												</View>
+
+
 											</View>
 
+
+
+
+
+
 											<View
-												className="w-1/2 flex-1 flex-row"
+												className=" justify-between"
 											>
 
 												<View
-													className="  flex-1 flex-row justify-start items-center"
+													className="   flex-row justify-end items-center"
 												>
-													<Feather name="box" size={24} color="#fde047" />
 													<Text
-														className="text-yellow-300 font-bold text-2xl rounded"
+														className="text-yellow-100 font-bold text-2xl rounded"
 													>
 														{pos?.boxes}
 													</Text>
 
+													<Feather name="box" size={24} color="#fef9c3" />
+
 												</View>
 
 												<View
-													className=" flex-2 flex-row justify-start items-center"
+													className="  flex-row justify-end items-center"
 												>
-													<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
 													<Text
-														className="text-sky-300 font-bold text-2xl rounded"
+														className="text-sky-100 font-bold text-2xl rounded"
 													>
 														{pos?.quant}
 													</Text>
+													<MaterialCommunityIcons name="balloon" size={24} color="#e0f2fe" />
+
 
 												</View>
 
