@@ -7,7 +7,7 @@ import { colors500 } from '../../constants/Colors'
 import useAuthStore from '../../stores/authStore'
 import useCheckAuth from '../../hooks/useCheckAuth'
 import axios from 'axios'
-import { sendMessageToTelegram } from '../../utils/sendMessagesTelegram'
+import { sendMessageToTelegram, sendMessageToUser } from '../../utils/sendMessagesTelegram'
 
 
 
@@ -145,7 +145,7 @@ export default function Page() {
 
 					</TouchableOpacity>
 
-					
+
 
 					<View
 						className="flex justify-center items-center bg-sky-500/20 p-8 rounded-2xl"
@@ -180,6 +180,21 @@ export default function Page() {
 			}
 
 
+
+
+			{/* <TextInput
+				className="bg-blue-200 p-8"
+				onChangeText={(text) => setInput(text)}
+
+			/>
+			<TouchableOpacity
+				className="bg-green-500 p-4 "
+				onPress={() => sendMessageToUser(input, "5602938230")}
+			>
+				<Text
+					className="text-center"
+				>Send Message</Text>
+			</TouchableOpacity> */}
 
 
 

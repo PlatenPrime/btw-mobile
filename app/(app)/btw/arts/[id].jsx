@@ -303,7 +303,7 @@ export default function AskPage() {
 
 
 								<View
-									className=" space-y-4"
+									className=" space-y-4 py-4"
 								>
 
 									{posesWithArtikul?.map((pos) =>

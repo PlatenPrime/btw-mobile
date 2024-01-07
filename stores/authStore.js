@@ -15,6 +15,7 @@ const useAuthStore = create((set) => ({
 	init: async () => {
 		const storedToken = await AsyncStorage.getItem('token');
 		const storedUser = await AsyncStorage.getItem('user');
+	
 		set({
 			token: storedToken || null,
 			user: storedUser ? JSON.parse(storedUser) : null,

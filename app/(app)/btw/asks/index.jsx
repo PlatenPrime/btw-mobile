@@ -96,7 +96,7 @@ export default function AsksPage() {
 			const com = createdAsk.com
 
 
-			if (user?.role !== "PRIME") await sendMessageToTelegram(`
+			if (user?.role === "PICKER") await sendMessageToTelegram(`
 			${user?.fullname}: необхідно зняти ${artikul}.
 			${quant ? `Кількість: ${quant} шт` : ""}
 			${com ? `Коментарій: ${com}` : ""}

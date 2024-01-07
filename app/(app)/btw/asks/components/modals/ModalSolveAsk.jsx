@@ -6,17 +6,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-export default function ModalDoAsk({
-	showModalDoAsk,
-	setShowModalDoAsk,
+export default function ModalSolveAsk({
+	showModalSolveAsk,
+	setShowModalSolveAsk,
 	ask,
-	isDoingAsk,
-	handleDoAskById,
+	isSolvingAsk,
+	handleSolveAskById,
 }) {
 	return (
 		<Modal
 			animationType="slide"
-			visible={showModalDoAsk}
+			visible={showModalSolveAsk}
 
 
 		>
@@ -33,7 +33,7 @@ export default function ModalDoAsk({
 
 
 
-					{isDoingAsk && <ActivityIndicator size="large" color={colors500.green} />}
+					{isSolvingAsk && <ActivityIndicator size="large" color={colors500.green} />}
 
 
 
@@ -41,7 +41,7 @@ export default function ModalDoAsk({
 
 						<TouchableOpacity
 							className=" p-4 border border-red-500 flex items-center justify-center rounded-2xl "
-							onPress={() => { setShowModalDoAsk(false) }}>
+							onPress={() => { setShowModalSolveAsk(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
 							</Text>
@@ -52,7 +52,7 @@ export default function ModalDoAsk({
 
 							className="p-4   flex items-center justify-center rounded-2xl border border-green-500"
 							onPress={() => {
-								handleDoAskById()
+								handleSolveAskById()
 							}}
 
 						>

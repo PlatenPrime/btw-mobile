@@ -11,10 +11,11 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent'
 import { colors500 } from '../../../../constants/Colors';
-import { ModalUpdateAskPos, ModalDeleteAsk, ModalDoAsk, ModalFailAsk } from "./components/modals"
+import { ModalUpdateAskPos, ModalDeleteAsk, ModalSolveAsk, ModalFailAsk } from "./components/modals"
 import { useGlobalStore } from '../../../../stores/globalStore'
 import useAuthStore from '../../../../stores/authStore'
 import { LinearGradient } from 'expo-linear-gradient';
+import { sendMessageToUser } from "../../../../utils/sendMessagesTelegram"
 
 
 
@@ -30,7 +31,7 @@ export default function AskPage() {
 	const router = useRouter()
 	const { remains, isLoadingRemains, errorRemains } = useGetRemains()
 	const { artsCurrent } = useGetArtsCurrent()
-	const { user } = useAuthStore()
+	const { user, getUserById } = useAuthStore()
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
@@ -51,13 +52,13 @@ export default function AskPage() {
 	const [isLoadingAsk, setIsLoadingAsk] = useState(false)
 	const [isUpdatingAskPos, setIsUpdatingAskPos] = useState(false)
 	const [isDeletingAskById, setIsDeletingAskId] = useState(false)
-	const [isDoingAsk, setIsDoingAsk] = useState(false)
+	const [isSolvingAsk, setIsSolvingAsk] = useState(false)
 	const [isFailingAsk, setIsFailingAsk] = useState(false)
 
 
 	const [showModalUpdateAskPos, setShowModalUpdateAskPos] = useState(false)
 	const [showModalDeleteAsk, setShowModalDeleteAsk] = useState(false)
-	const [showModalDoAsk, setShowModalDoAsk] = useState(false)
+	const [showModalSolveAsk, setShowModalSolveAsk] = useState(false)
 	const [showModalFailAsk, setShowModalFailAsk] = useState(false)
 
 
@@ -242,10 +243,10 @@ export default function AskPage() {
 
 
 
-	async function handleDoAskById() {
+	async function handleSolveAskById() {
 
 		try {
-			setIsDoingAsk(true)
+			setIsSolvingAsk(true)
 
 			const askUpdateData = {
 				status: "solved",
@@ -254,7 +255,27 @@ export default function AskPage() {
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			if (updatedAsk) setAsk(updatedAsk)
+
+
+
+
+
+
+			if (updatedAsk) {
+				setAsk(updatedAsk)
+
+				try {
+					const askerUser = await getUserById(updatedAsk?.asker)
+					if (askerUser) {
+						sendMessageToUser(`${askerUser?.fullname}, твій запит на ${updatedAsk?.artikul} виконано`, askerUser?.telegram)
+					}
+				} catch (error) {
+					console.log(error);
+
+				}
+
+
+			}
 
 
 
@@ -262,8 +283,8 @@ export default function AskPage() {
 			console.log(error);
 
 		} finally {
-			setIsDoingAsk(false)
-			setShowModalDoAsk(false)
+			setIsSolvingAsk(false)
+			setShowModalSolveAsk(false)
 
 		}
 
@@ -351,12 +372,12 @@ export default function AskPage() {
 			/>
 
 
-			<ModalDoAsk
-				showModalDoAsk={showModalDoAsk}
-				setShowModalDoAsk={setShowModalDoAsk}
+			<ModalSolveAsk
+				showModalSolveAsk={showModalSolveAsk}
+				setShowModalSolveAsk={setShowModalSolveAsk}
 				ask={ask}
-				isDoingAsk={isDoingAsk}
-				handleDoAskById={handleDoAskById}
+				isSolvingAsk={isSolvingAsk}
+				handleSolveAskById={handleSolveAskById}
 			/>
 
 
@@ -392,7 +413,7 @@ export default function AskPage() {
 							<TouchableOpacity
 								className=" py-4 flex-row justify-center items-center"
 
-								onPress={() => { setShowModalDoAsk(true) }}>
+								onPress={() => { setShowModalSolveAsk(true) }}>
 
 								<Text className="text-3xl text-white " >
 
@@ -688,7 +709,7 @@ export default function AskPage() {
 								posesWithArtikul.length > 0
 									?
 									<View
-										className="space-y-4 ">
+										className="space-y-4 py-4 ">
 
 										<Text
 											className="text-center text-teal-100 text-3xl"
@@ -734,7 +755,7 @@ export default function AskPage() {
 														className={`${pos.sklad === "pogrebi" ? "bg-green-500/20" : "bg-yellow-500/20"}
 											
 flex-row justify-between
-p-2 flex-1   rounded-xl`}
+p-2    rounded-xl`}
 													>
 
 
