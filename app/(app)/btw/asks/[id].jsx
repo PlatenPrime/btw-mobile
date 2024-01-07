@@ -303,7 +303,21 @@ export default function AskPage() {
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
-			if (updatedAsk) setAsk(updatedAsk)
+			if (updatedAsk) {
+				setAsk(updatedAsk)
+
+				try {
+					const askerUser = await getUserById(updatedAsk?.asker)
+					if (askerUser) {
+						sendMessageToUser(`${askerUser?.fullname}, на твій запит на ${updatedAsk?.artikul} було відмовлено`, askerUser?.telegram)
+					}
+				} catch (error) {
+					console.log(error);
+
+				}
+
+
+			}
 
 
 
