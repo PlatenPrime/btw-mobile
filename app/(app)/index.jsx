@@ -8,6 +8,7 @@ import useAuthStore from '../../stores/authStore'
 import useCheckAuth from '../../hooks/useCheckAuth'
 import axios from 'axios'
 import { sendMessageToTelegram, sendMessageToUser } from '../../utils/sendMessagesTelegram'
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -147,9 +148,37 @@ export default function Page() {
 
 
 
+
 					<View
-						className="flex justify-center items-center bg-sky-500/20 p-8 rounded-2xl"
+						className="flex  justify-center items-center bg-sky-500/20 p-8 rounded-2xl"
 					>
+
+
+
+						{
+							user?.photo ?
+								<Image
+									style={{
+										height: 200,
+										width: 200,
+										resizeMode: "contain"
+									}}
+									className="rounded-xl"
+									source={{ uri: user?.photo }}
+								/>
+
+								:
+
+								<Ionicons name="person-outline" size={144} color="white" />
+
+						}
+
+
+
+
+
+
+
 
 						<Text
 							className="text-3xl text-white"
