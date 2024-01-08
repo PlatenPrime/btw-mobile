@@ -121,7 +121,7 @@ export default function AskPage() {
 	useEffect(() => {
 
 
-		const fetchPosesByArtikul = async () => {
+		async function fetchPosesByArtikul() {
 			try {
 				setIsLoadingPoses(true)
 				const posesByArtikul = await getPosesByArtikul(ask?.artikul)
