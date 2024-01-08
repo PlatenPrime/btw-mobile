@@ -296,13 +296,12 @@ export default function AskPage() {
 		try {
 			setIsFailingAsk(true)
 
-			const askUpdateData = {
-				status: "fail",
-				solver: user?._id,
-				actions: [...ask?.actions, `${user?.fullname} відмовив на цей запит`]
-			}
 
-			const updatedAsk = await updateAskById(id, askUpdateData)
+			const updatedAsk = await updateAskById(id, {
+					status: "fail",
+					solver: user?._id,
+					actions: [...ask?.actions, `${user?.fullname} відмовив на цей запит`]
+				})
 			if (updatedAsk) {
 				setAsk(updatedAsk)
 
