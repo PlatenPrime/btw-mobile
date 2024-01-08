@@ -158,7 +158,7 @@ export default function Stocks() {
 								>
 									<TouchableOpacity
 
-										onPress={() => router.push(`/(app)/btw/stocks/${item._id}`)}
+										onPress={() => router.push(`/(app)/btw/rows/${item._id}`)}
 										className=" justify-center items-center
 								border-4 border-orange-500/50 
 				bg-orange-600/20  	py-2"

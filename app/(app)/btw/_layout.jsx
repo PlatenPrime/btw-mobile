@@ -28,7 +28,7 @@ export default function Layout() {
 				}}
 			/>
 			<Stack.Screen
-				name="stocks"
+				name="rows"
 				options={{
 					headerShown: false
 				}}

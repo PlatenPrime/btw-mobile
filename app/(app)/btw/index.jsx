@@ -33,16 +33,16 @@ export default function Page() {
 
 
 				<TouchableOpacity
-					onPress={() => router.push("/btw/stocks/")}
+					onPress={() => router.push("/btw/rows/")}
 					className=" flex-1 justify-center 
 					border border-orange-500
 					bg-orange-400/10 rounded-xl "
 				>
 
 						<Text
-							className="text-center text-5xl text-white"
+							className="text-center text-3xl text-white"
 						>
-							Запаси
+							Ряди
 						</Text>
 
 				</TouchableOpacity>
@@ -56,7 +56,7 @@ export default function Page() {
 					bg-sky-500/10 rounded-xl "
 				>
 					<Text
-						className="text-center text-5xl text-sky-100"
+						className="text-center text-3xl text-sky-100"
 					>
 						Артикули
 					</Text>
@@ -73,7 +73,7 @@ export default function Page() {
 				>
 
 					<Text
-						className="text-center text-indigo-100 text-5xl "
+						className="text-center text-indigo-100 text-3xl "
 					>
 						Запити
 					</Text>
