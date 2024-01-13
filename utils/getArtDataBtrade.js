@@ -1,3 +1,6 @@
+import axios from "./axios"
+
+
 class NetworkError extends Error {
 	constructor(message) {
 		super(message);
@@ -52,17 +55,18 @@ function extractPriceFromString(valueString) {
 }
 
 export async function getArtDataBtrade(art) {
-	const urlCA = 'https://corsproxy.io/?';
-	const baseUrl = "https://sharik.ua/ua";
-	const apiRequest = `/search/?q=${art}`;
-	const corsUrl = `${urlCA}${baseUrl}${apiRequest}`;
+
 
 	try {
-		const response = await fetch(corsUrl);
-		if (!response.ok) {
-			throw new NetworkError('Network response was not ok');
-		}
-		const responseString = await response.text();
+
+		const link = `https://sharik.ua/ua/search/?q=${art}`
+
+		const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+
+		const responseString = response?.data?.html
+
+	
+		
 
 		const quant = extractQuantFromString(responseString);
 		const price = extractPriceFromString(responseString);

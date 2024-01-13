@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import axios from "../utils/axios"
 
 export const useGetRemains = () => {
 
@@ -24,9 +24,15 @@ export const useGetRemains = () => {
 
 
 				if (!remainsFromASString) {
-					const response = await fetch("https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/");
 
-					const responseText = await response.text();
+
+					const link = `https://sharik.ua/product_rests/1302-0065/`
+
+					const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+					const responseText = response?.data?.html
+
+
+
 					const lines = responseText.split('<pre>');
 					const data = {};
 
@@ -61,9 +67,14 @@ export const useGetRemains = () => {
 					if (currentTime - remainsFromAS.saveTime < 5 * 60 * 1000) {
 						setRemains(remainsFromAS.remains)
 					} else {
-						const response = await fetch("https://corsproxy.io/?https://sharik.ua/product_rests/1302-0065/");
+						const link = `https://sharik.ua/product_rests/1302-0065/`
 
-						const responseText = await response.text();
+						const response = await axios.get(`comps/linkpage/${encodeURIComponent(link)}`)
+						const responseText = response?.data?.html
+
+
+
+
 						const lines = responseText.split('<pre>');
 						const data = {};
 
