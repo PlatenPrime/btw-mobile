@@ -110,7 +110,7 @@ export default function ModalCreateAsk({
 
 								<Text className="text-white text-center text-xl">Артикул:</Text>
 								<TextInput
-									onChangeText={(text => setNewAskArtikul(text))}
+									onChangeText={(text => setNewAskArtikul(text.trim()))}
 									value={newAskArtikul}
 									className=" h-10 flex-1 text-2xl text-center text-white italic "
 									autoFocus={true}

@@ -31,7 +31,7 @@ export default function AskPage() {
 	const router = useRouter()
 	const { remains, isLoadingRemains, errorRemains } = useGetRemains()
 	const { artsCurrent } = useGetArtsCurrent()
-	const { user, getUserById } = useAuthStore()
+	const { users, user, getUserById } = useAuthStore()
 	const { showButtonGroup, setShowButtonGroup } = useGlobalStore()
 
 
@@ -46,6 +46,8 @@ export default function AskPage() {
 
 	const [ask, setAsk] = useState(null)
 	const [ostatok, setOstatok] = useState(null)
+
+	const createdAtDateObject = new Date(ask?.createdAt)
 
 
 	const [isLoadingPoses, setIsLoadingPoses] = useState(false)
@@ -298,10 +300,10 @@ export default function AskPage() {
 
 
 			const updatedAsk = await updateAskById(id, {
-					status: "fail",
-					solver: user?._id,
-					actions: [...ask?.actions, `${user?.fullname} відмовив на цей запит`]
-				})
+				status: "fail",
+				solver: user?._id,
+				actions: [...ask?.actions, `${user?.fullname} відмовив на цей запит`]
+			})
 			if (updatedAsk) {
 				setAsk(updatedAsk)
 
@@ -479,7 +481,37 @@ export default function AskPage() {
 
 
 
+			<View
+				className="flex-row flex-wrap items-center justify-center  p-1  "
+			>
 
+				<View
+					className="flex-row items-center justify-center  "
+				>
+					<Text
+						className="text-center text-sm text-white pl-2 "
+						numberOfLines={4}
+					>
+						{createdAtDateObject.toLocaleString()}
+					</Text>
+
+				</View>
+				<Text
+					className="text-white text-lg p-2"
+				>
+					{users?.find(user => user._id === ask?.asker)?.fullname}
+				</Text>
+
+
+
+			</View>
+
+			{ask?.quant ? <Text
+				className="text-white text-center text-2xl p-2"
+			>
+				{ask?.quant}
+			</Text>
+				: null}
 
 
 

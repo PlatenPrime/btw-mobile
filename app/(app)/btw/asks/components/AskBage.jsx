@@ -17,8 +17,8 @@ export default function AskBage({
 
 	const router = useRouter()
 
-	const createdAtDateObject = new Date(ask.createdAt)
-	const updatedAtDateObject = new Date(ask.updatedAt)
+	const createdAtDateObject = new Date(ask?.createdAt)
+	const updatedAtDateObject = new Date(ask?.updatedAt)
 
 
 	return (
@@ -84,13 +84,19 @@ export default function AskBage({
 
 					`}
 				>
+
 					<Text
-						className="text-white w-full text-2xl text-center italic p-1"
+						className="text-white text-center text-2xl "
+					>
+						{ask?.artikul}
+					</Text>
+
+					<Text
+						className="text-white w-full text-lg text-center italic p-1"
 						numberOfLines={4}
 					>
 						{
-							artsCurrent?.find((art) => art.artikul === ask.artikul)?.nameukr
-							|| ask?.artikul
+							artsCurrent?.find((art) => art.artikul === ask.artikul)?.nameukr?.slice(10)
 							|| null
 						}
 					</Text>

@@ -172,7 +172,7 @@ export default function AsksPage() {
 				>
 
 
-					<LinearGradient colors={['#6366f1', '#1e1b4bee',]} >
+					<LinearGradient colors={['#6366f1', '#1e1b4b88',]} >
 						<TouchableOpacity
 							className="flex  justify-between items-center 
 					py-4  
