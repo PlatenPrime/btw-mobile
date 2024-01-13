@@ -75,12 +75,54 @@ export default function AskPage() {
 
 
 	const [refreshing, setRefreshing] = useState(false);
-	const onRefresh = React.useCallback(() => {
-		setRefreshing(true);
-		setTimeout(() => {
+	const [isLoadingData, setIsLoadingData] = useState(false);
+
+
+
+
+
+
+	const onRefresh = React.useCallback(async () => {
+		try {
+			setRefreshing(true);
+			setIsLoadingData(true);
+
+
+
+			const fetchData = async () => {
+				try {
+					setIsLoadingAsk(true);
+					setIsLoadingPoses(true);
+
+					const askData = await getAskById(id);
+					const { quant: ostatok } = await getArtDataBtrade(askData?.artikul);
+					const posesByArtikul = await getPosesByArtikul(askData?.artikul);
+
+					setAsk(askData);
+					setOstatok(ostatok);
+				} catch (error) {
+					console.error("Error fetching data:", error);
+				} finally {
+					setIsLoadingAsk(false);
+					setIsLoadingPoses(false);
+				}
+			};
+
+
+			// Ваш запрос данных
+			const newData = await fetchData();
+
+			// Обновление состояния с новыми данными
+			// Например, setAsk(newData.ask) или что-то подобное
+		} catch (error) {
+			console.error("Error fetching data:", error);
+		} finally {
+			setIsLoadingData(false);
 			setRefreshing(false);
-		}, 2000);
+		}
 	}, []);
+
+
 
 
 
@@ -193,7 +235,7 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				...ask,
-				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} ${user?.fullname} зняв: кульок  ${askPosQuantValue}, коробок ${askPosBoxesValue}`]
+				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} ${user?.fullname} зняв: штук  ${askPosQuantValue}, коробок ${askPosBoxesValue}`]
 			}
 
 			console.log(askUpdateData);
@@ -217,6 +259,7 @@ export default function AskPage() {
 		} finally {
 			setIsUpdatingAskPos(false)
 			setShowModalUpdateAskPos(false)
+			setShowButtonGroup(false)
 		}
 
 	}
@@ -274,6 +317,8 @@ export default function AskPage() {
 				} catch (error) {
 					console.log(error);
 
+				} finally {
+					setShowButtonGroup(false)
 				}
 
 
@@ -315,6 +360,8 @@ export default function AskPage() {
 				} catch (error) {
 					console.log(error);
 
+				} finally {
+					setShowButtonGroup(false)
 				}
 
 
@@ -481,37 +528,7 @@ export default function AskPage() {
 
 
 
-			<View
-				className="flex-row flex-wrap items-center justify-center  p-1  "
-			>
 
-				<View
-					className="flex-row items-center justify-center  "
-				>
-					<Text
-						className="text-center text-sm text-white pl-2 "
-						numberOfLines={4}
-					>
-						{createdAtDateObject.toLocaleString()}
-					</Text>
-
-				</View>
-				<Text
-					className="text-white text-lg p-2"
-				>
-					{users?.find(user => user._id === ask?.asker)?.fullname}
-				</Text>
-
-
-
-			</View>
-
-			{ask?.quant ? <Text
-				className="text-white text-center text-2xl p-2"
-			>
-				{ask?.quant}
-			</Text>
-				: null}
 
 
 
@@ -527,7 +544,37 @@ export default function AskPage() {
 						}>
 
 
+						<View
+							className="flex-row flex-wrap items-center justify-center  p-1  "
+						>
 
+							<View
+								className="flex-row items-center justify-center  "
+							>
+								<Text
+									className="text-center text-sm text-white pl-2 "
+									numberOfLines={4}
+								>
+									{createdAtDateObject.toLocaleString()}
+								</Text>
+
+							</View>
+							<Text
+								className="text-white text-lg p-2"
+							>
+								{users?.find(user => user._id === ask?.asker)?.fullname}
+							</Text>
+
+
+
+						</View>
+
+						{ask?.quant ? <Text
+							className="text-white text-center text-2xl p-2"
+						>
+							{ask?.quant}
+						</Text>
+							: null}
 
 
 

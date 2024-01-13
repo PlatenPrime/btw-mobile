@@ -20,7 +20,7 @@ export default function ModalDeleteAsk({
 
 		>
 
-			<LinearGradient colors={['#f43f5e', '#1e1b4b',]} >
+			<LinearGradient colors={['#f43f5e', '#4c0519ee',]} >
 				<View
 					className=" h-full justify-around p-4 "
 				>
@@ -31,14 +31,14 @@ export default function ModalDeleteAsk({
 
 
 
-					{isFailingAsk && <ActivityIndicator size="large" color={colors500.rose} />}
+
 
 
 
 					<View className="flex flex-row justify-around space-x-4 mb-4" >
 
 						<TouchableOpacity
-							className=" p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
 							onPress={() => { setShowModalFailAsk(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -48,15 +48,23 @@ export default function ModalDeleteAsk({
 
 						<TouchableOpacity
 
-							className="p-4   flex items-center justify-center rounded-2xl border border-green-500"
+							className=" w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500"
 							onPress={() => {
 								handleFailAskById()
 							}}
+							disabled={isFailingAsk}
 
 						>
-							<Text className=" text-white text-xl" >
-								ВІДМОВИТИ
-							</Text>
+
+							{isFailingAsk ?
+								<ActivityIndicator size="large" color={colors500.rose} />
+								:
+								<Text className=" text-white text-xl" >
+									ВІДМОВИТИ
+								</Text>
+							}
+
+
 						</TouchableOpacity>
 
 					</View>

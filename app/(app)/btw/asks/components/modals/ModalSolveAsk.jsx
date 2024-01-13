@@ -21,7 +21,7 @@ export default function ModalSolveAsk({
 
 		>
 
-			<LinearGradient colors={['#15803d', '#1e1b4b',]} >
+			<LinearGradient colors={['#15803d', '#052e16ee',]} >
 
 				<View
 					className=" h-full justify-around p-4 "
@@ -33,14 +33,12 @@ export default function ModalSolveAsk({
 
 
 
-					{isSolvingAsk && <ActivityIndicator size="large" color={colors500.green} />}
-
 
 
 					<View className="flex flex-row justify-around space-x-4 mb-4" >
 
 						<TouchableOpacity
-							className=" p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							className=" w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
 							onPress={() => { setShowModalSolveAsk(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -50,15 +48,23 @@ export default function ModalSolveAsk({
 
 						<TouchableOpacity
 
-							className="p-4   flex items-center justify-center rounded-2xl border border-green-500"
+							className=" w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500"
 							onPress={() => {
 								handleSolveAskById()
 							}}
+							disabled={isSolvingAsk}
 
 						>
-							<Text className=" text-white text-xl" >
-								ВИКОНАТИ
-							</Text>
+							{isSolvingAsk ?
+								<ActivityIndicator size="large" color={colors500.green} />
+								:
+								<Text className=" text-white text-xl" >
+
+									ВИКОНАТИ
+								</Text>
+							}
+
+
 						</TouchableOpacity>
 
 					</View>
