@@ -8,7 +8,7 @@ import { ScreenContainer } from '../../../../components'
 import { getArtDataBtrade } from '../../../../utils/getArtDataBtrade'
 import useAskStore from '../../../../stores/asksStore'
 import { ScrollView } from 'react-native-gesture-handler'
-import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { Feather, FontAwesome5, Ionicons, MaterialCommunityIcons, Fontisto } from '@expo/vector-icons'
 import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent'
 import { colors500 } from '../../../../constants/Colors';
 import { ModalUpdateAskPos, ModalDeleteAsk, ModalSolveAsk, ModalFailAsk } from "./components/modals"
@@ -842,82 +842,133 @@ export default function AskPage() {
 													}}
 													key={pos._id}
 												>
-													<View
 
-														className={`${pos.sklad === "pogrebi" ? "bg-green-500/20" : "bg-yellow-500/20"}
-											
-flex-row justify-between
-p-2    rounded-xl`}
+													<View
+														className={`${pos.sklad === "pogrebi" ? "bg-green-500/20" : "bg-yellow-500/20"}  p-2    rounded-xl `}
+
+
 													>
 
-
-
-
 														<View
-															className=" justify-between"
+
+															className={`flex-row justify-between
+`}
 														>
 
 
+
+
 															<View
-																className=" flex-row justify-start items-center "
+																className=" justify-between"
 															>
 
-																<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
-																<Text
-																	className="text-white text-2xl"
+
+																<View
+																	className=" flex-row justify-start items-center "
 																>
-																	{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-																</Text>
+
+																	<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
+																	<Text
+																		className="text-white text-2xl"
+																	>
+																		{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+																	</Text>
+																</View>
+
+
+																<View
+																	className="flex-row items-center space-x-2"
+																>
+																	<FontAwesome5 name="warehouse" size={16} color="#fff" />
+																	<Text
+																		className="text-white text-base"
+																	>
+																		{`${pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}`}
+																	</Text>
+																</View>
+
+
 															</View>
 
 
 															<View
-																className="flex-row items-center space-x-2"
+																className=" justify-between"
 															>
-																<FontAwesome5 name="warehouse" size={16} color="#fff" />
-																<Text
-																	className="text-white text-base"
+
+																<View
+																	className="   flex-row justify-end items-center"
 																>
-																	{`${pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}`}
-																</Text>
+																	<Text
+																		className="text-yellow-100 font-bold text-2xl rounded"
+																	>
+																		{pos?.boxes}
+																	</Text>
+
+																	<Feather name="box" size={24} color="#fef9c3" />
+
+																</View>
+
+																<View
+																	className="  flex-row justify-end items-center"
+																>
+																	<Text
+																		className="text-sky-100 font-bold text-2xl rounded"
+																	>
+																		{pos?.quant}
+																	</Text>
+																	<MaterialCommunityIcons name="balloon" size={24} color="#e0f2fe" />
+
+
+																</View>
+
+
 															</View>
+
 
 
 														</View>
 
 
 														<View
-															className=" justify-between"
+															className="flex-1  flex-row justify-between"
 														>
 
-															<View
-																className="   flex-row justify-end items-center"
-															>
-																<Text
-																	className="text-yellow-100 font-bold text-2xl rounded"
+
+															{pos?.date ?
+																<View
+																	className="flex-1 w-1/2 flex-row items-center space-x-1"
 																>
-																	{pos?.boxes}
-																</Text>
 
-																<Feather name="box" size={24} color="#fef9c3" />
 
-															</View>
+																	<Fontisto name="date" size={24} color="white" />
+																	<Text
+																		className="text-red-300  font-bold text-2xl "
+																	>
+																		{pos.date}
+																	</Text>
+																</View>
+																:
+																null}
 
-															<View
-																className="  flex-row justify-end items-center"
-															>
+
+
+
+
+
+															{pos?.com ?
 																<Text
-																	className="text-sky-100 font-bold text-2xl rounded"
-																>
-																	{pos?.quant}
-																</Text>
-																<MaterialCommunityIcons name="balloon" size={24} color="#e0f2fe" />
+																	className="flex-1 w-1/2 text-white text-xl italic"
+
+																>{pos?.com}</Text>
+																:
+																null}
 
 
-															</View>
+
 
 
 														</View>
+
 
 
 													</View>

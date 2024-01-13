@@ -132,7 +132,7 @@ export default function AskBage({
 			<View
 				className="flex-row flex-wrap items-center justify-center  p-1  "
 			>
-				<FontAwesome5 name="pray" size={24} color="#e0e7ff" />
+				<MaterialCommunityIcons name="account-question-outline" size={32} color="#e0e7ff" />
 				<View
 					className="flex-row items-center justify-center  "
 				>
