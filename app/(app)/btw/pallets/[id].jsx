@@ -16,7 +16,7 @@ import { ScreenContainer } from '../../../../components';
 import PositionBage from "./components/PositionBage";
 import { ModalClearPallet, ModalCreatePos, ModalDeletePallet, ModalDeletePos, ModalMovePalletContent, ModalUpdatePallet, ModalUpdatePos } from "./components/modals"
 import useAuthStore from '../../../../stores/authStore'
-
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 
@@ -281,6 +281,7 @@ export default function PalletPage() {
 		} finally {
 			setIsDeletingPosById(false)
 			setShowModalDeletePos(false)
+			setShowButtonGroup(false)
 		}
 	}
 
@@ -297,6 +298,7 @@ export default function PalletPage() {
 		} finally {
 			setIsUpdatingPosById(false)
 			setShowModalUpdatePos(false)
+			setShowButtonGroup(false)
 		}
 	}
 
@@ -314,6 +316,7 @@ export default function PalletPage() {
 		} finally {
 			setIsClearingPalletById(false)
 			setShowModalClearPallet(false)
+			setShowButtonGroup(false)
 		}
 	}
 
@@ -334,6 +337,7 @@ export default function PalletPage() {
 		} finally {
 			setIsMovingPalletContent(false)
 			setShowModalMovePalletContent(false)
+			setShowButtonGroup(false)
 		}
 
 
@@ -357,272 +361,305 @@ export default function PalletPage() {
 				}}
 			/>
 
+
+
+			{showButtonGroup && (user?.role === "SKLAD" || user?.role === "PRIME")
+				?
+
+				<View
+					className=" flex-1 min-h-full absolute z-10 w-full"
+				>
+					<LinearGradient colors={['#3b82f6', '#0f172aee']} >
+						<TouchableOpacity
+							className=" py-4   flex-row justify-center items-center"
+							onPress={() => setShowModalUpdatePallet(true)}
+						>
+							<Text
+								className="text-2xl text-blue-100"
+							>
+								Перейменувати
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
+
+
+					<LinearGradient colors={['#eab308', '#a16207ee']} >
+						<TouchableOpacity
+							className=" py-4 flex-row justify-center items-center"
+							onPress={() => setShowModalMovePalletContent(true)}
+						>
+							<Text
+								className="text-2xl text-yellow-100"
+							>
+								Переставити
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
+
+
+
+					<LinearGradient colors={['#fda4af', '#be123cee']} >
+						<TouchableOpacity
+							className="py-4  flex-row justify-center items-center"
+							onPress={() => setShowModalClearPallet(true)}
+						>
+							<Text
+								className="text-2xl text-rose-100"
+							>
+								Очистити
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
+
+
+
+					<LinearGradient colors={['#ef4444', '#0f172aee']} >
+						<TouchableOpacity
+							className=" py-4  flex-row justify-center items-center"
+							onPress={() => setShowModalDeletePallet(true)}
+						>
+							<Text
+								className="text-2xl text-red-100"
+							>
+								Видалити
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
+
+					<LinearGradient colors={['#0ea5e988', '#333333ee']} >
+						<TouchableOpacity
+							className=" py-96 h-full   flex-row justify-center items-center  "
+							onPress={() => {
+								setShowButtonGroup(false)
+							}}
+						>
+
+						</TouchableOpacity>
+					</LinearGradient>
+
+
+				</View>
+				:
+				null
+			}
+
+
+
+
 			{isPalletLoading
 				?
 				<ActivityIndicator size="large" color={colors500.amber} />
 				:
-				<ScrollView
-					className=" "
+
+				<View
+					className="flex-1 h-full"
 				>
+					<ScrollView
+						className="flex-1 "
+					>
 
 
 
-					{showButtonGroup && (user?.role === "SKLAD" || user?.role === "PRIME" )
-						?
+
+
+
+
+
+						{/* MODALS */}
+
+						<ModalDeletePallet
+							showModalDeletePallet={showModalDeletePallet}
+							setShowModalDeletePallet={setShowModalDeletePallet}
+							palletTitle={palletTitle}
+							isDeletingPalletById={isDeletingPalletById}
+							handleDeletePalletById={handleDeletePalletById}
+
+						/>
+
+
+
+						<ModalUpdatePallet
+							showModalUpdatePallet={showModalUpdatePallet}
+							setShowModalUpdatePallet={setShowModalUpdatePallet}
+							palletTitle={palletTitle}
+							isUpdatingPalletById={isUpdatingPalletById}
+							handleUpdatePalletById={handleUpdatePalletById}
+						/>
+
+						<ModalCreatePos
+							showModalCreatePos={showModalCreatePos}
+							setShowModalCreatePos={setShowModalCreatePos}
+							isCreatingPos={isCreatingPos}
+							artsCurrent={artsCurrent}
+							handleCreatePos={handleCreatePos}
+
+						/>
+
+						<ModalDeletePos
+							showModalDeletePos={showModalDeletePos}
+							setShowModalDeletePos={setShowModalDeletePos}
+							selectedPos={selectedPos}
+							isDeletingPosById={isDeletingPosById}
+							handleDeletePosById={handleDeletePosById}
+
+						/>
+
+
+						<ModalUpdatePos
+							showModalUpdatePos={showModalUpdatePos}
+							setShowModalUpdatePos={setShowModalUpdatePos}
+							selectedPos={selectedPos}
+							artsCurrent={artsCurrent}
+							isUpdatingPosById={isUpdatingPosById}
+							handleUpdatePosById={handleUpdatePosById}
+						/>
+
+
+						<ModalClearPallet
+							showModalClearPallet={showModalClearPallet}
+							setShowModalClearPallet={setShowModalClearPallet}
+							palletTitle={palletTitle}
+							isClearingPalletById={isClearingPalletById}
+							handleClearPalletById={handleClearPalletById}
+						/>
+
+
+						<ModalMovePalletContent
+							showModalMovePalletContent={showModalMovePalletContent}
+							setShowModalMovePalletContent={setShowModalMovePalletContent}
+							pallet={pallet}
+							palletTitle={palletTitle}
+							allPallets={allPallets}
+							setSelectedPalletId={setSelectedPalletId}
+							selectedPalletId={selectedPalletId}
+							isMovingPalletContent={isMovingPalletContent}
+							handleMovePalletContent={handleMovePalletContent}
+						/>
+
+
+
+
+
+						{/* CONTENT */}
+
 
 						<View
-							className=" bg-black absolute z-10 w-full"
+							className="flex-1 h-full
+										"
 						>
-
 							<TouchableOpacity
-								className="bg-blue-500/20 py-4  flex-1 flex-row justify-center items-center"
-								onPress={() => setShowModalUpdatePallet(true)}
+								onPress={() => setShowModalCreatePos(true)}
+								className="bg-teal-500/20 py-4 flex-1 flex-row justify-center items-center 
+											 "
 							>
 								<Text
-									className="text-3xl text-blue-200"
+									className="flex-1 text-center text-teal-100 text-2xl"
 								>
-									Перейменувати
+									Додати позицію
 								</Text>
 							</TouchableOpacity>
-
-
-							
-
-							<TouchableOpacity
-								className="bg-yellow-500 py-4 flex-1 flex-row justify-center items-center"
-								onPress={() => setShowModalMovePalletContent(true)}
-							>
-								<Text
-									className="text-3xl text-slate-700"
-								>
-									Переставити
-								</Text>
-							</TouchableOpacity>
-
-							<TouchableOpacity
-								className="bg-rose-500/20 py-4 flex-1 flex-row justify-center items-center"
-								onPress={() => setShowModalClearPallet(true)}
-							>
-								<Text
-									className="text-3xl text-rose-100"
-								>
-									Очистити
-								</Text>
-							</TouchableOpacity>
-
-
-							<TouchableOpacity
-								className="bg-red-500/10 py-4 flex-1 flex-row justify-center items-center"
-								onPress={() => setShowModalDeletePallet(true)}
-							>
-								<Text
-									className="text-3xl text-red-400"
-								>
-									Видалити
-								</Text>
-							</TouchableOpacity>
-
-
-
-
 
 						</View>
-						:
-						null
-					}
 
 
 
 
-					{/* MODALS */}
-
-					<ModalDeletePallet
-						showModalDeletePallet={showModalDeletePallet}
-						setShowModalDeletePallet={setShowModalDeletePallet}
-						palletTitle={palletTitle}
-						isDeletingPalletById={isDeletingPalletById}
-						handleDeletePalletById={handleDeletePalletById}
-
-					/>
-
-
-
-					<ModalUpdatePallet
-						showModalUpdatePallet={showModalUpdatePallet}
-						setShowModalUpdatePallet={setShowModalUpdatePallet}
-						palletTitle={palletTitle}
-						isUpdatingPalletById={isUpdatingPalletById}
-						handleUpdatePalletById={handleUpdatePalletById}
-					/>
-
-					<ModalCreatePos
-						showModalCreatePos={showModalCreatePos}
-						setShowModalCreatePos={setShowModalCreatePos}
-						isCreatingPos={isCreatingPos}
-						artsCurrent={artsCurrent}
-						handleCreatePos={handleCreatePos}
-
-					/>
-
-					<ModalDeletePos
-						showModalDeletePos={showModalDeletePos}
-						setShowModalDeletePos={setShowModalDeletePos}
-						selectedPos={selectedPos}
-						isDeletingPosById={isDeletingPosById}
-						handleDeletePosById={handleDeletePosById}
-
-					/>
-
-
-					<ModalUpdatePos
-						showModalUpdatePos={showModalUpdatePos}
-						setShowModalUpdatePos={setShowModalUpdatePos}
-						selectedPos={selectedPos}
-						artsCurrent={artsCurrent}
-						isUpdatingPosById={isUpdatingPosById}
-						handleUpdatePosById={handleUpdatePosById}
-					/>
-
-
-					<ModalClearPallet
-						showModalClearPallet={showModalClearPallet}
-						setShowModalClearPallet={setShowModalClearPallet}
-						palletTitle={palletTitle}
-						isClearingPalletById={isClearingPalletById}
-						handleClearPalletById={handleClearPalletById}
-					/>
-
-
-					<ModalMovePalletContent
-						showModalMovePalletContent={showModalMovePalletContent}
-						setShowModalMovePalletContent={setShowModalMovePalletContent}
-						pallet={pallet}
-						palletTitle={palletTitle}
-						allPallets={allPallets}
-						setSelectedPalletId={setSelectedPalletId}
-						selectedPalletId={selectedPalletId}
-						isMovingPalletContent={isMovingPalletContent}
-						handleMovePalletContent={handleMovePalletContent}
-					/>
-
-
-
-
-
-					{/* CONTENT */}
-
-
-					<View
-						className="flex-1 
-										"
-					>
-						<TouchableOpacity
-							onPress={() => setShowModalCreatePos(true)}
-							className="bg-teal-500/20 py-4 flex-1 flex-row justify-center items-center 
-											 "
+						<View
+							className="flex-1  p-1 mt-2  rounded-xl "
 						>
-							<Text
-								className=" text-teal-100 text-3xl"
-							>
-								Додати позицію
-							</Text>
-						</TouchableOpacity>
 
-					</View>
-
-
-
-
-					<View
-						className=" flex-1 p-1 mt-2  rounded-xl "
-					>
-
-						{isPosesLoading
-							?
-							<ActivityIndicator size="large" color={colors500.sky} />
-							:
-							poses?.length > 0
+							{isPosesLoading
 								?
-								<View
-									className="space-y-2 flex-1"
-								>
-									<View
-										className="flex-1 p-3  flex-row justify-between border-b border-teal-500"
-									>
-
-										<View
-											className="flex-1 flex-row items-center justify-center space-x-2"
-										>
-											<Octicons name="note" size={36} color="#99f6e4" />
-											<Text
-												className="text-teal-200 text-3xl"
-											>
-												{poses?.length}
-											</Text>
-										</View>
-
-										<View
-											className="flex-1 flex-row items-center justify-center space-x-2"
-										>
-											<Feather name="box" size={36} color="#fde047" />
-											<Text
-												className="text-yellow-300 text-3xl"
-											>
-												{poses?.reduce((a, b) => a + b.boxes, 0)}
-											</Text>
-										</View>
-
-
-									</View>
-
-
-
-
-
-
-									<View
-										className="flex-1 space-y-8 p-2"
-									>
-										{poses.map((pos) =>
-											<PositionBage
-												key={pos._id}
-												pos={pos}
-												artsCurrent={artsCurrent}
-												onUpdate={() => {
-													setShowModalUpdatePos(true)
-													setSelectedPos(pos)
-												}}
-												onDelete={() => {
-													setShowModalDeletePos(true)
-													setSelectedPos(pos)
-												}}
-											/>
-
-										)}
-
-									</View>
-
-								</View>
-
-
+								<ActivityIndicator size="large" color={colors500.sky} />
 								:
+								poses?.length > 0
+									?
+									<View
+										className="space-y-2 flex-1"
+									>
+										<View
+											className="flex-1 p-3  flex-row justify-between border-b border-teal-500"
+										>
 
-								<Text
-									className="text-xl text-teal-100 text-center italic "
-								>
-									На цій палеті позицій немає
-								</Text>
+											<View
+												className="flex-1 flex-row items-center justify-center space-x-2"
+											>
+												<Octicons name="note" size={24} color="#99f6e4" />
+												<Text
+													className="text-teal-200 text-2xl"
+												>
+													{poses?.length}
+												</Text>
+											</View>
 
-						}
+											<View
+												className="flex-1 flex-row items-center justify-center space-x-2"
+											>
+												<Feather name="box" size={24} color="#fde047" />
+												<Text
+													className="text-yellow-300 text-2xl"
+												>
+													{poses?.reduce((a, b) => a + b.boxes, 0)}
+												</Text>
+											</View>
 
-					</View>
+
+										</View>
 
 
 
 
 
 
-				</ScrollView>
+										<View
+											className=" space-y-2 p-2"
+										>
+											{poses.map((pos) =>
+												<PositionBage
+													key={pos._id}
+													pos={pos}
+													artsCurrent={artsCurrent}
+													onUpdate={() => {
+														setShowModalUpdatePos(true)
+														setSelectedPos(pos)
+													}}
+													onDelete={() => {
+														setShowModalDeletePos(true)
+														setSelectedPos(pos)
+													}}
+												/>
+
+											)}
+
+										</View>
+
+									</View>
+
+
+									:
+
+									<View
+										className="flex-1 h-full justify-center items-center py-48 "
+									>
+
+										<Text
+											className="text-2xl text-teal-100 text-center italic"
+										>
+											На цій палеті позицій немає
+										</Text>
+									</View>
+							}
+
+						</View>
+
+
+
+
+
+
+					</ScrollView>
+				</View>
+
 			}
 
 

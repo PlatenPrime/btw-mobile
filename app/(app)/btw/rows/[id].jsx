@@ -281,14 +281,14 @@ export default function RowPage() {
 					{pallets?.length > 0 ?
 
 						<View
-							className="space-y-4 p-4"
+							className="space-y-2 p-2"
 						>
 							{pallets?.map((pallet) => <TouchableOpacity
 								key={pallet._id}
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
 								className="border-2 border-amber-200/50 rounded-xl 
-
+							
 								bg-amber-900/10
 					
 					text-center text-2xl text-white  font-bold
@@ -296,45 +296,53 @@ export default function RowPage() {
 				
 					 "
 							>
-								<Text
-									className="p-2 text-amber-100 font-bold text-4xl text-center  rounded-t-xl"
-								>
-									{pallet.title}
-								</Text>
-
 
 
 
 								<View
-									className=" p-2  flex-row justify-between rounded-b-xl 0 "
+									className="flex-row justify-between items-center"
 								>
 
-									<View
-										className="flex-1 flex-row items-center justify-center space-x-2 rounded-xl"
+
+									<Text
+										className="  p-2 text-amber-100 font-bold text-4xl text-center  rounded-t-xl"
 									>
-										<Octicons name="note" size={24} color="#ccfbf1" />
-										<Text
-											className="text-teal-100 text-xl"
-										>
-											{allPoses?.filter((pos) => pos?.pallet === pallet?._id).length}
-										</Text>
-									</View>
+										{pallet.title}
+									</Text>
+
+
+
 
 									<View
-										className="flex-1 flex-row items-center justify-center space-x-2"
+										className=" p-2   justify-between rounded-b-xl 0 "
 									>
-										<Feather name="box" size={24} color="#facc15" />
-										<Text
-											className="text-yellow-400 text-xl"
-										>
-											{allPoses?.filter((pos) => pos?.pallet === pallet?._id).reduce((a, b) => a + b?.boxes, 0)}
-										</Text>
-									</View>
 
+										<View
+											className="flex-1 flex-row items-center justify-center space-x-2 rounded-xl"
+										>
+											<Octicons name="note" size={24} color="#ccfbf1" />
+											<Text
+												className="text-teal-100 text-xl"
+											>
+												{allPoses?.filter((pos) => pos?.pallet === pallet?._id).length}
+											</Text>
+										</View>
+
+										<View
+											className="flex-1 flex-row items-center justify-center space-x-2"
+										>
+											<Feather name="box" size={24} color="#facc15" />
+											<Text
+												className="text-yellow-400 text-xl"
+											>
+												{allPoses?.filter((pos) => pos?.pallet === pallet?._id).reduce((a, b) => a + b?.boxes, 0)}
+											</Text>
+										</View>
+
+
+									</View>
 
 								</View>
-
-
 
 
 								{pallet.com

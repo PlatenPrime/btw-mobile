@@ -125,21 +125,6 @@ export default function Stocks() {
 
 
 
-			<LinearGradient colors={['#64748b', '#02061733',]} >
-				<TouchableOpacity
-					className="flex  justify-between items-center 
-					py-4  
-					"
-
-					onPress={() => { setShowModalCreateRow(true) }}>
-
-					<Text className="text-3xl text-orange-400 items-center justify-center " >
-
-						Створити ряд
-
-					</Text>
-				</TouchableOpacity>
-			</LinearGradient>
 
 
 			{isRowsLoading
@@ -147,6 +132,30 @@ export default function Stocks() {
 				<ActivityIndicator size="large" color="#f97316" />
 				:
 				<ScrollView>
+
+
+
+					<View
+						className="flex-1 h-full
+										"
+					>
+						<TouchableOpacity
+							className="bg-orange-500/20 py-4 flex-1 flex-row justify-center items-center 
+					"
+
+							onPress={() => { setShowModalCreateRow(true) }}>
+
+							<Text className="flex-1 text-center text-orange-100 text-2xl" >
+
+								Створити ряд
+
+							</Text>
+						</TouchableOpacity>
+					</View>
+
+
+
+
 					{rows?.length > 0 ?
 
 
@@ -157,21 +166,30 @@ export default function Stocks() {
 							{rows?.map(item =>
 								<View
 									key={item._id}
-									className="border-x-8 border-slate-400 "
+									className="border-x-8 border-slate-500 "
 								>
-									<TouchableOpacity
 
-										onPress={() => router.push(`/(app)/btw/rows/${item._id}`)}
-										className=" justify-center items-center
-								border-4 border-orange-500/80 
-				bg-orange-600/20  	py-2"
-									>
-										<Text
-											className="text-5xl text-white font-bold text-center"
+									<LinearGradient colors={['#f97316ee', '#c2410cee',]} >
+										<TouchableOpacity
+
+											onPress={() => router.push(`/(app)/btw/rows/${item._id}`)}
+											className=" justify-center items-center py-2"
 										>
-											{item.title}
-										</Text>
-									</TouchableOpacity>
+
+											<View
+												className="bg-white p-2 rounded-xl"
+											>
+												<Text
+													className="text-3xl text-black font-bold text-center"
+												>
+													{item.title}
+												</Text>
+											</View>
+
+										</TouchableOpacity>
+									</LinearGradient>
+
+
 								</View>
 
 
