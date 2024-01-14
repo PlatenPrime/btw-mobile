@@ -17,7 +17,7 @@ export default function Layout() {
 						fontSize: 36,
 						color: "white"
 					},
-				
+
 					headerBackground: () => <View className="bg-sky-950   h-full">
 						<Image source={require("../../../assets/images/grad2.jpg")}
 							className="w-full h-full absolute"
@@ -30,6 +30,21 @@ export default function Layout() {
 			<Stack.Screen
 				name="rows"
 				options={{
+					title: "Ряди",
+					headerShown: false
+				}}
+			/>
+			<Stack.Screen
+				name="stocks/index"
+				options={{
+					title: "Запаси",
+					headerShown: false
+				}}
+			/>
+			<Stack.Screen
+				name="defs/index"
+				options={{
+					title: "Дефіцити",
 					headerShown: false
 				}}
 			/>

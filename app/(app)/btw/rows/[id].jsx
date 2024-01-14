@@ -13,6 +13,7 @@ import ModalUpdateRow from "./components/modals/modalUpdateRow"
 import ModalDeleteRow from "./components/modals/modalDeleteRow";
 import { Feather, Octicons } from '@expo/vector-icons'
 import useAuthStore from '../../../../stores/authStore'
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 
@@ -178,47 +179,51 @@ export default function RowPage() {
 			{showButtonGroup &&
 				(user?.role === "SKLAD" || user?.role === "PRIME") &&
 				<View
-					className=" bg-black absolute z-10 w-full"
+					className="  absolute z-10 w-full"
 
 				>
-					<TouchableOpacity
-						className="bg-amber-500/20 py-4   flex-row justify-center items-center"
-						onPress={() => { setShowModalCreatePallet(true) }}>
-
-						<Text className="text-3xl text-amber-300 items-center justify-center " >
-
-							Створити палету
-
-						</Text>
-					</TouchableOpacity>
 
 
+					<LinearGradient colors={['#f97316', '#0f172aee']} >
+						<TouchableOpacity
+							className=" py-4   flex-row justify-center items-center"
+							onPress={() => { setShowModalCreatePallet(true) }}>
+
+							<Text className="text-2xl text-amber-100 items-center justify-center " >
+
+								Створити палету
+
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 
 
-					<TouchableOpacity
-						className="bg-blue-500/20 py-4   flex-row justify-center items-center"
-						onPress={() => { setShowModalUpdateRow(true) }}>
+					<LinearGradient colors={['#3b82f6', '#0f172aee']} >
+						<TouchableOpacity
+							className=" py-4   flex-row justify-center items-center"
+							onPress={() => { setShowModalUpdateRow(true) }}>
 
-						<Text className="text-3xl text-blue-200">
+							<Text className="text-2xl text-blue-100">
 
-							Перейменувати ряд
+								Перейменувати ряд
 
-						</Text>
-					</TouchableOpacity>
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 
 
+					<LinearGradient colors={['#ef4444', '#0f172aee']} >
+						<TouchableOpacity
+							className=" py-4 flex-row justify-center items-center"
 
+							onPress={() => { setShowModalDeleteRow(true) }}>
 
-					<TouchableOpacity
-						className="bg-red-500/10 py-4 flex-row justify-center items-center"
+							<Text className="text-2xl text-red-100" >
 
-						onPress={() => { setShowModalDeleteRow(true) }}>
-
-						<Text className="text-3xl text-red-400" >
-
-							Видалити ряд
-						</Text>
-					</TouchableOpacity>
+								Видалити ряд
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 				</View>
 			}
 

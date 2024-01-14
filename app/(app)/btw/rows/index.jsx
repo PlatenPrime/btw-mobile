@@ -100,21 +100,7 @@ export default function Stocks() {
 
 				>
 
-					<LinearGradient colors={['#64748b', '#020617ee',]} >
-						<TouchableOpacity
-							className="flex  justify-between items-center 
-					py-4  
-					"
 
-							onPress={() => { setShowModalCreateRow(true) }}>
-
-							<Text className="text-3xl text-orange-400 items-center justify-center " >
-
-								Створити ряд
-
-							</Text>
-						</TouchableOpacity>
-					</LinearGradient>
 
 				</View>}
 
@@ -139,6 +125,23 @@ export default function Stocks() {
 
 
 
+			<LinearGradient colors={['#64748b', '#02061733',]} >
+				<TouchableOpacity
+					className="flex  justify-between items-center 
+					py-4  
+					"
+
+					onPress={() => { setShowModalCreateRow(true) }}>
+
+					<Text className="text-3xl text-orange-400 items-center justify-center " >
+
+						Створити ряд
+
+					</Text>
+				</TouchableOpacity>
+			</LinearGradient>
+
+
 			{isRowsLoading
 				?
 				<ActivityIndicator size="large" color="#f97316" />
@@ -160,7 +163,7 @@ export default function Stocks() {
 
 										onPress={() => router.push(`/(app)/btw/rows/${item._id}`)}
 										className=" justify-center items-center
-								border-4 border-orange-500/50 
+								border-4 border-orange-500/80 
 				bg-orange-600/20  	py-2"
 									>
 										<Text

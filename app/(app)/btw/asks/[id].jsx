@@ -477,7 +477,7 @@ export default function AskPage() {
 
 								onPress={() => { setShowModalSolveAsk(true) }}>
 
-								<Text className="text-3xl text-white " >
+								<Text className="text-2xl text-white " >
 
 									Виконати
 								</Text>
@@ -494,7 +494,7 @@ export default function AskPage() {
 
 								onPress={() => { setShowModalFailAsk(true) }}>
 
-								<Text className="text-3xl text-white" >
+								<Text className="text-2xl text-white" >
 
 									Відмовити
 								</Text>
@@ -515,7 +515,7 @@ export default function AskPage() {
 
 						onPress={() => { setShowModalDeleteAsk(true) }}>
 
-						<Text className="text-3xl text-white" >
+						<Text className="text-2xl text-white" >
 
 							Видалити
 						</Text>
@@ -545,7 +545,7 @@ export default function AskPage() {
 
 
 						<View
-							className="flex-row flex-wrap items-center justify-center  p-1  "
+							className="flex-row flex-wrap items-center justify-center  p-1 bg-indigo-500/20 "
 						>
 
 							<View
@@ -570,8 +570,9 @@ export default function AskPage() {
 						</View>
 
 						{ask?.quant ? <Text
-							className="text-white text-center text-2xl p-2"
+							className="text-white text-center text-2xl p-2 bg-sky-500/20"
 						>
+							<MaterialCommunityIcons name="balloon" size={24} color="white" />
 							{ask?.quant}
 						</Text>
 							: null}
@@ -580,7 +581,7 @@ export default function AskPage() {
 
 
 						<View
-							className=" space-y-4  px-4 bg-indigo-500/5"
+							className=" space-y-4 mt-2  px-4 bg-indigo-500/5"
 						>
 							{/* ARTIKUL CARD */}
 
@@ -940,7 +941,7 @@ export default function AskPage() {
 																>
 
 
-																	<Fontisto name="date" size={24} color="white" />
+																	<Fontisto name="date" size={20} color="white" />
 																	<Text
 																		className="text-red-300  font-bold text-2xl "
 																	>

@@ -106,6 +106,7 @@ export default function AskBage({
 						className=" p-1  flex-row items-center justify-center"
 					>
 						<MaterialCommunityIcons name="balloon" size={36} color="white" />
+
 						<Text
 							className="text-center text-3xl text-white font-bold "
 						>

@@ -2,7 +2,6 @@ import { View, Text, Button, ImageBackground, TouchableOpacity } from 'react-nat
 import React from 'react'
 import { Link, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../../components'
-import useCheckAuth from "../../../hooks/useCheckAuth"
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -15,7 +14,7 @@ export default function Page() {
 
 	const router = useRouter()
 
-	useCheckAuth()
+	
 
 
 
