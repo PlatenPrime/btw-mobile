@@ -46,7 +46,7 @@ export default function ModalCreatePallet({
 						/>
 					</View>
 
-					{isCreatingPallet && <ActivityIndicator size="large" color={colors500.emerald} />}
+				
 
 
 

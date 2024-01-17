@@ -118,7 +118,7 @@ export default function RowPage() {
 		} finally {
 			setIsCreatingPallet(false)
 			setShowModalCreatePallet(false)
-
+			setShowButtonGroup(false)
 		}
 
 	}
@@ -134,7 +134,7 @@ export default function RowPage() {
 		} finally {
 			setIsUpdatingRowById(false)
 			setShowModalUpdateRow(false)
-
+			setShowButtonGroup(false)
 		}
 
 	}
