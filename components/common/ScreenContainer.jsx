@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar'
 import { Image } from 'react-native'
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -15,16 +15,14 @@ export default function ScreenContainer({ children }) {
 
 		<View className='flex-1 relative' >
 			<StatusBar style="light" />
-			<Image source={require("../../assets/images/grad2.jpg")}
-				className="w-full h-full absolute"
-				blurRadius={10}
 
-			/>
+			<LinearGradient colors={['#0c0c0d', '#050508',]} >
 
 
-			{children}
+				<View className="h-full">{children}</View>
 
 
+			</LinearGradient>
 		</View>
 
 

@@ -14,7 +14,7 @@ export default function Page() {
 
 	const router = useRouter()
 
-	
+
 
 
 
@@ -38,13 +38,30 @@ export default function Page() {
 					bg-orange-400/10 rounded-xl "
 				>
 
-						<Text
-							className="text-center text-3xl text-white"
-						>
-							Ряди
-						</Text>
+					<Text
+						className="text-center text-3xl text-white"
+					>
+						Ряди
+					</Text>
 
 				</TouchableOpacity>
+
+
+				<TouchableOpacity
+					onPress={() => router.push("/btw/stocks/")}
+					className=" flex-1 justify-center 
+					border border-emerald-500
+					bg-emerald-400/10 rounded-xl "
+				>
+
+					<Text
+						className="text-center text-3xl text-white"
+					>
+						Запаси
+					</Text>
+
+				</TouchableOpacity>
+
 
 
 
@@ -82,7 +99,7 @@ export default function Page() {
 
 
 
-			
+
 
 
 

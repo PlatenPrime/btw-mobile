@@ -35,7 +35,7 @@ export default function Layout() {
 				}}
 			/>
 			<Stack.Screen
-				name="stocks/index"
+				name="stocks"
 				options={{
 					title: "Запаси",
 					headerShown: false
