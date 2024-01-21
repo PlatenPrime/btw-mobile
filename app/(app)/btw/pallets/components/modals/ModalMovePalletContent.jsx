@@ -55,7 +55,7 @@ export default function ModalMovePalletContent({
 							arrowicon={<FontAwesome name="chevron-down" size={16} color={'white'} />}
 							boxStyles={{
 
-								backgroundColor: "", 
+								backgroundColor: "",
 							}}
 
 							dropdownItemStyles={{}}
@@ -70,7 +70,7 @@ export default function ModalMovePalletContent({
 
 
 
-				{isMovingPalletContent && <ActivityIndicator size="large" color={colors500.violet} />}
+
 
 
 
@@ -96,9 +96,20 @@ export default function ModalMovePalletContent({
 						disabled={pallet?._id === selectedPalletId}
 
 					>
-						<Text className=" text-white text-xl" >
-							ПЕРЕСТАВИТИ
-						</Text>
+						{isMovingPalletContent
+							?
+							<ActivityIndicator size="large" color={colors500.violet} />
+							:
+							<Text className=" text-white text-xl" >
+								ПЕРЕСТАВИТИ
+							</Text>
+
+						}
+
+
+
+
+
 					</TouchableOpacity>
 
 				</View>

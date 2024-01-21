@@ -35,7 +35,7 @@ export default function ModalUpdatePallet(
 				</Text>
 
 				<View
-					className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+					className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 				>
 
 
@@ -47,7 +47,7 @@ export default function ModalUpdatePallet(
 					/>
 				</View>
 
-				{isUpdatingPalletById && <ActivityIndicator size="large" color={colors500.lime} />}
+
 
 
 
@@ -70,9 +70,17 @@ export default function ModalUpdatePallet(
 						}}
 						disabled={!newPalletTitle}
 					>
-						<Text className=" text-white text-xl" >
-							ЗМІНИТИ
-						</Text>
+						{isUpdatingPalletById ?
+							<ActivityIndicator size="large" color={colors500.lime} />
+							:
+							<Text className=" text-white text-xl" >
+								ЗМІНИТИ
+							</Text>
+
+						}
+
+
+
 					</TouchableOpacity>
 
 				</View>

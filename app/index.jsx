@@ -84,7 +84,7 @@ export default function Login() {
 						fontSize: 36,
 						color: "white"
 					},
-			
+
 					headerBackground: () => <View className="bg-sky-950   h-full">
 						<Image source={require("../assets/images/grad2.jpg")}
 							className="w-full h-full absolute"
@@ -130,7 +130,7 @@ export default function Login() {
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 					>
 
 						<Text className="text-gray-200 text-center text-xl">Логін:</Text>
@@ -151,7 +151,7 @@ export default function Login() {
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 					>
 
 						<Text className="text-gray-200 text-center text-xl">Пароль:</Text>
@@ -175,7 +175,7 @@ export default function Login() {
 
 
 					<TouchableOpacity
-						className={` p-4 border ${username ? "border-green-500" : "border-gray-500"}  flex items-center justify-center rounded-2xl `}
+						className={` p-4 border ${username ? "border-green-500 bg-green-500/20" : "border-gray-500  bg-gray-500/20"}  flex items-center justify-center rounded-2xl `}
 						onPress={handleLogin}
 						disabled={!username}
 					>
@@ -199,10 +199,7 @@ export default function Login() {
 
 
 
-					{isLogining
-						?
-						<ActivityIndicator size="large" color="#22c55e" />
-						:
+					{!isLogining &&
 						<Text className="text-rose-500 text-xl italic text-center">
 							{error}
 						</Text>

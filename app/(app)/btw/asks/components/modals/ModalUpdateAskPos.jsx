@@ -37,7 +37,7 @@ export default function ModalUpdateAskPos({
 
 
 
-				<Text className="text-white text-3xl  text-center" >
+				<Text className="text-white text-3xl  text-center bg-indigo-900 rounded-xl" >
 					Зняття позиції з палети {selectedPosPalletTitle}
 				</Text>
 
@@ -51,14 +51,15 @@ export default function ModalUpdateAskPos({
 
 
 					<View
-						className="flex-1 flex-row items-center justify-between px-2"
+						className="flex-1 flex-row items-center justify-between p-2
+						bg-blue-500/20 rounded-xl
+						
+						"
 					>
-
 
 						<Text className="text-white text-2xl  text-center" >
 							Зараз:
 						</Text>
-
 
 						<View
 							className="flex-row items-center"
@@ -71,8 +72,6 @@ export default function ModalUpdateAskPos({
 
 						</View>
 
-
-
 						<View
 							className="flex-row items-center"
 						>
@@ -83,13 +82,17 @@ export default function ModalUpdateAskPos({
 						</View>
 
 
-
-
 					</View>
 
 
+
+
+
+
 					<View
-						className="flex-1 flex-row items-center justify-between px-2"
+						className="flex-1 flex-row items-center justify-between p-2
+						bg-green-500/20 rounded-xl
+						"
 					>
 
 						<Text className="text-white text-2xl  text-center" >
@@ -191,7 +194,7 @@ export default function ModalUpdateAskPos({
 					>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
+							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
@@ -210,7 +213,7 @@ export default function ModalUpdateAskPos({
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50  p-3 "
+							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput
@@ -240,7 +243,7 @@ export default function ModalUpdateAskPos({
 				</ScrollView>
 
 
-				{isUpdatingAskPos && <ActivityIndicator size="large" color={colors500.indigo} />}
+
 
 
 
@@ -275,9 +278,20 @@ export default function ModalUpdateAskPos({
 
 						}
 					>
-						<Text className=" text-white text-xl" >
-							ЗНЯТИ
-						</Text>
+
+						{isUpdatingAskPos
+
+							?
+							<ActivityIndicator size="large" color={colors500.indigo} />
+							:
+							<Text className=" text-white text-xl" >
+								ЗНЯТИ
+							</Text>
+						}
+
+
+
+
 					</TouchableOpacity>
 
 				</View>

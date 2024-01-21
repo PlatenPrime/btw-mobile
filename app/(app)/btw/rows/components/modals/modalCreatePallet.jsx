@@ -35,7 +35,7 @@ export default function ModalCreatePallet({
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 					>
 
 						<TextInput

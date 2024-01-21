@@ -134,6 +134,11 @@ export default function AskBage({
 				className="flex-row flex-wrap items-center justify-center  p-1  "
 			>
 				<MaterialCommunityIcons name="account-question-outline" size={32} color="#e0e7ff" />
+				<Text
+					className="text-indigo-100 text-lg p-2"
+				>
+					{users?.find(user => user._id === ask?.asker)?.fullname}
+				</Text>
 				<View
 					className="flex-row items-center justify-center  "
 				>
@@ -145,11 +150,8 @@ export default function AskBage({
 					</Text>
 
 				</View>
-				<Text
-					className="text-indigo-100 text-lg p-2"
-				>
-					{users?.find(user => user._id === ask?.asker)?.fullname}
-				</Text>
+
+
 
 			</View>
 
@@ -162,6 +164,13 @@ export default function AskBage({
 					className="flex-row flex-wrap items-center justify-center  p-1 "
 				>
 					<Feather name="check-circle" size={24} color="white" />
+
+					<Text
+						className="text-white text-lg p-2"
+					>
+						{users?.find(user => user._id === ask?.solver)?.fullname}
+					</Text>
+
 					{createdAtDateObject.toLocaleString() !== updatedAtDateObject.toLocaleString() ?
 						<View
 							className="flex-row items-center justify-center  pl-2  "
@@ -175,11 +184,12 @@ export default function AskBage({
 
 						</View>
 						: null}
-					<Text
-						className="text-white text-lg p-2"
-					>
-						{users?.find(user => user._id === ask?.solver)?.fullname}
-					</Text>
+
+
+
+
+
+
 
 				</View>
 				:

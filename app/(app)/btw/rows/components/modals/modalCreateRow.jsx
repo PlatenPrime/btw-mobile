@@ -28,7 +28,7 @@ export default function ModalCreateRow({
 					<Text className="text-orange-400 text-4xl  text-center" >Створення ряду</Text>
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 					>
 
 
@@ -40,7 +40,7 @@ export default function ModalCreateRow({
 						/>
 					</View>
 
-					{isCreatingRow && <ActivityIndicator size="large" color={colors500.emerald} />}
+
 
 
 					<View className="flex flex-row justify-around text-white text-xl space-x-2" >
@@ -60,7 +60,16 @@ export default function ModalCreateRow({
 							}}
 							disabled={!newRowTitle}
 						>
-							<Text className=" text-white text-xl" >СТВОРИТИ</Text>
+
+							{isCreatingRow ?
+								<ActivityIndicator size="large" color={colors500.emerald} />
+								:
+								<Text className=" text-white text-xl" >СТВОРИТИ</Text>
+							}
+
+
+
+
 						</TouchableOpacity>
 
 					</View>

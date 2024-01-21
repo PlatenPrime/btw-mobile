@@ -114,7 +114,7 @@ export default function ModalUpdatePos({
 					>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
@@ -127,7 +127,7 @@ export default function ModalUpdatePos({
 						</View>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Коробок:</Text>
@@ -141,7 +141,7 @@ export default function ModalUpdatePos({
 						</View>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Дата:</Text>
@@ -185,7 +185,7 @@ export default function ModalUpdatePos({
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-700 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Комент:</Text>
@@ -210,7 +210,7 @@ export default function ModalUpdatePos({
 				</ScrollView>
 
 
-				{isUpdatingPosById && <ActivityIndicator size="large" color={colors500.teal} />}
+
 
 
 
@@ -250,9 +250,18 @@ export default function ModalUpdatePos({
 						}}
 
 					>
-						<Text className=" text-white text-xl" >
-							ЗМІНИТИ
-						</Text>
+
+						{isUpdatingPosById
+							?
+							<ActivityIndicator size="large" color={colors500.teal} />
+							:
+							<Text className=" text-white text-xl" >
+								ЗМІНИТИ
+							</Text>
+						}
+
+
+
 					</TouchableOpacity>
 
 				</View>

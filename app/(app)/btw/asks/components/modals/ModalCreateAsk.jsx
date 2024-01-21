@@ -105,7 +105,7 @@ export default function ModalCreateAsk({
 						>
 
 							<View
-								className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50 p-3 "
+								className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 							>
 
 								<Text className="text-white text-center text-xl">Артикул:</Text>
@@ -118,7 +118,7 @@ export default function ModalCreateAsk({
 							</View>
 
 							<View
-								className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50 p-3 "
+								className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 							>
 								<Text className="text-white text-center text-xl">Кількість:</Text>
 								<TextInput
@@ -130,7 +130,7 @@ export default function ModalCreateAsk({
 								/>
 							</View>
 							<View
-								className="flex-row justify-end items-center rounded-full bg-gray-700/50 focus:bg-gray-900/50 p-3 "
+								className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
 							>
 								<Text className="text-white text-center text-xl">Комент:</Text>
 								<TextInput
