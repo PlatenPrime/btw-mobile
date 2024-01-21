@@ -63,7 +63,6 @@ export default function PositionBage({
 					>
 						{
 							artsCurrent?.find((art) => art.artikul === pos.artikul)?.nameukr?.slice(10)
-							|| pos.artikul
 							|| null
 						}
 					</Text>

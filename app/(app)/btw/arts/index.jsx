@@ -82,7 +82,7 @@ export default function ArtsPage() {
 
 					<TextInput
 						placeholder='XXXX-XXXX'
-						placeholderTextColor={"#33333388"}
+						placeholderTextColor={"#888"}
 						className=" text-center h-10 flex-1 text-3xl text-white  "
 						onChangeText={(text => setSearchValue(text))}
 						value={searchValue}
@@ -264,7 +264,7 @@ export default function ArtsPage() {
 
 
 						{isLoadingArtsCurrent ?
-							<ActivityIndicator />
+							<ActivityIndicator size="large" color={colors500.sky} />
 							:
 							<View className="space-y-2 flex-1  justify-center">
 								{filteredArts?.length === 0

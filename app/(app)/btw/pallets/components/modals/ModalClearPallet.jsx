@@ -29,7 +29,7 @@ export default function ModalClearPallet({
 
 
 
-				{isClearingPalletById && <ActivityIndicator size="large" color={colors500.rose} />}
+
 
 
 
@@ -52,9 +52,19 @@ export default function ModalClearPallet({
 						}}
 
 					>
-						<Text className=" text-white text-xl" >
-							ОЧИСТИТИ
-						</Text>
+
+						{isClearingPalletById
+							?
+							<ActivityIndicator size="large" color={colors500.rose} />
+							:
+							<Text className=" text-white text-xl" >
+								ОЧИСТИТИ
+							</Text>
+
+						}
+
+
+
 					</TouchableOpacity>
 
 				</View>
