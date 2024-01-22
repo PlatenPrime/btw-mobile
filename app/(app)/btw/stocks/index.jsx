@@ -412,7 +412,7 @@ export default function Stocks() {
 								filteredPoses?.slice(step * page - step, step * page).map((pos) =>
 									<View
 										key={pos._id}
-										className="flex-row space-x-2 bg-emerald-500/20 border border-emerald-500 w-full rounded-xl"
+										className="flex-1 flex-row space-x-2 bg-emerald-500/20 border border-emerald-500 w-full rounded-xl"
 									>
 
 
@@ -484,11 +484,11 @@ export default function Stocks() {
 
 
 												<View
-													className=" w-1/2 p-2   justify-between items-center rounded-b-xl bg-sky-500/10 rounded-xl "
+													className=" w-1/2 p-2 flex-1   justify-between items-center rounded-b-xl bg-sky-500/10 rounded-xl "
 												>
 
 													<View
-														className=" flex-row items-center justify-end  rounded-xl"
+														className=" flex-1 flex-row items-center justify-end  rounded-xl"
 													>
 														<MaterialCommunityIcons name="balloon" size={16} color="#e0f2fe" />
 														<Text
@@ -500,7 +500,7 @@ export default function Stocks() {
 													</View>
 
 													<View
-														className=" flex-row items-center justify-end space-x-2"
+														className="flex-1 flex-row items-center justify-end space-x-2"
 													>
 														<Feather name="box" size={16} color="#facc15" />
 														<Text
