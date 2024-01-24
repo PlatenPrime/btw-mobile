@@ -35,7 +35,7 @@ export default function Page() {
 					onPress={() => router.push("/btw/rows/")}
 					className=" flex-1 justify-center 
 					border border-orange-500
-					bg-orange-400/20 rounded-xl "
+					bg-orange-500/10 rounded-xl "
 				>
 
 					<Text
@@ -51,7 +51,7 @@ export default function Page() {
 					onPress={() => router.push("/btw/stocks/")}
 					className=" flex-1 justify-center 
 					border border-emerald-500
-					bg-emerald-400/20 rounded-xl "
+					bg-emerald-500/10 rounded-xl "
 				>
 
 					<Text
@@ -69,7 +69,7 @@ export default function Page() {
 					onPress={() => router.push("/btw/arts/")}
 					className="  flex-1 justify-center 
 					border-2 border-sky-500
-					bg-sky-400/20 rounded-xl "
+					bg-sky-500/10 rounded-xl "
 				>
 					<Text
 						className="text-center text-3xl text-sky-100"
@@ -85,7 +85,7 @@ export default function Page() {
 					onPress={() => router.push("/btw/asks/")}
 					className=" flex-1 justify-center  
 					border-2 border-indigo-500
-					bg-indigo-400/20 rounded-xl "
+					bg-indigo-500/10 rounded-xl "
 				>
 
 					<Text

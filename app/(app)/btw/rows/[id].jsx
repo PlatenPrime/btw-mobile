@@ -287,9 +287,9 @@ export default function RowPage() {
 								key={pallet._id}
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
-								className="border-2 border-amber-200/50 rounded-xl 
+								className=" rounded-xl 
 							
-								bg-amber-900/10
+								bg-slate-500/20
 					
 					text-center text-2xl text-white  font-bold
 				
