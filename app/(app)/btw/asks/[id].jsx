@@ -845,7 +845,7 @@ export default function AskPage() {
 												>
 
 													<View
-														className={`${pos.sklad === "pogrebi" ? "bg-green-500/20" : "bg-yellow-500/20"}  p-2    rounded-xl `}
+														className={`${!pos.quant ? "bg-gray-500/50" : pos.sklad === "pogrebi" ? "bg-blue-500/60" : "bg-yellow-600/60"}  p-2    rounded-xl `}
 
 
 													>
