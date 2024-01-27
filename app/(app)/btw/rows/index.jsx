@@ -139,18 +139,20 @@ export default function Stocks() {
 						className="flex-1 h-full
 										"
 					>
-						<TouchableOpacity
-							className="bg-orange-500/20 py-4 flex-1 flex-row justify-center items-center 
+						<LinearGradient colors={['#f97316ee', '#c2410cee',]} >
+							<TouchableOpacity
+								className=" py-4 flex-1 flex-row justify-center items-center 
 					"
 
-							onPress={() => { setShowModalCreateRow(true) }}>
+								onPress={() => { setShowModalCreateRow(true) }}>
 
-							<Text className="flex-1 text-center text-orange-100 text-2xl" >
+								<Text className="flex-1 text-center text-white text-2xl" >
 
-								Створити ряд
+									Створити ряд
 
-							</Text>
-						</TouchableOpacity>
+								</Text>
+							</TouchableOpacity>
+						</LinearGradient>
 					</View>
 
 

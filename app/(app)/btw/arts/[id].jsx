@@ -8,7 +8,7 @@ import { getArtDataBtrade } from "../../../../utils/getArtDataBtrade"
 import { ScreenContainer } from '../../../../components';
 import { ScrollView } from 'react-native-gesture-handler';
 import { colors500 } from '../../../../constants/Colors';
-import { Ionicons, MaterialCommunityIcons, FontAwesome5, Feather } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons, FontAwesome5, Feather, Fontisto } from '@expo/vector-icons';
 import { useGetRemains } from "../../../../hooks/useGetRemains"
 
 
@@ -22,7 +22,7 @@ import { useGetRemains } from "../../../../hooks/useGetRemains"
 
 
 
-export default function AskPage() {
+export default function ArtPage() {
 
 	const { id } = useLocalSearchParams()
 	const router = useRouter()
@@ -306,99 +306,168 @@ export default function AskPage() {
 									className=" space-y-4 py-4"
 								>
 
-									{posesWithArtikul?.map((pos) =>
+									{posesWithArtikul?.sort((a, b) => {
+										if (a.sklad < b.sklad) {
+											return 1;
+										}
+										if (a.sklad > b.sklad) {
+											return -1;
+										}
 
-										<TouchableOpacity
-											key={pos._id}
-											className={`${pos.sklad === "pogrebi" ? "bg-green-500/20" : "bg-yellow-500/20"}
-											
-											flex-row justify-between
-											p-2 flex-1   rounded-xl`}
-											onPress={() => router.push(`/(app)/btw/pallets/${allPallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
+										// names must be equal
+										return 0;
+									}
 
-										>
+									)
 
 
+										?.map((pos) =>
 
+											<TouchableOpacity
+												key={pos._id}
+												
+												onPress={() => router.push(`/(app)/btw/pallets/${allPallets?.find((pallet) => pallet._id === pos?.pallet)?._id}/`)}
 
-											<View
-												className=" justify-between"
 											>
 
 
-												<View
-													className=" flex-row justify-start items-center "
-												>
+<View
+														className={`${!pos.quant ? "bg-gray-500/50" : pos.sklad === "pogrebi" ? "bg-blue-500/60" : "bg-yellow-600/60"}  p-2    rounded-xl `}
 
-													<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
-													<Text
-														className="text-white text-2xl"
+
 													>
-														{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
-													</Text>
-												</View>
 
+														<View
 
-												<View
-													className="flex-row items-center space-x-2"
-												>
-													<FontAwesome5 name="warehouse" size={16} color="#fff" />
-													<Text
-														className="text-white text-base"
-													>
-														{`${pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}`}
-													</Text>
-												</View>
-
-
-											</View>
+															className={`flex-row justify-between
+`}
+														>
 
 
 
 
+															<View
+																className=" justify-between"
+															>
 
 
-											<View
-												className=" justify-between"
-											>
+																<View
+																	className=" flex-row justify-start items-center "
+																>
 
-												<View
-													className="   flex-row justify-end items-center"
-												>
-													<Text
-														className="text-yellow-100 font-bold text-2xl rounded"
-													>
-														{pos?.boxes}
-													</Text>
-
-													<Feather name="box" size={24} color="#fef9c3" />
-
-												</View>
-
-												<View
-													className="  flex-row justify-end items-center"
-												>
-													<Text
-														className="text-sky-100 font-bold text-2xl rounded"
-													>
-														{pos?.quant}
-													</Text>
-													<MaterialCommunityIcons name="balloon" size={24} color="#e0f2fe" />
+																	<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
+																	<Text
+																		className="text-white text-2xl"
+																	>
+																		{allPallets?.find((pallet) => pallet._id === pos?.pallet)?.title}
+																	</Text>
+																</View>
 
 
-												</View>
+																<View
+																	className="flex-row items-center space-x-2"
+																>
+																	<FontAwesome5 name="warehouse" size={16} color="#fff" />
+																	<Text
+																		className="text-white text-base"
+																	>
+																		{`${pos.sklad === "pogrebi" ? "Погреби" : pos.sklad === "merezhi" ? "Мережі" : null}`}
+																	</Text>
+																</View>
 
 
-											</View>
+															</View>
+
+
+															<View
+																className=" justify-between"
+															>
+
+																<View
+																	className="   flex-row justify-end items-center"
+																>
+																	<Text
+																		className="text-yellow-100 font-bold text-2xl rounded"
+																	>
+																		{pos?.boxes}
+																	</Text>
+
+																	<Feather name="box" size={24} color="#fef9c3" />
+
+																</View>
+
+																<View
+																	className="  flex-row justify-end items-center"
+																>
+																	<Text
+																		className="text-sky-100 font-bold text-2xl rounded"
+																	>
+																		{pos?.quant}
+																	</Text>
+																	<MaterialCommunityIcons name="balloon" size={24} color="#e0f2fe" />
+
+
+																</View>
+
+
+															</View>
 
 
 
-										</TouchableOpacity>
+														</View>
+
+
+														<View
+															className="flex-1  flex-row justify-between"
+														>
+
+
+															{pos?.date ?
+																<View
+																	className="flex-1 w-1/2 flex-row items-center space-x-1"
+																>
+
+
+																	<Fontisto name="date" size={20} color="white" />
+																	<Text
+																		className="text-red-300  font-bold text-2xl "
+																	>
+																		{pos.date}
+																	</Text>
+																</View>
+																:
+																null}
 
 
 
 
-									)}
+
+
+															{pos?.com ?
+																<Text
+																	className="flex-1 w-1/2 text-white text-xl italic"
+
+																>{pos?.com}</Text>
+																:
+																null}
+
+
+
+
+
+														</View>
+
+
+
+													</View>
+
+
+											</TouchableOpacity>
+
+
+
+
+										)}
 
 
 								</View>
