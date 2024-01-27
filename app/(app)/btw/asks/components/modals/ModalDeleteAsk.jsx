@@ -59,7 +59,7 @@ export default function ModalDeleteAsk({
 
 							{isDeletingAskById ?
 
-								<ActivityIndicator size="large" color={colors500.red} />
+								<ActivityIndicator size="large" color={colors500.green} />
 								:
 								<Text className=" text-white text-xl" >
 									ВИДАЛИТИ

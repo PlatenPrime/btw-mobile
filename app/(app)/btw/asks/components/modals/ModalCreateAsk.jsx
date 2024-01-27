@@ -151,7 +151,7 @@ export default function ModalCreateAsk({
 					</ScrollView>
 
 
-					{isAskCreating && <ActivityIndicator size="large" color={colors500.indigo} />}
+
 
 
 
@@ -188,9 +188,18 @@ export default function ModalCreateAsk({
 							}}
 							disabled={!newAskArtikul}
 						>
-							<Text className=" text-white text-xl" >
-								СТВОРИТИ
-							</Text>
+
+							{isAskCreating
+								?
+								<ActivityIndicator size="large" color={colors500.green} />
+								:
+								<Text className=" text-white text-xl" >
+									СТВОРИТИ
+								</Text>
+
+							}
+
+
 						</TouchableOpacity>
 
 					</View>

@@ -175,9 +175,9 @@ export default function Login() {
 
 
 					<TouchableOpacity
-						className={` p-4 border ${username ? "border-green-500 bg-green-500/20" : "border-gray-500  bg-gray-500/20"}  flex items-center justify-center rounded-2xl `}
+						className={` p-4 border ${username && password ? "border-green-500 bg-green-500/20" : "border-gray-500  bg-gray-500/20"}  flex items-center justify-center rounded-2xl `}
 						onPress={handleLogin}
-						disabled={!username}
+						disabled={!username || !password}
 					>
 
 						{isLogining

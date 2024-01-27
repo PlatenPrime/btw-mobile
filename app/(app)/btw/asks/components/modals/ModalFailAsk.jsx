@@ -57,7 +57,7 @@ export default function ModalDeleteAsk({
 						>
 
 							{isFailingAsk ?
-								<ActivityIndicator size="large" color={colors500.rose} />
+								<ActivityIndicator size="large" color={colors500.green} />
 								:
 								<Text className=" text-white text-xl" >
 									ВІДМОВИТИ

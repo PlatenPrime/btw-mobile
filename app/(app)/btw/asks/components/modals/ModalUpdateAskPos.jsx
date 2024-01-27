@@ -282,7 +282,7 @@ export default function ModalUpdateAskPos({
 						{isUpdatingAskPos
 
 							?
-							<ActivityIndicator size="large" color={colors500.indigo} />
+							<ActivityIndicator size="large" color={colors500.green} />
 							:
 							<Text className=" text-white text-xl" >
 								ЗНЯТИ
