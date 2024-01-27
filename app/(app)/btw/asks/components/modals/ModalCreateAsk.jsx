@@ -162,7 +162,7 @@ export default function ModalCreateAsk({
 					<View className=" px-2 flex-row justify-around mb-4  space-x-2" >
 
 						<TouchableOpacity
-							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							className="w-1/2 p-4 bg-red-600 border border-red-500 flex items-center justify-center rounded-2xl "
 							onPress={() => { setShowModalCreateAsk(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -172,7 +172,7 @@ export default function ModalCreateAsk({
 
 						<TouchableOpacity
 
-							className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newAskArtikul ? "border-green-500" : "border-gray-500"}`}
+							className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newAskArtikul ? "bg-green-600 border-green-500" : "bg-gray-600 border-gray-500"}`}
 							onPress={() => {
 								handleCreateAsk({
 									artikul: newAskArtikul,

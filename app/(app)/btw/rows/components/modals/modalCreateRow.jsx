@@ -25,7 +25,7 @@ export default function ModalCreateRow({
 				>
 
 
-					<Text className="text-orange-400 text-4xl  text-center" >Створення ряду</Text>
+					<Text className="text-orange-100 text-4xl  text-center" >Створення ряду</Text>
 
 					<View
 						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
@@ -45,7 +45,7 @@ export default function ModalCreateRow({
 
 					<View className="flex flex-row justify-around text-white text-xl space-x-2" >
 						<TouchableOpacity
-							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl"
+							className="w-1/2 p-4 bg-red-600 border border-red-500 flex items-center justify-center rounded-2xl"
 							onPress={() => { setShowModalCreateRow(false) }}>
 							<Text className=" text-white text-xl"   >СКАСУВАТИ</Text>
 						</TouchableOpacity>
@@ -54,7 +54,7 @@ export default function ModalCreateRow({
 
 						<TouchableOpacity
 
-							className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
+							className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newRowTitle ? "bg-green-600 border-green-500" : "bg-gray-600 border-gray-500"}`}
 							onPress={() => {
 								handleCreateRow(newRowTitle)
 							}}

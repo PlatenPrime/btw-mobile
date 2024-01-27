@@ -46,14 +46,14 @@ export default function ModalCreatePallet({
 						/>
 					</View>
 
-				
+
 
 
 
 					<View className="flex flex-row justify-around  space-x-4" >
 
 						<Pressable
-							className=" w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl"
+							className=" w-1/2 p-4 border bg-red-600 border-red-500 flex items-center justify-center rounded-2xl"
 							onPress={() => { setShowModalCreatePallet(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -63,15 +63,15 @@ export default function ModalCreatePallet({
 
 						<Pressable
 
-							className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newPalletTitle ? "border-green-500" : "border-gray-500"}`}
+							className={`w-1/2 p-4 flex items-center justify-center rounded-2xl border ${newPalletTitle ? "bg-green-600 border-green-500" : "bg-gray-600 border-gray-500"}`}
 							onPress={() => {
 								handleCreatePallet(newPalletTitle)
 							}}
-							disabled={!newPalletTitle || isCreatingPallet }
+							disabled={!newPalletTitle || isCreatingPallet}
 						>
 
 							{isCreatingPallet ?
-								<ActivityIndicator size="large" color={colors500.emerald} />
+								<ActivityIndicator size="large" color={colors500.green} />
 								:
 								<Text className=" text-white text-xl" >
 									СТВОРИТИ

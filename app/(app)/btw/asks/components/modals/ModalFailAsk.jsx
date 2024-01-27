@@ -22,7 +22,7 @@ export default function ModalDeleteAsk({
 
 			<LinearGradient colors={['#f43f5e', '#4c0519ee',]} >
 				<View
-					className=" h-full justify-around p-4 "
+					className=" h-full justify-center space-y-8 p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Відмовити у виконанні запиту на {ask?.artikul}?
@@ -38,7 +38,7 @@ export default function ModalDeleteAsk({
 					<View className="flex flex-row justify-around space-x-4 mb-4" >
 
 						<TouchableOpacity
-							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							className="w-1/2 p-4 border bg-red-600 border-red-500 flex items-center justify-center rounded-2xl "
 							onPress={() => { setShowModalFailAsk(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -48,7 +48,7 @@ export default function ModalDeleteAsk({
 
 						<TouchableOpacity
 
-							className=" w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500"
+							className=" w-1/2 p-4   flex items-center justify-center rounded-2xl bg-green-600  border border-green-500"
 							onPress={() => {
 								handleFailAskById()
 							}}

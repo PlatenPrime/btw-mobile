@@ -22,10 +22,10 @@ export default function ModalDeleteRow({
 
 
 				<View
-					className=" h-full justify-between p-4 "
+					className=" h-full justify-center space-y-8 p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
-						Видалення ряду {rowTitle}
+						Видалити ряд {rowTitle}?
 					</Text>
 
 
@@ -38,7 +38,7 @@ export default function ModalDeleteRow({
 					<View className="flex flex-row justify-around space-x-4 mb-4" >
 
 						<TouchableOpacity
-							className="w-1/2 p-4 border border-red-500  items-center justify-center rounded-2xl "
+							className="w-1/2 p-4 bg-red-600 border border-red-500  items-center justify-center rounded-2xl "
 							onPress={() => { setShowModalDeleteRow(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -48,7 +48,7 @@ export default function ModalDeleteRow({
 
 						<TouchableOpacity
 
-							className=" w-1/2 p-4   items-center justify-center rounded-2xl border border-green-500"
+							className=" w-1/2 p-4   items-center justify-center rounded-2xl bg-green-600 border border-green-500"
 							onPress={() => {
 								handleDeleteRowById()
 							}}

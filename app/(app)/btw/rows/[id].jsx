@@ -184,7 +184,7 @@ export default function RowPage() {
 				>
 
 
-					<LinearGradient colors={['#f97316', '#0f172aee']} >
+					<LinearGradient colors={['#f97316', '#0f172a']} >
 						<TouchableOpacity
 							className=" py-4   flex-row justify-center items-center"
 							onPress={() => { setShowModalCreatePallet(true) }}>
@@ -198,7 +198,7 @@ export default function RowPage() {
 					</LinearGradient>
 
 
-					<LinearGradient colors={['#3b82f6', '#0f172aee']} >
+					<LinearGradient colors={['#3b82f6', '#0f172a']} >
 						<TouchableOpacity
 							className=" py-4   flex-row justify-center items-center"
 							onPress={() => { setShowModalUpdateRow(true) }}>
@@ -212,7 +212,7 @@ export default function RowPage() {
 					</LinearGradient>
 
 
-					<LinearGradient colors={['#ef4444', '#0f172aee']} >
+					<LinearGradient colors={['#ef4444', '#0f172a']} >
 						<TouchableOpacity
 							className=" py-4 flex-row justify-center items-center"
 

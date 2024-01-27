@@ -4,7 +4,7 @@ import { colors500 } from '../../../../../../constants/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
 import { SelectList } from 'react-native-dropdown-select-list'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -240,7 +240,7 @@ export default function ModalCreatePos(
 				</ScrollView>
 
 
-				{isCreatingPos && <ActivityIndicator size="large" color={colors500.teal} />}
+
 
 
 
@@ -283,9 +283,18 @@ export default function ModalCreatePos(
 						}}
 						disabled={!newPosArtikul || !newPosQuant || !newPosBoxes}
 					>
-						<Text className=" text-white text-xl" >
-							СТВОРИТИ
-						</Text>
+
+
+						{isCreatingPos
+							?
+							<ActivityIndicator size="large" color={colors500.green} />
+							:
+							<Text className=" text-white text-xl" >
+								СТВОРИТИ
+							</Text>
+						}
+
+
 					</TouchableOpacity>
 
 				</View>

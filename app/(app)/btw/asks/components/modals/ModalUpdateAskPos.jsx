@@ -250,7 +250,7 @@ export default function ModalUpdateAskPos({
 				<View className=" px-2 flex-row justify-around  space-x-2" >
 
 					<TouchableOpacity
-						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+						className="w-1/2 p-4 bg-red-600 border border-red-500 flex items-center justify-center rounded-2xl "
 						onPress={() => { setShowModalUpdateAskPos(false) }}>
 						<Text className=" text-white text-xl"   >
 							СКАСУВАТИ
@@ -264,9 +264,9 @@ export default function ModalUpdateAskPos({
 							askPosBoxesFinalValue < 0 ||
 							askPosQuantFinalValue < 0
 							?
-							"border-gray-500"
+							"bg-gray-600 border-gray-500"
 							:
-							"border-green-500"}`}
+							"bg-green-600 border-green-500"}`}
 						onPress={() => {
 							handleUpdateAskPos()
 						}}

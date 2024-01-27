@@ -38,7 +38,7 @@ export default function ModalUpdateRow({
 						<TextInput
 							onChangeText={(text => setNewRowTitle(text))}
 							value={newRowTitle}
-							className=" h-10 flex-1 text-2xl text-center text-white italic "
+							className=" h-10 flex-1 text-3xl text-center text-white italic "
 							autoFocus={true}
 						/>
 
@@ -52,7 +52,7 @@ export default function ModalUpdateRow({
 					<View className="flex flex-row justify-around  space-x-4" >
 
 						<TouchableOpacity
-							className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+							className="w-1/2 p-4 bg-red-600 border border-red-500 flex items-center justify-center rounded-2xl "
 							onPress={() => { setShowModalUpdateRow(false) }}>
 							<Text className=" text-white text-xl"   >
 								СКАСУВАТИ
@@ -62,7 +62,7 @@ export default function ModalUpdateRow({
 
 						<TouchableOpacity
 
-							className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newRowTitle ? "border-green-500" : "border-gray-500"}`}
+							className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newRowTitle ? "bg-green-600  border-green-500" : "bg-gray-600  border-gray-500"}`}
 							onPress={() => {
 								handleUpdateRowById(newRowTitle)
 							}}

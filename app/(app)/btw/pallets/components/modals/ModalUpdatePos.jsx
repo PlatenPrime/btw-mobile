@@ -221,7 +221,7 @@ export default function ModalUpdatePos({
 				<View className=" px-2 flex-row justify-around  space-x-2" >
 
 					<TouchableOpacity
-						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+						className="w-1/2 p-4 border bg-red-600 border-red-500 flex items-center justify-center rounded-2xl "
 						onPress={() => { setShowModalUpdatePos(false) }}>
 						<Text className=" text-white text-xl"   >
 							СКАСУВАТИ
@@ -231,7 +231,7 @@ export default function ModalUpdatePos({
 
 					<TouchableOpacity
 
-						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border border-green-500`}
+						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl bg-green-600 border border-green-500`}
 						onPress={() => {
 							handleUpdatePosById(selectedPos?._id,
 								{
@@ -253,7 +253,7 @@ export default function ModalUpdatePos({
 
 						{isUpdatingPosById
 							?
-							<ActivityIndicator size="large" color={colors500.teal} />
+							<ActivityIndicator size="large" color={colors500.green} />
 							:
 							<Text className=" text-white text-xl" >
 								ЗМІНИТИ
