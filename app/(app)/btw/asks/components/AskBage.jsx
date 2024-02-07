@@ -25,7 +25,7 @@ export default function AskBage({
 
 		<TouchableOpacity
 			onPress={() => router.push(`btw/asks/${ask._id}/`)}
-			className={`border-2 flex-col border-indigo-500 rounded-xl w-fit h-fit
+			className={`border-2 flex-col  rounded-xl w-fit h-fit
 			
 				flex-1
 			
@@ -33,9 +33,9 @@ export default function AskBage({
 					?
 					"bg-indigo-500/30"
 					: ask?.status === "solved"
-						? "border-emerald-500 bg-emerald-500/30"
+						? " bg-emerald-500/30"
 						: ask?.status === "fail"
-							? "border-rose-500 bg-rose-500/30"
+							? " bg-rose-500/30"
 							: null
 				}
 			
@@ -46,15 +46,15 @@ export default function AskBage({
 
 
 			<View
-				className={`flex-1 flex-row border-b border-white
+				className={`flex-1 flex-row 
 				
 				${ask?.status === "new"
 						?
-						"border-b border-indigo-500"
+						""
 						: ask?.status === "solved"
-							? "border-b border-emerald-500 "
+							? ""
 							: ask?.status === "fail"
-								? "border-b border-rose-500 "
+								? ""
 								: null
 					}
 				
