@@ -931,13 +931,13 @@ export default function AskPage() {
 
 
 														<View
-															className="flex-1  flex-row justify-between"
+															className="  flex-row justify-between"
 														>
 
 
 															{pos?.date ?
 																<View
-																	className="flex-1 w-1/2 flex-row items-center space-x-1"
+																	className=" w-1/2 flex-row items-center space-x-1"
 																>
 
 
@@ -958,7 +958,7 @@ export default function AskPage() {
 
 															{pos?.com ?
 																<Text
-																	className="flex-1 w-1/2 text-white text-xl italic"
+																	className=" w-1/2 text-white text-xl italic"
 
 																>{pos?.com}</Text>
 																:

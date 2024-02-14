@@ -8,6 +8,7 @@ import { useGlobalStore } from "../../../../stores/globalStore";
 import { colors500 } from "../../../../constants/Colors"
 import useCheckAuth from '../../../../hooks/useCheckAuth';
 import { Image } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Layout() {
 
@@ -37,12 +38,11 @@ export default function Layout() {
 						fontSize: 36,
 						color: "white"
 					},
-				
-					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../../../assets/images/grad3.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+
+					headerBackground: () => <View className="bg-slate-700   h-full">
+						<LinearGradient colors={['#334155', '#0f172a',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}
@@ -62,12 +62,11 @@ export default function Layout() {
 						fontSize: 36,
 						color: "white"
 					},
-					
-					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../../../assets/images/grad4.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+
+					headerBackground: () => <View className="bg-orange-500   h-full">
+						<LinearGradient colors={['#f97316', '#c2410c',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 					</View>
 				}}
 			/>
