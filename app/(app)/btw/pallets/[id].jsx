@@ -383,7 +383,7 @@ export default function PalletPage() {
 					</LinearGradient>
 
 
-					<LinearGradient colors={['#eab308', '#a16207']} >
+					{/* <LinearGradient colors={['#eab308', '#a16207']} >
 						<TouchableOpacity
 							className=" py-4 flex-row justify-center items-center"
 							onPress={() => setShowModalMovePalletContent(true)}
@@ -394,7 +394,7 @@ export default function PalletPage() {
 								Переставити
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+					</LinearGradient> */}
 
 
 

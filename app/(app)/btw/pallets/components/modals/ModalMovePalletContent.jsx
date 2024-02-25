@@ -66,6 +66,11 @@ export default function ModalMovePalletContent({
 							/>
 						</View>
 
+						<View>
+							<Text>{selectedPalletId}</Text>
+							<Text>{pallet?._id}</Text>
+						</View>
+
 
 					</ScrollView>
 
@@ -91,11 +96,10 @@ export default function ModalMovePalletContent({
 
 							className={`p-4 w-1/2   flex items-center justify-center rounded-2xl border 
 						
-						${selectedPalletId || pallet?._id !== selectedPalletId ? "bg-green-600 border-green-600" : "bg-gray-600 border-gray-500"}`}
-							onPress={() => {
+						${selectedPalletId && (pallet?._id !== selectedPalletId) ? "bg-green-600 border-green-600" : "bg-gray-600 border-gray-500"}`}
+							onPress={selectedPalletId && (pallet?._id !== selectedPalletId) ? null : () => {
 								handleMovePalletContent(pallet._id, selectedPalletId)
 							}}
-							disabled={selectedPalletId || pallet?._id !== selectedPalletId}
 
 						>
 							{isMovingPalletContent
@@ -107,10 +111,6 @@ export default function ModalMovePalletContent({
 								</Text>
 
 							}
-
-
-
-
 
 						</TouchableOpacity>
 
