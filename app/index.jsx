@@ -113,7 +113,7 @@ export default function Login() {
 					</View>
 
 					<TouchableOpacity
-						className="border-4 border-sky-500 bg-sky-500/10 rounded-xl  p-10"
+						className=" bg-sky-500/50 rounded-xl  p-10"
 						onPress={() => router.replace("/(app)/btw")}
 
 					>

@@ -369,13 +369,13 @@ export default function PalletPage() {
 				<View
 					className=" flex-1 min-h-full absolute z-10 w-full"
 				>
-					<LinearGradient colors={['#3b82f6', '#0f172a']} >
+					<LinearGradient colors={['#3b82f6', '#1d4ed8']} >
 						<TouchableOpacity
 							className=" py-4   flex-row justify-center items-center"
 							onPress={() => setShowModalUpdatePallet(true)}
 						>
 							<Text
-								className="text-2xl text-blue-100"
+								className="text-2xl text-white"
 							>
 								Перейменувати
 							</Text>
