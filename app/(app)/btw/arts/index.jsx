@@ -64,44 +64,44 @@ export default function ArtsPage() {
 
 	return (
 		<ScreenContainer>
+			{isLoadingArtsCurrent ? <ActivityIndicator size="large" color={colors500.sky} /> :
+				<ScrollView
+					className=" space-y-4 px-4 bg-sky-500/5"
 
-			<ScrollView
-				className=" space-y-4 px-4 bg-sky-500/5"
-
-			>
-
-
-
-
-				<View
-					className="flex-row justify-end items-center  rounded-full bg-blue-900/40 focus:bg-blue-700/50  mt-4 "
 				>
 
 
 
 
-					<TextInput
-						placeholder='XXXX-XXXX'
-						placeholderTextColor={"#888"}
-						className=" text-center h-10 flex-1 text-3xl text-white  "
-						onChangeText={(text => setSearchValue(text))}
-						value={searchValue}
-
-						autoFocus={true}
-					/>
-
-
-
-					<TouchableOpacity
-						className="rounded-full p-3 m-1 bg-sky-400/20"
-						onPress={handleFilterArts}
+					<View
+						className="flex-row justify-end items-center  rounded-full bg-slate-800 focus:bg-slate-700  mt-4 "
 					>
-						<Text  ><MagnifyingGlassIcon size={36} color="white" /></Text>
-					</TouchableOpacity>
-				</View>
 
 
-				{isLoadingArtsCurrent ? <ActivityIndicator size="large" color={colors500.sky} /> :
+
+
+						<TextInput
+							placeholder='XXXX-XXXX'
+							placeholderTextColor={"#888"}
+							className=" text-center h-10 flex-1 text-3xl text-white  "
+							onChangeText={(text => setSearchValue(text))}
+							value={searchValue}
+
+							autoFocus={true}
+						/>
+
+
+
+						<TouchableOpacity
+							className="rounded-full p-3 m-1 bg-sky-400/20"
+							onPress={handleFilterArts}
+						>
+							<Text  ><MagnifyingGlassIcon size={36} color="white" /></Text>
+						</TouchableOpacity>
+					</View>
+
+
+
 
 					<ScrollView
 						className="space-y-4"
@@ -362,9 +362,9 @@ export default function ArtsPage() {
 
 					</ScrollView>
 
-				}
 
-			</ScrollView>
+
+				</ScrollView>}
 		</ScreenContainer >
 	)
 }

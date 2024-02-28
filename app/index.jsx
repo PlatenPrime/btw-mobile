@@ -103,17 +103,19 @@ export default function Login() {
 
 
 				<View
-					className="flex-1 h-full justify-center p-6 space-y-8"
+					className=" h-full start p-6 space-y-8"
 				>
 
-					<View>
+					<View
+					className="bg-sky-500/20 p-4 rounded-xl"
+					>
 
 						<Text className="text-sky-100 text-center text-8xl ">BTW</Text>
 						<Text className="text-sky-100 text-center text-3xl ">Balloon Trade Warehouse App</Text>
 					</View>
 
 					<TouchableOpacity
-						className=" bg-sky-500/50 rounded-xl  p-10"
+						className=" bg-sky-500/20 border border-sky-500 rounded-xl  p-10"
 						onPress={() => router.replace("/(app)/btw")}
 
 					>
