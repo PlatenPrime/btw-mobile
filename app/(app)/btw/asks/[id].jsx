@@ -235,7 +235,9 @@ export default function AskPage() {
 
 			const askUpdateData = {
 				...ask,
-				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} ${user?.fullname} зняв: штук  ${askPosQuantValue}, коробок ${askPosBoxesValue}`]
+				actions: [...ask?.actions, `З палети ${selectedPosPalletTitle} ${user?.fullname} зняв: 
+				штук  ${askPosQuantValue}, 
+				коробок ${askPosBoxesValue}`]
 			}
 
 			console.log(askUpdateData);
@@ -296,7 +298,7 @@ export default function AskPage() {
 			const askUpdateData = {
 				status: "solved",
 				solver: user?._id,
-				actions: [...ask?.actions, `${user?.fullname} виконав цей запит`]
+				actions: [...ask?.actions, `${user?.fullname} ВИКОНАВ цей запит`]
 			}
 
 			const updatedAsk = await updateAskById(id, askUpdateData)
@@ -312,7 +314,7 @@ export default function AskPage() {
 				try {
 					const askerUser = await getUserById(updatedAsk?.asker)
 					if (askerUser) {
-						sendMessageToUser(`${askerUser?.fullname}, твій запит на ${updatedAsk?.artikul} виконано`, askerUser?.telegram)
+						sendMessageToUser(`${askerUser?.fullname}, твій запит на ${artikul ? artikul : updatedAsk?.artikul} ВИКОНАНО`, askerUser?.telegram)
 					}
 				} catch (error) {
 					console.log(error);
@@ -347,7 +349,7 @@ export default function AskPage() {
 			const updatedAsk = await updateAskById(id, {
 				status: "fail",
 				solver: user?._id,
-				actions: [...ask?.actions, `${user?.fullname} відмовив на цей запит`]
+				actions: [...ask?.actions, `${user?.fullname} ВІДМОВИВ на цей запит`]
 			})
 			if (updatedAsk) {
 				setAsk(updatedAsk)
@@ -355,7 +357,7 @@ export default function AskPage() {
 				try {
 					const askerUser = await getUserById(updatedAsk?.asker)
 					if (askerUser) {
-						sendMessageToUser(`${askerUser?.fullname}, на твій запит на ${updatedAsk?.artikul} було відмовлено`, askerUser?.telegram)
+						sendMessageToUser(`${askerUser?.fullname}, на твій запит на ${artikul ? artikul : updatedAsk?.artikul} було ВІДМОВЛЕНО`, askerUser?.telegram)
 					}
 				} catch (error) {
 					console.log(error);
