@@ -23,7 +23,7 @@ export default function PositionBage({
 
 	return (
 		<View
-			className="flex-1  border-2 border-teal-500 bg-teal-900/40 rounded-xl  mb-4"
+			className={`flex-1  rounded-xl  mb-4  ${pos?.boxes ? "bg-teal-500/20" : "bg-slate-600/50"}`}
 			key={pos._id}
 		>
 
@@ -47,7 +47,7 @@ export default function PositionBage({
 				</View>
 
 				<TouchableOpacity
-					className="flex-1  p-1 justify-center bg-sky-500/20 rounded-tr-xl"
+					className={`flex-1  p-1 justify-center ${pos?.boxes ? "bg-sky-500/20" : "bg-slate-600"} rounded-tr-xl`}
 					onPress={() => { if (artsCurrent?.find((art) => art.artikul === pos.artikul)) { router.push(`/(app)/btw/arts/${artsCurrent?.find((art) => art.artikul === pos.artikul)?._id}/`) } }}
 				>
 
@@ -128,13 +128,18 @@ export default function PositionBage({
 						className="flex-row items-center space-x-1"
 					>
 
+						{pos?.date
+							?
+							<>
+								<Fontisto name="date" size={16} color="white" />
+								<Text
+									className="text-red-500   text-xl "
+								>
+									{pos.date}
+								</Text></>
+							:
+							<></>}
 
-						<Fontisto name="date" size={16} color="white" />
-						<Text
-							className="text-red-500   text-xl "
-						>
-							{pos.date}
-						</Text>
 					</View>
 
 
@@ -200,7 +205,7 @@ export default function PositionBage({
 			{pos.com
 				?
 				<View
-					className="flex-1 flex-row items-center justify-around border-t border-slate-50 rounded-b-xl p-2"
+					className=" flex-row items-center justify-around border-t border-slate-50 rounded-b-xl p-2"
 				>
 
 					<Text
@@ -220,11 +225,11 @@ export default function PositionBage({
 
 
 			<View
-				className="flex-1 flex-row items-center justify-around border-t  border-slate-50 rounded-b-xl "
+				className=" flex-row items-center justify-around   border-slate-50 rounded-b-xl "
 			>
 
 				<TouchableOpacity
-					className="bg-blue-500/50 p-1 rounded-bl-xl w-full flex-1"
+					className=" p-1 py-2 rounded-bl-xl  "
 					onPress={() => onUpdate()}
 				>
 					<Text
@@ -235,7 +240,7 @@ export default function PositionBage({
 				</TouchableOpacity>
 
 				<TouchableOpacity
-					className="bg-red-500/20 p-1 rounded-br-xl w-full flex-1"
+					className=" p-1 rounded-br-xl  "
 					onPress={() => onDelete()}
 				>
 					<Text
