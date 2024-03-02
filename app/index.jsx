@@ -7,6 +7,7 @@ import useAuthStore from '../stores/authStore'
 import { useState } from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
 import useCheckAuth from "../hooks/useCheckAuth"
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 export default function Login() {
@@ -86,10 +87,9 @@ export default function Login() {
 					},
 
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../assets/images/grad2.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#16a34a', '#052e16',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}
@@ -107,7 +107,7 @@ export default function Login() {
 				>
 
 					<View
-					className="bg-sky-500/20 p-4 rounded-xl"
+						className=" p-4 rounded-xl"
 					>
 
 						<Text className="text-sky-100 text-center text-8xl ">BTW</Text>
@@ -115,7 +115,7 @@ export default function Login() {
 					</View>
 
 					<TouchableOpacity
-						className=" bg-sky-500/20 border border-sky-500 rounded-xl  p-10"
+						className=" bg-blue-700  rounded-xl  p-10"
 						onPress={() => router.replace("/(app)/btw")}
 
 					>
@@ -132,7 +132,7 @@ export default function Login() {
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500 p-3 "
 					>
 
 						<Text className="text-gray-200 text-center text-xl">Логін:</Text>
@@ -153,7 +153,7 @@ export default function Login() {
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500 p-3 "
 					>
 
 						<Text className="text-gray-200 text-center text-xl">Пароль:</Text>
