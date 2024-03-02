@@ -23,10 +23,10 @@ export default function ModalClearPallet({
 
 
 
-			<LinearGradient colors={['#fda4af', '#be123c']} >
+			{/* <LinearGradient colors={['#fda4af', '#be123c']} > */}
 
 				<View
-					className=" h-full justify-center space-y-8 p-4 "
+					className="bg-slate-900 h-full justify-center space-y-8 p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Очистити палету {palletTitle}?
@@ -76,7 +76,7 @@ export default function ModalClearPallet({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 	)

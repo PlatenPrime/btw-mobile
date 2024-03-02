@@ -20,9 +20,9 @@ export default function ModalUpdateRow({
 
 
 		>
-			<LinearGradient colors={['#3b82f6', '#0f172aee']} >
+			{/* <LinearGradient colors={['#3b82f6', '#0f172aee']} > */}
 				<View
-					className=" h-full justify-between p-4 "
+					className="bg-slate-900 h-full justify-between p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Перейменування ряду {rowTitle}
@@ -31,7 +31,7 @@ export default function ModalUpdateRow({
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500  p-3 "
 					>
 
 
@@ -82,7 +82,7 @@ export default function ModalUpdateRow({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 

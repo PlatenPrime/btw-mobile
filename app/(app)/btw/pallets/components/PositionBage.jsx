@@ -23,13 +23,13 @@ export default function PositionBage({
 
 	return (
 		<View
-			className={`flex-1  rounded-xl  mb-4  ${pos?.boxes ? "bg-teal-500/20" : "bg-slate-600/50"}`}
+			className={`flex-1  rounded-xl  mb-4  ${pos?.boxes ? "bg-teal-500/20" : "bg-slate-500/20"}`}
 			key={pos._id}
 		>
 
 
 			<View
-				className="flex-1 flex-row border-b border-white"
+				className="flex-1 flex-row "
 			>
 
 				<View
@@ -158,9 +158,9 @@ export default function PositionBage({
 					>
 
 
-						<MaterialCommunityIcons name="balloon" size={16} color="#7dd3fc" />
+						<MaterialCommunityIcons name="balloon" size={12} color="#7dd3fc" />
 						<Text
-							className="text-sky-300  font-bold text-xl "
+							className="text-sky-300  font-bold text-2xl "
 						>
 							{pos.quant}
 						</Text>
@@ -171,9 +171,9 @@ export default function PositionBage({
 						className="flex-row items-center space-x-1"
 					>
 
-						<Feather name="box" size={16} color="#fde047" />
+						<Feather name="box" size={12} color="#fde047" />
 						<Text
-							className="text-amber-300  font-bold text-xl "
+							className="text-amber-300  font-bold text-2xl "
 						>
 							{pos.boxes}
 						</Text>

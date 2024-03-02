@@ -9,6 +9,7 @@ import useCheckAuth from '../../hooks/useCheckAuth'
 import axios from 'axios'
 import { sendMessageToTelegram, sendMessageToUser } from '../../utils/sendMessagesTelegram'
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 
@@ -94,10 +95,9 @@ export default function Page() {
 						backgroundColor: colors500?.cyan
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../assets/images/grad2.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#334155', '#0f172a',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}
@@ -133,10 +133,10 @@ export default function Page() {
 							<ActivityIndicator size="large" color="#ef4444" />
 							:
 							<View
-								className=" border-2  border-red-500 bg-red-500/20  rounded-2xl"
+								className="     rounded-2xl"
 							>
 								<Text
-									className="text-3xl  text-red-100 p-4 text-center  "
+									className="text-3xl  text-red-500  text-center  "
 								>
 									ВИХІД
 								</Text>
@@ -150,7 +150,7 @@ export default function Page() {
 
 
 					<View
-						className="flex  justify-center items-center bg-sky-500/20 p-8 rounded-2xl"
+						className="flex  justify-center items-center  rounded-2xl"
 					>
 
 

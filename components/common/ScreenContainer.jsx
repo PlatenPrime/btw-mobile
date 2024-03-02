@@ -16,7 +16,7 @@ export default function ScreenContainer({ children }) {
 		<View className='flex-1 relative' >
 			<StatusBar style="light" />
 
-			<LinearGradient colors={['#0c0c0d', '#050508',]} >
+			<LinearGradient colors={['#0f172a', '#050508',]} >
 
 
 				<View className="h-full">{children}</View>

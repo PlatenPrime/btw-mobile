@@ -19,16 +19,16 @@ export default function ModalCreateRow({
 			visible={showModalCreateRow}
 
 		>
-			<LinearGradient colors={['#64748b', '#020617ee',]} >
+			{/* <LinearGradient colors={['#64748b', '#020617ee',]} > */}
 				<View
-					className=" h-full justify-between p-4 "
+					className="bg-slate-900 h-full justify-between p-4 "
 				>
 
 
-					<Text className="text-orange-100 text-4xl  text-center" >Створення ряду</Text>
+					<Text className="text-white text-4xl  text-center" >Створення ряду</Text>
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+						className="flex-row justify-end items-center rounded-full  bg-slate-700 focus:bg-slate-500 p-3 "
 					>
 
 
@@ -75,7 +75,7 @@ export default function ModalCreateRow({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 		</Modal>
 
 

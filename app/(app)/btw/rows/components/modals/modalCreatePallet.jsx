@@ -23,10 +23,10 @@ export default function ModalCreatePallet({
 
 		>
 
-			<LinearGradient colors={['#f97316', '#0f172aee']} >
+			{/* <LinearGradient colors={['#f97316', '#0f172aee']} > */}
 
 				<View
-					className=" h-full justify-between p-4 "
+					className="bg-slate-900 h-full justify-between p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Створення палети для ряду {row?.title}
@@ -35,7 +35,7 @@ export default function ModalCreatePallet({
 
 
 					<View
-						className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+						className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500 p-3 "
 					>
 
 						<TextInput
@@ -82,7 +82,7 @@ export default function ModalCreatePallet({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 	)

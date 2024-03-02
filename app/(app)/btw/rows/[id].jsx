@@ -179,51 +179,51 @@ export default function RowPage() {
 			{showButtonGroup &&
 				(user?.role === "SKLAD" || user?.role === "PRIME") &&
 				<View
-					className="  absolute z-10 w-full"
+					className="bg-slate-900  absolute z-10 w-full"
 
 				>
 
 
-					<LinearGradient colors={['#f97316', '#0f172a']} >
+					{/* <LinearGradient colors={['#f97316', '#0f172a']} > */}
 						<TouchableOpacity
 							className=" py-4   flex-row justify-center items-center"
 							onPress={() => { setShowModalCreatePallet(true) }}>
 
-							<Text className="text-2xl text-amber-100 items-center justify-center " >
+							<Text className="text-2xl text-amber-500 items-center justify-center " >
 
 								Створити палету
 
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+					{/* </LinearGradient> */}
 
 
-					<LinearGradient colors={['#3b82f6', '#0f172a']} >
+					{/* <LinearGradient colors={['#3b82f6', '#0f172a']} > */}
 						<TouchableOpacity
 							className=" py-4   flex-row justify-center items-center"
 							onPress={() => { setShowModalUpdateRow(true) }}>
 
-							<Text className="text-2xl text-blue-100">
+							<Text className="text-2xl text-blue-300">
 
 								Перейменувати ряд
 
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+					{/* </LinearGradient> */}
 
 
-					<LinearGradient colors={['#ef4444', '#0f172a']} >
+					{/* <LinearGradient colors={['#ef4444', '#0f172a']} > */}
 						<TouchableOpacity
 							className=" py-4 flex-row justify-center items-center"
 
 							onPress={() => { setShowModalDeleteRow(true) }}>
 
-							<Text className="text-2xl text-red-100" >
+							<Text className="text-2xl text-red-500" >
 
 								Видалити ряд
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+					{/* </LinearGradient> */}
 				</View>
 			}
 
@@ -289,7 +289,7 @@ export default function RowPage() {
 
 								className=" rounded-xl 
 							
-								bg-slate-500/20
+								bg-slate-700
 					
 					text-center text-2xl text-white  font-bold
 				
@@ -320,9 +320,9 @@ export default function RowPage() {
 										<View
 											className="flex-1 flex-row items-center justify-center space-x-2 rounded-xl"
 										>
-											<Octicons name="note" size={24} color="#ccfbf1" />
+											<Octicons name="note" size={12} color="#ccfbf1" />
 											<Text
-												className="text-teal-100 text-xl"
+												className="text-teal-100 text-2xl"
 											>
 												{allPoses?.filter((pos) => pos?.pallet === pallet?._id).length}
 											</Text>
@@ -331,9 +331,9 @@ export default function RowPage() {
 										<View
 											className="flex-1 flex-row items-center justify-center space-x-2"
 										>
-											<Feather name="box" size={24} color="#facc15" />
+											<Feather name="box" size={12} color="#facc15" />
 											<Text
-												className="text-yellow-400 text-xl"
+												className="text-yellow-400 text-2xl"
 											>
 												{allPoses?.filter((pos) => pos?.pallet === pallet?._id).reduce((a, b) => a + b?.boxes, 0)}
 											</Text>

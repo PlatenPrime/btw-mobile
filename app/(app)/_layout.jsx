@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import useCheckAuth from '../../hooks/useCheckAuth';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function _layout() {
 
@@ -39,10 +40,9 @@ export default function _layout() {
 				tabBarActiveTintColor: "#bbb",
 				tabBarBackground: () => (
 					<View className="bg-sky-950   h-full">
-						<Image source={require("../../assets/images/grad2.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#334155', '#0f172a',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 					</View>
 				),
 			}}

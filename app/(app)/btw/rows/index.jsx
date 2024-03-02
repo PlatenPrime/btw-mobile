@@ -139,7 +139,7 @@ export default function Stocks() {
 						className="flex-1 h-full
 										"
 					>
-						<LinearGradient colors={['#f97316ee', '#c2410cee',]} >
+					
 							<TouchableOpacity
 								className=" py-4 flex-1 flex-row justify-center items-center 
 					"
@@ -152,7 +152,7 @@ export default function Stocks() {
 
 								</Text>
 							</TouchableOpacity>
-						</LinearGradient>
+						
 					</View>
 
 
@@ -179,7 +179,7 @@ export default function Stocks() {
 										>
 
 											<View
-												className="bg-white p-2 rounded-xl"
+												className="bg-white p-2 px-8 rounded-2xl"
 											>
 												<Text
 													className="text-3xl text-black font-bold text-center"

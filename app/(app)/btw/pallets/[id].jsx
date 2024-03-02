@@ -367,9 +367,9 @@ export default function PalletPage() {
 				?
 
 				<View
-					className=" flex-1 min-h-full absolute z-10 w-full"
+					className="bg-slate-900 flex-1 min-h-full absolute z-10 w-full"
 				>
-					<LinearGradient colors={['#3b82f6', '#1d4ed8']} >
+					{/* <LinearGradient colors={['#3b82f6', '#1d4ed8']} > */}
 						<TouchableOpacity
 							className=" py-4   flex-row justify-center items-center"
 							onPress={() => setShowModalUpdatePallet(true)}
@@ -380,7 +380,7 @@ export default function PalletPage() {
 								Перейменувати
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+					{/* </LinearGradient> */}
 
 
 					{/* <LinearGradient colors={['#eab308', '#a16207']} >
@@ -398,35 +398,35 @@ export default function PalletPage() {
 
 
 
-					<LinearGradient colors={['#fda4af', '#be123c']} >
+				
 						<TouchableOpacity
 							className="py-4  flex-row justify-center items-center"
 							onPress={() => setShowModalClearPallet(true)}
 						>
 							<Text
-								className="text-2xl text-rose-100"
+								className="text-2xl text-rose-300"
 							>
 								Очистити
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+				
 
 
 
-					<LinearGradient colors={['#ef4444', '#0f172a']} >
+					{/* <LinearGradient colors={['#ef4444', '#0f172a']} > */}
 						<TouchableOpacity
 							className=" py-4  flex-row justify-center items-center"
 							onPress={() => setShowModalDeletePallet(true)}
 						>
 							<Text
-								className="text-2xl text-red-100"
+								className="text-2xl text-red-500"
 							>
 								Видалити
 							</Text>
 						</TouchableOpacity>
-					</LinearGradient>
+					{/* </LinearGradient> */}
 
-					<LinearGradient colors={['#0ea5e988', '#333333ee']} >
+					{/* <LinearGradient colors={['#0ea5e988', '#333333ee']} > */}
 						<TouchableOpacity
 							className=" py-96 h-full   flex-row justify-center items-center  "
 							onPress={() => {
@@ -435,7 +435,7 @@ export default function PalletPage() {
 						>
 
 						</TouchableOpacity>
-					</LinearGradient>
+					{/* </LinearGradient> */}
 
 
 				</View>
@@ -549,7 +549,7 @@ export default function PalletPage() {
 						>
 							<TouchableOpacity
 								onPress={() => setShowModalCreatePos(true)}
-								className="bg-teal-500/20 py-4 flex-1 flex-row justify-center items-center 
+								className=" py-4 flex-1 flex-row justify-center items-center 
 											 "
 							>
 								<Text
@@ -584,7 +584,7 @@ export default function PalletPage() {
 											<View
 												className="flex-1 flex-row items-center justify-center space-x-2"
 											>
-												<Octicons name="note" size={24} color="#99f6e4" />
+												<Octicons name="note" size={16} color="#99f6e4" />
 												<Text
 													className="text-teal-200 text-2xl"
 												>
@@ -595,7 +595,7 @@ export default function PalletPage() {
 											<View
 												className="flex-1 flex-row items-center justify-center space-x-2"
 											>
-												<Feather name="box" size={24} color="#fde047" />
+												<Feather name="box" size={16} color="#fde047" />
 												<Text
 													className="text-yellow-300 text-2xl"
 												>

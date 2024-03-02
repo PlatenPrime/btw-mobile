@@ -62,7 +62,7 @@ export default function ModalCreatePos(
 
 
 			<View
-				className="space-y-4 justify-between  bg-teal-950 h-full p-2 "
+				className="space-y-4 justify-between  bg-slate-900 h-full p-2 "
 			>
 
 
@@ -99,7 +99,7 @@ export default function ModalCreatePos(
 						</View>
 
 						<View
-							className={`flex-1 space-y-2 p-1 justify-center border ${artsCurrent?.find((art) => art.artikul === newPosArtikul) ? "border-sky-500 bg-sky-500/20" : "border-red-500 bg-red-500/20"}   rounded-r-xl`}
+							className={`flex-1 space-y-2 p-1 justify-center  ${artsCurrent?.find((art) => art.artikul === newPosArtikul) ? " bg-sky-500/20" : " bg-red-500/20"}   rounded-r-xl`}
 						>
 							<Text
 								className="text-white text-xl text-center italic"
@@ -110,7 +110,7 @@ export default function ModalCreatePos(
 
 							{artsCurrent?.find((art) => art.artikul === newPosArtikul) &&
 								<Text
-									className="text-white text-2xl text-orange-300 font-bold text-center italic p-2 rounded-xl bg-orange-500/10"
+									className="text-white text-2xl text-orange-300 font-bold text-center italic p-2 rounded-xl"
 									numberOfLines={4}
 								>
 									<Ionicons name="location-outline" size={24} color="#fdba74" />
@@ -128,7 +128,7 @@ export default function ModalCreatePos(
 					>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Артикул:</Text>
 							<TextInput
@@ -145,7 +145,7 @@ export default function ModalCreatePos(
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50  p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500  p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Кількість:</Text>
@@ -161,7 +161,7 @@ export default function ModalCreatePos(
 						{!isNaN(newPosQuant) ? null : <Text className="text-red-500 text-xl text-center ">Кількість товару не в форматі числа </Text>}
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50  p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput
@@ -177,7 +177,7 @@ export default function ModalCreatePos(
 						{!isNaN(newPosBoxes) ? null : <Text className=" text-red-500 text-xl  text-center ">Кількість коробок не в форматі числа </Text>}
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500 p-3 "
 						>
 
 							<Text className="text-white text-center text-xl">Дата:</Text>
@@ -217,7 +217,7 @@ export default function ModalCreatePos(
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50 p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500 p-3 "
 						>
 							<Text className="text-white text-center text-xl">Комент:</Text>
 							<TextInput
@@ -251,7 +251,7 @@ export default function ModalCreatePos(
 				<View className=" px-2 py-4 flex-row justify-around  space-x-2" >
 
 					<TouchableOpacity
-						className="w-1/2 p-4 border border-red-500 flex items-center justify-center rounded-2xl "
+						className="w-1/2 p-4 bg-red-600 border border-red-500  flex items-center justify-center rounded-2xl "
 						onPress={() => { setShowModalCreatePos(false) }}>
 						<Text className=" text-white text-xl"   >
 							СКАСУВАТИ
@@ -261,7 +261,7 @@ export default function ModalCreatePos(
 
 					<TouchableOpacity
 
-						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newPosArtikul && newPosQuant && newPosBoxes ? "border-green-500" : "border-gray-500"}`}
+						className={`w-1/2 p-4   flex items-center justify-center rounded-2xl border ${newPosArtikul && newPosQuant && newPosBoxes ? "border-green-500 bg-green-500" : "border-gray-500 bg-gray-600"}`}
 						onPress={() => {
 							handleCreatePos({
 								newPosArtikul,
