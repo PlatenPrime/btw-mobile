@@ -327,7 +327,10 @@ export default function PalletPage() {
 
 		try {
 			setIsMovingPalletContent(true)
+			console.log("Before");
+
 			const message = await movePalletContent(currentPalletId, targetPalletId);
+			console.log("After");
 			console.log(message); // Выводим сообщение об успешном перемещении
 			clearPosesStore()
 			// Дополнительные действия или обновление интерфейса, если необходимо
@@ -370,71 +373,71 @@ export default function PalletPage() {
 					className="bg-slate-900 flex-1 min-h-full absolute z-10 w-full"
 				>
 					{/* <LinearGradient colors={['#3b82f6', '#1d4ed8']} > */}
-						<TouchableOpacity
-							className=" py-4   flex-row justify-center items-center"
-							onPress={() => setShowModalUpdatePallet(true)}
+					<TouchableOpacity
+						className=" py-4   flex-row justify-center items-center"
+						onPress={() => setShowModalUpdatePallet(true)}
+					>
+						<Text
+							className="text-2xl text-white"
 						>
-							<Text
-								className="text-2xl text-white"
-							>
-								Перейменувати
-							</Text>
-						</TouchableOpacity>
+							Перейменувати
+						</Text>
+					</TouchableOpacity>
 					{/* </LinearGradient> */}
 
 
-					{/* <LinearGradient colors={['#eab308', '#a16207']} >
-						<TouchableOpacity
-							className=" py-4 flex-row justify-center items-center"
-							onPress={() => setShowModalMovePalletContent(true)}
+					{/* <LinearGradient colors={['#eab308', '#a16207']} > */}
+					<TouchableOpacity
+						className=" py-4 flex-row justify-center items-center"
+						onPress={() => setShowModalMovePalletContent(true)}
+					>
+						<Text
+							className="text-2xl text-yellow-100"
 						>
-							<Text
-								className="text-2xl text-yellow-100"
-							>
-								Переставити
-							</Text>
-						</TouchableOpacity>
-					</LinearGradient> */}
+							Переставити
+						</Text>
+					</TouchableOpacity>
+					{/* </LinearGradient> */}
 
 
 
-				
-						<TouchableOpacity
-							className="py-4  flex-row justify-center items-center"
-							onPress={() => setShowModalClearPallet(true)}
+
+					<TouchableOpacity
+						className="py-4  flex-row justify-center items-center"
+						onPress={() => setShowModalClearPallet(true)}
+					>
+						<Text
+							className="text-2xl text-rose-300"
 						>
-							<Text
-								className="text-2xl text-rose-300"
-							>
-								Очистити
-							</Text>
-						</TouchableOpacity>
-				
+							Очистити
+						</Text>
+					</TouchableOpacity>
+
 
 
 
 					{/* <LinearGradient colors={['#ef4444', '#0f172a']} > */}
-						<TouchableOpacity
-							className=" py-4  flex-row justify-center items-center"
-							onPress={() => setShowModalDeletePallet(true)}
+					<TouchableOpacity
+						className=" py-4  flex-row justify-center items-center"
+						onPress={() => setShowModalDeletePallet(true)}
+					>
+						<Text
+							className="text-2xl text-red-500"
 						>
-							<Text
-								className="text-2xl text-red-500"
-							>
-								Видалити
-							</Text>
-						</TouchableOpacity>
+							Видалити
+						</Text>
+					</TouchableOpacity>
 					{/* </LinearGradient> */}
 
 					{/* <LinearGradient colors={['#0ea5e988', '#333333ee']} > */}
-						<TouchableOpacity
-							className=" py-96 h-full   flex-row justify-center items-center  "
-							onPress={() => {
-								setShowButtonGroup(false)
-							}}
-						>
+					<TouchableOpacity
+						className=" py-96 h-full   flex-row justify-center items-center  "
+						onPress={() => {
+							setShowButtonGroup(false)
+						}}
+					>
 
-						</TouchableOpacity>
+					</TouchableOpacity>
 					{/* </LinearGradient> */}
 
 

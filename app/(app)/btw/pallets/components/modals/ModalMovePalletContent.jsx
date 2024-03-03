@@ -25,10 +25,10 @@ export default function ModalMovePalletContent({
 
 
 		>
-			<LinearGradient colors={['#eab308', '#a16207ee']} >
+			{/* <LinearGradient colors={['#eab308', '#a16207ee']} > */}
 				<View
 					className=" 
-				
+				bg-slate-900
 				h-full justify-between p-4 space-y-8"
 				>
 					<Text className="text-white text-3xl  text-center" >
@@ -97,9 +97,8 @@ export default function ModalMovePalletContent({
 							className={`p-4 w-1/2   flex items-center justify-center rounded-2xl border 
 						
 						${selectedPalletId && (pallet?._id !== selectedPalletId) ? "bg-green-600 border-green-600" : "bg-gray-600 border-gray-500"}`}
-							onPress={selectedPalletId && (pallet?._id !== selectedPalletId) ? null : () => {
-								handleMovePalletContent(pallet._id, selectedPalletId)
-							}}
+							onPress={selectedPalletId && (pallet?._id !== selectedPalletId) ? () =>  handleMovePalletContent(pallet._id, selectedPalletId) : null	}
+						
 
 						>
 							{isMovingPalletContent
@@ -117,7 +116,7 @@ export default function ModalMovePalletContent({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 
