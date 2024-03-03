@@ -20,9 +20,9 @@ export default function ModalDeleteAsk({
 
 		>
 
-			<LinearGradient colors={['#f43f5e', '#4c0519ee',]} >
+			{/* <LinearGradient colors={['#f43f5e', '#4c0519ee',]} > */}
 				<View
-					className=" h-full justify-center space-y-8 p-4 "
+					className="bg-slate-900 h-full justify-center space-y-8 p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Відмовити у виконанні запиту на {ask?.artikul}?
@@ -70,7 +70,7 @@ export default function ModalDeleteAsk({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 	)

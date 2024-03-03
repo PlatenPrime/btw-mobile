@@ -41,7 +41,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<LinearGradient colors={['#334155', '#0f172a',]} >
+						<LinearGradient colors={['#0f766e', '#0f172a',]} >
 							<View className="h-full"></View>
 						</LinearGradient>
 					</View>

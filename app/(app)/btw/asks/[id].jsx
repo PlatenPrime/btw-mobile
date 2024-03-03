@@ -461,7 +461,7 @@ export default function AskPage() {
 
 
 			{showButtonGroup && <View
-				className=" absolute z-10 w-full"
+				className="bg-slate-900 absolute z-10 w-full"
 
 			>
 
@@ -472,23 +472,23 @@ export default function AskPage() {
 
 					<>
 
-						<LinearGradient colors={['#22c55e', '#052e16ee',]} >
+						{/* <LinearGradient colors={['#22c55e', '#052e16ee',]} > */}
 
 							<TouchableOpacity
 								className=" py-4 flex-row justify-center items-center"
 
 								onPress={() => { setShowModalSolveAsk(true) }}>
 
-								<Text className="text-2xl text-white " >
+								<Text className="text-2xl text-green-500 " >
 
 									Виконати
 								</Text>
 							</TouchableOpacity>
-						</LinearGradient>
+						{/* </LinearGradient> */}
 
 
 
-						<LinearGradient colors={['#f43f5e', '#4c0519ee',]} >
+						{/* <LinearGradient colors={['#f43f5e', '#4c0519ee',]} > */}
 
 
 							<TouchableOpacity
@@ -496,13 +496,13 @@ export default function AskPage() {
 
 								onPress={() => { setShowModalFailAsk(true) }}>
 
-								<Text className="text-2xl text-white" >
+								<Text className="text-2xl text-rose-300" >
 
 									Відмовити
 								</Text>
 							</TouchableOpacity>
 
-						</LinearGradient>
+						{/* </LinearGradient> */}
 
 					</>
 
@@ -510,20 +510,20 @@ export default function AskPage() {
 
 
 
-				<LinearGradient colors={['#ef4444', '#450a0aee',]} >
+				{/* <LinearGradient colors={['#ef4444', '#450a0aee',]} > */}
 
 					<TouchableOpacity
 						className=" py-4 flex-row justify-center items-center"
 
 						onPress={() => { setShowModalDeleteAsk(true) }}>
 
-						<Text className="text-2xl text-white" >
+						<Text className="text-2xl text-red-500" >
 
 							Видалити
 						</Text>
 					</TouchableOpacity>
 
-				</LinearGradient>
+				{/* </LinearGradient> */}
 			</View>}
 
 
@@ -773,7 +773,7 @@ export default function AskPage() {
 							{ask?.actions?.length > 0
 								?
 								<View
-									className="p-2 border border-sky-500 rounded-xl space-y-2"
+									className=" rounded-xl space-y-2"
 								>
 
 									{ask?.actions?.map((action, i) => <Text

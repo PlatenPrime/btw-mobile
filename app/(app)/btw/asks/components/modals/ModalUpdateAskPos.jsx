@@ -32,7 +32,7 @@ export default function ModalUpdateAskPos({
 			visible={showModalUpdateAskPos}
 		>
 			<View
-				className="space-y-8 justify-between  bg-indigo-950 h-full p-2 "
+				className="space-y-8 justify-between  bg-slate-900 h-full p-2 "
 			>
 
 
@@ -52,7 +52,7 @@ export default function ModalUpdateAskPos({
 
 					<View
 						className="flex-1 flex-row items-center justify-between p-2
-						bg-blue-500/20 rounded-xl
+						 rounded-xl
 						
 						"
 					>
@@ -64,7 +64,7 @@ export default function ModalUpdateAskPos({
 						<View
 							className="flex-row items-center"
 						>
-							<MaterialCommunityIcons name="balloon" size={24} color="#7dd3fc" />
+							<MaterialCommunityIcons name="balloon" size={12} color="#7dd3fc" />
 
 							<Text className="text-sky-300 text-2xl  text-center" >
 								{selectedPos?.quant}
@@ -75,7 +75,7 @@ export default function ModalUpdateAskPos({
 						<View
 							className="flex-row items-center"
 						>
-							<Feather name="box" size={24} color="#fde047" />
+							<Feather name="box" size={12} color="#fde047" />
 							<Text className="text-yellow-300 text-2xl  text-center" >
 								{selectedPos?.boxes}
 							</Text>
@@ -91,7 +91,7 @@ export default function ModalUpdateAskPos({
 
 					<View
 						className="flex-1 flex-row items-center justify-between p-2
-						bg-green-500/20 rounded-xl
+						 rounded-xl
 						"
 					>
 
@@ -107,7 +107,7 @@ export default function ModalUpdateAskPos({
 						>
 							<MaterialCommunityIcons
 								name="balloon"
-								size={24}
+								size={12}
 								color={`${askPosQuantFinalValue < 0
 									?
 									"#ef4444"
@@ -136,7 +136,7 @@ export default function ModalUpdateAskPos({
 						>
 							<Feather
 								name="box"
-								size={24}
+								size={12}
 								color={`${askPosBoxesFinalValue < 0
 									?
 									"#ef4444"
@@ -194,7 +194,7 @@ export default function ModalUpdateAskPos({
 					>
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50  p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Кількість:</Text>
 							<TextInput
@@ -213,7 +213,7 @@ export default function ModalUpdateAskPos({
 
 
 						<View
-							className="flex-row justify-end items-center rounded-full bg-blue-900/40 focus:bg-blue-700/50  p-3 "
+							className="flex-row justify-end items-center rounded-full bg-slate-700 focus:bg-slate-500  p-3 "
 						>
 							<Text className="text-white text-center text-xl">Коробок:</Text>
 							<TextInput

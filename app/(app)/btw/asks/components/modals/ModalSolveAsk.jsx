@@ -21,10 +21,10 @@ export default function ModalSolveAsk({
 
 		>
 
-			<LinearGradient colors={['#15803d', '#052e16ee',]} >
+			{/* <LinearGradient colors={['#15803d', '#052e16ee',]} > */}
 
 				<View
-					className=" h-full justify-center space-y-8 p-4 "
+					className="bg-slate-900 h-full justify-center space-y-8 p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Виконати запит на {ask?.artikul}?
@@ -70,7 +70,7 @@ export default function ModalSolveAsk({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 	)

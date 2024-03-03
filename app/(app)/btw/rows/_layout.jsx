@@ -64,8 +64,8 @@ export default function Layout() {
 						color: "white"
 					},
 
-					headerBackground: () => <View className="bg-orange-500   h-full">
-						<LinearGradient colors={['#f97316', '#c2410c',]} >
+					headerBackground: () => <View className="bg-orange-700   h-full">
+						<LinearGradient colors={['#f97316', "#c2410c", '#0f172a',]} >
 							<View className="h-full"></View>
 						</LinearGradient>
 					</View>

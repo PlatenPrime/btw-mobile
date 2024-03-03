@@ -41,7 +41,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-emerald-800   h-full">
-						<LinearGradient colors={['#10b981', '#065f46',]} >
+						<LinearGradient colors={['#10b981', '#0f172a',]} >
 							<View className="h-full"></View>
 						</LinearGradient>
 

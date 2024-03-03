@@ -37,14 +37,10 @@ export default function ModalCreateAsk({
 			visible={showModalCreateAsk}
 			className="bg-red-700"
 		>
-			<LinearGradient colors={['#3730a3', '#1e1b4b',]} >
-
-
-
-
+			{/* <LinearGradient colors={['#3730a3', '#1e1b4b',]} > */}
 
 				<View
-					className="space-y-4 justify-between   h-full p-2 "
+					className="bg-slate-900 space-y-4 justify-between   h-full p-2 "
 				>
 
 
@@ -205,7 +201,7 @@ export default function ModalCreateAsk({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 		</Modal>
 	)
 }

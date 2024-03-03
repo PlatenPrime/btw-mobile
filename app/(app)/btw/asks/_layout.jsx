@@ -3,7 +3,7 @@ import React from 'react'
 import { Stack, useRouter } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, Feather } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../../stores/globalStore";
 import { colors500 } from "../../../../constants/Colors"
 import { LinearGradient } from 'expo-linear-gradient';
@@ -26,7 +26,7 @@ export default function Layout() {
 					title: "Запити",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-vertical" size={24} color="white" />
+						{/* <Feather name="menu" size={24} color="white" /> */}
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",
@@ -36,7 +36,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<LinearGradient colors={['#334155', '#0f172a',]} >
+						<LinearGradient colors={['#4f46e5', '#0f172a',]} >
 							<View className="h-full"></View>
 						</LinearGradient>
 
@@ -49,7 +49,7 @@ export default function Layout() {
 					title: "Запит",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-vertical" size={24} color="white" />
+						<Feather name="menu" size={24} color="white" />
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",
@@ -59,7 +59,7 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<LinearGradient colors={['#334155', '#0f172a',]} >
+						<LinearGradient colors={['#4f46e5', '#0f172a',]} >
 							<View className="h-full"></View>
 						</LinearGradient>
 
