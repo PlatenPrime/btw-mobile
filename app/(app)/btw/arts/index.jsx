@@ -7,6 +7,7 @@ import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent'
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import { MagnifyingGlassIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon, } from "react-native-heroicons/outline"
 import { colors500 } from '../../../../constants/Colors';
+import ArtBage from './components/ArtBage';
 
 
 export default function ArtsPage() {
@@ -267,94 +268,30 @@ export default function ArtsPage() {
 							<ActivityIndicator size="large" color={colors500.sky} />
 							:
 							<View className="space-y-2 flex-1  justify-center">
-								{filteredArts?.length === 0
-									?
-									artsCurrent?.slice(step * page - step, step * page).map((art) =>
+								
+									{filteredArts?.length === 0
+										?
+										artsCurrent?.slice(step * page - step, step * page).map((art) =>
 
-										<View
-											key={art._id}
-											className="flex-row space-x-2 bg-sky-500/20 border border-sky-500 w-full rounded-xl"
-										>
-
-
-											<View
-												className="justify-center bg-white rounded-l-xl p-1"
-											>
-												<StyledImage
-													style={{
-														height: 100,
-														width: 100,
-														resizeMode: "contain"
-													}}
-													className="rounded-xl"
-													source={{ uri: `https://sharik.ua/images/elements_big/${art.artikul}_m1.jpg` }}
-												/>
-
-											</View>
-
-
-
-											<TouchableOpacity
-												className="flex-1 justify-center"
+											<ArtBage
+												key={art._id}
+												art={art}
 												onPress={() => router.push(`/(app)/btw/arts/${art._id}/`)}
-											>
-												<Text
-													className="text-white text-xl p-1  "
-													numberOfLines={3}
-												>
-													{art.nameukr}
-												</Text>
-											</TouchableOpacity>
+											/>
 
 
-										</View>
+										)
 
-
-									)
-
-									:
-									filteredArts?.slice(step * page - step, step * page).map((art) =>
-										<View
-											key={art._id}
-											className="flex-row space-x-2 bg-sky-500/40 border border-sky-500 w-full rounded-xl"
-										>
-
-
-											<View
-												className="justify-center bg-white rounded-l-xl p-1"
-											>
-												<StyledImage
-													style={{
-														height: 100,
-														width: 100,
-														resizeMode: "contain"
-													}}
-													className="rounded-xl"
-													source={{ uri: `https://sharik.ua/images/elements_big/${art.artikul}_m1.jpg` }}
-												/>
-
-											</View>
-
-
-
-											<TouchableOpacity
-												className="flex-1 justify-center"
+										:
+										filteredArts?.slice(step * page - step, step * page).map((art) =>
+											<ArtBage
+												key={art._id}
+												art={art}
 												onPress={() => router.push(`/(app)/btw/arts/${art._id}/`)}
-											>
-												<Text
-													className="text-white text-xl p-1 "
-													numberOfLines={3}
-												>
-													{art.nameukr}
-												</Text>
-											</TouchableOpacity>
+											/>
 
-
-										</View>
-
-									)}
-
-							</View>
+										)}
+								</View>
 
 						}
 

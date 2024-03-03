@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Entypo } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../../stores/globalStore";
 import { colors500 } from "../../../../constants/Colors"
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Layout() {
 
@@ -24,7 +25,7 @@ export default function Layout() {
 					title: "Артикули",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-vertical" size={24} color="white" />
+						{/* <Entypo name="dots-three-vertical" size={24} color="white" /> */}
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",
@@ -34,10 +35,9 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../../../assets/images/grad5.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#0284c7', '#075985',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}
@@ -48,7 +48,7 @@ export default function Layout() {
 					title: "Артикул",
 					headerRight: () => <TouchableOpacity
 						onPress={toggleShowButtonGroup}>
-						<Entypo name="dots-three-vertical" size={24} color="white" />
+						{/* <Entypo name="dots-three-vertical" size={24} color="white" /> */}
 					</TouchableOpacity>,
 					headerTintColor: "white",
 					headerTitleAlign: "center",
@@ -58,10 +58,9 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../../../assets/images/grad5.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#0284c7', '#075985',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}

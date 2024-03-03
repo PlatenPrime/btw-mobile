@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Entypo } from '@expo/vector-icons';
 import { useGlobalStore } from "../../../../stores/globalStore";
 import { colors500 } from "../../../../constants/Colors"
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Layout() {
 
@@ -35,10 +36,9 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../../../assets/images/grad6.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#334155', '#0f172a',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}
@@ -59,10 +59,9 @@ export default function Layout() {
 						color: "white"
 					},
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<Image source={require("../../../../assets/images/grad6.jpg")}
-							className="w-full h-full absolute"
-							blurRadius={10}
-						/>
+						<LinearGradient colors={['#334155', '#0f172a',]} >
+							<View className="h-full"></View>
+						</LinearGradient>
 
 					</View>
 				}}
