@@ -66,11 +66,7 @@ export default function ModalMovePalletContent({
 							/>
 						</View>
 
-						<View>
-							<Text>{selectedPalletId}</Text>
-							<Text>{pallet?._id}</Text>
-						</View>
-
+					
 
 					</ScrollView>
 
