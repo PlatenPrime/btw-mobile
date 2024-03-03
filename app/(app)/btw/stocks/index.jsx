@@ -10,6 +10,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline';
 import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import StockBage from './components.jsx/StockBage';
 
 
 
@@ -283,267 +284,35 @@ export default function Stocks() {
 
 
 
-						<View className="space-y-2 flex-1  justify-center">
+						<View className="  justify-center ">
 							{filteredPoses?.length === 0
 								?
 								allPoses?.slice(step * page - step, step * page).map((pos) =>
 
-									<View
+									<StockBage
 										key={pos._id}
-										className="flex-row space-x-2 bg-emerald-500/20 border border-emerald-500 w-full rounded-xl"
-									>
+										pos={pos}
+										onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
+										artsCurrent={artsCurrent}
 
-
-										<View
-											className="justify-center bg-white rounded-l-xl p-1"
-										>
-											<Image
-												style={{
-													height: 100,
-													width: 100,
-													resizeMode: "contain"
-												}}
-												className="rounded-xl"
-												source={{ uri: `https://sharik.ua/images/elements_big/${pos.artikul}_m1.jpg` }}
-											/>
-
-										</View>
-
-
-
-										<TouchableOpacity
-											className="flex-1 justify-center"
-											onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
-										>
-											<Text
-												className="text-white text-2xl p-1 text-center "
-												numberOfLines={3}
-											>
-												{pos.artikul}
-											</Text>
-
-											{artsCurrent?.find(art => art.artikul === pos.artikul)
-												?
-												<Text
-													className="text-white text-xl p-1 italic "
-													numberOfLines={3}
-												>
-													{artsCurrent?.find(art => art.artikul === pos.artikul)?.nameukr?.slice(10)}
-												</Text>
-												: null}
-
-
-
-
-
-
-
-											<View
-												className="flex-1 flex-row justify-between space-x-1"
-
-											>
-
-
-
-												<View
-													className=" w-1/2 flex-1  flex-row justify-center items-center bg-amber-500/10 rounded-xl "
-												>
-													<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
-													<Text
-														className="text-white text-lg p-1  "
-														numberOfLines={3}
-													>
-														{pos.palletTitle}
-													</Text>
-												</View>
-
-
-
-
-												<View
-													className=" w-1/2 p-2   justify-between items-center rounded-b-xl bg-sky-500/10 rounded-xl "
-												>
-
-													<View
-														className=" flex-row items-center justify-end  rounded-xl"
-													>
-														<MaterialCommunityIcons name="balloon" size={16} color="#e0f2fe" />
-														<Text
-															className="text-teal-100 text-lg "
-														>
-															{pos.quant}
-														</Text>
-
-													</View>
-
-													<View
-														className=" flex-row items-center justify-end space-x-2"
-													>
-														<Feather name="box" size={16} color="#facc15" />
-														<Text
-															className="text-yellow-400 text-lg "
-														>
-															{pos.boxes}
-														</Text>
-
-													</View>
-
-
-												</View>
-
-
-
-											</View>
-
-
-
-
-
-
-										</TouchableOpacity>
-
-
-									</View>
+									/>
 
 
 								)
 
 								:
 								filteredPoses?.slice(step * page - step, step * page).map((pos) =>
-									<View
+									<StockBage
 										key={pos._id}
-										className="flex-1 flex-row space-x-2 bg-emerald-500/20 border border-emerald-500 w-full rounded-xl"
-									>
+										pos={pos}
+										onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
+										artsCurrent={artsCurrent}
 
-
-										<View
-											className="justify-center bg-white rounded-l-xl p-1"
-										>
-											<Image
-												style={{
-													height: 100,
-													width: 100,
-													resizeMode: "contain"
-												}}
-												className="rounded-xl"
-												source={{ uri: `https://sharik.ua/images/elements_big/${pos.artikul}_m1.jpg` }}
-											/>
-
-										</View>
-
-
-
-
-										<TouchableOpacity
-											className="flex-1 justify-center"
-											onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
-										>
-											<Text
-												className="text-white text-2xl p-1 text-center "
-												numberOfLines={3}
-											>
-												{pos.artikul}
-											</Text>
-
-											{artsCurrent?.find(art => art.artikul === pos.artikul)
-												?
-												<Text
-													className="text-white text-xl p-1 italic "
-													numberOfLines={3}
-												>
-													{artsCurrent?.find(art => art.artikul === pos.artikul)?.nameukr?.slice(10)}
-												</Text>
-												: null}
-
-
-
-
-
-
-
-											<View
-												className="flex-1 flex-row justify-between space-x-1"
-
-											>
-
-
-
-												<View
-													className=" w-1/2 flex-1  flex-row justify-center items-center bg-amber-500/10 rounded-xl "
-												>
-													<MaterialCommunityIcons name="shipping-pallet" size={24} color="#fff" />
-													<Text
-														className="text-white text-lg p-1  "
-														numberOfLines={3}
-													>
-														{pos.palletTitle}
-													</Text>
-												</View>
-
-
-
-
-												<View
-													className=" w-1/2 p-2 flex-1   justify-between items-center rounded-b-xl bg-sky-500/10 rounded-xl "
-												>
-
-													<View
-														className=" flex-1 flex-row items-center justify-end  rounded-xl"
-													>
-														<MaterialCommunityIcons name="balloon" size={16} color="#e0f2fe" />
-														<Text
-															className="text-teal-100 text-lg "
-														>
-															{pos.quant}
-														</Text>
-
-													</View>
-
-													<View
-														className="flex-1 flex-row items-center justify-end space-x-2"
-													>
-														<Feather name="box" size={16} color="#facc15" />
-														<Text
-															className="text-yellow-400 text-lg "
-														>
-															{pos.boxes}
-														</Text>
-
-													</View>
-
-
-												</View>
-
-
-
-											</View>
-
-
-
-
-
-
-										</TouchableOpacity>
-
-
-
-									</View>
+									/>
 
 								)}
 
 						</View>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
