@@ -1,6 +1,6 @@
 import { View, Text, ActivityIndicator, Pressable, Alert, Image, TouchableOpacity, RefreshControl } from 'react-native'
 import { styled } from 'nativewind';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScreenContainer } from '../../../../components'
 import { Link, useRouter } from 'expo-router'
 import { useGetArtsCurrent } from '../../../../hooks/useGetArtsCurrent'
@@ -29,6 +29,16 @@ export default function ArtsPage() {
 
 
 
+useEffect(
+	() => {
+		setFilteredArts(artsCurrent)
+	}, [artsCurrent]
+)
+
+
+
+
+
 	const [refreshing, setRefreshing] = useState(false);
 
 	const onRefresh = React.useCallback(() => {
@@ -42,7 +52,7 @@ export default function ArtsPage() {
 
 	// HANDLERS
 
-	function handleFilterArts() {
+	function handleFilterArts(searchValue) {
 		const filtered = artsCurrent?.filter((art) =>
 			art.artikul.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
 			art.nameukr.toLowerCase().includes(searchValue.toLowerCase().trim()) ||
@@ -82,10 +92,13 @@ export default function ArtsPage() {
 
 
 						<TextInput
-							placeholder='XXXX-XXXX'
+							placeholder='.....'
 							placeholderTextColor={"#888"}
 							className=" text-center h-10 flex-1 text-3xl text-white  "
-							onChangeText={(text => setSearchValue(text))}
+							onChangeText={text => {
+								setSearchValue(text)
+								handleFilterArts(text)
+							}}
 							value={searchValue}
 
 							autoFocus={true}
@@ -93,12 +106,7 @@ export default function ArtsPage() {
 
 
 
-						<TouchableOpacity
-							className="rounded-full p-3 m-1 bg-sky-400/20"
-							onPress={handleFilterArts}
-						>
-							<Text  ><MagnifyingGlassIcon size={36} color="white" /></Text>
-						</TouchableOpacity>
+
 					</View>
 
 
@@ -268,8 +276,16 @@ export default function ArtsPage() {
 							<ActivityIndicator size="large" color={colors500.sky} />
 							:
 							<View className="space-y-2 flex-1  justify-center">
-								
-									{filteredArts?.length === 0
+
+								{filteredArts?.length === 0 ?
+
+									<Text
+										className="text-white text-center"
+									>
+										Нічого не знайдено
+									</Text>
+									:
+									filteredArts?.length === artsCurrent?.length
 										?
 										artsCurrent?.slice(step * page - step, step * page).map((art) =>
 
@@ -291,7 +307,7 @@ export default function ArtsPage() {
 											/>
 
 										)}
-								</View>
+							</View>
 
 						}
 

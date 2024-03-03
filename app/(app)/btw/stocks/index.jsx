@@ -27,8 +27,15 @@ export default function Stocks() {
 	const step = 10
 
 	const [searchValue, setSearchValue] = useState("")
-	const [filteredPoses, setFilteredPoses] = useState([]);
+	const [filteredPoses, setFilteredPoses] = useState(allPoses);
 	const [page, setPage] = useState(1);
+
+
+
+
+
+
+
 
 
 	function handleFilterPoses(searchValue) {
@@ -57,8 +64,8 @@ export default function Stocks() {
 			try {
 				setIsLoadingPoses(true)
 
-				await getAllPoses()
-
+				const allPoses = await getAllPoses()
+				// setFilteredPoses(allPoses)
 
 			} catch (error) {
 				console.log(error);
@@ -285,32 +292,38 @@ export default function Stocks() {
 
 
 						<View className="  justify-center ">
-							{filteredPoses?.length === 0
-								?
-								allPoses?.slice(step * page - step, step * page).map((pos) =>
+							{filteredPoses?.length === 0 ?
 
-									<StockBage
-										key={pos._id}
-										pos={pos}
-										onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
-										artsCurrent={artsCurrent}
-
-									/>
-
-
-								)
-
+								<Text
+									className="text-white text-center"
+								>
+									Нічого не знайдено
+								</Text>
 								:
-								filteredPoses?.slice(step * page - step, step * page).map((pos) =>
-									<StockBage
-										key={pos._id}
-										pos={pos}
-										onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
-										artsCurrent={artsCurrent}
+								filteredPoses?.length === allPoses?.length
+									?
+									allPoses?.slice(step * page - step, step * page).map((pos) =>
 
-									/>
+										<StockBage
+											key={pos._id}
+											pos={pos}
+											onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
+											artsCurrent={artsCurrent}
 
-								)}
+										/>
+									)
+
+									:
+									filteredPoses?.slice(step * page - step, step * page).map((pos) =>
+										<StockBage
+											key={pos._id}
+											pos={pos}
+											onPress={() => router.push(`/(app)/btw/pallets/${pos.pallet}/`)}
+											artsCurrent={artsCurrent}
+
+										/>
+
+									)}
 
 						</View>
 

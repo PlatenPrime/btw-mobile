@@ -8,7 +8,7 @@ export default function ArtBage({
 	return (
 		<View
 			key={art._id}
-			className="flex-row space-x-2 bg-sky-500/20  w-full rounded-xl mb-4"
+			className="flex-row space-x-2 bg-sky-500/40  w-full rounded-xl mb-4"
 		>
 
 
