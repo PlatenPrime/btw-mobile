@@ -17,10 +17,10 @@ export default function ModalDeletePallet({
 
 
 		>
-			<LinearGradient colors={['#ef4444', '#0f172aee']} >
+			{/* <LinearGradient colors={['#ef4444', '#0f172aee']} > */}
 
 				<View
-					className=" h-full justify-center space-y-8 p-4 "
+					className="bg-slate-900 h-full justify-center space-y-8 p-4 "
 				>
 					<Text className="text-white text-3xl  text-center" >
 						Видалити палету {palletTitle}?
@@ -66,7 +66,7 @@ export default function ModalDeletePallet({
 					</View>
 
 				</View>
-			</LinearGradient>
+			{/* </LinearGradient> */}
 
 		</Modal>
 	)

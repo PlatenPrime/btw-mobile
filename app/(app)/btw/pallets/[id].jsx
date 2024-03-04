@@ -372,9 +372,14 @@ export default function PalletPage() {
 				<View
 					className="flex-1 min-h-full absolute z-10 w-full"
 				>
+
+
+					<View
+					className="bg-slate-900"
+					>
 					{/* <LinearGradient colors={['#3b82f6', '#1d4ed8']} > */}
 					<TouchableOpacity
-						className=" py-4 bg-slate-900    flex-row justify-center items-center"
+						className=" py-4     flex-row justify-center items-center"
 						onPress={() => setShowModalUpdatePallet(true)}
 					>
 						<Text
@@ -388,7 +393,7 @@ export default function PalletPage() {
 
 					{/* <LinearGradient colors={['#eab308', '#a16207']} > */}
 					<TouchableOpacity
-						className="bg-slate-900  py-4 flex-row justify-center items-center"
+						className="  py-4 flex-row justify-center items-center"
 						onPress={() => setShowModalMovePalletContent(true)}
 					>
 						<Text
@@ -403,7 +408,7 @@ export default function PalletPage() {
 
 
 					<TouchableOpacity
-						className="bg-slate-900  py-4  flex-row justify-center items-center"
+						className=" py-4  flex-row justify-center items-center"
 						onPress={() => setShowModalClearPallet(true)}
 					>
 						<Text
@@ -418,7 +423,7 @@ export default function PalletPage() {
 
 					{/* <LinearGradient colors={['#ef4444', '#0f172a']} > */}
 					<TouchableOpacity
-						className="bg-slate-900  py-4  flex-row justify-center items-center"
+						className="  py-4  flex-row justify-center items-center"
 						onPress={() => setShowModalDeletePallet(true)}
 					>
 						<Text
@@ -428,6 +433,16 @@ export default function PalletPage() {
 						</Text>
 					</TouchableOpacity>
 					{/* </LinearGradient> */}
+
+					</View>
+
+
+
+
+
+
+
+
 
 					{/* <LinearGradient colors={['#0ea5e988', '#333333ee']} > */}
 					<TouchableOpacity
