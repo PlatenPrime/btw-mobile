@@ -287,14 +287,10 @@ export default function RowPage() {
 								key={pallet._id}
 								onPress={() => router.push(`/(app)/btw/pallets/${pallet._id}`)}
 
-								className=" rounded-xl 
-							
-								bg-slate-700
-					
-					text-center text-2xl text-white  font-bold
-				
-				
-					 "
+								className={`rounded-xl
+								${allPoses?.filter((pos) => pos?.pallet === pallet?._id).reduce((a, b) => a + b?.boxes, 0) > 0 ? "bg-amber-300/20" : "bg-slate-300/20"}
+								
+					text-center text-2xl text-white  font-bold`}
 							>
 
 
