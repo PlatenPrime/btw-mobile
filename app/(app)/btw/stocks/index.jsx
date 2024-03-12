@@ -40,7 +40,7 @@ export default function Stocks() {
 
 	function handleFilterPoses(searchValue) {
 		const filtered = allPoses?.filter((pos) =>
-			pos.artikul.toLowerCase().includes(searchValue.toLowerCase().trim())
+			pos.artikul.toLowerCase().includes(searchValue?.toLowerCase().trim())
 		);
 
 
