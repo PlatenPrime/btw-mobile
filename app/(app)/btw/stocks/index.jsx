@@ -40,7 +40,7 @@ export default function Stocks() {
 
 	function handleFilterPoses(searchValue) {
 		const filtered = allPoses?.filter((pos) =>
-			pos.artikul.toLowerCase().includes(searchValue?.toLowerCase().trim())
+			pos?.artikul.toLowerCase().includes(searchValue?.toLowerCase().trim())
 		);
 
 
@@ -86,7 +86,7 @@ export default function Stocks() {
 
 
 			{isLoadingPoses ?
-				<ActivityIndicator size="large" color={colors500.emerald} />
+				<ActivityIndicator size="large" color={colors500?.emerald} />
 				:
 				<ScrollView
 					className=" space-y-4 px-4 bg-emerald-500/5"
