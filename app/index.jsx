@@ -87,7 +87,7 @@ export default function Login() {
 					},
 
 					headerBackground: () => <View className="bg-sky-950   h-full">
-						<LinearGradient colors={['#16a34a', '#052e16',]} >
+						<LinearGradient colors={['#242424', '#0c0d0d',]} >
 							<View className="h-full"></View>
 						</LinearGradient>
 
