@@ -91,9 +91,9 @@ export default function AsksPage() {
 			console.log("Created Ask: ", createdAsk);
 
 			const user = users?.find(user => user._id === createdAsk?.asker)
-			const artikul = createdAsk.artikul
-			const quant = createdAsk.quant
-			const com = createdAsk.com
+			const artikul = createdAsk?.artikul
+			const quant = createdAsk?.quant
+			const com = createdAsk?.com
 
 
 			if (user?.role === "PICKER") await sendMessageToTelegram(`
