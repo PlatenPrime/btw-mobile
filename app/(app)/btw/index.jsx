@@ -2,6 +2,7 @@ import { View, Text, Button, ImageBackground, TouchableOpacity } from 'react-nat
 import React from 'react'
 import { Link, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../../components'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -20,91 +21,118 @@ export default function Page() {
 
 
 	return (
-		<ScreenContainer>
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<ScreenContainer>
 
 
 
 
 
-			<View
-				className=" justify-between h-full space-y-4 p-4"
-			>
-
-
-				<TouchableOpacity
-					onPress={() => router.push("/btw/rows/")}
-					className=" flex-1 justify-center 
-					 border-orange-500
-					bg-orange-500/20 rounded-2xl "
+				<View
+					className=" justify-between h-full space-y-4 p-4"
 				>
 
-					<Text
-						className="text-center text-3xl text-white"
+					<LinearGradient
+						colors={['rgb(100 116 139 )', 'rgb(30 41 59)',]}
+						className="flex-1 justify-center rounded-2xl "
 					>
-						Ряди
-					</Text>
+						<TouchableOpacity
+							onPress={() => router.push("/btw/rows/")}
+							className=""
+						>
+							<Text
+								className="text-center text-3xl text-white"
+							>
+								Ряди
+							</Text>
 
-				</TouchableOpacity>
+						</TouchableOpacity>
+					</LinearGradient>
 
 
-				<TouchableOpacity
-					onPress={() => router.push("/btw/stocks/")}
-					className=" flex-1 justify-center 
-					 border-emerald-500
-					bg-emerald-500/20 rounded-2xl "
-				>
 
-					<Text
-						className="text-center text-3xl text-white"
+					<LinearGradient
+						colors={['rgb(16 185 129 )', 'rgb(6 78 59)',]}
+						className=" flex-1 justify-center 
+					 rounded-2xl "
 					>
-						Запаси
-					</Text>
+						<TouchableOpacity
+							onPress={() => router.push("/btw/stocks/")}
 
-				</TouchableOpacity>
+						>
+
+							<Text
+								className="text-center text-3xl text-white"
+							>
+								Запаси
+							</Text>
+
+						</TouchableOpacity>
+					</LinearGradient>
 
 
 
 
-				<TouchableOpacity
-					onPress={() => router.push("/btw/arts/")}
-					className="  flex-1 justify-center 
-					 border-sky-500
-					bg-sky-500/20 rounded-2xl  "
-				>
-					<Text
-						className="text-center text-3xl text-white"
+
+					<LinearGradient
+						colors={['rgb(14 165 233)', 'rgb(12 74 110 )',]}
+						className=" flex-1 justify-center 
+					 rounded-2xl "
 					>
-						Артикули
-					</Text>
-				</TouchableOpacity>
+						<TouchableOpacity
+							onPress={() => router.push("/btw/arts/")}
+						>
+							<Text
+								className="text-center text-3xl text-white"
+							>
+								Артикули
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 
 
 
 
-				<TouchableOpacity
-					onPress={() => router.push("/btw/asks/")}
-					className=" flex-1 justify-center  
-					 border-indigo-500
-					bg-indigo-500/20 rounded-2xl  "
-				>
-
-					<Text
-						className="text-center text-white text-3xl "
+					<LinearGradient
+						colors={['rgb(99 102 241)', 'rgb(49 46 129  )',]}
+						className=" flex-1 justify-center 
+					 rounded-2xl "
 					>
-						Запити
-					</Text>
+						<TouchableOpacity
+							onPress={() => router.push("/btw/asks/")}
+						>
+							<Text
+								className="text-center text-white text-3xl "
+							>
+								Запити
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 
-				</TouchableOpacity>
 
 
 
+					<LinearGradient
+						colors={['rgb(236 72 153 )', 'rgb(131 24 67 )',]}
+						className=" flex-1 justify-center 
+					 rounded-2xl "
+					>
+						<TouchableOpacity
+							onPress={() => router.push("/btw/asks/")}
+						>
+							<Text
+								className="text-center text-white text-3xl "
+							>
+								Дефіцити
+							</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 
 
 
-
-
-			</View>
-		</ScreenContainer >
+				</View>
+			</ScreenContainer >
+		</GestureHandlerRootView>
 
 
 	)

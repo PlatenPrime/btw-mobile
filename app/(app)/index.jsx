@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator, Image, TextInput } from 'react-native'
+import { StyleSheet, Text, View, Button, StatusBar, ActivityIndicator, Image, TextInput, TouchableOpacity  } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Link, Stack, useRouter } from 'expo-router'
 import { ScreenContainer } from '../../components'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import { colors500 } from '../../constants/Colors'
 import useAuthStore from '../../stores/authStore'
 import useCheckAuth from '../../hooks/useCheckAuth'
@@ -150,7 +149,7 @@ export default function Page() {
 
 
 					<View
-						className="flex  justify-center items-center  rounded-2xl"
+						className="flex  justify-center items-center  rounded-2xl "
 					>
 
 

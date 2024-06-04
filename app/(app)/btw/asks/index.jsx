@@ -4,7 +4,7 @@ import { ScreenContainer } from '../../../../components'
 import useAskStore from "../../../../stores/asksStore"
 import useAuthStore from "../../../../stores/authStore"
 import { useGlobalStore } from "../../../../stores/globalStore";
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useRouter } from 'expo-router';
 import { useGetArtsCurrent } from "../../../../hooks/useGetArtsCurrent"
 import AskBage from "./components/AskBage"
@@ -129,50 +129,51 @@ export default function AsksPage() {
 
 
 	return (
-		<ScreenContainer>
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<ScreenContainer>
 
 
 
-			{showButtonGroup && <View
-				className="  absolute z-10 w-full"
-			>
-				
-
-			</View>
-			}
-
-
-
-
-			<ModalCreateAsk
-				showModalCreateAsk={showModalCreateAsk}
-				setShowModalCreateAsk={setShowModalCreateAsk}
-				isAskCreating={isAskCreating}
-				artsCurrent={artsCurrent}
-				handleCreateAsk={handleCreateAsk}
-				user={user}
-			/>
-
-
-
-
-
-
-
-
-
-
-			{isAsksLoading
-				?
-				<ActivityIndicator size="large" color="#6366f1" />
-				:
-
-				<ScrollView
-
+				{showButtonGroup && <View
+					className="  absolute z-10 w-full"
 				>
 
 
-					{/* <LinearGradient colors={['#6366f1', '#1e1b4b',]} > */}
+				</View>
+				}
+
+
+
+
+				<ModalCreateAsk
+					showModalCreateAsk={showModalCreateAsk}
+					setShowModalCreateAsk={setShowModalCreateAsk}
+					isAskCreating={isAskCreating}
+					artsCurrent={artsCurrent}
+					handleCreateAsk={handleCreateAsk}
+					user={user}
+				/>
+
+
+
+
+
+
+
+
+
+
+				{isAsksLoading
+					?
+					<ActivityIndicator size="large" color="#6366f1" />
+					:
+
+					<ScrollView
+
+					>
+
+
+						{/* <LinearGradient colors={['#6366f1', '#1e1b4b',]} > */}
 						<TouchableOpacity
 							className="flex  justify-between items-center 
 					py-4  
@@ -186,33 +187,33 @@ export default function AsksPage() {
 							</Text>
 						</TouchableOpacity>
 
-					{/* </LinearGradient> */}
+						{/* </LinearGradient> */}
 
 
 
 
-					<View
-						className="space-y-4 p-4">
+						<View
+							className="space-y-4 p-4">
 
-						{asks?.map(ask =>
-							<View
-								className="flex-1"
-								key={ask._id}
-							>
-								<AskBage
+							{asks?.map(ask =>
+								<View
+									className="flex-1"
+									key={ask._id}
+								>
+									<AskBage
 
-									ask={ask}
-									artsCurrent={artsCurrent}
-									users={users}
-								/>
-							</View>
-						)}
+										ask={ask}
+										artsCurrent={artsCurrent}
+										users={users}
+									/>
+								</View>
+							)}
 
-					</View>
+						</View>
 
-				</ScrollView>}
+					</ScrollView>}
+			</ScreenContainer>
+		</GestureHandlerRootView>
 
-
-		</ScreenContainer>
 	)
 }

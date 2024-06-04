@@ -110,17 +110,21 @@ export default function Login() {
 						className=" p-4 rounded-xl"
 					>
 
-						<Text className="text-sky-100 text-center text-8xl ">BTW</Text>
+						<Text className="text-sky-100 text-center text-[160px] font-bold ">BTW</Text>
 						<Text className="text-sky-100 text-center text-3xl ">Balloon Trade Warehouse App</Text>
 					</View>
-
-					<TouchableOpacity
-						className=" bg-blue-700  rounded-xl  p-10"
-						onPress={() => router.replace("/(app)/btw")}
-
+					<LinearGradient
+					colors={['rgb(14 165 233 )', '#0369a1',]}
+					className="rounded-xl"
 					>
-						<Text className="text-sky-100 text-center text-5xl ">Погреби</Text>
-					</TouchableOpacity>
+						<TouchableOpacity
+							className="  bg-gradient-to-b from-sky-500/50 to-sky-700 rounded-xl  p-10"
+							onPress={() => router.replace("/(app)/btw")}
+
+						>
+							<Text className="text-sky-100 text-center text-5xl ">Погреби</Text>
+						</TouchableOpacity>
+					</LinearGradient>
 				</View>
 
 				:
